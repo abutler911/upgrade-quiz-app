@@ -5,20 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Questions</title>
+    <link rel="stylesheet" href="/css/addquestion.css" />
   </head>
   <body>
-    <h1>Add Question</h1>
-    <form action="/questions/create" method="POST">
+    <h1>Add A Question</h1>
+    <form method="post" action="/questions/create">
       <label for="question">Question:</label>
-      <input type="text" name="question" required /><br />
-
+      <input type="text" id="question" name="question" required />
+      <br />
       <label for="category">Category:</label>
-      <input type="text" name="category" required /><br />
-
+      <select id="category" name="category">
+        <option value="limitations">Limitations</option>
+        <option value="deice">Deice</option>
+        <option value="human-factors">Human Factors</option>
+        <option value="Memory Items">Memory Items</option>
+      </select>
+      <br />
       <label for="answer">Answer:</label>
-      <textarea name="answer" rows="4" cols="50"></textarea><br />
-
-      <button type="submit">Submit</button>
+      <input type="text" id="answer" name="answer" required />
+      <br />
+      <button type="submit">Create</button>
     </form>
   </body>
 </html>

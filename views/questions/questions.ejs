@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Questions</title>
+    <link rel="stylesheet" href="/css/questions.css" />
+  </head>
+  <body>
+    <header>
+      <h1>All Questions</h1>
+    </header>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% questions.forEach(function(question) { %>
+          <tr>
+            <td><%= question.question %></td>
+            <td><%= question.category %></td>
+            <td class="actions">
+              <button
+                onclick="location.href='/questions/<%= question._id %>/edit'"
+              >
+                Edit
+              </button>
+              <form
+                method="post"
+                action="/questions/<%= question._id %>/delete"
+              >
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <div class="actions">
+        <button class="add-button" onclick="location.href='/questions/create'">
+          Add Question
+        </button>
+        <button onclick="location.href='/'">Back</button>
+      </div>
+    </main>
+  </body>
+</html>

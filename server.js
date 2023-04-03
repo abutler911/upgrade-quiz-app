@@ -25,6 +25,14 @@ app.get("/questions/create", (req, res) => {
   res.render("questions/create");
 });
 
+app.get("/questions", (req, res) => {
+  Question.find()
+    .then((questions) => {
+      res.render("questions/questions", { questions });
+    })
+    .catch((err) => console.log(err));
+});
+
 // Start Quiz page
 app.get("/quiz", (req, res) => {
   res.render("quiz");
