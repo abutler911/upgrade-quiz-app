@@ -87,6 +87,16 @@ app.post("/questions/create", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.post("/questions/:id/delete", (req, res) => {
+  const id = req.params.id;
+
+  Question.findByIdAndDelete(id)
+    .then(() => {
+      res.redirect("/questions");
+    })
+    .catch((err) => console.log(err));
+});
+
 app.listen(port, () => {
   console.log(`Server up on localhost:${port}`);
 });
