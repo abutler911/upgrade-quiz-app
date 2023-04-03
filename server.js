@@ -33,11 +33,6 @@ app.get("/questions", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-// Start Quiz page
-app.get("/quiz", (req, res) => {
-  res.render("quiz");
-});
-
 // Modify Question page
 app.get("/questions/:id/edit", (req, res) => {
   const id = req.params.id;
@@ -95,6 +90,19 @@ app.post("/questions/:id/delete", (req, res) => {
       res.redirect("/questions");
     })
     .catch((err) => console.log(err));
+});
+
+app.get("/quiz", async (req, res) => {
+  try {
+    const questions = await Question.find({});
+    const currentQuestion = 0;
+
+    res.render("quiz", { questions, currentQuestion });
+    console.log(questions);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error retrieving questions");
+  }
 });
 
 app.listen(port, () => {
