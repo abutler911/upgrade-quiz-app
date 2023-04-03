@@ -1,52 +1,25 @@
-const showAnswerBtn = document.querySelector("#show-answer");
-const prevQuestionBtn = document.querySelector("#prev-question");
-const nextQuestionBtn = document.querySelector("#next-question");
-const answer = document.querySelector(".card-text");
+document.addEventListener("DOMContentLoaded", () => {
+  const showAnswerButton = document.getElementById("show-answer");
+  const answerElement = document.querySelector(".answer");
+  const showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
 
-let currentQuestion = 0;
-let questions;
+  const updateAnswerVisibility = () => {
+    const isChecked = showAnswersCheckbox.checked;
+    answerElement.style.visibility = isChecked ? "visible" : "hidden";
+    showAnswerButton.style.display = isChecked ? "none" : "inline-block";
+  };
 
-// Function to update the question displayed on the page
-function updateQuestion() {
-  const cardTitle = document.querySelector(".card-title");
-  const cardBody = document.querySelector(".card-body");
-  const question = questions[currentQuestion];
+  showAnswersCheckbox.addEventListener("change", updateAnswerVisibility);
 
-  cardTitle.textContent = `Question ${currentQuestion + 1}`;
-  cardBody.querySelector("h4").textContent = question.question;
-  cardBody.querySelector(".card-text").textContent = question.answer;
-  answer.classList.add("hide");
-  showAnswerBtn.textContent = "Show Answer";
-}
+  showAnswerButton.addEventListener("click", () => {
+    if (answerElement.style.visibility === "visible") {
+      answerElement.style.visibility = "hidden";
+      showAnswerButton.textContent = "Show Answer";
+    } else {
+      answerElement.style.visibility = "visible";
+      showAnswerButton.textContent = "Hide Answer";
+    }
+  });
 
-// Fetch questions from the server and display the first question
-fetch("/quiz")
-  .then((res) => res.json())
-  .then((data) => {
-    questions = data;
-    updateQuestion();
-  })
-  .catch((err) => console.log(err));
-
-// Show answer when "Show Answer" button is clicked
-showAnswerBtn.addEventListener("click", () => {
-  answer.classList.toggle("hide");
-  showAnswerBtn.textContent =
-    showAnswerBtn.textContent === "Show Answer" ? "Hide Answer" : "Show Answer";
-});
-
-// Go to previous question when "Previous Question" button is clicked
-prevQuestionBtn.addEventListener("click", () => {
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    updateQuestion();
-  }
-});
-
-// Go to next question when "Next Question" button is clicked
-nextQuestionBtn.addEventListener("click", () => {
-  if (currentQuestion < questions.length - 1) {
-    currentQuestion++;
-    updateQuestion();
-  }
+  updateAnswerVisibility();
 });

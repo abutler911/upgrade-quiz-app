@@ -1,95 +1,73 @@
 const express = require("express");
-const app = express();
-const port = 3000;
+const bodyParser = require("body-parser");
 const mongoose = require("./config/db");
 const Question = require("./models/Question");
-const bodyParser = require("body-parser");
 require("dotenv").config();
 
-// Set up static files
-app.use(express.static("public"));
+const app = express();
+const port = 3000;
 
-// Set up view engine
+// Middleware
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// View engine
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Home page
+// Routes
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-// Add Question page
 app.get("/questions/create", (req, res) => {
   res.render("questions/create");
 });
 
-app.get("/questions", (req, res) => {
-  Question.find()
-    .then((questions) => {
-      res.render("questions/questions", { questions });
-    })
-    .catch((err) => console.log(err));
+app.get("/questions", async (req, res) => {
+  try {
+    const questions = await Question.find();
+    res.render("questions/questions", { questions });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-// Modify Question page
-app.get("/questions/:id/edit", (req, res) => {
-  const id = req.params.id;
-
-  Question.findById(id)
-    .then((question) => {
-      res.render("questions/edit", { question });
-    })
-    .catch((err) => console.log(err));
+app.get("/questions/:id/edit", async (req, res) => {
+  try {
+    const question = await Question.findById(req.params.id);
+    res.render("questions/edit", { question });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-// Submit modified question
-app.post("/questions/:id/edit", (req, res) => {
-  const id = req.params.id;
-  const { question, category, answer } = req.body;
-
-  Question.findByIdAndUpdate(
-    id,
-    {
-      question,
-      category,
-      answer,
-    },
-    { new: true }
-  )
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch((err) => console.log(err));
+app.post("/questions/:id/edit", async (req, res) => {
+  try {
+    await Question.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-// Create new question
-app.post("/questions/create", (req, res) => {
-  const { question, category, answer } = req.body;
-
-  const newQuestion = new Question({
-    question,
-    category,
-    answer,
-  });
-
-  newQuestion
-    .save()
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch((err) => console.log(err));
+app.post("/questions/create", async (req, res) => {
+  try {
+    const newQuestion = new Question(req.body);
+    await newQuestion.save();
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-app.post("/questions/:id/delete", (req, res) => {
-  const id = req.params.id;
-
-  Question.findByIdAndDelete(id)
-    .then(() => {
-      res.redirect("/questions");
-    })
-    .catch((err) => console.log(err));
+app.post("/questions/:id/delete", async (req, res) => {
+  try {
+    await Question.findByIdAndDelete(req.params.id);
+    res.redirect("/questions");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.get("/quiz", async (req, res) => {
@@ -105,6 +83,7 @@ app.get("/quiz", async (req, res) => {
   }
 });
 
+// Start server
 app.listen(port, () => {
   console.log(`Server up on localhost:${port}`);
 });

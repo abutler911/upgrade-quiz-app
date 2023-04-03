@@ -11,30 +11,35 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/quiz.css" />
   </head>
   <body>
-    <h1>Quiz Time!</h1>
+    <h1 class="text-center">Quiz Time!</h1>
     <div class="container">
-      <div class="card" style="width: 18rem">
+      <div class="checkbox-container">
+        <label for="showAnswersCheckbox">Always show answers</label>
+        <input type="checkbox" id="showAnswersCheckbox" />
+      </div>
+
+      <div class="card mx-auto">
         <img
           src="https://plus.unsplash.com/premium_photo-1661963559290-2d8c4cb2b33e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
           class="card-img-top"
           alt="..."
         />
         <div class="card-body">
-          <h5 class="card-title">
-            <% if(questions.length === 0) { %>
-            <h5>No questions to display</h5>
-            <% } else { %> <%=questions[0].question %>
-          </h5>
+          <% if(questions.length === 0) { %>
+          <h5>No questions to display</h5>
+          <h5>No answers to display</h5>
+          <% } else { %>
+          <h5 class="card-title"><%=questions[0].question %></h5>
+          <p class="card-text answer"><%=questions[0].answer %></p>
           <% } %>
 
-          <p class="card-text"><% if(questions.length === 0) { %></p>
-
-          <h5>No answers to display</h5>
-          <% } else { %> <%=questions[0].answer %> <% } %>
-
-          <button class="btn btn-success">Show Answer</button>
+          <br />
+          <button class="btn btn-success" id="show-answer">Show Answer</button>
+          <button class="btn btn-primary" id="prev-question">Prev</button>
+          <button class="btn btn-primary" id="next-question">Next</button>
         </div>
       </div>
     </div>
@@ -43,6 +48,6 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
-    <srcipt src="js/quiz.js"></srcipt>
+    <script src="js/quiz.js"></script>
   </body>
 </html>
