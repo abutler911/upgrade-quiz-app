@@ -74,9 +74,7 @@ app.get("/quiz", async (req, res) => {
   try {
     const questions = await Question.find({});
     const currentQuestion = 0;
-
     res.render("quiz", { questions, currentQuestion });
-    console.log(questions);
   } catch (error) {
     console.log(error);
     res.status(500).send("Error retrieving questions");
