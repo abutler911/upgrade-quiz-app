@@ -9,7 +9,9 @@
   </head>
   <body>
     <h1>Add A Question</h1>
-    <form method="post" action="/questions/create">
+    <form id="add-question-form" method="post">
+      <!-- <form method="post" action="/questions/create"> -->
+
       <label for="question">Question:</label>
       <input type="text" id="question" name="question" required />
       <br />
@@ -26,5 +28,6 @@
       <br />
       <button type="submit">Create</button>
     </form>
+    <script src="/js/createQuestion.js"></script>
   </body>
 </html>

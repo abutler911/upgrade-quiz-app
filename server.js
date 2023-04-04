@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 
 // Middleware
+app.use(express.json());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -52,12 +53,14 @@ app.post("/questions/:id/edit", async (req, res) => {
 });
 
 app.post("/questions/create", async (req, res) => {
+  const { question, category, answer } = req.body;
   try {
     const newQuestion = new Question(req.body);
     await newQuestion.save();
-    res.redirect("/");
+    res.status(201).json({ message: "Question created successfully" });
   } catch (err) {
     console.log(err);
+    res.status(500).json({ message: "Error creating question" });
   }
 });
 

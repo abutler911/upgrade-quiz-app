@@ -1,13 +1,36 @@
-body {
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
+
+body {
+    background-image: url("https://images.unsplash.com/photo-1517260468809-807bfd11d968?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.dark-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
 .main-content {
-    background-color: #393e46;
+    /* background-color: #393e46; */
     color: #fff;
+    flex: 1;
+    z-index: 1;
+    position: relative;
+    padding-top: 70px;
+    /* Height of the header */
 }
 
 header {
@@ -16,39 +39,44 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
 }
 
 header h1 {
     font-size: 24px;
     margin: 0;
+    width: 100%;
 }
 
-nav {
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+nav a.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
 }
 
-nav ul {
+nav .navbar-nav {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
+nav .navbar-nav li {
     margin-right: 10px;
 }
 
-nav ul li a {
-    color: #333;
-    text-decoration: none;
+nav .navbar-nav li a {
     font-size: 16px;
+    color: #fff;
+    text-decoration: none;
 }
 
-nav ul li a:hover {
+nav .navbar-nav li a:hover {
     color: #f44336;
 }
 
@@ -59,7 +87,7 @@ main {
 }
 
 main h2 {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 20px;
 }
 
@@ -67,4 +95,17 @@ main p {
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
