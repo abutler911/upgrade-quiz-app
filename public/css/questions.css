@@ -168,7 +168,18 @@ table td {
     text-decoration: none;
     cursor: pointer;
 } */
-
+footer {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 
 @media (max-width: 767px) {
     table {

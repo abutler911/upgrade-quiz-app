@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("./config/db");
 const Question = require("./models/Question");
+const ejs = require("ejs");
 require("dotenv").config();
 
 const app = express();
@@ -46,7 +47,7 @@ app.get("/questions/:id/edit", async (req, res) => {
 app.post("/questions/:id/edit", async (req, res) => {
   try {
     await Question.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.redirect("questions/update");
+    res.redirect("/");
   } catch (err) {
     console.log(err);
   }
