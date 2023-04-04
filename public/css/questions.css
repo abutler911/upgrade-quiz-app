@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -64,4 +64,139 @@ tr:nth-child(even) {
 
 .add-button:hover {
     background-color: #2980b9;
+} */
+
+
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+table {
+    width: 95%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #999;
+    text-align: left;
+}
+
+table th {
+    background-color: #444;
+}
+
+table td {
+    background-color: #555;
+
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions .add-button {
+    background-color: #008080;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.action-btn {
+    margin-right: 20px;
+    width: 100px;
+    background-color: #008080 !important;
+    font-size: 1.2rem;
+    color: white !important;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.back-button {
+    margin-right: 20px;
+    width: 100px;
+    background-color: #fff !important;
+    font-size: 1.2rem;
+    color: #008080;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* .actions button {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+} */
+
+
+@media (max-width: 767px) {
+    table {
+        display: block;
+    }
+
+    table thead,
+    table tbody,
+    table tr,
+    table td,
+    table th {
+        display: block;
+    }
+
+    table td {
+        border: none;
+    }
+
+    table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td .actions {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
 }
