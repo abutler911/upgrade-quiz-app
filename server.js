@@ -37,7 +37,7 @@ app.get("/questions", async (req, res) => {
 app.get("/questions/:id/edit", async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
-    res.render("questions/edit", { question });
+    res.render("questions/update", { question });
   } catch (err) {
     console.log(err);
   }
@@ -46,7 +46,7 @@ app.get("/questions/:id/edit", async (req, res) => {
 app.post("/questions/:id/edit", async (req, res) => {
   try {
     await Question.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.redirect("/");
+    res.redirect("questions/update");
   } catch (err) {
     console.log(err);
   }

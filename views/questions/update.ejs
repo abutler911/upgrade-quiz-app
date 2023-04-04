@@ -4,29 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Edit Question</title>
+    <link rel="stylesheet" href="/css/editquestion.css" />
   </head>
   <body>
-    <h1>Edit Questions</h1>
-    <% if (questions.length > 0) { %>
-    <ul>
-      <% questions.forEach(function(question) { %>
-      <li>
-        <%= question.question %> - <%= question.category %> - <%=
-        question.answer %>
-        <form
-          method="POST"
-          action="/questions/<%= question._id %>/delete"
-          style="display: inline"
-        >
-          <button type="submit">Delete</button>
-        </form>
-        <a href="/questions/<%= question._id %>/edit">Edit</a>
-      </li>
-      <% }); %>
-    </ul>
-    <% } else { %>
-    <p>No questions found.</p>
-    <% } %>
+    <h1>Edit Question</h1>
+    <form action="/questions/<%= question._id %>/edit" method="post">
+      <div>
+        <label for="question">Question:</label>
+        <input
+          type="text"
+          id="question"
+          name="question"
+          value="<%= question.question %>"
+        />
+      </div>
+      <div>
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+          <option value="limitations" <%= question.category === 'limitations' ? 'selected' : '' %>>Limitations</option>
+          <option value="deice" <%= question.category === 'deice' ? 'selected' : '' %>>Deice</option>
+          <option value="human-factors" <%= question.category === 'human-factors' ? 'selected' : '' %>>Human Factors</option>
+          <option value="Memory Items" <%= question.category === 'Memory Items' ? 'selected' : '' %>>Memory Items</option>
+        </select>
+      </div>
+      <div>
+        <label for="answer">Answer:</label>
+        <input
+          type="text"
+          id="answer"
+          name="answer"
+          value="<%= question.answer %>"
+        />
+      </div>
+      <button type="submit">Save Changes</button>
+    </form>
   </body>
 </html>
