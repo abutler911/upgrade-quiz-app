@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
 }
@@ -46,4 +46,66 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #3e8e41;
+} */
+
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+form {
+    background-color: #444;
+    padding: 30px;
+    width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #999;
+    max-width: 90%;
+}
+
+@media (max-width: 767px) {
+    form {
+        width: 100%;
+    }
+}
+
+label,
+input,
+select {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+}
+
+input[type="text"],
+select {
+    background-color: #555;
+    color: #fff;
+}
+
+button[type="submit"] {
+    background-color: #008080;
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
 }
