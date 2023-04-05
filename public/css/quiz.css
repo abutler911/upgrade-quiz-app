@@ -67,7 +67,7 @@ input[type='checkbox'] {
 .answer {
     max-height: 0;
     overflow: hidden;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s ease, max-height 0.5s ease;
     font-size: 1.6rem;
     -webkit-transition: opacity 0.5s ease, max-height 0.5s ease;
@@ -75,6 +75,7 @@ input[type='checkbox'] {
     -ms-transition: opacity 0.5s ease, max-height 0.5s ease;
     -o-transition: opacity 0.5s ease, max-height 0.5s ease;
 }
+
 
 /* Updated Button styles */
 .btn {

@@ -32,10 +32,11 @@
           <h5>No questions to display</h5>
           <h5>No answers to display</h5>
           <% } else { %>
-          <h5 class="card-title"><%=questions[0].question %></h5>
+          <h5 id="question" class="card-title"></h5>
           <div class="answer-wrapper">
-            <p class="card-text answer"><%=questions[0].answer %></p>
+            <p id="answer" class="card-text answer"></p>
           </div>
+
           <% } %>
 
           <br />

@@ -35,6 +35,15 @@ app.get("/questions", async (req, res) => {
   }
 });
 
+app.get("/api/questions", async (req, res) => {
+  try {
+    const questions = await Question.find();
+    res.json(questions);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching questions" });
+  }
+});
+
 app.get("/questions/:id/edit", async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
