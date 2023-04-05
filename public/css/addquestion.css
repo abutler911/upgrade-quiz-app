@@ -18,9 +18,9 @@ h1 {
 
     margin: auto;
     margin-top: 75px;
-    width: 50%;
-    min-width: 400px;
-    height: 450px;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
 }
 
 form {
@@ -37,7 +37,6 @@ form label {
 form input[type="text"],
 form select {
     width: 100%;
-    max-width: 400px;
     padding: 10px;
     margin-bottom: 20px;
     border: 2px solid #ccc;
@@ -54,16 +53,13 @@ form button {
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 form button[type="submit"]:hover,
 form button:hover {
     background-color: #45a049;
 }
-
-
-
 
 footer {
     display: flex;
