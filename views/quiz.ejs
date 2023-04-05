@@ -1,21 +1,33 @@
 <%- include('partials/header', {title: 'Quiz Time!', styles: 'css/quiz.css'}) %>
 
-    <h1 class="text-center mt-5">Quiz Time!</h1>
+    <h1 class="text-center" id="title">Quiz Time!</h1>
     <div class="container">
-      <div class="checkbox-container">
-        <label for="showAnswersCheckbox">Always show answers</label>
-        <input type="checkbox" id="showAnswersCheckbox" />
+      <div class="container">
+        <div class="checkbox-container">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="showAnswersCheckbox">
+                <label class="form-check-label" for="showAnswersCheckbox">Show Answers</label>
+              </div>
+            </li>
+            <li class="list-inline-item">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="randomizeCheckbox">
+                <label class="form-check-label" for="randomizeCheckbox">Randomize</label>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="checkbox-container">
-        <label for="randomizeCheckbox">Randomize questions</label>
-        <input type="checkbox" id="randomizeCheckbox" />
-      </div>
+      <hr>
+      
 
       <div class="card mx-auto">
         <img
           src="https://plus.unsplash.com/premium_photo-1661963559290-2d8c4cb2b33e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
           class="card-img-top"
-          alt="..."
+          alt="A picture of an airplane at the gate"
         />
         <div class="card-body">
           <% if(questions.length === 0) { %>
@@ -40,13 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center mt-3">
-        <a href="/"
-          ><button type="button" class="btn btn-outline-secondary">
-            Homepage
-          </button></a
-        >
-      </div>
+      
     </div>
     <footer><%- include('partials/footer') %></footer>
     <script

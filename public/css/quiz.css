@@ -4,22 +4,16 @@ body {
     background-color: #f4f4f4;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
-}
-
 /* Header styles */
 h1 {
     font-size: 2.5rem;
     color: #333;
+    margin-top: 100px;
     margin-bottom: 1.5rem;
 }
 
-/* Checkbox styles */
 .checkbox-container {
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-top: 1rem;
     margin-bottom: 1.5rem;
@@ -28,6 +22,11 @@ h1 {
 label {
     margin-right: 0.5rem;
 }
+
+input[type='checkbox'] {
+    cursor: pointer;
+}
+
 
 input[type='checkbox'] {
     cursor: pointer;
@@ -101,5 +100,59 @@ input[type='checkbox'] {
     .btn-container .btn {
         width: 100%;
         margin-bottom: 0.5rem;
+    }
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+    .checkbox-container ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .checkbox-container .list-inline-item {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 768px) {
+    .checkbox-container ul {
+        display: flex;
+        align-items: center;
+    }
+
+    .checkbox-container .list-inline-item {
+        margin-right: 20px;
+    }
+}
+
+/* Bootstrap overrides */
+.container {
+    max-width: 800px;
+}
+
+.btn-primary,
+.btn-outline-secondary {
+    color: #fff;
+}
+
+.card {
+    border: none;
+}
+
+.card-title {
+    font-size: 1rem;
+}
+
+.btn-container {
+    margin-top: 1rem;
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
