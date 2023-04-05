@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -31,82 +32,76 @@ body {
     padding-top: 70px;
 }
 
-/* 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
 
+.navbar {
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+}
 
-header {
-    background-color: #333;
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.nav-item {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.display-1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.1rem;
+}
+
+.main-content hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer {
+    background-color: #343a40;
+    padding: 20px 0;
     color: #fff;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    z-index: 2;
-    top: 0;
-    left: 0;
+    text-align: center;
 }
 
-header h1 {
-    font-size: 24px;
-    margin: 0;
-    width: 100%;
+.footer p {
+    margin-bottom: 0;
+    text-align: center;
 }
 
-nav a.navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-}
+@media (max-width: 576px) {
+    .navbar {
+        font-size: 0.9rem;
+    }
 
-nav .navbar-nav {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
 
-nav .navbar-nav li {
-    margin-right: 10px;
-}
+    .lead {
+        font-size: 1.2rem;
+    }
 
-nav .navbar-nav li a {
-    font-size: 16px;
-    color: #fff;
-    text-decoration: none;
+    .display-1 {
+        font-size: 3rem;
+    }
 }
-
-nav .navbar-nav li a:hover {
-    color: #f44336;
-}
-
-main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-main h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-main p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-} */
