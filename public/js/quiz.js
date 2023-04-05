@@ -1,25 +1,30 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   const showAnswerButton = document.getElementById("show-answer");
   const answerElement = document.querySelector(".answer");
   const showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
 
-  const updateAnswerVisibility = () => {
-    const isChecked = showAnswersCheckbox.checked;
-    answerElement.style.visibility = isChecked ? "visible" : "hidden";
-    showAnswerButton.style.display = isChecked ? "none" : "inline-block";
-  };
-
-  showAnswersCheckbox.addEventListener("change", updateAnswerVisibility);
-
-  showAnswerButton.addEventListener("click", () => {
-    if (answerElement.style.visibility === "visible") {
-      answerElement.style.visibility = "hidden";
-      showAnswerButton.textContent = "Show Answer";
-    } else {
-      answerElement.style.visibility = "visible";
+  showAnswerButton.addEventListener("click", function () {
+    if (answerElement.style.opacity == "0") {
+      answerElement.style.opacity = "1";
+      answerElement.style.maxHeight = "1000px";
       showAnswerButton.textContent = "Hide Answer";
+    } else {
+      answerElement.style.opacity = "0";
+      answerElement.style.maxHeight = "0";
+      showAnswerButton.textContent = "Show Answer";
     }
   });
 
-  updateAnswerVisibility();
+  showAnswersCheckbox.addEventListener("change", function () {
+    if (showAnswersCheckbox.checked) {
+      answerElement.style.opacity = "1";
+      answerElement.style.maxHeight = "1000px";
+      showAnswerButton.style.display = "none";
+    } else {
+      answerElement.style.opacity = "0";
+      answerElement.style.maxHeight = "0";
+      showAnswerButton.style.display = "inline-block";
+      showAnswerButton.textContent = "Show Answer";
+    }
+  });
 });

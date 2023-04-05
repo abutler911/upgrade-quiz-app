@@ -4,7 +4,6 @@ html, body {
     padding: 0;
 }
 
-
 body {
     background-image: url("https://images.unsplash.com/photo-1517260468809-807bfd11d968?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
     background-size: cover;
@@ -24,14 +23,16 @@ body {
 }
 
 .main-content {
-    /* background-color: #393e46; */
+    height: 100vh;
     color: #fff;
     flex: 1;
     z-index: 1;
     position: relative;
     padding-top: 70px;
-    /* Height of the header */
 }
+
+/* 
+
 
 header {
     background-color: #333;
@@ -108,4 +109,4 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-}
+} */
