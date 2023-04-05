@@ -56,26 +56,32 @@ input[type='checkbox'] {
     margin-bottom: 1rem;
 }
 
-/* .answer {
+.answer {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* .hide {
     display: none;
+}
+
+.show {
+    display: block;
 } */
 
-.answer-wrapper {
-    min-height: 2.5rem;
-}
-
-.answer {
-    max-height: 0;
-    overflow: hidden;
+.answer.show {
     opacity: 1;
-    transition: opacity 0.5s ease, max-height 0.5s ease;
-    font-size: 1.6rem;
-    -webkit-transition: opacity 0.5s ease, max-height 0.5s ease;
-    -moz-transition: opacity 0.5s ease, max-height 0.5s ease;
-    -ms-transition: opacity 0.5s ease, max-height 0.5s ease;
-    -o-transition: opacity 0.5s ease, max-height 0.5s ease;
+    transition: opacity 0.5s ease-in-out;
 }
 
+.answer.hide {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.answer-wrapper {
+    min-height: 50px;
+}
 
 /* Updated Button styles */
 .btn {

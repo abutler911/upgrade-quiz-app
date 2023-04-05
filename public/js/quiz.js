@@ -1,34 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
   fetchQuestions();
-  const showAnswerButton = document.getElementById("show-answer");
-  const answerElement = document.querySelector(".answer");
+  const showAnswerButton = document.querySelector("#show-answer");
+  const answerElement = document.querySelector(".card-text.answer");
   const showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
 
-  const answerWrapper = document.querySelector(".answer-wrapper");
+  answerElement.classList.add("hide"); // add hide class by default
 
-  showAnswerButton.addEventListener("click", () => {
-    const answerElement = answerWrapper.querySelector(".answer");
-    if (answerElement.style.display === "none") {
-      answerElement.style.display = "block";
+  showAnswerButton.addEventListener("click", function () {
+    if (answerElement.classList.contains("hide")) {
+      answerElement.classList.remove("hide");
+      answerElement.classList.add("show");
       showAnswerButton.textContent = "Hide Answer";
     } else {
-      answerElement.style.display = "none";
+      answerElement.classList.remove("show");
+      answerElement.classList.add("hide");
       showAnswerButton.textContent = "Show Answer";
     }
   });
+});
 
-  showAnswersCheckbox.addEventListener("change", function () {
-    if (showAnswersCheckbox.checked) {
-      answerElement.style.opacity = "1";
-      answerElement.style.maxHeight = "1000px";
-      showAnswerButton.style.display = "none";
-    } else {
-      answerElement.style.opacity = "0";
-      answerElement.style.maxHeight = "0";
-      showAnswerButton.style.display = "inline-block";
-      showAnswerButton.textContent = "Show Answer";
-    }
-  });
+showAnswersCheckbox.addEventListener("change", function () {
+  const answerElement = document.querySelector(".card-text.answer");
+  const showAnswerButton = document.querySelector("#show-answer");
+
+  if (showAnswersCheckbox.checked) {
+    answerElement.style.opacity = "1";
+    answerElement.style.maxHeight = "1000px";
+    showAnswerButton.style.display = "none";
+  } else {
+    answerElement.style.opacity = "0";
+    answerElement.style.maxHeight = "0";
+    showAnswerButton.style.display = "inline-block";
+    showAnswerButton.textContent = "Show Answer";
+  }
 });
 
 let questions = [];
@@ -70,5 +74,5 @@ function displayQuestion(index) {
 
   questionElement.innerText = questions[index].question;
   answerElement.innerText = questions[index].answer;
-  answerElement.style.display = "none";
+  answerElement.classList.add("hide"); // add hide class to answer
 }
