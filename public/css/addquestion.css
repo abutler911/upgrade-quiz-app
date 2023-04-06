@@ -1,71 +1,87 @@
 body {
     background-color: #343a40;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-height: 100vh;
-}
-
-h1 {
-    color: white;
-    font-size: 2rem;
+    color: #fff;
 }
 
 .container {
-    background-color: none;
-    padding: 30px;
-    border-radius: 5px;
-
-    margin: auto;
-    margin-top: 75px;
-    width: 90%;
-    max-width: 400px;
-    height: auto;
+    max-width: 600px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.form-group label {
+    font-weight: bold;
 }
 
-form label {
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-form input[type="text"],
-form select {
+.form-group input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #ccc;
+    padding: 8px;
+    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    margin-bottom: 16px;
 }
 
-form button[type="submit"],
-form button {
+.form-check-label {
+    font-weight: normal;
+}
+
+.btn-primary {
     background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 16px;
     cursor: pointer;
-    margin-right: 10px;
+    border-radius: 4px;
+}
+
+/* Bootstrap styles */
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: 0.25rem;
+    margin-left: -1.25rem;
+}
+
+.form-check-label {
+    margin-left: 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41;
+}
+
+@media (max-width: 575px) {
+    .form-check-input {
+        position: static;
+        margin-top: 0.5rem;
+        margin-left: 0;
+    }
+
+    .form-check-label {
+        margin-left: 2rem;
+    }
+}
+
+/* Footer styles */
+
+.footer {
+    background-color: #292d33;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    position: absolute;
+    bottom: 0;
     width: 100%;
 }
 
-form button[type="submit"]:hover,
-form button:hover {
-    background-color: #45a049;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    background-color: #343a40;
-    color: #fff;
+.footer p {
+    margin-bottom: 0;
 }
