@@ -1,49 +1,45 @@
 <%- include('../partials/header', {title: 'All Questions', styles: 'css/questions.css'}) %>
-    <header>
-      <h1>All Questions</h1>
-    </header>
-    <main>
-      <table>
-        <thead>
-          <tr>
-            <th class="text-center">Question</th>
-            <th class="text-center">Category</th>
-            <th class="text-center">Answer</th>
-            <th class="text-center">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% questions.forEach(function(question) { %>
-          <tr>
-            <td><%= question.question %></td>
-            <td><%= question.category %></td>
-            <td><%= question.answer  %></td>
-            <td class="actions">
-              <button
-                class="action-btn"
-                onclick="location.href='/questions/<%= question._id %>/edit'"
-              >
-                Edit
-              </button>
-              <form
-                method="post"
-                action="/questions/<%= question._id %>/delete"
-              >
-                <button class="action-btn" type="submit">Delete</button>
-              </form>
-            </td>
-          </tr>
-          <% }); %>
-        </tbody>
-      </table>
-      
-    </main>
-    <footer><%- include('../partials/footer') %></footer>
+<header>
+  <h1>All Questions</h1>
+</header>
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th class="text-center">Question</th>
+        <th class="text-center">Category</th>
+        <th class="text-center">Answer</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% questions.forEach(function(question) { %>
+      <tr>
+        <td><%= question.question %></td>
+        <td><%= question.category %></td>
+        <td><%= question.answer  %></td>
+        <td class="actions">
+          <button
+            class="action-btn"
+            onclick="location.href='/questions/<%= question._id %>/edit'"
+          >
+            Edit
+          </button>
+          <form
+            method="post"
+            action="/questions/<%= question._id %>/delete"
+          >
+            <button class="action-btn" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+</main>
+<footer><%- include('../partials/footer') %></footer>
+
+
+</body>
 </html>

@@ -4,6 +4,7 @@ const mongoose = require("./config/db");
 const Question = require("./models/Question");
 const ejs = require("ejs");
 require("dotenv").config();
+const multer = require("multer");
 
 const app = express();
 const port = 3000;
@@ -24,6 +25,37 @@ app.get("/", (req, res) => {
 
 app.get("/questions/create", (req, res) => {
   res.render("questions/create");
+});
+
+app.post("/questions/create", async (req, res) => {
+  const { question, category, answer } = req.body;
+
+  // Check that required fields are present in form data
+  if (!question || !answer) {
+    res
+      .status(400)
+      .json({ message: "Question and answer fields are required" });
+    return;
+  }
+
+  try {
+    let categories = category;
+    if (Array.isArray(category)) {
+      categories = category.join(", ");
+    }
+
+    // const categories = Array.isArray(category) ? category : [category];
+    const newQuestion = new Question({
+      question,
+      category: categories,
+      answer,
+    });
+    await newQuestion.save();
+    res.status(201).json({ message: "Question created successfully" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Error creating question" });
+  }
 });
 
 app.get("/questions", async (req, res) => {
@@ -59,18 +91,6 @@ app.post("/questions/:id/edit", async (req, res) => {
     res.redirect("/");
   } catch (err) {
     console.log(err);
-  }
-});
-
-app.post("/questions/create", async (req, res) => {
-  const { question, category, answer } = req.body;
-  try {
-    const newQuestion = new Question(req.body);
-    await newQuestion.save();
-    res.status(201).json({ message: "Question created successfully" });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Error creating question" });
   }
 });
 

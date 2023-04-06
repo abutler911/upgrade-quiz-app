@@ -1,24 +1,84 @@
-<%- include('../partials/header', {title: 'Add Question', styles: '../css/addquestion.css'}) %>
+<%- include('../partials/header', {title: 'Create Question', styles:
+'../css/addquestion.css'}) %>
+
 <div class="container my-5">
-    <h1 class="text-center">Add A Question</h1>
-    <hr>
-    <form id="add-question-form" method="post">
+  <h1 class="text-center">Create Question</h1>
+  <hr />
+
+  <form
+    id="create-question-form"
+    method="post"
+    enctype="multipart/form-data"
+    action="/questions/create"
+  >
+    <div class="form-group">
       <label for="question">Question:</label>
-      <input type="text" id="question" name="question" required />
+      <input
+        type="text"
+        id="question"
+        name="question"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
       <label for="category">Category:</label>
-      <select id="category" name="category">
-        <option value="limitations">Limitations</option>
-        <option value="deice">Deice</option>
-        <option value="human-factors">Human Factors</option>
-        <option value="Memory Items">Memory Items</option>
-      </select>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="category1"
+          name="category"
+          value="limitations"
+        />
+        <label class="form-check-label" for="category1"> Limitations </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="category2"
+          name="category"
+          value="deice"
+        />
+        <label class="form-check-label" for="category2"> Deice </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="category3"
+          name="category"
+          value="human-factors"
+        />
+        <label class="form-check-label" for="category3"> Human Factors </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="category4"
+          name="category"
+          value="memory-items"
+        />
+        <label class="form-check-label" for="category4"> Memory Items </label>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label for="answer">Answer:</label>
-      <input type="text" id="answer" name="answer" required />
-      <button type="submit">Create</button>
-      
-    </form>
+      <input
+        type="text"
+        id="answer"
+        name="answer"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Question</button>
+  </form>
 </div>
-<%- include('../partials/footer', {styles: '../css/addquestion.css'}) %>
-<script src="/js/createQuestion.js"></script>
-</body>
-</html>
+<script src="../js/createQuestion.js"></script>
+<%- include('../partials/footer') %>

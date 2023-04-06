@@ -1,23 +1,31 @@
-const form = document.querySelector("form");
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+const form = document.getElementById("create-question-form");
 
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const question = document.getElementById("question").value;
+  const checkboxes = document.querySelectorAll(
+    'input[name="category"]:checked'
+  );
+  const category = [];
+  checkboxes.forEach((checkbox) => {
+    category.push(checkbox.value);
+  });
+  const answer = document.getElementById("answer").value;
 
   const response = await fetch("/questions/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
-  }).catch((error) => console.log(error));
-
+    body: JSON.stringify({ question, category, answer }),
+  });
   console.log(response);
 
+  const result = await response.json();
+
   if (response.ok) {
-    const jsonResponse = await response.json();
-    alert(jsonResponse.message);
+    alert(result.message);
     form.reset();
   } else {
     alert("Error creating the question. Please try again.");
