@@ -1,44 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Question</title>
-    <link rel="stylesheet" href="/css/editquestion.css" />
-  </head>
-  <body>
-    <h1>Edit Question</h1>
-    <form action="/questions/<%= question._id %>/edit" method="post">
-      <div>
-        <label for="question">Question:</label>
-        <input
-          type="text"
-          id="question"
-          name="question"
-          value="<%= question.question %>"
-        />
-      </div>
-      <div>
-        <label for="category">Category:</label>
-        <select id="category" name="category">
-          <option value="limitations" <%= question.category === 'limitations' ? 'selected' : '' %>>Limitations</option>
-          <option value="deice" <%= question.category === 'deice' ? 'selected' : '' %>>Deice</option>
-          <option value="human-factors" <%= question.category === 'human-factors' ? 'selected' : '' %>>Human Factors</option>
-          <option value="Memory Items" <%= question.category === 'Memory Items' ? 'selected' : '' %>>Memory Items</option>
-        </select>
-      </div>
-      <div>
-        <label for="answer">Answer:</label>
-        <input
-          type="text"
-          id="answer"
-          name="answer"
-          value="<%= question.answer %>"
-        />
-      </div>
-      <button type="submit">Save Changes</button>
-      <a href="/">Back</a>
-    </form>
-  </body>
-</html>
+<%- include('../partials/header', {title: 'Edit Questions', styles:
+'../css/editquestion.css'}) %>
+
+<h1>Edit Question</h1>
+<form action="/questions/<%= question._id %>/edit" method="post">
+  <div>
+    <label for="question">Question:</label>
+    <input
+      type="text"
+      id="question"
+      name="question"
+      value="<%= question.question %>"
+    />
+  </div>
+  <div>
+    <label>Category:</label>
+    <div>
+      <input type="radio" id="limitations" name="category" value="limitations"
+      <%= question.category === 'limitations' ? 'checked' : '' %>>
+      <label for="limitations">Limitations</label>
+    </div>
+    <div>
+      <input type="radio" id="deice" name="category" value="deice" <%=
+      question.category === 'deice' ? 'checked' : '' %>>
+      <label for="deice">Deice</label>
+    </div>
+    <div>
+      <input type="radio" id="human-factors" name="category"
+      value="human-factors" <%= question.category === 'human-factors' ?
+      'checked' : '' %>>
+      <label for="human-factors">Human Factors</label>
+    </div>
+    <div>
+      <input type="radio" id="memory-items" name="category" value="memory-items"
+      <%= question.category === 'memory-items' ? 'checked' : '' %>>
+      <label for="memory-items">Memory Items</label>
+    </div>
+  </div>
+
+  <div>
+    <label for="answer">Answer:</label>
+    <input
+      type="text"
+      id="answer"
+      name="answer"
+      value="<%= question.answer %>"
+    />
+  </div>
+  <button type="submit">Save Changes</button>
+  <a href="/">Back</a>
+</form>
+
+<%- include('../partials/footer') %>
