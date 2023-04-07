@@ -1,34 +1,34 @@
 <%- include('partials/header', {title: 'Quiz Time!', styles: 'css/quiz.css'}) %>
+<div class="dark-overlay"></div>
+<div class="flex-container">
+  <div class="main">
+    <div class="container d-flex flex-column justify-content-center min-vh-100">
+      <h1 class="text-center my-4 display-1">Quiz Time!</h1>
 
-    <h1 class="text-center" id="title">Quiz Time!</h1>
-    <div class="container">
-      <div class="container">
-        <div class="checkbox-container">
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="showAnswersCheckbox">
-                <label class="form-check-label" for="showAnswersCheckbox">Show Answers</label>
-              </div>
-            </li>
-            <li class="list-inline-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="randomizeCheckbox">
-                <label class="form-check-label" for="randomizeCheckbox">Randomize</label>
-              </div>
-            </li>
-          </ul>
+      <div class="checkbox-container text-center mb-3">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="showAnswersCheckbox"
+          />
+          <label class="form-check-label" for="showAnswersCheckbox"
+            >Show Answers</label
+          >
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="randomizeCheckbox"
+          />
+          <label class="form-check-label" for="randomizeCheckbox"
+            >Randomize</label
+          >
         </div>
       </div>
-      <hr>
-      
 
       <div class="card mx-auto">
-        <img
-          src="https://plus.unsplash.com/premium_photo-1661963559290-2d8c4cb2b33e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
-          class="card-img-top"
-          alt="A picture of an airplane at the gate"
-        />
         <div class="card-body">
           <% if(questions.length === 0) { %>
           <h5>No questions to display</h5>
@@ -37,29 +37,19 @@
           <h5 id="question" class="card-title"></h5>
           <hr />
           <div class="answer-wrapper">
-            <p id="answer" class="card-text answer">Answer goes here</p>
+            <p id="answer" class="card-text answer hide"></p>
           </div>
-
           <% } %>
 
-          <br />
-          <div class="btn-container">
-            <button class="btn btn-success" id="show-answer">
-              Show Answer
-            </button>
-            <button class="btn btn-primary" id="prev-question">Prev</button>
-            <button class="btn btn-primary" id="next-question">Next</button>
+          <div class="btn-container mt-3">
+            <button class="btn" id="show-answer">Show Answer</button>
+            <button class="btn" id="prev-question">Prev</button>
+            <button class="btn" id="next-question">Next</button>
           </div>
         </div>
       </div>
-      
     </div>
-    <footer><%- include('partials/footer') %></footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/quiz.js"></script>
-  </body>
-</html>
+  </div>
+  <footer><%- include('partials/footer') %></footer>
+</div>
+<script src="js/quiz.js"></script>

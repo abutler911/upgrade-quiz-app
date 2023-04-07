@@ -5,6 +5,12 @@ body {
     padding: 0;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 body {
     background-image: url("https://images.unsplash.com/photo-1517260468809-807bfd11d968?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
     background-size: cover;
@@ -12,6 +18,65 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.title {
+    color: #fff;
+}
+
+.card {
+    max-width: 50%;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    -ms-border-radius: 10px 10px 0 0;
+    -o-border-radius: 10px 10px 0 0;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.main {
+    flex: 1 0 auto;
+}
+
+.card-text {
+    font-size: 1.5rem;
+}
+
+.card-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+.answer-wrapper {
+    margin-bottom: 2rem;
+}
+
+.form-check-input {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.form-check-label {
+    font-size: 1.5rem;
+}
+
 
 footer {
     background-color: #333;
@@ -24,6 +89,7 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
+    flex-shrink: 0;
 }
 
 .navbar {
@@ -61,10 +127,10 @@ table {
     margin: 0 auto;
     border-collapse: collapse;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    -webkit-border-radius: ;
+    -moz-border-radius: ;
+    -ms-border-radius: ;
+    -o-border-radius: ;
 }
 
 table th,
@@ -83,9 +149,9 @@ table td {
 
 }
 
-.delete-btn, .edit-btn {
-
-    margin-right: 20px;
+.delete-btn, .edit-btn, .btn {
+    /*margin-right: 20px;
+    */
     width: 100px;
     background-color: #008080 !important;
     font-size: 1.2rem;
@@ -99,6 +165,7 @@ table td {
     text-decoration: none;
     cursor: pointer;
 }
+
 
 
 
@@ -121,6 +188,12 @@ table td {
     margin-left: -1.25rem;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
 .form-check-label {
     margin-left: 1.5rem;
 }
@@ -136,6 +209,10 @@ table td {
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: 16px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
 .form-check-label {
@@ -198,5 +275,28 @@ table td {
         display: flex;
         flex-direction: column;
         margin-top: 10px;
+    }
+
+    .card {
+        max-width: 90%;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-container .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-container .btn:last-child {
+        margin-bottom: 0;
+    }
+
+    .btn-container .btn-success {
+        margin-right: 0;
     }
 }
