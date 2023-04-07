@@ -1,6 +1,8 @@
-<%- include('../partials/header', {title: 'All Questions', styles: 'css/questions.css'}) %>
+<%- include('../partials/header', {title: 'All Questions', styles:
+'css/questions.css'}) %>
+
 <header>
-  <h1>All Questions</h1>
+  <h1>Edit and Delete Questions</h1>
 </header>
 <main>
   <table>
@@ -17,7 +19,7 @@
       <tr>
         <td><%= question.question %></td>
         <td><%= question.category %></td>
-        <td><%= question.answer  %></td>
+        <td><%= question.answer %></td>
         <td class="actions">
           <button
             class="action-btn"
@@ -25,10 +27,7 @@
           >
             Edit
           </button>
-          <form
-            method="post"
-            action="/questions/<%= question._id %>/delete"
-          >
+          <form method="post" action="/questions/<%= question._id %>/delete">
             <button class="action-btn" type="submit">Delete</button>
           </form>
         </td>
@@ -36,10 +35,6 @@
       <% }); %>
     </tbody>
   </table>
-
 </main>
+
 <footer><%- include('../partials/footer') %></footer>
-
-
-</body>
-</html>
