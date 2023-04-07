@@ -1,13 +1,3 @@
-.dark-overlay {
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-}
-
 .main-content {
     height: 100vh;
     color: #fff;
@@ -26,24 +16,7 @@ h6 {
     font-weight: 600;
 }
 
-.navbar {
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-}
 
-.navbar-brand {
-    font-size: 1.2rem;
-}
-
-.nav-item {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
-.display-1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-}
 
 .lead {
     font-size: 1.5rem;
@@ -59,23 +32,4 @@ h6 {
     margin-bottom: 2rem;
     border: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-
-@media (max-width: 576px) {
-    .navbar {
-        font-size: 0.9rem;
-    }
-
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-
-    .lead {
-        font-size: 1.2rem;
-    }
-
-    .display-1 {
-        font-size: 3rem;
-    }
 }

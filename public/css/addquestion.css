@@ -7,22 +7,7 @@
     margin-top: 30px;
 }
 
-.form-group label {
-    font-weight: bold;
-}
 
-.form-group input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-}
-
-.form-check-label {
-    font-weight: normal;
-}
 
 .btn-primary {
     background-color: #4CAF50;
@@ -38,34 +23,8 @@
     border-radius: 4px;
 }
 
-/* Bootstrap styles */
 
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-check-input {
-    position: absolute;
-    margin-top: 0.25rem;
-    margin-left: -1.25rem;
-}
-
-.form-check-label {
-    margin-left: 1.5rem;
-}
 
 .btn-primary:hover {
     background-color: #3e8e41;
-}
-
-@media (max-width: 575px) {
-    .form-check-input {
-        position: static;
-        margin-top: 0.5rem;
-        margin-left: 0;
-    }
-
-    .form-check-label {
-        margin-left: 2rem;
-    }
 }
