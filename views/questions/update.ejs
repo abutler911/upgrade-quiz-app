@@ -1,5 +1,5 @@
 <%- include('../partials/header', {title: 'Edit Questions', styles:
-'../css/editquestion.css'}) %>
+'/css/editquestion.css'}) %>
 
 <h1>Edit Question</h1>
 <form action="/questions/<%= question._id %>/edit" method="post">
@@ -14,27 +14,14 @@
   </div>
   <div>
     <label>Category:</label>
+    <% category.forEach(function(category) { %>
     <div>
-      <input type="radio" id="limitations" name="category" value="limitations"
-      <%= question.category === 'limitations' ? 'checked' : '' %>>
-      <label for="limitations">Limitations</label>
+      <input type="checkbox" id="<%= category %>" name="categories" value="<%=
+      category %>" <%= question.categories.includes(category) ? 'checked' : ''
+      %>>
+      <label for="<%= category %>"><%= category %></label>
     </div>
-    <div>
-      <input type="radio" id="deice" name="category" value="deice" <%=
-      question.category === 'deice' ? 'checked' : '' %>>
-      <label for="deice">Deice</label>
-    </div>
-    <div>
-      <input type="radio" id="human-factors" name="category"
-      value="human-factors" <%= question.category === 'human-factors' ?
-      'checked' : '' %>>
-      <label for="human-factors">Human Factors</label>
-    </div>
-    <div>
-      <input type="radio" id="memory-items" name="category" value="memory-items"
-      <%= question.category === 'memory-items' ? 'checked' : '' %>>
-      <label for="memory-items">Memory Items</label>
-    </div>
+    <% }); %>
   </div>
 
   <div>
