@@ -1,0 +1,57 @@
+<%- include('partials/header', {title: 'Quiz Time!'}) %>
+<div class="dark-overlay"></div>
+<div
+  class="container-fluid d-flex flex-column justify-content-center min-vh-100"
+>
+  <h1 class="text-center my-4 display-1">Quiz Time!</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="checkbox-container my-4">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="showAnswersCheckbox"
+          />
+          <label class="form-check-label" for="showAnswersCheckbox">
+            Show Answers
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="randomizeCheckbox"
+          />
+          <label class="form-check-label" for="randomizeCheckbox">
+            Randomize
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mx-auto">
+        <div class="card-body">
+          <% if(questions.length === 0) { %>
+          <h5>No questions to display</h5>
+          <h5>No answers to display</h5>
+          <% } else { %>
+          <h5 id="question" class="card-title"></h5>
+          <hr />
+          <div class="answer-wrapper">
+            <p id="answer" class="card-text answer hide"></p>
+          </div>
+          <% } %>
+
+          <div class="btn-container mt-3">
+            <button class="btn" id="show-answer">Show Answer</button>
+            <button class="btn" id="prev-question"><--</button>
+            <button class="btn" id="next-question">--></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/quiz.js"></script>
