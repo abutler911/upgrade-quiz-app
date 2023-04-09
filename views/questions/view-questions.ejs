@@ -1,0 +1,32 @@
+<%- include('../partials/header', {title: 'All Questions'}) %>
+<div class="dark-overlay"></div>
+<div class="container mt-5 main-content">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 text-center">
+      <h1 class="display-1">All Questions</h1>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="text-center">Question</th>
+              <th class="text-center">Category</th>
+              <th class="text-center">Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% questions.forEach(function(question) { %>
+            <tr>
+              <td id="questions-question"><%= question.question %></td>
+              <td id="questions-category"><%= question.category %></td>
+              <td id="questions-answer"><%= question.answer %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><%- include('../partials/footer') %></footer>

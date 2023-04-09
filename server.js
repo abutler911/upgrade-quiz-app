@@ -5,6 +5,7 @@ const Question = require("./models/Question");
 const ejs = require("ejs");
 require("dotenv").config();
 const multer = require("multer");
+const categories = require("./public/data/categories");
 
 const app = express();
 const port = 3000;
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/questions/create", (req, res) => {
-  res.render("questions/create");
+  res.render("questions/create", { categories: categories });
 });
 
 app.post("/questions/create", async (req, res) => {
@@ -58,10 +59,10 @@ app.post("/questions/create", async (req, res) => {
   }
 });
 
-app.get("/questions", async (req, res) => {
+app.get("/view-questions", async (req, res) => {
   try {
     const questions = await Question.find();
-    res.render("questions/questions", { questions });
+    res.render("questions/view-questions", { questions });
   } catch (err) {
     console.log(err);
   }
