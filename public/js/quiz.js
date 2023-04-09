@@ -65,7 +65,12 @@ document.getElementById("prev-question").addEventListener("click", () => {
 async function fetchQuestions() {
   try {
     const response = await fetch("/api/questions");
-    questions = await response.json();
+    fetchedQuestions = await response.json();
+
+    questions = fetchedQuestions.map((question, index) => {
+      question.order = index;
+      return question;
+    });
 
     if (questions.length > 0) {
       displayQuestion(currentQuestionIndex);
