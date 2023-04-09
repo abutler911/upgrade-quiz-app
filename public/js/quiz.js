@@ -61,6 +61,8 @@ async function fetchQuestions() {
       displayQuestion(currentQuestionIndex);
     } else {
       document.getElementById("question").innerText = "No questions to display";
+      document.getElementById("quiz-category").innerText =
+        "No categories to display";
       document.getElementById("answer").innerText = "No answers to display";
     }
   } catch (error) {
@@ -71,8 +73,10 @@ async function fetchQuestions() {
 function displayQuestion(index) {
   const questionElement = document.getElementById("question");
   const answerElement = document.getElementById("answer");
+  const category = document.getElementById("quiz-category");
 
   questionElement.innerText = questions[index].question;
+  category.innerText = questions[index].category;
   answerElement.innerText = questions[index].answer;
   answerElement.classList.add("hide"); // add hide class to answer
 }

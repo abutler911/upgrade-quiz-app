@@ -5,7 +5,7 @@
 >
   <h1 class="text-center my-4 display-1">Quiz Time!</h1>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="checkbox-container my-4">
         <div class="form-check form-check-inline">
           <input
@@ -29,24 +29,23 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="container">
       <div class="card mx-auto">
         <div class="card-body">
-          <% if(questions.length === 0) { %>
-          <h5>No questions to display</h5>
-          <h5>No answers to display</h5>
-          <% } else { %>
           <h5 id="question" class="card-title"></h5>
+          <h6 id="quiz-category"></h6>
           <hr />
           <div class="answer-wrapper">
             <p id="answer" class="card-text answer hide"></p>
           </div>
-          <% } %>
-
           <div class="btn-container mt-3">
-            <button class="btn" id="show-answer">Show Answer</button>
-            <button class="btn" id="prev-question"><--</button>
-            <button class="btn" id="next-question">--></button>
+            <div class="d-flex flex-column flex-md-row justify-content-center">
+              <button class="btn-primary" id="show-answer">Show Answer</button>
+            </div>
+            <div class="d-flex justify-content-center mt-md-0 mt-2">
+              <button class="btn-secondary" id="prev-question">Prev</button>
+              <button class="btn-secondary" id="next-question">Next</button>
+            </div>
           </div>
         </div>
       </div>
