@@ -3,6 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Merriweather', serif;
 }
 
 body {
@@ -273,6 +274,15 @@ footer {
     color: #fff;
 }
 
+#create-question-btn {
+    font-size: 20px;
+}
+
+#create-question-btn:hover {
+
+    color: black !important;
+}
+
 .custom-check {
     display: flex;
     align-items: center;
@@ -283,7 +293,9 @@ footer {
     margin-right: 0.5rem;
 }
 
-
+#question, #answer {
+    font-size: 20px;
+}
 
 .actions {
     display: flex;

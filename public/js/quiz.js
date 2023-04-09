@@ -76,7 +76,7 @@ function displayQuestion(index) {
   const category = document.getElementById("quiz-category");
 
   questionElement.innerText = questions[index].question;
-  category.innerText = questions[index].category;
+  category.innerText = `Categories: ${questions[index].category}`;
   answerElement.innerText = questions[index].answer;
   answerElement.classList.add("hide"); // add hide class to answer
 }
