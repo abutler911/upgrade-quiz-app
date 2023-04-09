@@ -67,7 +67,10 @@ table td {
     font-size: 1.2rem;
 }
 
-
+.lead {
+    margin-top: 40px;
+    font-size: 1.5rem;
+}
 
 
 .card {
@@ -178,7 +181,7 @@ footer {
 }
 
 .display-1 {
-    font-size: 4rem;
+    font-size: 8rem;
     margin-bottom: 1rem;
     color: #fff;
 }
@@ -251,7 +254,6 @@ footer {
 
 .btn-primary:hover {
     background-color: rgba(0, 86, 179, 0.8);
-
     color: #fff;
 }
 
@@ -285,6 +287,50 @@ footer {
 
     color: black !important;
 }
+
+/* Custom styles for register button */
+#register-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 5px 24px;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+
+}
+
+#register-btn:hover {
+    background-color: white;
+    color: #4CAF50;
+}
+
+/* Custom styles for login button */
+#login-btn {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 5px 24px;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+#login-btn:hover {
+    background-color: white;
+    color: #008CBA;
+}
+
 
 .custom-check {
     display: flex;
@@ -355,6 +401,7 @@ footer {
 
     .lead {
         font-size: 1.2rem;
+
     }
 
     .display-1 {
@@ -398,6 +445,13 @@ footer {
     .btn-container {
         flex-direction: column;
     }
+
+    #register-btn, #login-btn {
+        font-size: 14px;
+        padding: 4px 16px;
+        width: 100%;
+    }
+
 }
 
 
@@ -431,7 +485,6 @@ footer {
         flex-direction: column;
         margin-top: 10px;
     }
-
 
 
     .btn-container {

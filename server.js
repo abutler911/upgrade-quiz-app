@@ -1,5 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("./config/db");
 const Question = require("./models/Question");
 const ejs = require("ejs");
@@ -14,6 +17,15 @@ const port = 3000;
 app.use(express.json());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // View engine
 app.set("view engine", "ejs");
@@ -22,6 +34,10 @@ app.set("views", __dirname + "/views");
 // Routes
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/login", (req, res) => {
+  res.render("login");
 });
 
 // Add question routes
