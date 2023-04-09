@@ -3,8 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const showAnswerButton = document.querySelector("#show-answer");
   const answerElement = document.querySelector(".card-text.answer");
   const showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
+  const randomizeCheckbox = document.getElementById("randomizeCheckbox");
 
-  answerElement.classList.add("hide"); // add hide class by default
+  randomizeCheckbox.addEventListener("change", function () {
+    if (randomizeCheckbox.checked) {
+      shuffleArray(questions);
+    } else {
+      questions.sort((a, b) => a.order - b.order);
+    }
+    displayQuestion(currentQuestionIndex);
+  });
+
+  answerElement.classList.add("hide");
 
   showAnswerButton.addEventListener("click", function () {
     if (answerElement.classList.contains("hide")) {
@@ -78,5 +88,17 @@ function displayQuestion(index) {
   questionElement.innerText = questions[index].question;
   category.innerText = `Categories: ${questions[index].category}`;
   answerElement.innerText = questions[index].answer;
-  answerElement.classList.add("hide"); // add hide class to answer
+  answerElement.classList.add("hide");
 }
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+questions = questions.map((question, index) => {
+  question.order = index;
+  return question;
+});
