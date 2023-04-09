@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// Add question routes
 app.get("/questions/create", (req, res) => {
   res.render("questions/create", { categories: categories });
 });
@@ -59,6 +60,7 @@ app.post("/questions/create", async (req, res) => {
   }
 });
 
+// View all questions route
 app.get("/view-questions", async (req, res) => {
   try {
     const questions = await Question.find();
@@ -68,6 +70,7 @@ app.get("/view-questions", async (req, res) => {
   }
 });
 
+//API route
 app.get("/api/questions", async (req, res) => {
   try {
     const questions = await Question.find();
@@ -77,7 +80,17 @@ app.get("/api/questions", async (req, res) => {
   }
 });
 
-app.get("/questions/:id/edit", async (req, res) => {
+// Edit and delete routes
+app.get("/modify-questions", async (req, res) => {
+  try {
+    const questions = await Question.find();
+    res.render("questions/modify-questions", { questions });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/modify-questions/:id/edit", async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
     res.render("questions/update", { question });
@@ -86,7 +99,7 @@ app.get("/questions/:id/edit", async (req, res) => {
   }
 });
 
-app.post("/questions/:id/edit", async (req, res) => {
+app.post("/modify-questions/:id/edit", async (req, res) => {
   try {
     await Question.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.redirect("/");
@@ -95,15 +108,16 @@ app.post("/questions/:id/edit", async (req, res) => {
   }
 });
 
-app.post("/questions/:id/delete", async (req, res) => {
+app.post("/modify-questions/:id/delete", async (req, res) => {
   try {
     await Question.findByIdAndDelete(req.params.id);
-    res.redirect("/questions");
+    res.redirect("/modify-questions");
   } catch (err) {
     console.log(err);
   }
 });
 
+// Quiz route
 app.get("/quiz", async (req, res) => {
   try {
     const questions = await Question.find({});

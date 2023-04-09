@@ -1,0 +1,51 @@
+<%- include('../partials/header', {title: 'Edit and Delete Questions' }) %>
+<div class="dark-overlay"></div>
+<div class="container mt-5 main-content">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 text-center">
+      <h1 class="display-1">Edit & Delete Questions</h1>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="text-center">Question</th>
+              <th class="text-center">Category</th>
+              <th class="text-center">Answer</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% questions.forEach(function(question) { %>
+            <tr>
+              <td><%= question.question %></td>
+              <td><%= question.category %></td>
+              <td><%= question.answer %></td>
+              <td class="actions text-center">
+                <button
+                  id="edit-btn"
+                  class="mr-2 w-50"
+                  onclick="location.href='/modify-questions/<%= question._id %>/edit'"
+                >
+                  Edit
+                </button>
+                <form
+                  method="post"
+                  action="/modify-questions/<%= question._id %>/delete"
+                  class="d-inline-block w-50"
+                >
+                  <button id="delete-btn" class="w-100" type="submit">
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><%- include('../partials/footer') %></footer>

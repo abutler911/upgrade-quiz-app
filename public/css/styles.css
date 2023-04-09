@@ -36,6 +36,7 @@ table {
     border-collapse: collapse;
     border-radius: 10px;
     width: 100%;
+
 }
 
 thead {
@@ -64,27 +65,7 @@ table td {
     font-size: 1.2rem;
 }
 
-@media (max-width: 576px) {
-    .display-1 {
-        font-size: 3rem;
-    }
 
-    #questions-question {
-        font-size: 1.5rem;
-        color: green;
-    }
-
-    #questions-category {
-        font-size: 1rem;
-        color: blue;
-    }
-
-    #questions-answer {
-        font-weight: 900;
-        font-size: 1.6rem;
-        color: orange;
-    }
-}
 
 
 .card {
@@ -190,10 +171,8 @@ footer {
 }
 
 
-.delete-btn, .edit-btn, .btn {
-    /*margin-right: 20px;
-    */
-    width: 100%;
+.btn {
+    /* width: 100%; */
     background-color: #008080 !important;
     font-size: 1.2rem;
     color: white !important;
@@ -205,6 +184,35 @@ footer {
     -o-border-radius: 7px;
     text-decoration: none;
     cursor: pointer;
+}
+
+#edit-btn, #delete-btn {
+    width: 30%;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#delete-btn {
+    background-color: red;
+}
+
+#edit-btn {
+    background-color: blue;
+}
+
+#delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.6);
+    color: #fff;
+}
+
+#edit-btn:hover {
+    background-color: rgba(0, 0, 255, 0.6);
+    color: #fff;
 }
 
 .custom-check {
@@ -308,7 +316,26 @@ footer {
     .form-check-label {
         margin-left: 2rem;
     }
+
+
+    #questions-question {
+        font-size: 1.5rem;
+        color: green;
+    }
+
+    #questions-category {
+        font-size: 1rem;
+        color: blue;
+    }
+
+    #questions-answer {
+        font-weight: 900;
+        font-size: 1.6rem;
+        color: orange;
+    }
 }
+
+
 
 @media (max-width: 767px) {
     table {
