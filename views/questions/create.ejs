@@ -15,24 +15,23 @@
             class="p-4"
           >
             <div class="form-group">
-              <label class="text-white mb-3 display-6" for="question"
-                >Question</label
-              >
+              <label class="text-white mb-3 display-6" for="question"></label>
               <input
                 type="text"
                 id="question"
                 name="question"
                 class="form-control"
                 autocomplete="off"
+                placeholder="Question"
                 required
               />
             </div>
-            <hr class="text-white" />
-
+            <br />
             <div class="form-group">
               <label class="text-white mb-3 display-6" for="category"
                 >Category</label
               >
+              <hr class="text-white" />
               <div class="row">
                 <% categories.forEach(function(category, index) { %>
                 <div class="col-12 col-md-3 text-left mb-3">
@@ -58,9 +57,7 @@
 
             <hr class="text-white" />
             <div class="form-group">
-              <label class="text-white mb-3 display-6" for="answer"
-                >Answer</label
-              >
+              <label class="text-white mb-3 display-6" for="answer"></label>
 
               <input
                 type="text"
@@ -68,6 +65,7 @@
                 name="answer"
                 class="form-control"
                 autocomplete="off"
+                placeholder="Answer"
                 required
               />
             </div>
@@ -85,4 +83,5 @@
     </div>
   </div>
 </div>
+
 <script src="../js/createQuestion.js"></script>
