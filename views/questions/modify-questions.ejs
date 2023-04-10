@@ -24,7 +24,6 @@
               <td class="actions text-center">
                 <button
                   id="edit-btn"
-                  class="mr-2 w-50"
                   onclick="location.href='/modify-questions/<%= question._id %>/edit'"
                 >
                   Edit
@@ -34,9 +33,7 @@
                   action="/modify-questions/<%= question._id %>/delete"
                   class="d-inline-block w-50"
                 >
-                  <button id="delete-btn" class="w-100" type="submit">
-                    Delete
-                  </button>
+                  <button id="delete-btn" type="submit">Delete</button>
                 </form>
               </td>
             </tr>
