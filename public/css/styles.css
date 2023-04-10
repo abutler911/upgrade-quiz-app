@@ -275,7 +275,7 @@ body {
 .display-1 {
     color: #fff;
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 }
 
 .flex-container {
@@ -541,9 +541,9 @@ footer {
 }
 
 #quiz-category {
-    min-height: 100px;
+    min-height: 50px;
 }
 
 #question {
-    min-height: 150px;
+    min-height: 100px;
 }
