@@ -11,7 +11,7 @@ const multer = require("multer");
 const categories = require("./public/data/categories");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
