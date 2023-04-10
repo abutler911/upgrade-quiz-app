@@ -4,6 +4,8 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("./config/db");
+// const mongoose = require("mongoose");
+
 const Question = require("./models/Question");
 const ejs = require("ejs");
 require("dotenv").config();
