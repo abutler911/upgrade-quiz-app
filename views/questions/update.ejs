@@ -1,8 +1,7 @@
-<%- include('../partials/header', {title: 'Edit Questions', styles:
-'/css/editquestion.css'}) %>
+<%- include('../partials/header', {title: 'Edit Questions'}) %>
 
 <h1>Edit Question</h1>
-<form action="/questions/<%= question._id %>/edit" method="post">
+<form action="/modify-questions/<%= question._id %>/edit" method="post">
   <div>
     <label for="question">Question:</label>
     <input
@@ -14,7 +13,7 @@
   </div>
   <div>
     <label>Category:</label>
-    <% category.forEach(function(category) { %>
+    <% questionCategories.forEach(function(category) { %>
     <div>
       <input type="checkbox" id="<%= category %>" name="categories" value="<%=
       category %>" <%= question.categories.includes(category) ? 'checked' : ''

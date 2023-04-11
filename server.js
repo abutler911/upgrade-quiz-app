@@ -59,10 +59,12 @@ app.post("/questions/create", async (req, res) => {
   }
 
   try {
-    let categories = category;
-    if (Array.isArray(category)) {
-      categories = category.join(", ");
-    }
+    // let categories = category;
+    // if (Array.isArray(category)) {
+    //   categories = category.join(", ");
+    // }
+
+    const categories = Array.isArray(category) ? category : [category];
 
     // const categories = Array.isArray(category) ? category : [category];
     const newQuestion = new Question({
@@ -111,18 +113,65 @@ app.get("/modify-questions", async (req, res) => {
 app.get("/modify-questions/:id/edit", async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
-    res.render("questions/update", { question });
+    if (!question) {
+      res.status(404).send("Question not found");
+    } else {
+      res.render("questions/update", { question, categories });
+    }
   } catch (err) {
+    app.get("/modify-questions/:id/edit", async (req, res) => {
+      try {
+        const question = await Question.findById(req.params.id);
+        if (!question) {
+          res.status(404).send("Question not found");
+        } else {
+          const questionCategories = question.category.split(", ");
+          res.render("questions/update", {
+            question,
+            categories,
+            questionCategories,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        res.status(500).send("Server error");
+      }
+    });
+
     console.log(err);
+    res.status(500).send("Server error");
   }
 });
 
 app.post("/modify-questions/:id/edit", async (req, res) => {
+  const { question, category, answer } = req.body;
+
+  if (!question || !answer) {
+    res
+      .status(400)
+      .json({ message: "Question and answer fields are required" });
+    return;
+  }
+
   try {
-    await Question.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.redirect("/");
+    let categories = category;
+    if (Array.isArray(category)) {
+      categories = category.join(", ");
+    }
+
+    const updatedQuestion = {
+      question,
+      category: categories,
+      answer,
+    };
+
+    await Question.findByIdAndUpdate(req.params.id, updatedQuestion, {
+      new: true,
+    });
+    res.redirect("/view-questions");
   } catch (err) {
     console.log(err);
+    res.status(500).send("Server error");
   }
 });
 

@@ -13,127 +13,7 @@ body {
     padding: 0;
 }
 
-/* Media queries */
-@media (max-width: 576px) {
-    .btn-container {
-        flex-direction: column;
-    }
 
-    .card {
-        background-color: none !important;
-        margin-bottom: 2rem;
-        min-height: 250px;
-        width: 100%;
-    }
-
-    .display-1 {
-        font-size: 2rem;
-
-    }
-
-    .form-check:last-child {
-        margin-bottom: 0;
-    }
-
-    .form-check-label {
-        font-size: 0.7rem;
-    }
-
-    .lead {
-        font-size: 1.2rem;
-    }
-
-    .navbar {
-        font-size: 0.9rem;
-    }
-
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-
-    #questions-answer {
-        color: orange;
-        font-size: 1.6rem;
-        font-weight: 900;
-    }
-
-    #questions-category {
-        color: blue;
-        font-size: 1rem;
-    }
-
-    #questions-question {
-        color: green;
-        font-size: 1.5rem;
-    }
-
-    #register-btn,
-    #login-btn {
-        font-size: 14px;
-        padding: 4px 16px;
-        width: 100%;
-    }
-}
-
-@media (max-width: 767px) {
-    .btn-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .btn-container .btn {
-        margin-bottom: 0.5rem;
-        width: 100%;
-    }
-
-    .btn-container .btn:last-child {
-        margin-bottom: 0;
-    }
-
-    .btn-container .btn-success {
-        margin-right: 0;
-    }
-
-    .card {
-        width: 100%;
-    }
-
-    table {
-        display: block;
-    }
-
-    table td {
-        border: none;
-    }
-
-    table td:before {
-        content: attr(data-label);
-        float: left;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    table td .actions {
-        display: flex;
-        flex-direction: column;
-        margin-top: 10px;
-    }
-
-    table thead,
-    table tbody,
-    table tr,
-    table td,
-    table th {
-        display: block;
-    }
-}
-
-@media (min-width: 992px) {
-    .card {
-        width: 30%;
-    }
-}
 
 /* General styles */
 .actions {
@@ -297,7 +177,7 @@ form-check-input {
 
 form-check-label {
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     font-weight: bold;
     margin-left: 5px;
 }
@@ -546,4 +426,137 @@ footer {
 
 #question {
     min-height: 30px;
+}
+
+
+/* Media queries */
+@media (max-width: 688px) {
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .card {
+        background-color: none !important;
+        margin-bottom: 2rem;
+        min-height: 250px;
+        width: 100%;
+    }
+
+    .display-1 {
+        font-size: 2rem;
+
+    }
+
+    .form-check:last-child {
+        margin-bottom: 0;
+    }
+
+    .form-check-label {
+        font-size: 0.7rem;
+    }
+
+    .lead {
+        font-size: 1.2rem;
+    }
+
+    .navbar {
+        font-size: 0.9rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    #questions-answer {
+        color: orange;
+        font-size: 1.6rem;
+        font-weight: 900;
+    }
+
+    #questions-category {
+        color: blue;
+        font-size: 1rem;
+    }
+
+    #questions-question {
+        color: green;
+        font-size: 1.5rem;
+    }
+
+    #register-btn,
+    #login-btn {
+        font-size: 14px;
+        padding: 4px 16px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-container .btn {
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    .btn-container .btn:last-child {
+        margin-bottom: 0;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .form-check-label {
+        font-size: 0.7rem;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    table td {
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    table td:before {
+        content: attr(data-label);
+        flex: 1;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td .actions {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    table thead,
+    table tbody,
+    table tr,
+    table td,
+    table th {
+        display: block;
+    }
+}
+
+@media (min-width: 1312px) {
+    .card {
+        width: 30%;
+    }
+
+    .form-check-label {
+        font-size: 0.7rem;
+    }
 }
