@@ -1,4 +1,59 @@
-<%- include('../partials/header', {title: 'Edit and Delete Questions' }) %>
+<%- include('../partials/header', {title: 'Edit and Delete Questions', style:
+'../css/editquestions.css' }) %>
+<section class="section">
+  <h1 class="has-text-centered is-size-1-tablet">Edit/Delete Questions</h1>
+  <div class="container mt-5 main-content px-3">
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th class="has-text-centered">Question</th>
+            <th class="has-text-centered">Category</th>
+            <th class="has-text-centered">Answer</th>
+            <th class="has-text-centered">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% questions.forEach(function(question) { %>
+          <tr>
+            <td><%= question.question %></td>
+            <td><%= question.category %></td>
+            <td><%= question.answer %></td>
+            <td class="has-text-centered">
+              <button
+                id="edit-btn"
+                class="button is-primary is-small"
+                onclick="location.href='/modify-questions/<%= question._id %>/edit'"
+              >
+                <span class="icon">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </span>
+              </button>
+              <form
+                method="post"
+                action="/modify-questions/<%= question._id %>/delete"
+                class="d-inline-block w-50"
+              >
+                <button
+                  id="delete-btn"
+                  type="submit"
+                  class="button is-danger is-small"
+                >
+                  <span class="icon">
+                    <i class="fa-sharp fa-solid fa-trash"></i>
+                  </span>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <div class="dark-overlay"></div>
 <div class="container mt-5 main-content">
   <div class="row justify-content-center align-items-center">

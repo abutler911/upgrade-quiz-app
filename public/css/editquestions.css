@@ -1,0 +1,44 @@
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 4px;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.table.is-mobile-custom {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+thead tr {
+    background-color: rgba(62, 144, 240, 0.7);
+}
+
+@media only screen and (max-width: 768px) {
+
+    .table.is-narrow td,
+    .table.is-narrow th {
+        padding: 0.25rem;
+        font-size: 0.2rem;
+    }
+
+    #questions-category {
+        font-size: 0.6rem;
+        text-align: center;
+        color: rgb(76, 161, 154);
+    }
+
+    th {
+        font-size: 0.8rem;
+    }
+
+    td {
+        font-size: 0.7rem;
+    }
+}
