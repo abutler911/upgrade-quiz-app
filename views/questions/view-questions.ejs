@@ -20,7 +20,7 @@
             <td id="questions-question">
               #<%= index +1 %> -- <%= question.question %>
             </td>
-            <td id="questions-category"><%= question.category %></td>
+            <td id="questions-category"><%= question.category.join(', ') %></td>
             <td id="questions-answer"><%= question.answer %></td>
           </tr>
           <% }); %>
