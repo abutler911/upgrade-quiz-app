@@ -1,39 +1,55 @@
 <%- include('../partials/header', {title: 'Edit Questions'}) %>
 
-<h1>Edit Question</h1>
-<form action="/modify-questions/<%= question._id %>/edit" method="post">
-  <div>
-    <label for="question">Question:</label>
-    <input
-      type="text"
-      id="question"
-      name="question"
-      value="<%= question.question %>"
-    />
-  </div>
-  <div>
-    <label>Category:</label>
-    <% categories.forEach(function(category) { %>
-    <div>
-      <input type="checkbox" id="<%= category %>" name="categories" value="<%=
-      category %>" <%= questionCategories.includes(category) ? 'checked' : ''
-      %>>
-      <label for="<%= category %>"><%= category %></label>
-    </div>
-    <% }); %>
-  </div>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Edit Question</h1>
+    <form action="/modify-questions/<%= question._id %>/edit" method="post">
+      <div class="field">
+        <label class="label" for="question">Question:</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            id="question"
+            name="question"
+            value="<%= question.question %>"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Category:</label>
+        <% categories.forEach(function(category) { %>
+        <div class="control">
+          <label class="checkbox" for="<%= category.value %>">
+            <input type="checkbox" id="<%= category.value %>" name="categories"
+            value="<%= category.value %>" <%=
+            questionCategories.includes(category.value) ? 'checked' : '' %>> <%=
+            category.name %>
+          </label>
+        </div>
+        <% }); %>
+      </div>
 
-  <div>
-    <label for="answer">Answer:</label>
-    <input
-      type="text"
-      id="answer"
-      name="answer"
-      value="<%= question.answer %>"
-    />
+      <div class="field">
+        <label class="label" for="answer">Answer:</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            id="answer"
+            name="answer"
+            value="<%= question.answer %>"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary" type="submit">Save Changes</button>
+          <a class="button is-light" href="/">Back</a>
+        </div>
+      </div>
+    </form>
   </div>
-  <button type="submit">Save Changes</button>
-  <a href="/">Back</a>
-</form>
+</section>
 
 <%- include('../partials/footer') %>
