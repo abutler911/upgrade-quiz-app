@@ -11,13 +11,14 @@
     transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
+
 .card-text.answer {
-    min-height: 300px;
+    min-height: 225px;
+
 }
 
 .card-header-title {
     min-height: 120px;
-    font-size: 1.7rem;
     text-align: center;
 }
 
