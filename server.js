@@ -42,6 +42,10 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+app.get("/briefings", (req, res) => {
+  res.render("briefings");
+});
+
 // Add question routes
 app.get("/questions/create", (req, res) => {
   res.render("questions/create", { categories: categories });
@@ -116,28 +120,13 @@ app.get("/modify-questions/:id/edit", async (req, res) => {
     if (!question) {
       res.status(404).send("Question not found");
     } else {
-      res.render("questions/update", { question, categories });
+      res.render("questions/update", {
+        question,
+        categories,
+        questionCategories: question.category,
+      });
     }
   } catch (err) {
-    app.get("/modify-questions/:id/edit", async (req, res) => {
-      try {
-        const question = await Question.findById(req.params.id);
-        if (!question) {
-          res.status(404).send("Question not found");
-        } else {
-          const questionCategories = question.category.split(", ");
-          res.render("questions/update", {
-            question,
-            categories,
-            questionCategories,
-          });
-        }
-      } catch (err) {
-        console.log(err);
-        res.status(500).send("Server error");
-      }
-    });
-
     console.log(err);
     res.status(500).send("Server error");
   }

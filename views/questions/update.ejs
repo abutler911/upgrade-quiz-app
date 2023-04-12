@@ -13,10 +13,10 @@
   </div>
   <div>
     <label>Category:</label>
-    <% questionCategories.forEach(function(category) { %>
+    <% categories.forEach(function(category) { %>
     <div>
       <input type="checkbox" id="<%= category %>" name="categories" value="<%=
-      category %>" <%= question.categories.includes(category) ? 'checked' : ''
+      category %>" <%= questionCategories.includes(category) ? 'checked' : ''
       %>>
       <label for="<%= category %>"><%= category %></label>
     </div>
