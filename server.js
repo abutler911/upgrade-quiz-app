@@ -143,21 +143,21 @@ app.post("/modify-questions/:id/edit", async (req, res) => {
   }
 
   try {
-    let categories = category;
-    if (Array.isArray(category)) {
-      categories = category.join(", ");
+    let selectedCategories = category;
+    if (!Array.isArray(category)) {
+      selectedCategories = [category];
     }
 
     const updatedQuestion = {
       question,
-      category: categories,
+      category: selectedCategories,
       answer,
     };
 
     await Question.findByIdAndUpdate(req.params.id, updatedQuestion, {
       new: true,
     });
-    res.redirect("/view-questions");
+    res.redirect("/modify-questions");
   } catch (err) {
     console.log(err);
     res.status(500).send("Server error");
@@ -178,7 +178,7 @@ app.get("/quiz", async (req, res) => {
   try {
     const questions = await Question.find({});
     const currentQuestion = 0;
-    res.render("quiz", { questions, currentQuestion });
+    res.render("quiz", { questions, currentQuestion, categories });
   } catch (error) {
     console.log(error);
     res.status(500).send("Error retrieving questions");

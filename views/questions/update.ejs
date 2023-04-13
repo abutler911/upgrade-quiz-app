@@ -21,10 +21,9 @@
         <% categories.forEach(function(category) { %>
         <div class="control">
           <label class="checkbox" for="<%= category.value %>">
-            <input type="checkbox" id="<%= category.value %>" name="categories"
-            value="<%= category.value %>" <%=
-            questionCategories.includes(category.value) ? 'checked' : '' %>> <%=
-            category.name %>
+            <input type="checkbox" id="<%= category.value %>" name="category"
+            value="<%= category.value %>" <%= question.category.find(cat => cat
+            === category.value) ? 'checked' : '' %>> <%= category.name %>
           </label>
         </div>
         <% }); %>

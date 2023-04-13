@@ -1,43 +1,73 @@
 <%- include('partials/header', {title: 'Quiz Time!', style: './css/quiz.css'})
 %>
-<h1 class="title is-1 has-text-centered">Quiz Time!</h1>
 
-<div class="container is-max-desktop mt-5">
-  <div class="box has-background-primary">
-    <div class="has-text-centered">
-      <label class="checkbox has-text-white" for="showAnswersCheckbox">
-        <input type="checkbox" id="showAnswersCheckbox" />
-        Show Answers
-      </label>
-    </div>
-  </div>
-  <div class="card">
-    <header class="card-header">
-      <p id="question" class="card-header-title is-size-4"></p>
-    </header>
-    <div class="card-content">
-      <div class="content">
-        <p
-          id="answer"
-          class="card-text has-text-centered is-size-6 has-text-weight-semibold answer hide"
-        ></p>
+<div class="container mt-5">
+  <div class="columns is-centered">
+    <div class="column is-10-desktop is-12-mobile">
+      <div class="box">
+        <div class="field">
+          <label class="label" for="categoryFilter">Filter by Category:</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="categoryFilter" name="categoryFilter" multiple>
+                <option value="">All Categories</option>
+                <% categories.forEach(function(category, index) { %>
+                <option value="<%= category.value %>">
+                  <%= category.name %>
+                </option>
+                <% }); %>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box has-background-primary">
+        <div class="has-text-centered">
+          <label class="checkbox has-text-white" for="showAnswersCheckbox">
+            <input type="checkbox" id="showAnswersCheckbox" />
+            Show Answers
+          </label>
+        </div>
+      </div>
+      <div class="card">
+        <header class="card-header">
+          <p
+            id="question"
+            class="card-header-title is-size-4 has-text-centered is-centered"
+          ></p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <p
+              id="answer"
+              class="card-text has-text-centered is-size-6 has-text-weight-semibold answer hide"
+            ></p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item mx-5" id="prev-question">
+            <button class="button is-medium is-info is-light is-rounded">
+              Prev
+            </button>
+          </a>
+          <a href="#" class="card-footer-item mx-5">
+            <button
+              id="show-answer"
+              class="button is-medium is-success is-rounded"
+            >
+              Show Answer
+            </button>
+          </a>
+          <a href="#" class="card-footer-item mx-5" id="next-question">
+            <button class="button is-medium is-info is-light is-rounded">
+              Next
+            </button>
+          </a>
+        </footer>
       </div>
     </div>
-    <footer class="card-footer">
-      <a href="#" class="card-footer-item" id="prev-question">
-        <button class="button is-small is-info is-light">Prev</button>
-      </a>
-      <a href="#" class="card-footer-item">
-        <button id="show-answer" class="button is-medium is-success">
-          Show Answer
-        </button>
-      </a>
-      <a href="#" class="card-footer-item" id="next-question">
-        <button class="button is-small is-info is-light">Next</button>
-      </a>
-    </footer>
   </div>
 </div>
 
 <script src="js/quiz.js"></script>
-<%-include('./partials/footer') %>
+<%- include('./partials/footer') %>

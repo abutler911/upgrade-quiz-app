@@ -73,15 +73,19 @@ async function fetchQuestions() {
   }
 }
 
-function displayQuestion(index) {
+function displayQuestion() {
   const questionElement = document.getElementById("question");
   const answerElement = document.getElementById("answer");
 
-  questionElement.innerText = questions[index].question;
-  answerElement.innerText = questions[index].answer;
-  answerElement.classList.add("hide");
+  if (questions.length > 0 && currentQuestionIndex < questions.length) {
+    questionElement.innerText = questions[currentQuestionIndex].question;
+    answerElement.innerText = questions[currentQuestionIndex].answer;
+    answerElement.classList.add("hide");
+  } else {
+    questionElement.innerText = "No questions to display";
+    answerElement.innerText = "No answers to display";
+  }
 }
-
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -93,3 +97,55 @@ questions = questions.map((question, index) => {
   question.order = index;
   return question;
 });
+
+// Add a variable to store the selected category
+let selectedCategory = "";
+document
+  .getElementById("categoryFilter")
+  .addEventListener("change", function (event) {
+    selectedCategories = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value
+    );
+    loadQuestions();
+  });
+// Update the loadQuestions function to filter based on the selected category
+async function loadQuestions() {
+  try {
+    const response = await fetch("/api/questions");
+    const data = await response.json();
+    if (selectedCategory === "") {
+      questions = data;
+    } else {
+      // Filter questions based on the selected category
+      questions = data.filter((question) =>
+        question.category.includes(selectedCategory)
+      );
+    }
+    // if (selectedCategories.length > 0) {
+    //   questions = data.filter((question) =>
+    //     selectedCategories.some((category) =>
+    //       question.category.includes(category)
+    //     )
+    //   );
+    // } else {
+    //   questions = data;
+    // }
+
+    currentQuestionIndex = 0;
+    displayQuestion();
+  } catch (err) {
+    console.error("Error fetching questions:", err);
+  }
+}
+
+// Add an event listener for the categoryFilter element
+document
+  .getElementById("categoryFilter")
+  .addEventListener("change", function (event) {
+    selectedCategory = event.target.value;
+    loadQuestions();
+  });
+
+// Call loadQuestions when the page is loaded
+loadQuestions();

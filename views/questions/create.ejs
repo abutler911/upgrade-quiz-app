@@ -30,13 +30,20 @@
             <label class="label" for="category">Category</label>
             <div class="control">
               <div class="select is-fullwidth is-multiple">
-                <select id="category" name="category" multiple>
-                  <% categories.forEach(function(category, index) { %>
-                  <option value="<%= category.value %>">
-                    <%= category.name %>
-                  </option>
-                  <% }); %>
-                </select>
+                <div class="control">
+                  <select
+                    class="category-select"
+                    id="category"
+                    name="category"
+                    multiple
+                  >
+                    <% categories.forEach(function(category, index) { %>
+                    <option value="<%= category.value %>">
+                      <%= category.name %>
+                    </option>
+                    <% }); %>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -73,5 +80,5 @@
   </div>
 </div>
 
-<script src="../js/createQuestion.js"></script>
+<script src="../js/create.js"></script>
 <%- include('../partials/footer') %>
