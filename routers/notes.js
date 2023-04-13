@@ -6,7 +6,7 @@ const { capitalizeWords } = require("../public/data/capitalizetext");
 
 router.get("/notes/view-notes", async (req, res) => {
   try {
-    const notes = await Note.find({});
+    const notes = await Note.find({}).sort({ createdAt: -1 });
     res.render("view-notes", { notes });
   } catch (err) {
     console.error(err);

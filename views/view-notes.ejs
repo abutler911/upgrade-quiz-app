@@ -12,14 +12,24 @@
       <div class="column is-one-third">
         <div class="card">
           <header class="card-header">
-            <p class="card-header-title"><%= note.title %></p>
+            <div
+              class="card-header-title"
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+              "
+            >
+              <p><%= note.title %></p>
+              <small style="font-size: 0.7rem"
+                >Created on: <%= new Date(note.createdAt).toLocaleDateString()
+                %></small
+              >
+            </div>
           </header>
           <div class="card-content">
             <div class="content">
               <p><%= note.content %></p>
-              <p class="created-at">
-                Created on: <%= new Date(note.createdAt).toLocaleDateString() %>
-              </p>
             </div>
           </div>
           <footer class="card-footer">
