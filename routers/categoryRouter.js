@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const categories = require("../public/data/categories");
+const Category = require("../models/Categories");
 const fs = require("fs");
 const path = require("path");
 const {
@@ -18,6 +19,7 @@ router.post("/categories/create", (req, res) => {
   if (newName && newName.trim()) {
     const newValue = nameToValue(newName);
     const newId = categories.length + 1;
+
     categories.push({ id: newId, name: newName, value: newValue });
     // Alphabetize the categories before writing to the file
     categories.sort((a, b) => {
