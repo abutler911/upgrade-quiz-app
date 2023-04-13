@@ -1,0 +1,44 @@
+<%- include('./partials/header', {title: 'View Notes', style:
+'../css/view-notes.css'}) %>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">All Notes</h1>
+    <% if (notes.length === 0) { %>
+    <p class="subtitle has-text-centered">No notes found</p>
+    <% } else { %>
+    <div class="columns is-multiline">
+      <% notes.forEach(note => { %>
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title"><%= note.title %></p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p><%= note.content %></p>
+              <p class="created-at">
+                Created on: <%= new Date(note.createdAt).toLocaleDateString() %>
+              </p>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <form
+              action="/notes/delete/<%= note._id %>"
+              method="POST"
+              class="card-footer-item"
+            >
+              <button class="button is-small is-danger" type="submit">
+                Delete
+              </button>
+            </form>
+          </footer>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('./partials/footer') %>

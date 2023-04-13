@@ -6,6 +6,7 @@ const mongoose = require("./config/db");
 const questionRouter = require("./routers/questions");
 const quizRouter = require("./routers/quiz");
 const categoryRouter = require("./routers/categoryRouter");
+const notesRouter = require("./routers/notes");
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
@@ -45,6 +46,7 @@ app.get("/briefings", (req, res) => {
 app.use(questionRouter);
 app.use(quizRouter);
 app.use(categoryRouter);
+app.use(notesRouter);
 
 // Start server
 app.listen(port, () => {
