@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const showAnswerButton = document.querySelector("#show-answer");
   const answerElement = document.querySelector(".card-text.answer");
   const showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
+  const answerText = document.querySelector("#answer");
 
   answerElement.classList.add("hide");
 
@@ -84,12 +85,6 @@ function displayQuestion() {
   } else {
     questionElement.innerText = "No questions to display";
     answerElement.innerText = "No answers to display";
-  }
-}
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
