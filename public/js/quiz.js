@@ -98,7 +98,6 @@ questions = questions.map((question, index) => {
   return question;
 });
 
-// Add a variable to store the selected category
 let selectedCategory = "";
 document
   .getElementById("categoryFilter")
@@ -109,7 +108,7 @@ document
     );
     loadQuestions();
   });
-// Update the loadQuestions function to filter based on the selected category
+
 async function loadQuestions() {
   try {
     const response = await fetch("/api/questions");
@@ -117,20 +116,10 @@ async function loadQuestions() {
     if (selectedCategory === "") {
       questions = data;
     } else {
-      // Filter questions based on the selected category
       questions = data.filter((question) =>
         question.category.includes(selectedCategory)
       );
     }
-    // if (selectedCategories.length > 0) {
-    //   questions = data.filter((question) =>
-    //     selectedCategories.some((category) =>
-    //       question.category.includes(category)
-    //     )
-    //   );
-    // } else {
-    //   questions = data;
-    // }
 
     currentQuestionIndex = 0;
     displayQuestion();
@@ -139,7 +128,6 @@ async function loadQuestions() {
   }
 }
 
-// Add an event listener for the categoryFilter element
 document
   .getElementById("categoryFilter")
   .addEventListener("change", function (event) {
@@ -147,5 +135,4 @@ document
     loadQuestions();
   });
 
-// Call loadQuestions when the page is loaded
 loadQuestions();

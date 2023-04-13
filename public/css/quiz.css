@@ -15,44 +15,85 @@
     margin-bottom: 7.5em;
 }
 
-
 .card-text.answer {
     min-height: 225px;
-
 }
 
 .card-header-title {
     min-height: 120px;
     text-align: center;
+    margin: 1rem;
 }
 
 .card {
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.card-footer {
-    padding: 10px;
-    height: auto;
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
 }
 
-/* Set the position of the footer to absolute */
+.card-text {
+    margin: 1rem;
+}
+
 footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 50px;
-    /* Set the height of the footer to your desired height */
 }
 
-/* Set the position of the main content container to relative */
 .container {
     position: relative;
     min-height: calc(100vh - 50px);
-    /* Set the minimum height of the container to 100% minus the height of the footer */
 }
 
 @media (min-width: 769px) {
     .card {
         margin: 0;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .card-footer .columns {
+        flex-direction: column;
+    }
+
+    .card-footer .column {
+        flex: 1;
+        margin: 0;
+    }
+
+
+
+
+
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
     }
 }
