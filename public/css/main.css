@@ -1,0 +1,20 @@
+.hero {
+    background-color: #87CBB9;
+    color: #000;
+}
+
+.divider {
+    background-color: #000;
+    ;
+}
+
+.hero-custom {
+    min-height: calc(100vh - 3.25rem - 3rem);
+}
+
+.footer-fixed {
+    width: 100%;
+
+    position: fixed;
+    bottom: 0;
+}

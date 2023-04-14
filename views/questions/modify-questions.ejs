@@ -21,30 +21,32 @@
             <td><%= question.category %></td>
             <td><%= question.answer %></td>
             <td class="has-text-centered">
-              <button
-                id="edit-btn"
-                class="button is-primary is-small"
-                onclick="location.href='/modify-questions/<%= question._id %>/edit'"
-              >
-                <span class="icon">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </span>
-              </button>
-              <form
-                method="post"
-                action="/modify-questions/<%= question._id %>/delete"
-                class="d-inline-block w-50"
-              >
+              <div class="is-flex is-justify-content-space-between">
                 <button
-                  id="delete-btn"
-                  type="submit"
-                  class="button is-danger is-small"
+                  id="edit-btn"
+                  class="button is-primary is-small"
+                  onclick="location.href='/modify-questions/<%= question._id %>/edit'"
                 >
                   <span class="icon">
-                    <i class="fa-sharp fa-solid fa-trash"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
                   </span>
                 </button>
-              </form>
+                <form
+                  method="post"
+                  action="/modify-questions/<%= question._id %>/delete"
+                  class="d-inline-block w-50"
+                >
+                  <button
+                    id="delete-btn"
+                    type="submit"
+                    class="button is-danger is-small"
+                  >
+                    <span class="icon">
+                      <i class="fa-sharp fa-solid fa-trash"></i>
+                    </span>
+                  </button>
+                </form>
+              </div>
             </td>
           </tr>
           <% }); %>

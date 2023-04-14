@@ -17,7 +17,7 @@ h1 {
 }
 
 thead tr {
-    background-color: #23f1d3;
+    background-color: #87CBB9;
 }
 
 @media only screen and (max-width: 768px) {
@@ -31,7 +31,7 @@ thead tr {
     #questions-category {
         font-size: 0.6rem;
         text-align: center;
-        color: rgb(76, 161, 154);
+        color: #000;
     }
 
     th {
