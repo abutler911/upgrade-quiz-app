@@ -10,7 +10,20 @@
     <div class="columns is-multiline">
       <% notes.forEach(note => { %>
       <div class="column is-one-third">
-        <div class="card">
+        <div class="card" style="position: relative">
+          <form
+            action="/notes/delete/<%= note._id %>"
+            method="POST"
+            style="position: absolute; top: 0.5rem; right: 0.5rem"
+          >
+            <button
+              class="delete-button"
+              type="submit"
+              onclick="return confirmDeletion()"
+            >
+              <i class="fa-sharp fa-solid fa-trash"></i>
+            </button>
+          </form>
           <header class="card-header">
             <div
               class="card-header-title"
@@ -22,8 +35,10 @@
             >
               <p><%= note.title %></p>
               <small style="font-size: 0.7rem"
-                >Created on: <%= new Date(note.createdAt).toLocaleString()
-                %></small
+                >Created on: <%= new
+                Date(note.createdAt).toLocaleString(undefined, { timeZoneName:
+                'short', year: 'numeric', month: 'long', day: 'numeric', hour:
+                '2-digit', minute: '2-digit' }) %></small
               >
             </div>
           </header>
@@ -32,17 +47,6 @@
               <p><%= note.content %></p>
             </div>
           </div>
-          <footer class="card-footer">
-            <form
-              action="/notes/delete/<%= note._id %>"
-              method="POST"
-              class="card-footer-item"
-            >
-              <button class="button is-small" id="delete-button" type="submit">
-                Delete
-              </button>
-            </form>
-          </footer>
         </div>
       </div>
       <% }) %>
@@ -50,5 +54,10 @@
     <% } %>
   </div>
 </section>
+<script>
+  function confirmDeletion() {
+    return confirm("Are you sure you want to delete this note?");
+  }
+</script>
 
 <%- include('./partials/footer') %>

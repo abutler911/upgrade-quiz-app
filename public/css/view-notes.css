@@ -1,3 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+}
+
+
 .card-header {
     background-color: #87CBB9;
     color: black;
@@ -17,16 +25,20 @@
     padding: 3px;
 }
 
-#delete-button {
-    width: 100%;
-    height: 2rem;
-    background-color: rgba(255, 0, 0, 0.5);
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
-    color: white;
+.delete-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    color: #000;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }

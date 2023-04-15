@@ -38,6 +38,7 @@ router.post("/questions/create", async (req, res) => {
 router.get("/view-questions", async (req, res) => {
   try {
     const questions = await Question.find();
+    questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
     res.render("questions/view-questions", { questions });
   } catch (err) {
     console.log(err);
@@ -58,6 +59,8 @@ router.get("/api/questions", async (req, res) => {
 router.get("/modify-questions", async (req, res) => {
   try {
     const questions = await Question.find();
+    questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
+
     res.render("questions/modify-questions", { questions });
   } catch (err) {
     console.log(err);

@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+}
+
 .container {
     max-width: 1000px;
     margin: 30px auto;
@@ -28,11 +35,11 @@ thead tr {
         font-size: 0.2rem;
     }
 
-    #questions-category {
+    /* #questions-category {
         font-size: 0.6rem;
         text-align: center;
         color: rgb(76, 161, 154);
-    }
+    } */
 
     th {
         font-size: 0.8rem;
