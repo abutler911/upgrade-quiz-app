@@ -4,56 +4,66 @@
   <h1 class="has-text-centered is-size-1-tablet">Edit/Delete Questions</h1>
   <div class="container mt-5 main-content px-3">
     <div class="table-container">
-      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th class="has-text-centered">Question</th>
-            <th class="has-text-centered">Category</th>
-            <th class="has-text-centered">Answer</th>
-            <th class="has-text-centered">Actions</th>
-          </tr>
-        </thead>
+      <!-- Add this wrapper div with class is-responsive -->
+      <div class="is-responsive">
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th class="has-text-centered">Question</th>
+              <th class="has-text-centered">Category</th>
+              <th class="has-text-centered">Answer</th>
+              <th class="has-text-centered">Actions</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <% questions.forEach(function(question) { %>
-          <tr>
-            <td><%= question.question %></td>
-            <td><%= question.category %></td>
-            <td><%= question.answer %></td>
-            <td class="has-text-centered">
-              <div class="is-flex is-justify-content-space-between">
-                <button
-                  id="edit-btn"
-                  class="button is-primary is-small"
-                  onclick="location.href='/modify-questions/<%= question._id %>/edit'"
-                >
-                  <span class="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  </span>
-                </button>
-                <form
-                  method="post"
-                  action="/modify-questions/<%= question._id %>/delete"
-                  class="d-inline-block w-50"
-                >
+          <tbody>
+            <% questions.forEach(function(question) { %>
+            <tr>
+              <td><%= question.question %></td>
+              <td><%= question.category %></td>
+              <td><%= question.answer %></td>
+              <td class="has-text-centered">
+                <!-- Add the buttons-container class -->
+                <div class="buttons-container">
                   <button
-                    id="delete-btn"
-                    type="submit"
-                    class="button is-danger is-small"
+                    id="edit-btn"
+                    class="button is-small"
+                    onclick="location.href='/modify-questions/<%= question._id %>/edit'"
                   >
                     <span class="icon">
-                      <i class="fa-sharp fa-solid fa-trash"></i>
+                      <i class="fa-solid fa-pen-to-square"></i>
                     </span>
                   </button>
-                </form>
-              </div>
-            </td>
-          </tr>
-          <% }); %>
-        </tbody>
-      </table>
+                  <form
+                    method="post"
+                    action="/modify-questions/<%= question._id %>/delete"
+                    class="d-inline-block w-50"
+                    onsubmit="return confirmDeletion()"
+                  >
+                    <button
+                      id="delete-btn"
+                      type="submit"
+                      class="button is-small"
+                    >
+                      <span class="icon">
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                      </span>
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
+<script>
+  function confirmDeletion() {
+    return confirm("Are you sure you want to delete this question?");
+  }
+</script>
 
 <%- include('../partials/footer') %>

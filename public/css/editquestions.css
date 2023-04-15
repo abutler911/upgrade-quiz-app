@@ -5,6 +5,10 @@ body {
     font-family: 'Merriweather', serif;
 }
 
+.buttons-container .button {
+    width: 100%;
+}
+
 .container {
     max-width: 1000px;
     margin: 30px auto;
@@ -12,6 +16,10 @@ body {
     padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 4px;
+}
+
+.is-responsive {
+    overflow-x: auto;
 }
 
 h1 {
@@ -32,20 +40,33 @@ thead tr {
     .table.is-narrow td,
     .table.is-narrow th {
         padding: 0.25rem;
-        font-size: 0.2rem;
+        font-size: 0.1rem;
     }
 
     #questions-category {
-        font-size: 0.6rem;
+        font-size: 0.5rem;
         text-align: center;
         color: #000;
     }
 
     th {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     td {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
+    }
+
+    h1.is-size-1-tablet {
+        font-size: 24px;
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buttons-container>* {
+        margin-bottom: 5px;
     }
 }
