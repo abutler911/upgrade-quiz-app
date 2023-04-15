@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+#create-question-btn {
+    background-color: #ee6c4d;
+}

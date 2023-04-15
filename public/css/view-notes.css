@@ -1,13 +1,20 @@
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
+    background-color: #98c1d9;
 }
 
+.section {
+    flex: 1;
+}
 
 .card-header {
-    background-color: #87CBB9;
+    background-color: #B9E9FC;
     color: black;
 }
 
@@ -27,13 +34,13 @@ body {
 
 .delete-button {
     position: absolute;
-    top: 0.5rem;
+    bottom: 0.5rem;
     right: 0.5rem;
     width: 20px;
     height: 20px;
     background-color: transparent;
-    color: #000;
-    font-size: 1.5rem;
+    /* color: #000; */
+    font-size: 1rem;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -41,4 +48,5 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
+    z-index: 3;
 }

@@ -14,14 +14,19 @@
           <form
             action="/notes/delete/<%= note._id %>"
             method="POST"
-            style="position: absolute; top: 0.5rem; right: 0.5rem"
+            style="position: absolute; bottom: 0.5rem; right: 0.5rem"
+            <!--
+            Update
+            this
+            line
+            --
           >
             <button
               class="delete-button"
               type="submit"
               onclick="return confirmDeletion()"
             >
-              <i class="fa-sharp fa-solid fa-trash"></i>
+              <i class="fa-regular fa-trash-can"></i>
             </button>
           </form>
           <header class="card-header">
@@ -34,12 +39,12 @@
               "
             >
               <p><%= note.title %></p>
-              <small style="font-size: 0.7rem"
-                >Created on: <%= new
-                Date(note.createdAt).toLocaleString(undefined, { timeZoneName:
-                'short', year: 'numeric', month: 'long', day: 'numeric', hour:
-                '2-digit', minute: '2-digit' }) %></small
-              >
+              <small style="font-size: 0.7rem">
+                Created on: <%= new
+                Date(note.createdAt).toLocaleString(undefined, { year:
+                'numeric', month: 'long', day: 'numeric', hour: '2-digit',
+                minute: '2-digit' }) %>
+              </small>
             </div>
           </header>
           <div class="card-content">

@@ -1,0 +1,26 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #98c1d9;
+}
+
+section {
+    flex: 1;
+}
+
+#save-note-btn {
+    border: none;
+    width: 100%;
+    color: #000;
+    font-weight: 700;
+}
+
+.control {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

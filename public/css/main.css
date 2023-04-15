@@ -1,27 +1,34 @@
-body {
+html, body {
     margin: 0;
+    height: 100%;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero {
-    background-color: #87CBB9;
+    background-color: #98c1d9;
     color: #000;
+    height: 100vh;
 }
 
 .divider {
     background-color: #000;
-    ;
 }
 
 .hero-custom {
     min-height: calc(100vh - 3.25rem - 3rem);
 }
 
-.footer-fixed {
+footer {
     width: 100%;
-
-    position: fixed;
-    bottom: 0;
 }

@@ -1,84 +1,74 @@
-<%- include('../partials/header', {title: 'Add New Questions'}) %>
-
-<div class="container mt-5">
-  <div class="columns is-centered">
-    <div class="column is-8">
-      <div class="is-paddingless px-3">
-        <h1 class="title is-1 has-text-centered">Add A Question</h1>
-        <form
-          id="create-question-form"
-          method="post"
-          enctype="multipart/form-data"
-          action="/questions/create"
-        >
-          <div class="field">
-            <label class="label" for="question">Question</label>
-            <div class="control">
-              <input
-                type="text"
-                id="question"
-                name="question"
-                class="input"
-                autocomplete="off"
-                placeholder="Question"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="category">Category</label>
-            <div class="control">
-              <div class="select is-fullwidth is-multiple">
-                <div class="control">
-                  <select
-                    class="category-select"
-                    id="category"
-                    name="category"
-                    multiple
-                  >
-                    <% categories.forEach(function(category, index) { %>
-                    <option value="<%= category.value %>">
-                      <%= category.name %>
-                    </option>
-                    <% }); %>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="answer">Answer</label>
-            <div class="control">
-              <input
-                type="text"
-                id="answer"
-                name="answer"
-                class="input"
-                autocomplete="off"
-                placeholder="Answer"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <button
-                type="submit"
-                id="create-question-btn"
-                class="button is-primary is-fullwidth"
-              >
-                Create Question
-              </button>
-            </div>
-          </div>
-        </form>
+<%- include('../partials/header', {title: 'Add New Questions', style:
+'../css/customquestions.css'}) %>
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">Add A Question</h1>
+    <form
+      id="create-question-form"
+      method="post"
+      enctype="multipart/form-data"
+      action="/questions/create"
+    >
+      <div class="field">
+        <label class="label" for="question">Question</label>
+        <div class="control">
+          <input
+            type="text"
+            id="question"
+            name="question"
+            class="input"
+            autocomplete="off"
+            placeholder="Question"
+            required
+          />
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
+      <div class="field">
+        <label class="label" for="category">Category</label>
+        <div class="control">
+          <div class="select is-fullwidth is-multiple">
+            <select
+              class="category-select"
+              id="category"
+              name="category"
+              multiple
+            >
+              <% categories.forEach(function(category, index) { %>
+              <option value="<%= category.value %>">
+                <%= category.name %>
+              </option>
+              <% }); %>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="answer">Answer</label>
+        <div class="control">
+          <input
+            type="text"
+            id="answer"
+            name="answer"
+            class="input"
+            autocomplete="off"
+            placeholder="Answer"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button type="submit" id="create-question-btn" class="button">
+            Create Question
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
 <script src="../js/create.js"></script>
+
 <%- include('../partials/footer') %>

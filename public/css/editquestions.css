@@ -1,8 +1,14 @@
-body {
+html, body {
     margin: 0;
+    height: 100%;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #98c1d9;
+
 }
 
 .buttons-container .button {
@@ -14,7 +20,7 @@ body {
     margin: 30px auto;
     background-color: #fff;
     padding: 5px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 4px;
 }
 
@@ -32,7 +38,9 @@ h1 {
 }
 
 thead tr {
-    background-color: #87CBB9;
+    background-color: #75b3d6;
+    font-weight: 700;
+    font-size: 1.3rem;
 }
 
 @media only screen and (max-width: 768px) {
