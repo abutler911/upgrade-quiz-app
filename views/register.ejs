@@ -11,6 +11,32 @@
             </h1>
             <form action="/register" method="post">
               <div class="field">
+                <label for="firstname" class="label">Firstname:</label>
+                <div class="control">
+                  <input
+                    type="text"
+                    id="firstname"
+                    name="firstname"
+                    required
+                    class="input"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <label for="lastname" class="label">Lastname:</label>
+                <div class="control">
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    required
+                    class="input"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="field">
                 <label for="username" class="label">Username:</label>
                 <div class="control">
                   <input
@@ -19,6 +45,7 @@
                     name="username"
                     required
                     class="input"
+                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -31,6 +58,7 @@
                     name="password"
                     required
                     class="input"
+                    autocomplete="off"
                   />
                 </div>
               </div>

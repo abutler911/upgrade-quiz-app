@@ -65,7 +65,11 @@ app.get("/register", (req, res) => {
 
 app.post("/register", (req, res) => {
   User.register(
-    new User({ username: req.body.username }),
+    new User({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      username: req.body.username,
+    }),
     req.body.password,
     (err, user) => {
       if (err) {

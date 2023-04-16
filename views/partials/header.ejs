@@ -87,9 +87,11 @@
               <strong>Login</strong>
             </a>
           <% } else { %>
+            <span style="padding-right: 20px; font-size: 1.7rem;">Hi, <%= currentUser.firstname %>!</span>
             <a class="button" style="background-color: #fff; color: #000; border-radius: 7px;" href="/logout">
               <strong>Logout</strong>
             </a>
+            
           <% } %>
         </div>
       </div>
