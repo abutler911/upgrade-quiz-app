@@ -3,6 +3,7 @@ const router = new express.Router();
 const categories = require("../public/data/categories");
 const Question = require("../models/Question");
 const { capitalizeAndPunctuate } = require("../public/data/capitalizetext");
+const { isLoggedIn } = require("../middleware/middlewares");
 
 router.get("/questions/create", (req, res) => {
   res.render("questions/create", { categories: categories });
@@ -35,7 +36,7 @@ router.post("/questions/create", async (req, res) => {
 });
 
 // View all questions route
-router.get("/view-questions", async (req, res) => {
+router.get("/view-questions", isLoggedIn, async (req, res) => {
   try {
     const questions = await Question.find();
     questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
@@ -56,7 +57,7 @@ router.get("/api/questions", async (req, res) => {
 });
 
 // Edit and delete routes
-router.get("/modify-questions", async (req, res) => {
+router.get("/modify-questions", isLoggedIn, async (req, res) => {
   try {
     const questions = await Question.find();
     questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
@@ -67,7 +68,7 @@ router.get("/modify-questions", async (req, res) => {
   }
 });
 
-router.get("/modify-questions/:id/edit", async (req, res) => {
+router.get("/modify-questions/:id/edit", isLoggedIn, async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
     if (!question) {
@@ -117,7 +118,7 @@ router.post("/modify-questions/:id/edit", async (req, res) => {
   }
 });
 
-router.post("/modify-questions/:id/delete", async (req, res) => {
+router.post("/modify-questions/:id/delete", isLoggedIn, async (req, res) => {
   try {
     await Question.findByIdAndDelete(req.params.id);
     res.redirect("/modify-questions");

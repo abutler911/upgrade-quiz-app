@@ -3,8 +3,9 @@ const router = new express.Router();
 
 const Note = require("../models/notes");
 const { capitalizeWords } = require("../public/data/capitalizetext");
+const { isLoggedIn } = require("../middleware/middlewares");
 
-router.get("/notes/view-notes", async (req, res) => {
+router.get("/notes/view-notes", isLoggedIn, async (req, res) => {
   try {
     const notes = await Note.find({}).sort({ createdAt: -1 });
     res.render("view-notes", { notes });
@@ -34,7 +35,7 @@ router.post("/notes/create", async (req, res) => {
   }
 });
 
-router.post("/notes/delete/:id", async (req, res) => {
+router.post("/notes/delete/:id", isLoggedIn, async (req, res) => {
   try {
     const noteId = req.params.id;
     await Note.findByIdAndDelete(noteId);

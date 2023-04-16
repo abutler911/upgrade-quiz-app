@@ -1,12 +1,15 @@
-<%- include('./partials/header', {title: 'Login', style: '../css/login.css'}) %>
+<%- include('./partials/header', {title: 'Register', style: '../css/login.css'})
+%>
 <section class="hero is-fullheight">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-5">
           <div class="box">
-            <h1 class="title is-1 has-text-centered has-text-black">Login</h1>
-            <form action="/login" method="post">
+            <h1 class="title is-1 has-text-centered has-text-black">
+              Register
+            </h1>
+            <form action="/register" method="post">
               <div class="field">
                 <label for="username" class="label">Username:</label>
                 <div class="control">
@@ -34,7 +37,7 @@
               <div class="field">
                 <div class="control">
                   <button type="submit" class="button is-primary is-fullwidth">
-                    Login
+                    Register
                   </button>
                 </div>
               </div>

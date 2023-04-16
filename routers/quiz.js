@@ -4,7 +4,9 @@ const categories = require("../public/data/categories");
 const Question = require("../models/Question");
 const { capitalizeAndPunctuate } = require("../public/data/capitalizetext");
 
-router.get("/quiz", async (req, res) => {
+const { isLoggedIn } = require("../middleware/middlewares");
+
+router.get("/quiz", isLoggedIn, async (req, res) => {
   try {
     const questions = await Question.find({});
     const currentQuestion = 0;
