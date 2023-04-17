@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchQuestions();
   const showAnswerButton = document.querySelector("#show-answer");
   const answerElement = document.querySelector(".card-text.answer");
-  const showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
   const answerText = document.querySelector("#answer");
 
   answerElement.classList.add("hide");
@@ -18,22 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
       showAnswerButton.textContent = "Show Answer";
     }
   });
-});
 
-showAnswersCheckbox.addEventListener("change", function () {
-  const answerElement = document.querySelector(".card-text.answer");
-  const showAnswerButton = document.querySelector("#show-answer");
+  let showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
+  showAnswersCheckbox.addEventListener("change", function () {
+    const answerElement = document.querySelector(".card-text.answer");
+    const showAnswerButton = document.querySelector("#show-answer");
 
-  if (showAnswersCheckbox.checked) {
-    answerElement.style.opacity = "1";
-    answerElement.style.maxHeight = "1000px";
-    showAnswerButton.style.display = "none";
-  } else {
-    answerElement.style.opacity = "0";
-    answerElement.style.maxHeight = "0";
-    showAnswerButton.style.display = "inline-block";
-    showAnswerButton.textContent = "Show Answer";
-  }
+    if (showAnswersCheckbox.checked) {
+      answerElement.style.opacity = "1";
+      answerElement.style.maxHeight = "1000px";
+      showAnswerButton.style.display = "none";
+    } else {
+      answerElement.style.opacity = "0";
+      answerElement.style.maxHeight = "0";
+      showAnswerButton.style.display = "inline-block";
+      showAnswerButton.textContent = "Show Answer";
+    }
+  });
 });
 
 let questions = [];
@@ -81,7 +81,6 @@ function displayQuestion() {
   if (questions.length > 0 && currentQuestionIndex < questions.length) {
     questionElement.innerText = questions[currentQuestionIndex].question;
     answerElement.innerText = questions[currentQuestionIndex].answer;
-    answerElement.classList.add("hide");
   } else {
     questionElement.innerText = "No questions to display";
     answerElement.innerText = "No answers to display";

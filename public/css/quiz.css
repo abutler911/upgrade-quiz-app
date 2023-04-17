@@ -5,6 +5,11 @@ body {
     font-family: 'Merriweather', serif;
 }
 
+.container {
+    height: calc(100vh - 150px);
+    /* Adjust the value as needed */
+}
+
 .card-text.answer.hide {
     opacity: 0;
     max-height: 0;
