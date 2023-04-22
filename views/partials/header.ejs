@@ -15,11 +15,193 @@
     <% } %>
     <script src="https://kit.fontawesome.com/082eaaba14.js" crossorigin="anonymous"></script>
     <script src="/js/navbar.js"></script>
-
+    <style>
+      .navbar-item h3 {
+        font-weight: bold;
+        font-size: larger;
+        /* text-align: center; */
+      }
+      .navbar-item ul {
+        padding: 0;
+        list-style-type: none;
+      }
+      .navbar-item li {
+        padding: 0;
+      }
+    </style>
   </head>
   <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <h1 class="is-size-4 has-text-weight-bold" style="color: #3d5a80;">Upgrade Journey</h1>
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            Home
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Options</a>
+            <div class="navbar-dropdown">
+              <h3 class="navbar-item">Briefings</h3>
+              <a class="navbar-item" href="/briefings">View All Briefings</a>
+              <hr class="navbar-divider">
+              <h3 class="navbar-item">Flows</h3>
+              <a class="navbar-item" href="/flows">View All Flows</a>
+              <hr class="navbar-divider">
+              <h3 class="navbar-item">Notes</h3>
+              <ul>
+                <li><a class="navbar-item" href="/notes/create">Create a Note</a></li>
+                <li><a class="navbar-item" href="/notes/view-notes">View All Notes</a></li>
+              </ul>
+              <hr class="navbar-divider">
+              <h3 class="navbar-item">Questions</h3>
+              <ul>
+                <li><a class="navbar-item" href="/questions/create">Add Questions</a></li>
+                <li><a class="navbar-item" href="/modify-questions">Edit/Remove Questions</a></li>
+                <li><a class="navbar-item" href="/view-questions">View All Questions</a></li>
+              </ul>
+            </div>
+          </div>
+          <a class="navbar-item is-size-5 has-text-weight-bold" href="/quiz">
+            Start Quiz!
+          </a>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <% if (!currentUser) { %>
+                <a class="button is-rounded" style="background-color: #ee6c4d;" href="/register">
+                  <strong>Sign up</strong>
+                </a>
+    <a class="button is-light is-rounded" href="/login">
+                  <strong>Login</strong>
+                </a>
+              <% } else { %>
+                <span style="padding-right: 20px; font-size: 1.7rem;">Hi, <%= currentUser.firstname %>!</span>
+                <a class="button is-light is-rounded" href="/logout">
+                  <strong>Logout</strong>
+                </a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
    
- <nav class="navbar" role="navigation" aria-label="main navigation">
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
       
@@ -100,4 +282,4 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
