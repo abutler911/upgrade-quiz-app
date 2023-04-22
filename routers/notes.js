@@ -7,7 +7,12 @@ const { isLoggedIn } = require("../middleware/middlewares");
 
 router.get("/notes/view-notes", isLoggedIn, async (req, res) => {
   try {
-    const notes = await Note.find({}).sort({ createdAt: -1 });
+    // Get the user's ID from the logged-in user (how you do this depends on how you handle user authentication)
+    const userId = req.user._id;
+
+    // Find notes with the user's ID and sort them by createdAt in descending order
+    const notes = await Note.find({ user: userId }).sort({ createdAt: -1 });
+
     res.render("view-notes", { notes });
   } catch (err) {
     console.error(err);
@@ -22,11 +27,17 @@ router.get("/notes/create", async (req, res) => {
 router.post("/notes/create", async (req, res) => {
   try {
     const { title, content } = req.body;
-    const capitalizedTItle = capitalizeWords(title);
+    const capitalizedTitle = capitalizeWords(title);
+
+    // Get the user's ID from the logged-in user (how you do this depends on how you handle user authentication)
+    const userId = req.user._id;
+
     const note = new Note({
-      title: capitalizedTItle,
+      title: capitalizedTitle,
       content,
+      user: userId, // Add the user's ID to the note
     });
+
     await note.save();
     res.redirect("/notes/create");
   } catch (err) {
