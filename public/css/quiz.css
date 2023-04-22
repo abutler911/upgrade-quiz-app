@@ -1,26 +1,46 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
+    background-color: #98c1d9;
+    display: flex;
+    flex-direction: column;
 }
 
-.container {
-    height: calc(100vh - 150px);
-    /* Adjust the value as needed */
+.section {
+    flex: 1;
+    height: 100%;
+
+}
+
+.card-text.answer.hide,
+.card-text.answer.show {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    -webkit-transition: opacity 0.3s ease, max-height 0.3s ease;
+    -moz-transition: opacity 0.3s ease, max-height 0.3s ease;
+    -ms-transition: opacity 0.3s ease, max-height 0.3s ease;
+    -o-transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
 .card-text.answer.hide {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
 .card-text.answer.show {
     opacity: 1;
     max-height: 1000px;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.card-wrapper {
+    margin-bottom: 2rem;
 }
 
 .control {
@@ -44,31 +64,64 @@ body {
     height: 100%;
 }
 
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .btn-container {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.nav-btn,
+.answer-btn {
+    color: #fff;
+    font-size: 1.6rem;
+    flex: 1;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.answer-btn {
+    background-color: rgb(149, 149, 233);
+}
+
+.box {
+    background-color: transparent;
+    box-shadow: none;
+
 }
 
 .card-text {
     margin: 1rem;
 }
 
-/* footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-} */
-
 .container {
     position: relative;
     min-height: calc(100vh - 50px);
 }
 
-@media (min-width: 769px) {
-    .card {
-        margin: 0;
+/* Responsive styles */
+@media (max-width: 480px) {
+
+    .nav-btn,
+    .answer-btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+
+    .control {
+        margin-bottom: 5em;
+    }
+
+    .card-header-title {
+        margin: 0.5rem;
+        min-height: 70px;
     }
 }
 
@@ -78,16 +131,19 @@ body {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
+    .card {
+        margin: 0;
+    }
+
+    .nav-btn,
+    .answer-btn {
+        font-size: 1rem;
+    }
+
     .container {
         max-width: 720px;
     }
-
-
-
-
-
-
 }
 
 @media (min-width: 992px) {

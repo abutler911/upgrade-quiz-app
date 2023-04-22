@@ -41,6 +41,8 @@ let currentQuestionIndex = 0;
 
 document.getElementById("next-question").addEventListener("click", () => {
   if (currentQuestionIndex < questions.length - 1) {
+    resetAnswerVisibility();
+
     currentQuestionIndex++;
     displayQuestion(currentQuestionIndex);
   }
@@ -48,6 +50,8 @@ document.getElementById("next-question").addEventListener("click", () => {
 
 document.getElementById("prev-question").addEventListener("click", () => {
   if (currentQuestionIndex > 0) {
+    resetAnswerVisibility();
+
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
   }
@@ -71,6 +75,17 @@ async function fetchQuestions() {
     }
   } catch (error) {
     console.error("Error fetching questions:", error);
+  }
+}
+
+function resetAnswerVisibility() {
+  const showAnswerButton = document.querySelector("#show-answer");
+  const answerElement = document.querySelector(".card-text.answer");
+
+  if (answerElement.classList.contains("show")) {
+    answerElement.classList.remove("show");
+    answerElement.classList.add("hide");
+    showAnswerButton.textContent = "Show Answer";
   }
 }
 
