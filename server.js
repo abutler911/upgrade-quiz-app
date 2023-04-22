@@ -89,6 +89,8 @@ app.post("/register", (req, res) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       username: req.body.username,
+      status: "pending",
+      iaAdmin: false,
     }),
     req.body.password,
     (err, user) => {
@@ -96,11 +98,16 @@ app.post("/register", (req, res) => {
         console.log(err);
         return res.redirect("/register");
       }
-      passport.authenticate("local")(req, res, () => {
-        res.redirect("/");
-      });
+      // passport.authenticate("local")(req, res, () => {
+      //   res.redirect("/");
+      // });
+      res.redirect("/awaiting-approval");
     }
   );
+});
+
+app.get("/awaiting-approval", (req, res) => {
+  res.render("awaiting-approval");
 });
 
 app.get("/logout", (req, res) => {
