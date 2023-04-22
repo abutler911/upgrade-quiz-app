@@ -6,6 +6,15 @@ const UserSchema = new mongoose.Schema({
   lastname: String,
   username: String,
   password: String,
+  status: {
+    type: String,
+    enum: ["approved", "pending", "rejected"],
+    default: "pending",
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 UserSchema.plugin(passportLocalMongoose);
