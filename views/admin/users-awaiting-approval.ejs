@@ -7,7 +7,8 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Username</th>
+          <th>Email</th>
+          <th>Employee #</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -15,7 +16,8 @@
         <% users.forEach((user) => { %>
         <tr>
           <td><%= user.firstname %> <%= user.lastname %></td>
-          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.employeeNumber %></td>
           <td>
             <form action="/admin/approve-user/<%= user._id %>" method="POST">
               <button class="button is-success" type="submit">Approve</button>
