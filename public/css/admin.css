@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #98c1d9;
+
+}
+
+.approve-btn {
+    background-color: #ee6c4d;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+
+}
+
+@media (max-width: 767px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table td, .table th {
+        white-space: nowrap;
+    }
+
+    .approve-btn {
+        font-size: 0.6rem;
+    }
+
+    thead, tbody {
+        font-size: 0.6rem;
+    }
+}
