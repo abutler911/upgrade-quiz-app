@@ -1,18 +1,25 @@
+//Modules and dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("./config/db");
+const User = require("./models/User");
+const { isLoggedIn, isAdmin } = require("./middleware/middlewares");
+require("dotenv").config();
+
+// Routers
+const briefingsRouter = require("./routers/briefingsRouter");
 const questionRouter = require("./routers/questions");
 const quizRouter = require("./routers/quiz");
 const categoryRouter = require("./routers/categoryRouter");
 const notesRouter = require("./routers/notes");
-require("dotenv").config();
+
+//Express App Set Up
 const app = express();
 const port = process.env.PORT || 3000;
-const LocalStrategy = require("passport-local").Strategy;
-const User = require("./models/User");
-const { isLoggedIn, isAdmin } = require("./middleware/middlewares");
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -50,15 +57,6 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-// app.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "/",
-//     failureRedirect: "/login",
-//   }),
-//   (req, res) => {}
-// );
-// Update your '/login' POST route
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
@@ -88,6 +86,8 @@ app.post("/register", (req, res) => {
     new User({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      email: req.body.email,
+      employeeNumber: req.body.employeeNumber,
       username: req.body.username,
       status: "pending",
       iaAdmin: false,
@@ -98,17 +98,44 @@ app.post("/register", (req, res) => {
         console.log(err);
         return res.redirect("/register");
       }
-      // passport.authenticate("local")(req, res, () => {
-      //   res.redirect("/");
-      // });
       res.redirect("/awaiting-approval");
     }
   );
 });
 
 app.get("/awaiting-approval", (req, res) => {
-  res.render("awaiting-approval");
+  res.render("./awaiting-approval");
 });
+
+app.get(
+  "/admin/users-awaiting-approval",
+  isLoggedIn,
+  isAdmin,
+  async (req, res) => {
+    try {
+      const users = await User.find({ status: "pending" });
+      res.render("admin/users-awaiting-approval", { users });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Error fetching users");
+    }
+  }
+);
+
+app.post(
+  "/admin/approve-user/:userId",
+  isLoggedIn,
+  isAdmin,
+  async (req, res) => {
+    try {
+      await User.findByIdAndUpdate(req.params.userId, { status: "approved" });
+      res.redirect("/admin/users-awaiting-approval");
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Error updating user status");
+    }
+  }
+);
 
 app.get("/logout", (req, res) => {
   req.logout((err) => {
@@ -120,49 +147,8 @@ app.get("/logout", (req, res) => {
   });
 });
 
-app.get("/admin/pending-users", isAdmin, (req, res) => {
-  User.find({ status: "pending" }, (err, users) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Error retrieving pending users");
-    }
-    res.render("pendingUsers", { users });
-  });
-});
-
-app.post("/admin/approve-user/:userId", isAdmin, (req, res) => {
-  User.findByIdAndUpdate(
-    req.params.userId,
-    { status: "approved" },
-    (err, user) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send("Error approving user");
-      }
-      res.redirect("/admin/pending-users");
-    }
-  );
-});
-
-app.post("/admin/reject-user/:userId", isAdmin, (req, res) => {
-  User.findByIdAndUpdate(
-    req.params.userId,
-    { status: "rejected" },
-    (err, user) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send("Error rejecting user");
-      }
-      res.redirect("/admin/pending-users");
-    }
-  );
-});
-
-app.get("/briefings", isLoggedIn, (req, res) => {
-  res.render("briefings");
-});
-
 // Routers
+app.use(briefingsRouter);
 app.use(questionRouter);
 app.use(quizRouter);
 app.use(categoryRouter);

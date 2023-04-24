@@ -48,4 +48,6 @@ body {
     cursor: pointer;
     padding: 0;
     z-index: 3;
+    color: #000;
+    opacity: 1;
 }

@@ -1,0 +1,30 @@
+<%- include('../partials/header', { title: 'Admin | Approve Users', style:
+'../css/admin.css'}) %>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Users Awaiting Approval</h1>
+    <table class="table is-striped is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach((user) => { %>
+        <tr>
+          <td><%= user.firstname %> <%= user.lastname %></td>
+          <td><%= user.username %></td>
+          <td>
+            <form action="/admin/approve-user/<%= user._id %>" method="POST">
+              <button class="button is-success" type="submit">Approve</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+<%- include('../partials/footer') %>

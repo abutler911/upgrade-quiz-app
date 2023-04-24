@@ -11,7 +11,7 @@
             </h1>
             <form action="/register" method="post">
               <div class="field">
-                <label for="firstname" class="label">Firstname:</label>
+                <label for="firstname" class="label">First Name:</label>
                 <div class="control">
                   <input
                     type="text"
@@ -24,12 +24,41 @@
                 </div>
               </div>
               <div class="field">
-                <label for="lastname" class="label">Lastname:</label>
+                <label for="lastname" class="label">Last Name:</label>
                 <div class="control">
                   <input
                     type="text"
                     id="lastname"
                     name="lastname"
+                    required
+                    class="input"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <label for="email" class="label">Email Address:</label>
+                <div class="control">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="input"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="employeeNumber" class="label"
+                  >Current Employee Number:</label
+                >
+                <div class="control">
+                  <input
+                    type="text"
+                    id="employeeNumber"
+                    name="employeeNumber"
                     required
                     class="input"
                     autocomplete="off"

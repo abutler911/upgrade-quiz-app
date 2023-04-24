@@ -6,6 +6,8 @@ const UserSchema = new mongoose.Schema({
   lastname: String,
   username: String,
   password: String,
+  email: String,
+  employeeNumber: String,
   status: {
     type: String,
     enum: ["approved", "pending", "rejected"],

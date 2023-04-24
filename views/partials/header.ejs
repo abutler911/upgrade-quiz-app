@@ -85,11 +85,16 @@
                 <a class="button is-rounded" style="background-color: #ee6c4d;" href="/register">
                   <strong>Sign up</strong>
                 </a>
-    <a class="button is-light is-rounded" href="/login">
+                <a class="button is-light is-rounded" href="/login">
                   <strong>Login</strong>
                 </a>
               <% } else { %>
                 <span style="padding-right: 20px; font-size: 1.7rem;">Hi, <%= currentUser.firstname %>!</span>
+                <% if (currentUser.isAdmin) { %>
+                  <a class="button is-rounded" href="/admin/users-awaiting-approval">
+                    <strong>Admin Console</strong>
+                  </a>
+                <% } %>
                 <a class="button is-light is-rounded" href="/logout">
                   <strong>Logout</strong>
                 </a>
@@ -97,189 +102,6 @@
             </div>
           </div>
         </div>
+        
       </div>
     </nav>
-   
-    </body>
-    </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      
-      <h1 class="is-size-3 has-text-weight-bold" style="color: #3d5a80;">Upgrade Journey</h1>
-    </a>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="/">
-        Home
-      </a>
-
-      
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">Options</a>
-      
-        <div class="navbar-dropdown">
-          <h3 class="navbar-item" style="font-weight: bold; font-size: larger; text-align: center;">Briefings</h3>
-          <a class="navbar-item" href="/briefings">Briefings</a>
-      
-          <hr class="navbar-divider">
-      
-          <h3 class="navbar-item" style="font-weight: bold; font-size: larger; text-align: center;">Flows</h3>
-          <a class="navbar-item" href="/flows">Flows</a>
-      
-          <hr class="navbar-divider">
-      
-          <h3 class="navbar-item" style="font-weight: bold; font-size: larger; text-align: center;">Notes</h3>
-          <ul>
-            <li><a class="navbar-item" href="/notes/create">Create a Note</a></li>
-            <li><a class="navbar-item" href="/notes/view-notes">View All Notes</a></li>
-          </ul>
-      
-          <hr class="navbar-divider">
-      
-          <h3 class="navbar-item" style="font-weight: bold; font-size: larger; text-align: center;">Questions</h3>
-          <ul>
-            <li><a class="navbar-item" href="/questions/create">Add Questions</a></li>
-            <li><a class="navbar-item" href="/modify-questions">Edit/Remove Questions</a></li>
-            <li><a class="navbar-item" href="/view-questions">View All Questions</a></li>
-          </ul>
-        </div>
-      </div>
-      
-          
-        </div>
-        <a class="navbar-item is-size-5 has-text-weight-bold" href="/quiz">
-          Start Quiz!
-        </a>
-      </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <% if (!currentUser) { %>
-            <a class="button" style="background-color: #ee6c4d; border-radius: 7px;" href="/register">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button" style="background-color: #fff; color: #000; border-radius: 7px;" href="/login">
-              <strong>Login</strong>
-            </a>
-          <% } else { %>
-            <span style="padding-right: 20px; font-size: 1.7rem;">Hi, <%= currentUser.firstname %>!</span>
-            <a class="button" style="background-color: #fff; color: #000; border-radius: 7px;" href="/logout">
-              <strong>Logout</strong>
-            </a>
-            
-          <% } %>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav> -->
