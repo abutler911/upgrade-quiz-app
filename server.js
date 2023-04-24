@@ -8,6 +8,8 @@ const mongoose = require("./config/db");
 const User = require("./models/User");
 const { isLoggedIn, isAdmin } = require("./middleware/middlewares");
 require("dotenv").config();
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Routers
 const briefingsRouter = require("./routers/briefingsRouter");
@@ -93,11 +95,27 @@ app.post("/register", (req, res) => {
       iaAdmin: false,
     }),
     req.body.password,
-    (err, user) => {
+    async (err, user) => {
       if (err) {
         console.log(err);
         return res.redirect("/register");
       }
+
+      // Send email
+      try {
+        const msg = {
+          to: req.body.email,
+          from: "abutler911@gmail.com", // Replace with your "from" email address
+          subject: "Registration successful",
+          text: `Dear ${req.body.firstname},\n\nYour registration was successful and is currently pending approval. Please check back in a day or two.\n\nBest regards,\nThe Upgrade Journey Team`,
+        };
+
+        await sgMail.send(msg);
+        console.log("Email sent");
+      } catch (err) {
+        console.error("Error sending email:", err);
+      }
+
       res.redirect("/awaiting-approval");
     }
   );
