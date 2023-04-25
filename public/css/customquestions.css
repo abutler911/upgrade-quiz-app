@@ -64,4 +64,8 @@ thead tr {
     h1 {
         font-size: 1.8rem;
     }
+
+    .mobile-fullwidth {
+        width: 100% !important;
+    }
 }

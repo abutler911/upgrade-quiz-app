@@ -1,74 +1,75 @@
 <%- include('../partials/header', {title: 'Add New Questions', style:
 '../css/customquestions.css'}) %>
-<section class="section">
-  <div class="container">
-    <h1 class="title has-text-centered">Add A Question</h1>
-    <form
-      id="create-question-form"
-      method="post"
-      enctype="multipart/form-data"
-      action="/questions/create"
-    >
-      <div class="field">
-        <label class="label" for="question">Question</label>
-        <div class="control">
-          <input
-            type="text"
-            id="question"
-            name="question"
-            class="input"
-            autocomplete="off"
-            placeholder="Question"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label" for="category">Category</label>
-        <div class="control">
-          <div class="select is-fullwidth is-multiple">
-            <select
-              class="category-select"
-              id="category"
-              name="category"
-              multiple
-            >
-              <% categories.forEach(function(category, index) { %>
-              <option value="<%= category.value %>">
-                <%= category.name %>
-              </option>
-              <% }); %>
-            </select>
+<div style="display: flex; flex-direction: column; min-height: 100vh">
+  <section class="section">
+    <div class="container">
+      <h1 class="title has-text-centered">Add A Question</h1>
+      <form
+        id="create-question-form"
+        method="post"
+        enctype="multipart/form-data"
+        action="/questions/create"
+      >
+        <div class="field">
+          <label class="label" for="question">Question</label>
+          <div class="control">
+            <input
+              type="text"
+              id="question"
+              name="question"
+              class="input"
+              autocomplete="off"
+              placeholder="Question"
+              required
+            />
           </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label" for="answer">Answer</label>
-        <div class="control">
-          <input
-            type="text"
-            id="answer"
-            name="answer"
-            class="input"
-            autocomplete="off"
-            placeholder="Answer"
-            required
-          />
+        <div class="field">
+          <label class="label" for="category">Category</label>
+          <div class="control">
+            <div class="select is-fullwidth is-multiple mobile-fullwidth">
+              <select
+                class="category-select"
+                id="category"
+                name="category"
+                multiple
+              >
+                <% categories.forEach(function(category, index) { %>
+                <option value="<%= category.value %>">
+                  <%= category.name %>
+                </option>
+                <% }); %>
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <div class="control">
-          <button type="submit" id="create-question-btn" class="button">
-            Create Question
-          </button>
+        <div class="field">
+          <label class="label" for="answer">Answer</label>
+          <div class="control">
+            <input
+              type="text"
+              id="answer"
+              name="answer"
+              class="input"
+              autocomplete="off"
+              placeholder="Answer"
+              required
+            />
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-</section>
+
+        <div class="field">
+          <div class="control">
+            <button type="submit" id="create-question-btn" class="button">
+              Create Question
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <%- include('../partials/footer') %>
+</div>
 <script src="../js/create.js"></script>
-
-<%- include('../partials/footer') %>

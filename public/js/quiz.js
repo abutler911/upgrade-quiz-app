@@ -108,27 +108,40 @@ questions = questions.map((question, index) => {
 });
 
 let selectedCategory = "";
-document
-  .getElementById("categoryFilter")
-  .addEventListener("change", function (event) {
-    selectedCategories = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value
-    );
-    loadQuestions();
-  });
+// document
+//   .getElementById("categoryFilter")
+//   .addEventListener("change", function (event) {
+//     selectedCategories = Array.from(
+//       event.target.selectedOptions,
+//       (option) => option.value
+//     );
+//     loadQuestions();
+//   });
+
+$("#categoryFilter").on("change", function () {
+  selectedCategories = $(this).val() || [];
+  loadQuestions();
+});
 
 async function loadQuestions() {
   try {
     const response = await fetch("/api/questions");
     const data = await response.json();
-    if (selectedCategory === "") {
-      questions = data;
-    } else {
-      questions = data.filter((question) =>
-        question.category.includes(selectedCategory)
-      );
-    }
+    questions = data.filter(
+      (question) =>
+        selectedCategories.length === 0 ||
+        selectedCategories.some((selectedCategory) =>
+          question.category.includes(selectedCategory)
+        )
+    );
+
+    // if (selectedCategory === "") {
+    //   questions = data;
+    // } else {
+    //   questions = data.filter((question) =>
+    //     question.category.includes(selectedCategory)
+    //   );
+    // }
 
     currentQuestionIndex = 0;
     displayQuestion();
@@ -143,5 +156,18 @@ document
     selectedCategory = event.target.value;
     loadQuestions();
   });
+
+// $(document).ready(function () {
+//   $(".select2").select2({
+//     width: "100%",
+//   });
+// });
+
+$(document).ready(function () {
+  $("#categoryFilter").select2({
+    width: "100%",
+    placeholder: "All Categories",
+  });
+});
 
 loadQuestions();
