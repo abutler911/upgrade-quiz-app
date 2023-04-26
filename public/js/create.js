@@ -5,20 +5,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const notification = document.createElement("div");
     notification.className = `notification ${
       isSuccess ? "is-success" : "is-danger"
-    }`;
+    } fade-in`;
     notification.textContent = message;
 
     const closeButton = document.createElement("button");
     closeButton.className = "delete";
     closeButton.addEventListener("click", () => {
-      notification.remove();
+      notification.classList.add("fade-out");
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
     });
     notification.appendChild(closeButton);
 
-    document.body.appendChild(notification);
+    // Insert the notification below the header
+    const notificationContainer = document.querySelector(
+      ".notification-container"
+    );
+    notificationContainer.appendChild(notification);
+
     setTimeout(() => {
-      notification.remove();
-    }, 5000);
+      notification.classList.add("fade-out");
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }, 3000);
   }
 
   form.addEventListener("submit", async (event) => {

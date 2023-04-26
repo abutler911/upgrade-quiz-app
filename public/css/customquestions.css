@@ -45,6 +45,34 @@ thead tr {
     font-size: 1.3rem;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 300ms ease-in forwards;
+}
+
+.fade-out {
+    animation: fadeOut 300ms ease-in forwards;
+}
+
 @media only screen and (max-width: 768px) {
 
     .table.is-narrow td,
