@@ -37,11 +37,32 @@ html, body {
 
 }
 
-.title, .subtitle {
-    color: #fff;
+.title {
+    font-size: 3rem;
 }
 
+.subtitle {
+    font-size: 2.5rem;
+}
+
+.title, .subtitle {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+
+}
 
 footer {
+    margin-top: 10px;
     width: 100%;
+    background-color: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
 }
