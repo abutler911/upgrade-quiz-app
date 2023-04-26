@@ -170,6 +170,10 @@ app.post(
   }
 );
 
+app.get("/flows", (req, res) => {
+  res.render("./flows");
+});
+
 app.get("/logout", (req, res) => {
   req.logout((err) => {
     if (err) {
