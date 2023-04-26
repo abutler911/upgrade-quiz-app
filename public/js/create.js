@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     notification.appendChild(closeButton);
 
-    // Insert the notification below the header
     const notificationContainer = document.querySelector(
       ".notification-container"
     );
@@ -52,20 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       body: JSON.stringify({ question, category, answer }),
     });
-    console.log(response);
 
     const result = await response.json();
 
     if (response.ok) {
       displayNotification(result.message, true);
-
-      // Store the selected category
       const selectedCategory = categorySelect.value;
-
-      // Reset the form
       form.reset();
-
-      // Set the category field back to the stored value
       categorySelect.value = selectedCategory;
     } else {
       displayNotification(
@@ -76,11 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Initialize Select2 on the category selector
-  const categorySelect = document.querySelector(".category-select");
-  if (categorySelect) {
-    $(categorySelect).select2({
-      placeholder: "Select a category", // Set a placeholder for the dropdown
-      allowClear: true, // Allow clearing the selection
+  const categorySelectElement = document.querySelector(".category-select");
+  if (categorySelectElement) {
+    $(categorySelectElement).select2({
+      placeholder: "Select a category",
+      allowClear: true,
     });
   }
 });

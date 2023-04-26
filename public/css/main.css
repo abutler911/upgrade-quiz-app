@@ -21,13 +21,26 @@ html, body {
     height: 100vh;
 }
 
-.divider {
-    background-color: #000;
+.hero-custom {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    /* Add a dark overlay to the background image */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+
 }
 
-.hero-custom {
-    min-height: calc(100vh - 3.25rem - 3rem);
+.divider {
+    border-top: 2px solid #fff;
+
 }
+
+.title, .subtitle {
+    color: #fff;
+}
+
 
 footer {
     width: 100%;
