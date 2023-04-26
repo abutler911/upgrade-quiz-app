@@ -155,6 +155,21 @@ app.post(
   }
 );
 
+app.post(
+  "/admin/delete-user/:userId",
+  isLoggedIn,
+  isAdmin,
+  async (req, res) => {
+    try {
+      await User.findByIdAndDelete(req.params.userId);
+      res.redirect("/admin/users-awaiting-approval");
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Error deleting user");
+    }
+  }
+);
+
 app.get("/logout", (req, res) => {
   req.logout((err) => {
     if (err) {

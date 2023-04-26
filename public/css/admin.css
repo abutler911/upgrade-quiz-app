@@ -11,12 +11,40 @@ html, body {
 
 }
 
+.btn-container {
+    display: flex;
+    align-items: center;
+}
+
+.btn-container form {
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.action-btn {
+    width: 80px;
+    text-align: center;
+}
+
 .approve-btn {
-    background-color: #ee6c4d;
-    color: white;
+    background-color: rgba(238, 108, 77, 0.2);
+    border: 1px solid #ee6c4d;
+    color: #000;
     font-size: 1rem;
     font-weight: 700;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
+.delete-btn {
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 10px;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 @media (max-width: 767px) {
@@ -31,6 +59,10 @@ html, body {
     }
 
     .approve-btn {
+        font-size: 0.6rem;
+    }
+
+    .delete-btn {
         font-size: 0.6rem;
     }
 

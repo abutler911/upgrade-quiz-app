@@ -1,5 +1,6 @@
 <%- include('../partials/header', { title: 'Admin | Approve Users', style:
 '../css/admin.css'}) %>
+
 <section class="section">
   <div class="container">
     <h1 class="title">Users Awaiting Approval</h1>
@@ -9,20 +10,37 @@
           <th>Name</th>
           <th>Email</th>
           <th>Employee #</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <% users.forEach((user) => { %>
         <tr>
-          <td><%= user.firstname %> <%= user.lastname %></td>
+          <td>
+            <%= user.firstname %> <%= user.lastname %>
+            <span class="btn-container">
+              <form
+                action="/admin/approve-user/<%= user._id %>"
+                method="POST"
+                style="display: inline"
+              >
+                <button class="button approve-btn action-btn" type="submit">
+                  Approve
+                </button>
+              </form>
+              <form
+                action="/admin/delete-user/<%= user._id %>"
+                method="POST"
+                style="display: inline"
+              >
+                <button class="button delete-btn action-btn" type="submit">
+                  Delete
+                </button>
+              </form>
+            </span>
+          </td>
           <td><%= user.email %></td>
           <td><%= user.employeeNumber %></td>
-          <td>
-            <form action="/admin/approve-user/<%= user._id %>" method="POST">
-              <button class="button approve-btn" type="submit">Approve</button>
-            </form>
-          </td>
+          <td></td>
         </tr>
         <% }) %>
       </tbody>
