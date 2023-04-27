@@ -19,15 +19,12 @@
             </div>
           </div>
 
+          <!-- Replace the textarea with a div with a unique id -->
           <div class="field">
             <label class="label" for="content">Content:</label>
             <div class="control">
-              <textarea
-                class="textarea"
-                id="content"
-                name="content"
-                required
-              ></textarea>
+              <div id="quill-editor"></div>
+              <input type="hidden" id="content" name="content" required />
             </div>
           </div>
 
@@ -48,5 +45,19 @@
     </div>
   </div>
 </section>
+<script>
+  const quill = new Quill("#quill-editor", {
+    theme: "snow",
+  });
+
+  const form = document.querySelector("form");
+  const contentInput = document.querySelector("#content");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    contentInput.value = quill.root.innerHTML;
+    form.submit();
+  });
+</script>
 
 <%- include('./partials/footer') %>

@@ -24,3 +24,7 @@ section {
 .control {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+textarea#content {
+    background-color: white;
+}
