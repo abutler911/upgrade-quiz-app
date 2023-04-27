@@ -44,3 +44,15 @@ li {
     margin-left: 40px;
     font-size: 0.5rem;
 }
+
+.tile.is-child.box {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media screen and (min-width: 1124px) {
+    .tile.is-vertical.is-parent {
+        width: 33.33%;
+        display: block;
+    }
+}
