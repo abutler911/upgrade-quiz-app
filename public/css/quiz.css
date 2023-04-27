@@ -8,9 +8,38 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
-    background-color: #98c1d9;
+    /* background-color: #98c1d9; */
     display: flex;
     flex-direction: column;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+
+}
+
+.label {
+    color: #fff;
+}
+
+#question {
+    font-size: 1rem;
+    text-align: start;
+}
+
+.question-container {
+    min-height: 150px;
+}
+
+.answer {
+
+    /* padding: 10px; */
+    font-size: 0.9rem;
+    min-height: 200px;
+
+}
+
+
+
+#category {
+    font-size: 0.7rem;
 }
 
 .box {
@@ -34,6 +63,9 @@ body {
     cursor: pointer;
     user-select: none;
     font-size: 0.8rem;
+    color: #fff;
+    margin: 10px;
+    margin-top: -20px;
 }
 
 .styled-checkbox {
@@ -70,7 +102,8 @@ body {
 }
 
 .section {
-    flex: 1;
+    /* flex: 1; */
+    /* margin-bottom: 2rem; */
 
 }
 
@@ -102,7 +135,7 @@ body {
 }
 
 .control {
-    margin-bottom: 7.5em;
+    margin-bottom: 1em;
 }
 
 .card-text.answer {
@@ -137,26 +170,29 @@ body {
 
 .btn-container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav-btn,
 .answer-btn {
     color: #fff;
     font-size: 1.6rem;
-    flex: 1;
-    margin-bottom: 0.5rem;
+    flex: 1 1 auto;
+    margin: 5px;
     text-align: center;
+    min-width: calc(33% - 10px);
+    width: 100%;
 }
 
 .answer-btn {
     background-color: rgb(149, 149, 233);
 }
 
-.nav-btn {
+/* .nav-btn {
     flex-grow: 1;
     margin: 0 5px;
-}
+} */
 
 .box {
     background-color: transparent;
@@ -206,14 +242,28 @@ body {
         margin: 0;
     }
 
+
     .nav-btn,
     .answer-btn {
         font-size: 1rem;
+        width: calc(50% - 10px);
     }
 
-    .container {
-        max-width: 720px;
+    .answer-btn {
+        width: 100%;
+        /* Make the "Show Answer" button full width on smaller screens */
+        order: 1;
+        /* Make the "Show Answer" button appear first */
     }
+
+    .nav-btn {
+        order: 2;
+        /* Make the navigation buttons appear below the "Show Answer" button */
+    }
+
+    /* .container {
+        max-width: 720px;
+    } */
 
 
 }

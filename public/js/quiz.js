@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchQuestions();
   const showAnswerButton = document.querySelector("#show-answer");
   const answerElement = document.querySelector(".card-text.answer");
-  const answerText = document.querySelector("#answer");
+  // const answerText = document.querySelector("#answer");
+  // const categoryElement = document.querySelector("#category");
 
   answerElement.classList.add("hide");
 
@@ -99,13 +100,16 @@ function resetAnswerVisibility() {
 function displayQuestion() {
   const questionElement = document.getElementById("question");
   const answerElement = document.getElementById("answer");
+  const categoryElement = document.getElementById("category");
 
   if (questions.length > 0 && currentQuestionIndex < questions.length) {
     questionElement.innerText = questions[currentQuestionIndex].question;
     answerElement.innerText = questions[currentQuestionIndex].answer;
+    categoryElement.innerText = `Categories(s): ${questions[currentQuestionIndex].category}`;
   } else {
     questionElement.innerText = "No questions to display";
     answerElement.innerText = "No answers to display";
+    categoryElement.innerText = "No categories to display";
   }
 }
 
