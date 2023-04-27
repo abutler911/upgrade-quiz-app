@@ -30,17 +30,18 @@ body {
 
 .custom-checkbox {
     position: relative;
-    padding-left: 35px;
+    padding-left: 30px;
     cursor: pointer;
     user-select: none;
+    font-size: 0.8rem;
 }
 
 .styled-checkbox {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     background-color: #444;
     border: 2px solid #fff;
     border-radius: 3px;
@@ -213,6 +214,8 @@ body {
     .container {
         max-width: 720px;
     }
+
+
 }
 
 @media (min-width: 992px) {

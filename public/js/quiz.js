@@ -39,6 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
 let questions = [];
 let currentQuestionIndex = 0;
 
+function shuffleQuestions(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 document.getElementById("next-question").addEventListener("click", () => {
   if (currentQuestionIndex < questions.length - 1) {
     resetAnswerVisibility();
@@ -108,18 +115,9 @@ questions = questions.map((question, index) => {
 });
 
 let selectedCategory = "";
-// document
-//   .getElementById("categoryFilter")
-//   .addEventListener("change", function (event) {
-//     selectedCategories = Array.from(
-//       event.target.selectedOptions,
-//       (option) => option.value
-//     );
-//     loadQuestions();
-//   });
 
 $("#categoryFilter").on("change", function () {
-  selectedCategories = $(this).val() || [];
+  selectedCategory = $(this).val() || [];
   loadQuestions();
 });
 
@@ -129,20 +127,16 @@ async function loadQuestions() {
     const data = await response.json();
     questions = data.filter(
       (question) =>
-        selectedCategories.length === 0 ||
-        selectedCategories.some((selectedCategory) =>
+        selectedCategory.length === 0 ||
+        selectedCategory.some((selectedCategory) =>
           question.category.includes(selectedCategory)
         )
     );
+    let randomizeCheckbox = document.getElementById("randomizeCheckbox");
 
-    // if (selectedCategory === "") {
-    //   questions = data;
-    // } else {
-    //   questions = data.filter((question) =>
-    //     question.category.includes(selectedCategory)
-    //   );
-    // }
-
+    if (randomizeCheckbox.checked) {
+      shuffleQuestions(questions);
+    }
     currentQuestionIndex = 0;
     displayQuestion();
   } catch (err) {
@@ -157,12 +151,6 @@ document
     loadQuestions();
   });
 
-// $(document).ready(function () {
-//   $(".select2").select2({
-//     width: "100%",
-//   });
-// });
-
 $(document).ready(function () {
   $("#categoryFilter").select2({
     width: "100%",
@@ -171,3 +159,9 @@ $(document).ready(function () {
 });
 
 loadQuestions();
+
+document
+  .getElementById("randomizeCheckbox")
+  .addEventListener("change", function () {
+    loadQuestions();
+  });
