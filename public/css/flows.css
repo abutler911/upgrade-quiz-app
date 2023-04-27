@@ -3,6 +3,20 @@
     height: 200px;
 }
 
+.tile {
+    margin: 20px;
+}
+
+hr {
+    background-color: #000;
+}
+
+.box {
+    background-color: rgba(219, 219, 219, 0.4);
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 h5 {
     font-size: 0.8rem;
     font-weight: 900;
