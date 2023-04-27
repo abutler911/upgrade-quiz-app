@@ -17,6 +17,7 @@ const questionRouter = require("./routers/questions");
 const quizRouter = require("./routers/quiz");
 const categoryRouter = require("./routers/categoryRouter");
 const notesRouter = require("./routers/notes");
+const registerRouters = require("./routers/registerRouters");
 
 //Express App Set Up
 const app = express();
@@ -60,6 +61,7 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res, next) => {
+  req.body.username = req.body.username.toLowerCase();
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
@@ -77,48 +79,6 @@ app.post("/login", (req, res, next) => {
       return res.redirect("/");
     });
   })(req, res, next);
-});
-
-app.get("/register", (req, res) => {
-  res.render("register");
-});
-
-app.post("/register", (req, res) => {
-  User.register(
-    new User({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      employeeNumber: req.body.employeeNumber,
-      username: req.body.username,
-      status: "pending",
-      iaAdmin: false,
-    }),
-    req.body.password,
-    async (err, user) => {
-      if (err) {
-        console.log(err);
-        return res.redirect("/register");
-      }
-
-      // Send email
-      try {
-        const msg = {
-          to: req.body.email,
-          from: "abutler911@gmail.com", // Replace with your "from" email address
-          subject: "Registration successful",
-          text: `Dear ${req.body.firstname},\n\nYour registration was successful and is currently pending approval. Please check back in a day or two.\n\nBest regards,\nThe Upgrade Journey Team`,
-        };
-
-        await sgMail.send(msg);
-        console.log("Email sent");
-      } catch (err) {
-        console.error("Error sending email:", err);
-      }
-
-      res.redirect("/awaiting-approval");
-    }
-  );
 });
 
 app.get("/awaiting-approval", (req, res) => {
@@ -190,6 +150,7 @@ app.use(questionRouter);
 app.use(quizRouter);
 app.use(categoryRouter);
 app.use(notesRouter);
+app.use(registerRouters);
 
 // Start server
 app.listen(port, () => {
