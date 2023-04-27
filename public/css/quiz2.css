@@ -98,3 +98,40 @@ body {
 .select2 {
     width: 100%;
 }
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .column.is-one-third {
+        width: 90%;
+    }
+
+    .btn-box {
+        width: 81%;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 20px;
+
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 80%;
+    }
+
+    .column.is-one-third {
+        width: 40%;
+    }
+
+    .btn-box {
+        width: 31%;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+}
