@@ -36,6 +36,10 @@ h1 {
     font-size: 1.5rem;
 }
 
+.total-questions {
+    color: #000;
+}
+
 .table.is-mobile-custom {
     table-layout: fixed;
     word-wrap: break-word;
