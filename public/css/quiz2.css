@@ -39,6 +39,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding-bottom: 1rem;
+    width: 100%;
 }
 
 .card-header-title {
@@ -70,14 +71,6 @@ body {
     color: #fff;
 }
 
-/* .btn-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-} */
-
 .nav-btn,
 .answer-btn {
     background-color: #ee6c4d;
@@ -88,7 +81,6 @@ body {
     text-align: center;
     font-size: 0.8rem;
 }
-
 
 .nav-btn:hover,
 .answer-btn:hover {
@@ -102,8 +94,6 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
 }
-
-
 
 .select2 {
     width: 100%;
