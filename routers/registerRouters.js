@@ -31,7 +31,7 @@ router.post("/register", (req, res) => {
           to: req.body.email,
           from: "abutler911@gmail.com",
           subject: "Registration successful",
-          text: `Dear ${req.body.firstname},\n\nYour registration was successful and is currently pending approval. Please check back in a day or two.\n\nBest regards,\nThe Captain's Climb Team`,
+          text: `Dear ${req.body.firstname},\n\nYour registration was successful and is currently pending approval. Please check back in a day or two.\n\nBest regards,\nThe Upgrade Me Team`,
         };
 
         await sgMail.send(msg);
