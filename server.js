@@ -88,10 +88,10 @@ app.post("/login", (req, res, next) => {
       if (err) {
         return next(err);
       }
-      const returnTo = req.session.returnTo || "/";
-      delete req.session.returnTo;
-      return res.redirect(returnTo);
-      // return res.redirect("/");
+      // const returnTo = req.session.returnTo || "/";
+      // delete req.session.returnTo;
+      // return res.redirect(returnTo);
+      return res.redirect("/");
     });
   })(req, res, next);
 });
