@@ -18,6 +18,7 @@ body {
 
 .title {
     margin-bottom: 1rem;
+    margin-top: 2rem;
     color: #fff;
 }
 
@@ -97,6 +98,27 @@ body {
 
 .select2 {
     width: 100%;
+}
+
+.progress-container {
+    width: 50%;
+    height: 5px;
+    background-color: none;
+    margin-bottom: 25px;
+    margin: 0 auto;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #ee6c4d;
+    transition: width 0.5s;
+    font-size: 2rem;
+}
+
+#question-count {
+    color: #fff;
+    font-size: 1.5rem;
 }
 
 @media (min-width: 768px) {

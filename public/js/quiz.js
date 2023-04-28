@@ -111,6 +111,8 @@ function displayQuestion() {
     answerElement.innerText = "No answers to display";
     categoryElement.innerText = "No categories to display";
   }
+
+  updateProgressBar();
 }
 
 questions = questions.map((question, index) => {
@@ -143,6 +145,7 @@ async function loadQuestions() {
     }
     currentQuestionIndex = 0;
     displayQuestion();
+    updateProgressBar();
   } catch (err) {
     console.error("Error fetching questions:", err);
   }
@@ -169,3 +172,14 @@ document
   .addEventListener("change", function () {
     loadQuestions();
   });
+
+function updateProgressBar() {
+  const totalQuestions = questions.length;
+  const completedQuestions = currentQuestionIndex + 1;
+  const percentage = (completedQuestions / totalQuestions) * 100;
+
+  const progressBar = document.getElementById("progress-bar");
+  const questionCount = document.getElementById("question-count");
+  progressBar.style.width = percentage + "%";
+  questionCount.innerHTML = `${completedQuestions} / ${totalQuestions}`;
+}
