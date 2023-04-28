@@ -130,7 +130,7 @@ app.post(
   }
 );
 
-app.get("/flows", (req, res) => {
+app.get("/flows", isLoggedIn, (req, res) => {
   res.render("./flows");
 });
 
