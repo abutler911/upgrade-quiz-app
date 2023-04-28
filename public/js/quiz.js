@@ -113,6 +113,7 @@ function displayQuestion() {
   }
 
   updateProgressBar();
+  updateQuestionCount();
 }
 
 questions = questions.map((question, index) => {
@@ -165,8 +166,6 @@ $(document).ready(function () {
   });
 });
 
-loadQuestions();
-
 document
   .getElementById("randomizeCheckbox")
   .addEventListener("change", function () {
@@ -181,5 +180,22 @@ function updateProgressBar() {
   const progressBar = document.getElementById("progress-bar");
   const questionCount = document.getElementById("question-count");
   progressBar.style.width = percentage + "%";
-  questionCount.innerHTML = `${completedQuestions} / ${totalQuestions}`;
+  questionCount.innerHTML = `Question: ${completedQuestions} of ${totalQuestions}`;
 }
+
+function loadNextQuestion() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex >= questions.length) {
+    currentQuestionIndex = 0;
+  }
+  loadQuestion(currentQuestionIndex);
+}
+
+function loadPreviousQuestion() {
+  currentQuestionIndex--;
+  if (currentQuestionIndex < 0) {
+    currentQuestionIndex = questions.length - 1;
+  }
+  loadQuestion(currentQuestionIndex);
+}
+loadQuestions();
