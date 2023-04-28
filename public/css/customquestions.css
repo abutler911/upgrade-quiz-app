@@ -16,6 +16,10 @@ html, body {
     flex: 1;
 }
 
+.section h1 {
+    color: #fff;
+}
+
 .select select option {
     color: #000;
 }

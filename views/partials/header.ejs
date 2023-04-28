@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-    <link rel="manifest" href="../site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -40,8 +40,9 @@
         list-style-type: none;
       }
       .navbar-item li {
-        padding: 0;
+        padding-left: 10px;
       }
+
     </style>
   </head>
   <body>
@@ -67,11 +68,14 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">Options</a>
             <div class="navbar-dropdown">
+              <h3 class="navbar-item">Weather</h3>
+              <li><a class="navbar-item" href="/weather">Weather Info</a></li>
+              <hr class="navbar-divider">
               <h3 class="navbar-item">Briefings</h3>
-              <a class="navbar-item" href="/briefings">View All Briefings</a>
+              <li><a class="navbar-item" href="/briefings">View All Briefings</a></li>
               <hr class="navbar-divider">
               <h3 class="navbar-item">Flows</h3>
-              <a class="navbar-item" href="/flows">View All Flows</a>
+              <li><a class="navbar-item" href="/flows">View All Flows</a></li>
               <hr class="navbar-divider">
               <h3 class="navbar-item">Notes</h3>
               <ul>
@@ -119,3 +123,6 @@
         
       </div>
     </nav>
+
+
+    
