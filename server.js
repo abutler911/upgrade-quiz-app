@@ -43,7 +43,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true },
+    cookie: { secure: false },
   })
 );
 
@@ -88,9 +88,7 @@ app.post("/login", (req, res, next) => {
       if (err) {
         return next(err);
       }
-      // const returnTo = req.session.returnTo || "/";
-      // delete req.session.returnTo;
-      // return res.redirect(returnTo);
+
       return res.redirect("/");
     });
   })(req, res, next);

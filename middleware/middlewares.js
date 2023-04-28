@@ -1,13 +1,9 @@
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
-    // } else {
-    //   req.session.returnTo = req.originalUrl;
-    //   res.redirect("/login");
+  } else {
+    res.status(403).send("You must be logged in.");
   }
-  res.status(403).send("You must be logged in.");
-
-  res.redirect("/login");
 }
 
 function isAdmin(req, res, next) {
