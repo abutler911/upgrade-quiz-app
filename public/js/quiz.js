@@ -1,99 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+  setupEventListeners();
   fetchQuestions();
-  const showAnswerButton = document.querySelector("#show-answer");
-  const answerElement = document.querySelector(".card-text.answer");
-  // const answerText = document.querySelector("#answer");
-  // const categoryElement = document.querySelector("#category");
-
-  answerElement.classList.add("hide");
-
-  showAnswerButton.addEventListener("click", function () {
-    if (answerElement.classList.contains("hide")) {
-      answerElement.classList.remove("hide");
-      answerElement.classList.add("show");
-      showAnswerButton.textContent = "Hide Answer";
-    } else {
-      answerElement.classList.remove("show");
-      answerElement.classList.add("hide");
-      showAnswerButton.textContent = "Show Answer";
-    }
-  });
-
-  let showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
-  showAnswersCheckbox.addEventListener("change", function () {
-    const answerElement = document.querySelector(".card-text.answer");
-    const showAnswerButton = document.querySelector("#show-answer");
-
-    if (showAnswersCheckbox.checked) {
-      answerElement.style.opacity = "1";
-      answerElement.style.maxHeight = "1000px";
-      showAnswerButton.style.display = "none";
-    } else {
-      answerElement.style.opacity = "0";
-      answerElement.style.maxHeight = "0";
-      showAnswerButton.style.display = "inline-block";
-      showAnswerButton.textContent = "Show Answer";
-    }
-  });
 });
+
+function setupEventListeners() {
+  setupShowAnswerButton();
+  setupShowAnswersCheckbox();
+  setupNavigationButtons();
+  setupCategoryFilter();
+  setupRandomizeCheckbox();
+}
 
 let questions = [];
 let currentQuestionIndex = 0;
 
-function shuffleQuestions(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-document.getElementById("next-question").addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length - 1) {
-    resetAnswerVisibility();
-
-    currentQuestionIndex++;
-    displayQuestion(currentQuestionIndex);
-  }
-});
-
-document.getElementById("prev-question").addEventListener("click", () => {
-  if (currentQuestionIndex > 0) {
-    resetAnswerVisibility();
-
-    currentQuestionIndex--;
-    displayQuestion(currentQuestionIndex);
-  }
-});
-
 async function fetchQuestions() {
   try {
     const response = await fetch("/api/questions");
-    fetchedQuestions = await response.json();
-
-    questions = fetchedQuestions.map((question, index) => {
-      question.order = index;
-      return question;
-    });
-
-    if (questions.length > 0) {
-      displayQuestion(currentQuestionIndex);
-    } else {
-      document.getElementById("question").innerText = "No questions to display";
-      document.getElementById("answer").innerText = "No answers to display";
-    }
+    questions = await response.json();
+    displayQuestion(currentQuestionIndex);
   } catch (error) {
     console.error("Error fetching questions:", error);
-  }
-}
-
-function resetAnswerVisibility() {
-  const showAnswerButton = document.querySelector("#show-answer");
-  const answerElement = document.querySelector(".card-text.answer");
-
-  if (answerElement.classList.contains("show")) {
-    answerElement.classList.remove("show");
-    answerElement.classList.add("hide");
-    showAnswerButton.textContent = "Show Answer";
   }
 }
 
@@ -116,34 +43,108 @@ function displayQuestion() {
   updateQuestionCount();
 }
 
-questions = questions.map((question, index) => {
-  question.order = index;
-  return question;
-});
+function setupShowAnswerButton() {
+  const showAnswerButton = document.querySelector("#show-answer");
+  const answerElement = document.querySelector(".card-text.answer");
 
-let selectedCategory = "";
+  showAnswerButton.addEventListener("click", () => {
+    toggleAnswerVisibility(answerElement, showAnswerButton);
+  });
+}
 
-$("#categoryFilter").on("change", function () {
-  selectedCategory = $(this).val() || [];
-  loadQuestions();
-});
+function setupShowAnswersCheckbox() {
+  const showAnswersCheckbox = document.getElementById("showAnswersCheckbox");
 
-async function loadQuestions() {
+  showAnswersCheckbox.addEventListener("change", () => {
+    toggleAnswersWithCheckbox(showAnswersCheckbox);
+  });
+}
+
+function setupNavigationButtons() {
+  document.getElementById("next-question").addEventListener("click", () => {
+    navigateToNextQuestion();
+  });
+
+  document.getElementById("prev-question").addEventListener("click", () => {
+    navigateToPreviousQuestion();
+  });
+}
+
+function setupCategoryFilter() {
+  $("#categoryFilter").select2({
+    width: "100%",
+    placeholder: "All Categories",
+  });
+
+  $("#categoryFilter").on("change", () => {
+    loadQuestionsByCategory();
+  });
+}
+
+function setupRandomizeCheckbox() {
+  const randomizeCheckbox = document.getElementById("randomizeCheckbox");
+  randomizeCheckbox.addEventListener("change", () => {
+    loadQuestionsByCategory();
+  });
+}
+
+function toggleAnswerVisibility(answerElement, showAnswerButton) {
+  answerElement.classList.toggle("hide");
+  answerElement.classList.toggle("show");
+  showAnswerButton.textContent = answerElement.classList.contains("hide")
+    ? "Show Answer"
+    : "Hide Answer";
+}
+
+function toggleAnswersWithCheckbox(showAnswersCheckbox) {
+  const answerElement = document.querySelector(".card-text.answer");
+  const showAnswerButton = document.querySelector("#show-answer");
+
+  if (showAnswersCheckbox.checked) {
+    answerElement.style.opacity = "1";
+    answerElement.style.maxHeight = "1000px";
+    showAnswerButton.style.display = "none";
+  } else {
+    answerElement.style.opacity = "0";
+    answerElement.style.maxHeight = "0";
+    showAnswerButton.style.display = "inline-block";
+    showAnswerButton.textContent = "Show Answer";
+  }
+}
+
+function navigateToNextQuestion() {
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+    displayQuestion(currentQuestionIndex);
+  }
+}
+
+function navigateToPreviousQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    displayQuestion(currentQuestionIndex);
+  }
+}
+
+function loadQuestionsByCategory() {
+  const selectedCategory = $("#categoryFilter").val() || [];
+  filterAndLoadQuestions(selectedCategory);
+}
+
+async function filterAndLoadQuestions(selectedCategory) {
   try {
     const response = await fetch("/api/questions");
     const data = await response.json();
     questions = data.filter(
       (question) =>
         selectedCategory.length === 0 ||
-        selectedCategory.some((selectedCategory) =>
-          question.category.includes(selectedCategory)
-        )
+        selectedCategory.some((cat) => question.category.includes(cat))
     );
-    let randomizeCheckbox = document.getElementById("randomizeCheckbox");
-
+    const randomizeCheckbox = document.getElementById("randomizeCheckbox");
     if (randomizeCheckbox.checked) {
       shuffleQuestions(questions);
     }
+
     currentQuestionIndex = 0;
     displayQuestion();
     updateProgressBar();
@@ -152,25 +153,12 @@ async function loadQuestions() {
   }
 }
 
-document
-  .getElementById("categoryFilter")
-  .addEventListener("change", function (event) {
-    selectedCategory = event.target.value;
-    loadQuestions();
-  });
-
-$(document).ready(function () {
-  $("#categoryFilter").select2({
-    width: "100%",
-    placeholder: "All Categories",
-  });
-});
-
-document
-  .getElementById("randomizeCheckbox")
-  .addEventListener("change", function () {
-    loadQuestions();
-  });
+function shuffleQuestions(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
 function updateProgressBar() {
   const totalQuestions = questions.length;
@@ -178,24 +166,12 @@ function updateProgressBar() {
   const percentage = (completedQuestions / totalQuestions) * 100;
 
   const progressBar = document.getElementById("progress-bar");
-  const questionCount = document.getElementById("question-count");
   progressBar.style.width = percentage + "%";
+}
+
+function updateQuestionCount() {
+  const totalQuestions = questions.length;
+  const completedQuestions = currentQuestionIndex + 1;
+  const questionCount = document.getElementById("question-count");
   questionCount.innerHTML = `Question: ${completedQuestions} of ${totalQuestions}`;
 }
-
-function loadNextQuestion() {
-  currentQuestionIndex++;
-  if (currentQuestionIndex >= questions.length) {
-    currentQuestionIndex = 0;
-  }
-  loadQuestion(currentQuestionIndex);
-}
-
-function loadPreviousQuestion() {
-  currentQuestionIndex--;
-  if (currentQuestionIndex < 0) {
-    currentQuestionIndex = questions.length - 1;
-  }
-  loadQuestion(currentQuestionIndex);
-}
-loadQuestions();

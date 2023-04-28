@@ -5,6 +5,10 @@ html, body {
 
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100vh;
 }
 
 .content {
@@ -23,8 +27,7 @@ body {
 }
 
 .question-container {
-    min-height: 150px;
-
+    min-height: 130px;
 }
 
 #question {
@@ -33,6 +36,10 @@ body {
 
 #category {
     font-size: 0.6rem;
+}
+
+.answer-content {
+    min-height: 150px;
 }
 
 .card {
@@ -102,7 +109,7 @@ body {
 
 .progress-container {
     width: 50%;
-    height: 5px;
+    height: 20px;
     background-color: none;
     margin-bottom: 25px;
     margin: 0 auto;
