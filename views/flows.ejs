@@ -5,17 +5,17 @@
     <article class="tile is-child box">
       <p class="title">Originating Flow</p>
       <hr />
-      <h5>MCDU</h5>
+      <h5>MCDU<span class="right-side">SET</span></h5>
       <ul>
         <li>Electronic CBs - Checked</li>
         <li>NAV IDENT - Verify</li>
         <li>POS INIT - Initialize Position in MCDU (if needed)</li>
       </ul>
-      <h5>DVDR CONTROL PANEL</h5>
+      <h5>DVDR CONTROL PANEL<span class="right-side">TESTED</span></h5>
       <ul>
         <li>Press TEST and verify no EICAS messages</li>
       </ul>
-      <h5>ELECTRIC AC POWER</h5>
+      <h5>ELECTRIC AC POWER<span class="right-side">SET</span></h5>
       <ul>
         <li>IDG 1 Selector <span class="right-side">AUTO</span></li>
         <li>IDG 2 Selector <span class="right-side">AUTO</span></li>
@@ -29,7 +29,7 @@
         <li>AC BUS TIES Selector <span class="right-side">AUTO</span></li>
         <li>APU GEN <span class="right-side">IN</span></li>
       </ul>
-      <h5>ELECTRIC DC POWER</h5>
+      <h5>ELECTRIC DC POWER<span class="right-side">SET</span></h5>
       <ul>
         <li>TRU 1 <span class="right-side">AUTO</span></li>
         <li>TRU ESS <span class="right-side">AUTO</span></li>
@@ -53,14 +53,14 @@
 
         <li>DOME <span class="right-side">AS REQUIRED</span></li>
       </ul>
-      <h5>FUEL</h5>
+      <h5>FUEL<span class="right-side">CHECKED</span></h5>
       <ul>
         <li>XFEED Selector<span class="right-side">OFF</span></li>
         <li>DC PUMP Selector<span class="right-side">AUTO</span></li>
         <li>AC PUMP 1 Selector<span class="right-side">AUTO</span></li>
         <li>AC PUMP 2 Selector<span class="right-side">AUTO</span></li>
       </ul>
-      <h5>PASSENGER SIGNS</h5>
+      <h5>PASSENGER SIGNS<span class="right-side">SET</span></h5>
       <ul>
         <li>EMER Lt Selector<span class="right-side">Checked</span></li>
         <p
@@ -76,6 +76,69 @@
         <li>STERILE<span class="right-side">OFF</span></li>
         <li>NO SMOKING<span class="right-side">ON</span></li>
         <li>FSTN BELTS<span class="right-side">OFF</span></li>
+      </ul>
+      <h5>FIRE EXTINGUISHER<span class="right-side">CHECKED</span></h5>
+      <ul>
+        <p class="small-note">
+          Prior to performing the FIRE panel test, ensure no fire
+          destection/extinguishing system messages display on the EICAS.
+        </p>
+        <p class="small-note">
+          -- This test is not required when previously accomplished during the
+          SAFETY AND POWER-UP checklist.
+        </p>
+        <li>#1 & #2 EXTG Handles<span class="right-side">STOWED</span></li>
+        <li>CARGO SMOKE FWD/AFT<span class="right-side">GUARDED</span></li>
+        <li>APU<span class="right-side">GUARDED</span></li>
+        <li>APU CONTROL EMER STOP<span class="right-side">GUARDED</span></li>
+        <li>
+          FIRE DET TEST BUTTON<span class="right-side">PRESS AND HOLD</span>
+        </li>
+        <ul>
+          <p class="small-note">Observe the following:</p>
+          <li>Aural warning</li>
+          <li>Fire handles illuminated</li>
+          <li>CARGO SMOKE FWD/AFT buttons illuminated</li>
+          <li>APU button illuminated</li>
+          <li>Upper half of the APU emergency stop button illuminated</li>
+          <li>WARNING lights flashing</li>
+          <li>"CARGO FWD (AFT) SMOKE" EICAS message</li>
+          <li>"APU FIRE" EICAS message</li>
+          <li>"ENG 1 (2) FIRE" EICAS message</li>
+          <li>"FIRE" warning annunciation displayed inside ITT indicators</li>
+        </ul>
+      </ul>
+      <h5>APU CONTROL PANEL<span class="right-side">SET</span></h5>
+      <h5>WINDSHIELD WIPER 1 & 2<span class="right-side">OFF</span></h5>
+      <h5>EXTERNAL LIGHTS<span class="right-side">AS REQUIRED</span></h5>
+      <ul>
+        <li>STROBE<span class="right-side">OFF</span></li>
+        <li>RED BCN<span class="right-side">OFF</span></li>
+        <li>LOGO<span class="right-side">AS REQUIRED</span></li>
+        <ul>
+          <li class="small-note-item">
+            Daytime<span class="right-side">OFF</span>
+          </li>
+          <li class="small-note-item">
+            Nightime<span class="right-side">ON</span>
+          </li>
+          <p class="small-note-item">
+            During sunset to sunrise and during low vis procedures.
+          </p>
+        </ul>
+        <li>TAXI NOSE & SIDE<span class="right-side">OFF</span></li>
+        <li>INSP<span class="right-side">OFF</span></li>
+        <li>LANDING LEFT/NOSE/RIGHT<span class="right-side">OFF</span></li>
+      </ul>
+      <h5>HYDRAULIC<span class="right-side">CHECKED</span></h5>
+      <ul>
+        <li>SYS 1 ENG PUMP SHUTOFF<span class="right-side">GUARDED</span></li>
+        <li>PTU Selector<span class="right-side">AUTO</span></li>
+        <li>SYS 2 ENG PUMP SHUTOFF<span class="right-side">GUARDED</span></li>
+        <li>SYS 1 ELEC PUMP<span class="right-side">AUTO</span></li>
+        <li>SYS 2 ELEC PUMP<span class="right-side">AUTO</span></li>
+        <li>SYS 3 ELEC PUMP A<span class="right-side">OFF</span></li>
+        <li>SYS 3 ELEC PUMP B<span class="right-side">AUTO</span></li>
       </ul>
     </article>
   </div>
