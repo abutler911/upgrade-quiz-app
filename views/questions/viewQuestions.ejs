@@ -1,13 +1,10 @@
 <%- include('../partials/header', {title: 'View All Questions', style:
 '../css/viewQuestions.css'}) %>
-<section class="section">
-  <h1 class="has-text-centered is-size-1-tablet">All Questions</h1>
+<div class="background-container">
   <div class="container">
-    <p class="has-text-centered is-size-5 total-questions">
-      Total Questions: <%= questions.length %>
-    </p>
-    <br />
     <div class="table-container">
+      <h1 class="title">Question Bank</h1>
+
       <table
         class="table is-bordered is-striped is-hoverable is-fullwidth is-mobile-custom"
       >
@@ -32,5 +29,6 @@
       </table>
     </div>
   </div>
-</section>
+</div>
+
 <%- include('../partials/footer', {footerAttributes: {class: 'footer'}}) %>

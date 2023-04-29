@@ -6,10 +6,42 @@ html, body {
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #000;
+
+}
+
+.container {
+    min-width: 800px;
+    margin: 30px auto;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 4px;
+}
+
+.title {
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.total-questions {
+    color: #000;
+}
+
+.table {
+    background-color: rgb(208, 238, 238);
+}
+
+.table.is-mobile-custom {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+thead tr {
+    background-color: #bdcbd3;
+    font-weight: 700;
+    font-size: 1.3rem;
 }
 
 .brand {
@@ -29,86 +61,6 @@ footer a {
 .footer p {
     font-size: 0.5rem;
     color: #fff;
-}
-
-/* .section {
-    flex: 1;
-}
-
-.section h1 {
-    color: #fff;
-}
-
-.select select option {
-    color: #000;
-}
-
-.select2 {
-    color: #000;
-} */
-
-#create-question-btn {
-    background-color: #ee6c4d;
-    width: 100%;
-    color: #fff;
-    font-weight: 700;
-}
-
-.container {
-    min-width: 800px;
-    margin: 30px auto;
-    /* background-color: #fff; */
-    padding: 5px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 4px;
-}
-
-h1 {
-    font-size: 1.5rem;
-}
-
-
-.total-questions {
-    color: #000;
-}
-
-.table.is-mobile-custom {
-    table-layout: fixed;
-    word-wrap: break-word;
-}
-
-thead tr {
-    background-color: #75b3d6;
-    font-weight: 700;
-    font-size: 1.3rem;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-.fade-in {
-    animation: fadeIn 300ms ease-in forwards;
-}
-
-.fade-out {
-    animation: fadeOut 300ms ease-in forwards;
 }
 
 @media only screen and (max-width: 768px) {
@@ -131,7 +83,12 @@ thead tr {
         font-size: 1.8rem;
     }
 
-    .mobile-fullwidth {
+    /* .mobile-fullwidth {
         width: 100% !important;
+    } */
+
+    .table.is-mobile-custom td {
+        word-break: break-word;
+        white-space: normal;
     }
 }

@@ -6,7 +6,7 @@ const { capitalizeAndPunctuate } = require("../public/data/capitalizetext");
 const { isLoggedIn } = require("../middleware/middlewares");
 
 router.get("/questions/create", (req, res) => {
-  res.render("questions/newCreate", { categories: categories });
+  res.render("questions/createQuestions", { categories: categories });
 });
 
 router.post("/questions/create", async (req, res) => {
@@ -40,7 +40,7 @@ router.get("/view-questions", isLoggedIn, async (req, res) => {
   try {
     const questions = await Question.find();
     questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
-    res.render("questions/view-questions", { questions });
+    res.render("questions/viewQuestions", { questions });
   } catch (err) {
     console.log(err);
   }
