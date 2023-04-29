@@ -1,49 +1,52 @@
 <%- include('./partials/header', {title: 'Notes', style: '../css/new-note.css'})
 %>
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <h1 class="title">Create Note</h1>
-        <form action="/notes/create" method="POST">
-          <div class="field">
-            <label class="label" for="title">Title:</label>
-            <div class="control">
-              <input
-                class="input"
-                type="text"
-                id="title"
-                name="title"
-                required
-              />
+<div class="page-container">
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <h1 class="title">Create Note</h1>
+          <form action="/notes/create" method="POST">
+            <div class="field">
+              <label class="label" for="title">Title:</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  id="title"
+                  name="title"
+                  required
+                />
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <label class="label" for="content">Content:</label>
-            <div class="control">
-              <div id="quill-editor"></div>
-              <input type="hidden" id="content" name="content" required />
+            <div class="field">
+              <label class="label" for="content">Content:</label>
+              <div class="control">
+                <div id="quill-editor"></div>
+                <input type="hidden" id="content" name="content" required />
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="control">
-              <button
-                id="save-note-btn"
-                class="button"
-                style="background-color: #ee6c4d"
-                type="submit"
-              >
-                Save Note
-              </button>
+            <div class="field">
+              <div class="control">
+                <button
+                  id="save-note-btn"
+                  class="button"
+                  style="background-color: #ee6c4d"
+                  type="submit"
+                >
+                  Save Note
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <%- include('./partials/footer', {footerAttributes: {class: 'footer'}}) %>
+</div>
 <script>
   const quill = new Quill("#quill-editor", {
     theme: "snow",
@@ -58,5 +61,3 @@
     form.submit();
   });
 </script>
-
-<%- include('./partials/footer') %>

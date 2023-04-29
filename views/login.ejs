@@ -1,74 +1,59 @@
 <%- include('./partials/header', {title: 'Login', style: '../css/login.css'}) %>
-<section class="hero is-fullheight">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-5">
-          <div class="box">
-            <h1 class="title is-1 has-text-centered has-text-black">Login</h1>
+<style>
+  .container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    width: 100%;
+    max-width: 400px;
+  }
+  .title {
+    text-align: center;
+  }
+</style>
 
-            <form action="/login" method="post">
-              <div class="field">
-                <label for="username" class="label">Username:</label>
-                <div class="control">
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    required
-                    class="input"
-                    autocomplete="off"
-                  />
-                </div>
-              </div>
-              <div class="field">
-                <label for="password" class="label">Password:</label>
-                <div class="control">
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    class="input"
-                    autocomplete="off"
-                  />
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <button
-                    type="submit"
-                    class="button is-fullwidth"
-                    style="
-                      background-color: #ee6c4d;
-                      font-size: 1.5rem;
-                      color: #fff;
-                    "
-                  >
-                    Login
-                  </button>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <div
-                    id="google-signin-button"
-                    class="button is-fullwidth"
-                    style="
-                      background-color: #4285f4;
-                      font-size: 1.5rem;
-                      color: #fff;
-                    "
-                  >
-                    Login with Google
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
+<div class="container">
+  <div class="box">
+    <h1 class="title is-2">Login</h1>
+
+    <form action="/login" method="post">
+      <div class="field">
+        <label for="username" class="label">Username:</label>
+        <div class="control">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            class="input"
+            autocomplete="off"
+          />
         </div>
       </div>
-    </div>
+      <div class="field">
+        <label for="password" class="label">Password:</label>
+        <div class="control">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="input"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <button type="submit" class="button is-fullwidth has-text-white">
+            Login
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
-</section>
-<%- include('./partials/footer') %>
+</div>
+<%- include('./partials/footer', {footerAttributes: {class: 'footer'}}) %>
