@@ -6,13 +6,32 @@ html, body {
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    /* background-color: #98c1d9; */
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
-
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.section {
+.brand {
+    color: #fff;
+    font-weight: 900;
+}
+
+.footer {
+    background-color: transparent;
+    padding: 1rem;
+}
+
+footer a {
+    color: inherit;
+}
+
+.footer p {
+    font-size: 0.5rem;
+    color: #fff;
+}
+
+/* .section {
     flex: 1;
 }
 
@@ -26,7 +45,7 @@ html, body {
 
 .select2 {
     color: #000;
-}
+} */
 
 #create-question-btn {
     background-color: #ee6c4d;
@@ -36,9 +55,9 @@ html, body {
 }
 
 .container {
-    max-width: 1000px;
+    min-width: 800px;
     margin: 30px auto;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 4px;
@@ -47,6 +66,7 @@ html, body {
 h1 {
     font-size: 1.5rem;
 }
+
 
 .total-questions {
     color: #000;

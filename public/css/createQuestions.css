@@ -1,0 +1,115 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+    flex-grow: 1;
+}
+
+.control {
+    width: 100%;
+}
+
+.box {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input, .select select {
+    font-size: 20px;
+}
+
+.custom-select select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+#create-question-btn {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 7px;
+    background-color: #ee6c4d;
+}
+
+#create-question-btn:hover {
+    background-color: #fa3b0b;
+    color: #000;
+}
+
+.footer {
+    background-color: transparent;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+footer a {
+    color: inherit;
+}
+
+.footer p {
+    font-size: 0.5rem;
+    color: #fff;
+}
+
+.brand {
+    color: #fff;
+    font-weight: 900;
+}
+
+.select select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .select.is-multiple.mobile-fullwidth {
+        width: 100%;
+    }
+
+    .control {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .custom-select select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

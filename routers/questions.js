@@ -6,7 +6,7 @@ const { capitalizeAndPunctuate } = require("../public/data/capitalizetext");
 const { isLoggedIn } = require("../middleware/middlewares");
 
 router.get("/questions/create", (req, res) => {
-  res.render("questions/create", { categories: categories });
+  res.render("questions/newCreate", { categories: categories });
 });
 
 router.post("/questions/create", async (req, res) => {
