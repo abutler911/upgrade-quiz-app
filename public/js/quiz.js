@@ -116,6 +116,7 @@ function navigateToNextQuestion() {
   if (currentQuestionIndex < questions.length - 1) {
     currentQuestionIndex++;
     displayQuestion(currentQuestionIndex);
+    hideAnswer();
   }
 }
 
@@ -123,7 +124,17 @@ function navigateToPreviousQuestion() {
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
+    hideAnswer();
   }
+}
+
+function hideAnswer() {
+  const answerElement = document.querySelector(".card-text.answer");
+  const showAnswerButton = document.querySelector("#show-answer");
+
+  answerElement.classList.remove("show");
+  answerElement.classList.add("hide");
+  showAnswerButton.textContent = "Show Answer";
 }
 
 function loadQuestionsByCategory() {
