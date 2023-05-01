@@ -6,7 +6,11 @@ const { capitalizeAndPunctuate } = require("../public/data/capitalizetext");
 const { isLoggedIn } = require("../middleware/middlewares");
 
 router.get("/questions/create", (req, res) => {
-  res.render("questions/createQuestions", { categories: categories });
+  res.render("questions/createQuestions", {
+    title: "Create A Question",
+    customCSS: "createQuestions.css",
+    categories: categories,
+  });
 });
 
 router.post("/questions/create", async (req, res) => {
@@ -40,7 +44,11 @@ router.get("/view-questions", isLoggedIn, async (req, res) => {
   try {
     const questions = await Question.find();
     questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
-    res.render("questions/viewQuestions", { questions });
+    res.render("questions/viewQuestions", {
+      title: "View Questions",
+      customCSS: "viewQuestions.css",
+      questions,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -62,7 +70,11 @@ router.get("/modify-questions", isLoggedIn, async (req, res) => {
     const questions = await Question.find();
     questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
 
-    res.render("questions/modify-questions", { questions });
+    res.render("questions/modify-questions", {
+      title: "Modify Questions",
+      customCSS: "editquestions.css",
+      questions,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -75,6 +87,8 @@ router.get("/modify-questions/:id/edit", isLoggedIn, async (req, res) => {
       res.status(404).send("Question not found");
     } else {
       res.render("questions/update", {
+        title: "Edit Question",
+        customCSS: "editquestions.css",
         question,
         categories,
         questionCategories: question.category,

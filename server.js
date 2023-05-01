@@ -1,6 +1,7 @@
 // Modules and dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
+const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -69,6 +70,7 @@ app.use((req, res, next) => {
 // View engine
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
+app.use(expressLayouts);
 
 // Routers
 app.use(mainRoutes);

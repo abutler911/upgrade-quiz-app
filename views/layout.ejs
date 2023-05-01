@@ -40,8 +40,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/bulma/css/bulma.css" />
-    <% const stylesheet = locals.style || null; %> <% if(stylesheet) { %>
-    <link rel="stylesheet" href="<%= style %>" />
+
+    <% if (customCSS) { %>
+    <link rel="stylesheet" href="/css/<%= customCSS %>" />
     <% } %>
     <script
       src="https://kit.fontawesome.com/082eaaba14.js"
@@ -78,5 +79,9 @@
       }
     </style>
   </head>
-  <body></body>
+  <header><%- include('./partials/header') %></header>
+  <body>
+    <%- body %>
+  </body>
+  <footer><%- include('./partials/footer') %></footer>
 </html>

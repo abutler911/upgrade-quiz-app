@@ -7,13 +7,13 @@ const { isLoggedIn } = require("../middleware/middlewares");
 
 router.get("/notes/view-notes", isLoggedIn, async (req, res) => {
   try {
-    // Get the user's ID from the logged-in user (how you do this depends on how you handle user authentication)
     const userId = req.user._id;
-
-    // Find notes with the user's ID and sort them by createdAt in descending order
     const notes = await Note.find({ user: userId }).sort({ createdAt: -1 });
-
-    res.render("view-notes", { notes });
+    res.render("view-notes", {
+      title: "Notes",
+      customCSS: "view-notes.css",
+      notes,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error retrieving notes...");
@@ -21,7 +21,7 @@ router.get("/notes/view-notes", isLoggedIn, async (req, res) => {
 });
 
 router.get("/notes/create", async (req, res) => {
-  res.render("newNote");
+  res.render("newNote", { title: "Create Note", customCSS: "new-note.css" });
 });
 
 router.post("/notes/create", async (req, res) => {

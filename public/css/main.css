@@ -7,6 +7,7 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
 }
 
 .page-wrapper {
@@ -16,8 +17,7 @@ html, body {
 }
 
 .hero {
-    background-color: #98c1d9;
-    color: #000;
+
     height: 100vh;
 }
 
@@ -53,6 +53,7 @@ html, body {
 
 .title {
     font-size: 3rem;
+    color: #fff !important;
 }
 
 .subtitle {
@@ -60,9 +61,24 @@ html, body {
 }
 
 .title, .subtitle {
-    color: #fff;
+    color: #fff !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 
+}
+
+.navbar-item h3 {
+    font-weight: bold;
+    font-size: larger;
+    /* text-align: center; */
+}
+
+.navbar-item ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.navbar-item li {
+    padding-left: 10px;
 }
 
 footer {

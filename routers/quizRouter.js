@@ -10,7 +10,13 @@ router.get("/quiz", isLoggedIn, async (req, res) => {
   try {
     const questions = await Question.find({});
     const currentQuestion = 0;
-    res.render("quiz", { questions, currentQuestion, categories });
+    res.render("quiz", {
+      title: "QuizTime!",
+      customCSS: "quiz2.css",
+      questions,
+      currentQuestion,
+      categories,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send("Error retrieving questions");

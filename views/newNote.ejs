@@ -1,5 +1,3 @@
-<%- include('./partials/header', {title: 'Notes', style: '../css/new-note.css'})
-%>
 <div class="page-container">
   <section class="section">
     <div class="container">
@@ -45,7 +43,6 @@
       </div>
     </div>
   </section>
-  <%- include('./partials/footer', {footerAttributes: {class: 'footer'}}) %>
 </div>
 <script>
   const quill = new Quill("#quill-editor", {

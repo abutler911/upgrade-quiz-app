@@ -4,7 +4,10 @@ const User = require("../models/User");
 const { isLoggedIn, isAdmin } = require("../middleware/middlewares");
 
 router.get("/awaiting-approval", (req, res) => {
-  res.render("./awaiting-approval");
+  res.render("./awaiting-approval", {
+    title: "Users To Approve",
+    customCSS: "admin.css",
+  });
 });
 
 router.get(
@@ -14,7 +17,11 @@ router.get(
   async (req, res) => {
     try {
       const users = await User.find({ status: "pending" });
-      res.render("admin/users-awaiting-approval", { users });
+      res.render("admin/users-awaiting-approval", {
+        title: "Users to Approve",
+        customCSS: "admin.css",
+        users,
+      });
     } catch (err) {
       console.log(err);
       res.status(500).send("Error fetching users");
