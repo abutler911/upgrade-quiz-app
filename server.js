@@ -1,4 +1,4 @@
-//Modules and dependencies
+// Modules and dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
@@ -7,19 +7,26 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("./config/db");
 const User = require("./models/User");
 const { isLoggedIn, isAdmin } = require("./middleware/middlewares");
-require("dotenv").config();
 const sgMail = require("@sendgrid/mail");
+require("dotenv").config();
+
+// Configure SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Routers
+const mainRoutes = require("./routers/main");
 const briefingsRouter = require("./routers/briefingsRouter");
-const questionRouter = require("./routers/questions");
-const quizRouter = require("./routers/quiz");
+const questionRouter = require("./routers/questionsRouter");
+const quizRouter = require("./routers/quizRouter");
 const categoryRouter = require("./routers/categoryRouter");
-const notesRouter = require("./routers/notes");
+const notesRouter = require("./routers/notesRouter");
 const registerRouters = require("./routers/registerRouters");
+const authRoutes = require("./routers/auth");
+const adminRoutes = require("./routers/admin");
+const logoutRoutes = require("./routers/logout");
+const flowsRoutes = require("./routers/flows");
 
-//Express App Set Up
+// Express app setup
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -34,7 +41,6 @@ app.use((req, res, next) => {
     next();
   }
 });
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -46,14 +52,15 @@ app.use(
     cookie: { secure: false },
   })
 );
-
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport configuration
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// Make user accessible in views
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
@@ -63,107 +70,18 @@ app.use((req, res, next) => {
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
-// Routes
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-app.post("/login", (req, res, next) => {
-  req.body.username = req.body.username.toLowerCase();
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return res.redirect("/login");
-    }
-    if (user.status !== "approved") {
-      return res.status(403).send("Your account is not approved yet.");
-    }
-    req.logIn(user, (err) => {
-      if (err) {
-        return next(err);
-      }
-
-      return res.redirect("/");
-    });
-  })(req, res, next);
-});
-
-app.get("/awaiting-approval", (req, res) => {
-  res.render("./awaiting-approval");
-});
-
-app.get(
-  "/admin/users-awaiting-approval",
-  isLoggedIn,
-  isAdmin,
-  async (req, res) => {
-    try {
-      const users = await User.find({ status: "pending" });
-      res.render("admin/users-awaiting-approval", { users });
-    } catch (err) {
-      console.log(err);
-      res.status(500).send("Error fetching users");
-    }
-  }
-);
-
-app.post(
-  "/admin/approve-user/:userId",
-  isLoggedIn,
-  isAdmin,
-  async (req, res) => {
-    try {
-      await User.findByIdAndUpdate(req.params.userId, { status: "approved" });
-      res.redirect("/admin/users-awaiting-approval");
-    } catch (err) {
-      console.log(err);
-      res.status(500).send("Error updating user status");
-    }
-  }
-);
-
-app.post(
-  "/admin/delete-user/:userId",
-  isLoggedIn,
-  isAdmin,
-  async (req, res) => {
-    try {
-      await User.findByIdAndDelete(req.params.userId);
-      res.redirect("/admin/users-awaiting-approval");
-    } catch (err) {
-      console.log(err);
-      res.status(500).send("Error deleting user");
-    }
-  }
-);
-
-app.get("/flows", isLoggedIn, (req, res) => {
-  res.render("./flows");
-});
-
-app.get("/logout", (req, res) => {
-  req.logout((err) => {
-    if (err) {
-      console.error("Error during logout:", err);
-      return res.status(500).send("Error during logout");
-    }
-    res.redirect("/");
-  });
-});
-
 // Routers
+app.use(mainRoutes);
+app.use(adminRoutes);
 app.use(briefingsRouter);
 app.use(questionRouter);
 app.use(quizRouter);
 app.use(categoryRouter);
 app.use(notesRouter);
 app.use(registerRouters);
+app.use(authRoutes);
+app.use(logoutRoutes);
+app.use(flowsRoutes);
 
 // Start server
 app.listen(port, () => {
