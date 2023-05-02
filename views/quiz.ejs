@@ -1,20 +1,24 @@
 <div class="container">
   <div class="columns is-centered">
-    <div class="column is-one-third">
+    <div class="column is-half-tablet is-one-third-desktop">
       <h1 class="title is-2 has-text-centered">Quiz Time!</h1>
       <div class="field">
         <label class="label" for="categoryFilter">Filter by Category:</label>
         <div class="control">
-          <select
-            id="categoryFilter"
-            name="categoryFilter"
-            class="select2"
-            multiple
-          >
-            <% categories.forEach(function(category, index) { %>
-            <option value="<%= category.value %>"><%= category.name %></option>
-            <% }); %>
-          </select>
+          <div class="select is-multiple">
+            <select
+              id="categoryFilter"
+              name="categoryFilter"
+              class="select2"
+              multiple
+            >
+              <% categories.forEach(function(category, index) { %>
+              <option value="<%= category.value %>">
+                <%= category.name %>
+              </option>
+              <% }); %>
+            </select>
+          </div>
         </div>
       </div>
       <div class="box">
@@ -39,6 +43,7 @@
           </label>
           <br />
           <hr />
+
           <div class="progress-container" id="progress-container">
             <span class="progress-percentage progress-start">0%</span>
             <div id="progress-bar" class="progress-bar"></div>
@@ -46,53 +51,50 @@
           </div>
         </div>
       </div>
+
       <div class="card">
-        <div class="question-container">
+        <div class="question-container content-container">
           <span
             id="question-count"
+            class="has-text-weight-bold has-text-centered"
             style="font-size: 1rem; color: #000; padding: 10px"
           ></span>
           <p id="question" class="card-header-title"></p>
         </div>
-        <hr />
-        <div class="card-content">
-          <div class="answer">
-            <div class="answer-content">
-              <p id="answer" class="card-text answer hide"></p>
-            </div>
-          </div>
-          <hr />
-          <div class="content">
-            <br />
-            <p id="category" class="subtitle is-6"></p>
-          </div>
-          <div class="btn-box">
-            <button
-              id="prev-question"
-              class="nav-btn button is-rounded is-fullwidth"
-              style="background-color: #ee6c4d"
-            >
-              <<<
-            </button>
 
-            <button
-              id="show-answer"
-              class="answer-btn button is-rounded is-fullwidth"
-            >
-              Show Answer
-            </button>
-
-            <button
-              id="next-question"
-              class="nav-btn button is-rounded is-fullwidth"
-              style="background-color: #ee6c4d"
-            >
-              >>>
-            </button>
+        <div class="answer-container content-container">
+          <div class="answer-content">
+            <p id="answer" class="card-text answer hide"></p>
           </div>
         </div>
+      </div>
+
+      <div class="content">
+        <br />
+        <p id="category" class="subtitle is-6"></p>
+      </div>
+      <div class="btn-box">
+        <button
+          id="prev-question"
+          class="nav-btn button is-rounded is-fullwidth"
+        >
+          <<<
+        </button>
+        <button
+          id="show-answer"
+          class="answer-btn button is-rounded is-fullwidth"
+        >
+          Show Answer
+        </button>
+        <button
+          id="next-question"
+          class="nav-btn button is-rounded is-fullwidth"
+        >
+          >>>
+        </button>
       </div>
     </div>
   </div>
 </div>
+
 <script src="js/quiz.js"></script>
