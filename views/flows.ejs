@@ -1,407 +1,444 @@
-<div class="tile is-ancestor is-multiline">
+<!-- <div class="tile is-ancestor is-multiline">
   <div
     class="tile is-parent is-vertical is-12-mobile is-12-tablet is-4-desktop"
-  >
-    <article class="tile is-child box">
-      <div class="title-container">
-        <p class="title">Originating Flow</p>
+  > -->
+
+<section class="section">
+  <div class="container">
+    <div
+      class="columns is-multiline is-variable is-1-mobile is-0-tablet is-3-desktop"
+    >
+      <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+        <article class="tile is-child box">
+          <p class="title">Originating Flow</p>
+
+          <hr />
+          <h5 class="list-item">MCDU<span class="right-side">SET</span></h5>
+          <ul class="item-list">
+            <li class="item-to-check">Electronic CBs - Checked</li>
+            <li class="item-to-check">NAV IDENT - Verify</li>
+            <li class="item-to-check">
+              POS INIT - Initialize Position in MCDU (if needed)
+            </li>
+          </ul>
+          <h5 class="list-item">
+            DVDR CONTROL PANEL<span class="right-side">TESTED</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              Press TEST and verify no EICAS messages
+            </li>
+          </ul>
+          <h5 class="list-item">
+            ELECTRIC AC POWER<span class="right-side">SET</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              IDG 1 Selector <span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              IDG 2 Selector <span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              GPU <span class="right-side">AS REQUIRED</span>
+            </li>
+            <p class="small-note">
+              When the AVAIL light is illuminated and ground power usage
+              appropriate:
+            </p>
+            <li class="small-note-item">
+              GPU <span class="right-side">IN</span>
+            </li>
+
+            <li class="item-to-check">
+              AC BUS TIES Selector <span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              APU GEN <span class="right-side">IN</span>
+            </li>
+          </ul>
+          <h5 class="list-item">
+            ELECTRIC DC POWER<span class="right-side">SET</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              TRU 1 <span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              TRU ESS <span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              TRU 2<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              BATT 1 Selector<span class="right-side">ON</span>
+            </li>
+            <li class="item-to-check">
+              DC BUS TIES<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              BATT 2 Selector<span class="right-side">AUTO</span>
+            </li>
+          </ul>
+          <h5 class="list-item">COCKPIT LIGHTS</h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              MAIN, OVHD & PEDST KNOBS
+              <span class="right-side">AS REQUIRED</span>
+            </li>
+            <li class="item-to-check">
+              ANNUNC TEST Btn<span class="right-side">Press</span>
+            </li>
+            <p class="small-note">
+              Pushbutton striped bars and caption indicators<span
+                class="right-side"
+                >Check</span
+              >
+            </p>
+
+            <li class="item-to-check">
+              DOME <span class="right-side">AS REQUIRED</span>
+            </li>
+          </ul>
+          <h5 class="list-item">FUEL<span class="right-side">CHECKED</span></h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              XFEED Selector<span class="right-side">OFF</span>
+            </li>
+            <li class="item-to-check">
+              DC PUMP Selector<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              AC PUMP 1 Selector<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              AC PUMP 2 Selector<span class="right-side">AUTO</span>
+            </li>
+          </ul>
+          <h5 class="list-item">
+            PASSENGER SIGNS<span class="right-side">SET</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              EMER Lt Selector<span class="right-side">Checked</span>
+            </li>
+            <p
+              class="small-note"
+              style="margin-left: 40px; list-style-type: square"
+            >
+              EMER Lt. Selector<span class="right-side">ON</span>
+            </p>
+            <p class="small-note-item">
+              Ensure EMER Lt. ON and EMER LT NOT ARMED EICAS message annunciate
+            </p>
+            <li class="item-to-check">
+              EMER Lt. Selector<span class="right-side">ARMED</span>
+            </li>
+            <li class="item-to-check">
+              STERILE<span class="right-side">OFF</span>
+            </li>
+            <li class="item-to-check">
+              NO SMOKING<span class="right-side">ON</span>
+            </li>
+            <li class="item-to-check">
+              FSTN BELTS<span class="right-side">OFF</span>
+            </li>
+          </ul>
+          <h5 class="list-item">
+            FIRE EXTINGUISHER<span class="right-side">CHECKED</span>
+          </h5>
+          <ul class="item-list">
+            <p class="small-note">
+              Prior to performing the FIRE panel test, ensure no fire
+              destection/extinguishing system messages display on the EICAS.
+            </p>
+            <p class="small-note">
+              -- This test is not required when previously accomplished during
+              the SAFETY AND POWER-UP checklist.
+            </p>
+            <li class="item-to-check">
+              #1 & #2 EXTG Handles<span class="right-side">STOWED</span>
+            </li>
+            <li class="item-to-check">
+              CARGO SMOKE FWD/AFT<span class="right-side">GUARDED</span>
+            </li>
+            <li class="item-to-check">
+              APU<span class="right-side">GUARDED</span>
+            </li>
+            <li class="item-to-check">
+              APU CONTROL EMER STOP<span class="right-side">GUARDED</span>
+            </li>
+            <li class="item-to-check">
+              FIRE DET TEST BUTTON<span class="right-side">PRESS AND HOLD</span>
+            </li>
+            <ul class="item-list">
+              <p class="small-note">Observe the following:</p>
+              <li class="item-to-check">Aural warning</li>
+              <li class="item-to-check">Fire handles illuminated</li>
+              <li class="item-to-check">
+                CARGO SMOKE FWD/AFT buttons illuminated
+              </li>
+              <li class="item-to-check">APU button illuminated</li>
+              <li class="item-to-check">
+                Upper half of the APU emergency stop button illuminated
+              </li>
+              <li class="item-to-check">WARNING lights flashing</li>
+              <li class="item-to-check">
+                "CARGO FWD (AFT) SMOKE" EICAS message
+              </li>
+              <li class="item-to-check">"APU FIRE" EICAS message</li>
+              <li class="item-to-check">"ENG 1 (2) FIRE" EICAS message</li>
+              <li class="item-to-check">
+                "FIRE" warning annunciation displayed inside ITT indicators
+              </li>
+            </ul>
+          </ul>
+          <h5 class="list-item">
+            APU CONTROL PANEL<span class="right-side">SET</span>
+          </h5>
+          <h5 class="list-item">
+            WINDSHIELD WIPER 1 & 2<span class="right-side">OFF</span>
+          </h5>
+          <h5 class="list-item">
+            EXTERNAL LIGHTS<span class="right-side">AS REQUIRED</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              STROBE<span class="right-side">OFF</span>
+            </li>
+            <li class="item-to-check">
+              RED BCN<span class="right-side">OFF</span>
+            </li>
+            <li class="item-to-check">
+              LOGO<span class="right-side">AS REQUIRED</span>
+            </li>
+            <ul class="item-list">
+              <li class="small-note-item">
+                Daytime<span class="right-side">OFF</span>
+              </li>
+              <li class="small-note-item">
+                Nightime<span class="right-side">ON</span>
+              </li>
+              <p class="small-note-item">
+                During sunset to sunrise and during low vis procedures.
+              </p>
+            </ul>
+            <li class="item-to-check">
+              TAXI NOSE & SIDE<span class="right-side">OFF</span>
+            </li>
+            <li class="item-to-check">
+              INSP<span class="right-side">OFF</span>
+            </li>
+            <li class="item-to-check">
+              LANDING LEFT/NOSE/RIGHT<span class="right-side">OFF</span>
+            </li>
+          </ul>
+          <h5 class="list-item">
+            HYDRAULIC<span class="right-side">CHECKED</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              SYS 1 ENG PUMP SHUTOFF<span class="right-side">GUARDED</span>
+            </li>
+            <li class="item-to-check">
+              PTU Selector<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              SYS 2 ENG PUMP SHUTOFF<span class="right-side">GUARDED</span>
+            </li>
+            <li class="item-to-check">
+              SYS 1 ELEC PUMP<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              SYS 2 ELEC PUMP<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              SYS 3 ELEC PUMP A<span class="right-side">OFF</span>
+            </li>
+            <li class="item-to-check">
+              SYS 3 ELEC PUMP B<span class="right-side">AUTO</span>
+            </li>
+          </ul>
+          <h5 class="list-item">PRESSURIZATION</h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              CABIN ALT Selector<span class="right-side">STOP</span>
+            </li>
+            <li class="item-to-check">
+              MODE Selector<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              DUMP<span class="right-side">GUARDED</span>
+            </li>
+            <li class="item-to-check">
+              LFE Selector<span class="right-side">STOP</span>
+            </li>
+          </ul>
+          <h5 class="list-item">
+            WINDSHIELD HEATING 1 & 2 <span class="right-side">IN</span>
+          </h5>
+          <h5 class="list-item">
+            ICE PROTECTION<span class="right-side">SET</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              ENGINE 1<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              WING<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              ENGINE 2<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              MODE Selector<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              TEST Selector<span class="right-side">OFF</span>
+            </li>
+          </ul>
+
+          <h5 class="list-item">
+            AIR COND / PNEUMATIC<span class="right-side">SET</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              CKPT Knob<span class="right-side">AS REQ</span>
+            </li>
+            <li class="item-to-check">IN<span class="right-side">IN</span></li>
+            <li class="item-to-check">
+              PAX CABIN Knob<span class="right-side">AS REQ</span>
+            </li>
+            <li class="item-to-check">
+              PACK 1<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              PACK 2<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              XBLEED<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              BLEED 1<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              APU BLEED<span class="right-side">IN</span>
+            </li>
+            <li class="item-to-check">
+              BLEED 2<span class="right-side">IN</span>
+            </li>
+          </ul>
+
+          <h5 class="list-item">
+            PASSENGER OXYGEN<span class="right-side">SET</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              MASK DEPLOY Selector<span class="right-side">AUTO</span>
+            </li>
+            <li class="item-to-check">
+              MASK DEPLOYED<span class="right-side">NO LIGHT</span>
+            </li>
+          </ul>
+        </article>
       </div>
-      <hr />
-      <h5 class="list-item">MCDU<span class="right-side">SET</span></h5>
-      <ul class="item-list">
-        <li class="item-to-check">Electronic CBs - Checked</li>
-        <li class="item-to-check">NAV IDENT - Verify</li>
-        <li class="item-to-check">
-          POS INIT - Initialize Position in MCDU (if needed)
-        </li>
-      </ul>
-      <h5 class="list-item">
-        DVDR CONTROL PANEL<span class="right-side">TESTED</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">Press TEST and verify no EICAS messages</li>
-      </ul>
-      <h5 class="list-item">
-        ELECTRIC AC POWER<span class="right-side">SET</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          IDG 1 Selector <span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          IDG 2 Selector <span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          GPU <span class="right-side">AS REQUIRED</span>
-        </li>
-        <p class="small-note">
-          When the AVAIL light is illuminated and ground power usage
-          appropriate:
-        </p>
-        <li class="small-note-item">GPU <span class="right-side">IN</span></li>
-
-        <li class="item-to-check">
-          AC BUS TIES Selector <span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          APU GEN <span class="right-side">IN</span>
-        </li>
-      </ul>
-      <h5 class="list-item">
-        ELECTRIC DC POWER<span class="right-side">SET</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          TRU 1 <span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          TRU ESS <span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">TRU 2<span class="right-side">AUTO</span></li>
-        <li class="item-to-check">
-          BATT 1 Selector<span class="right-side">ON</span>
-        </li>
-        <li class="item-to-check">
-          DC BUS TIES<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          BATT 2 Selector<span class="right-side">AUTO</span>
-        </li>
-      </ul>
-      <h5 class="list-item">COCKPIT LIGHTS</h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          MAIN, OVHD & PEDST KNOBS
-          <span class="right-side">AS REQUIRED</span>
-        </li>
-        <li class="item-to-check">
-          ANNUNC TEST Btn<span class="right-side">Press</span>
-        </li>
-        <p class="small-note">
-          Pushbutton striped bars and caption indicators<span class="right-side"
-            >Check</span
-          >
-        </p>
-
-        <li class="item-to-check">
-          DOME <span class="right-side">AS REQUIRED</span>
-        </li>
-      </ul>
-      <h5 class="list-item">FUEL<span class="right-side">CHECKED</span></h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          XFEED Selector<span class="right-side">OFF</span>
-        </li>
-        <li class="item-to-check">
-          DC PUMP Selector<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          AC PUMP 1 Selector<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          AC PUMP 2 Selector<span class="right-side">AUTO</span>
-        </li>
-      </ul>
-      <h5 class="list-item">
-        PASSENGER SIGNS<span class="right-side">SET</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          EMER Lt Selector<span class="right-side">Checked</span>
-        </li>
-        <p
-          class="small-note"
-          style="margin-left: 40px; list-style-type: square"
-        >
-          EMER Lt. Selector<span class="right-side">ON</span>
-        </p>
-        <p class="small-note-item">
-          Ensure EMER Lt. ON and EMER LT NOT ARMED EICAS message annunciate
-        </p>
-        <li class="item-to-check">
-          EMER Lt. Selector<span class="right-side">ARMED</span>
-        </li>
-        <li class="item-to-check">
-          STERILE<span class="right-side">OFF</span>
-        </li>
-        <li class="item-to-check">
-          NO SMOKING<span class="right-side">ON</span>
-        </li>
-        <li class="item-to-check">
-          FSTN BELTS<span class="right-side">OFF</span>
-        </li>
-      </ul>
-      <h5 class="list-item">
-        FIRE EXTINGUISHER<span class="right-side">CHECKED</span>
-      </h5>
-      <ul class="item-list">
-        <p class="small-note">
-          Prior to performing the FIRE panel test, ensure no fire
-          destection/extinguishing system messages display on the EICAS.
-        </p>
-        <p class="small-note">
-          -- This test is not required when previously accomplished during the
-          SAFETY AND POWER-UP checklist.
-        </p>
-        <li class="item-to-check">
-          #1 & #2 EXTG Handles<span class="right-side">STOWED</span>
-        </li>
-        <li class="item-to-check">
-          CARGO SMOKE FWD/AFT<span class="right-side">GUARDED</span>
-        </li>
-        <li class="item-to-check">
-          APU<span class="right-side">GUARDED</span>
-        </li>
-        <li class="item-to-check">
-          APU CONTROL EMER STOP<span class="right-side">GUARDED</span>
-        </li>
-        <li class="item-to-check">
-          FIRE DET TEST BUTTON<span class="right-side">PRESS AND HOLD</span>
-        </li>
-        <ul class="item-list">
-          <p class="small-note">Observe the following:</p>
-          <li class="item-to-check">Aural warning</li>
-          <li class="item-to-check">Fire handles illuminated</li>
-          <li class="item-to-check">CARGO SMOKE FWD/AFT buttons illuminated</li>
-          <li class="item-to-check">APU button illuminated</li>
-          <li class="item-to-check">
-            Upper half of the APU emergency stop button illuminated
-          </li>
-          <li class="item-to-check">WARNING lights flashing</li>
-          <li class="item-to-check">"CARGO FWD (AFT) SMOKE" EICAS message</li>
-          <li class="item-to-check">"APU FIRE" EICAS message</li>
-          <li class="item-to-check">"ENG 1 (2) FIRE" EICAS message</li>
-          <li class="item-to-check">
-            "FIRE" warning annunciation displayed inside ITT indicators
-          </li>
-        </ul>
-      </ul>
-      <h5 class="list-item">
-        APU CONTROL PANEL<span class="right-side">SET</span>
-      </h5>
-      <h5 class="list-item">
-        WINDSHIELD WIPER 1 & 2<span class="right-side">OFF</span>
-      </h5>
-      <h5 class="list-item">
-        EXTERNAL LIGHTS<span class="right-side">AS REQUIRED</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">STROBE<span class="right-side">OFF</span></li>
-        <li class="item-to-check">
-          RED BCN<span class="right-side">OFF</span>
-        </li>
-        <li class="item-to-check">
-          LOGO<span class="right-side">AS REQUIRED</span>
-        </li>
-        <ul class="item-list">
-          <li class="small-note-item">
-            Daytime<span class="right-side">OFF</span>
-          </li>
-          <li class="small-note-item">
-            Nightime<span class="right-side">ON</span>
-          </li>
-          <p class="small-note-item">
-            During sunset to sunrise and during low vis procedures.
-          </p>
-        </ul>
-        <li class="item-to-check">
-          TAXI NOSE & SIDE<span class="right-side">OFF</span>
-        </li>
-        <li class="item-to-check">INSP<span class="right-side">OFF</span></li>
-        <li class="item-to-check">
-          LANDING LEFT/NOSE/RIGHT<span class="right-side">OFF</span>
-        </li>
-      </ul>
-      <h5 class="list-item">
-        HYDRAULIC<span class="right-side">CHECKED</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          SYS 1 ENG PUMP SHUTOFF<span class="right-side">GUARDED</span>
-        </li>
-        <li class="item-to-check">
-          PTU Selector<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          SYS 2 ENG PUMP SHUTOFF<span class="right-side">GUARDED</span>
-        </li>
-        <li class="item-to-check">
-          SYS 1 ELEC PUMP<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          SYS 2 ELEC PUMP<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          SYS 3 ELEC PUMP A<span class="right-side">OFF</span>
-        </li>
-        <li class="item-to-check">
-          SYS 3 ELEC PUMP B<span class="right-side">AUTO</span>
-        </li>
-      </ul>
-      <h5 class="list-item">PRESSURIZATION</h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          CABIN ALT Selector<span class="right-side">STOP</span>
-        </li>
-        <li class="item-to-check">
-          MODE Selector<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          DUMP<span class="right-side">GUARDED</span>
-        </li>
-        <li class="item-to-check">
-          LFE Selector<span class="right-side">STOP</span>
-        </li>
-      </ul>
-      <h5 class="list-item">
-        WINDSHIELD HEATING 1 & 2 <span class="right-side">IN</span>
-      </h5>
-      <h5 class="list-item">
-        ICE PROTECTION<span class="right-side">SET</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          ENGINE 1<span class="right-side">IN</span>
-        </li>
-        <li class="item-to-check">WING<span class="right-side">IN</span></li>
-        <li class="item-to-check">
-          ENGINE 2<span class="right-side">IN</span>
-        </li>
-        <li class="item-to-check">
-          MODE Selector<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          TEST Selector<span class="right-side">OFF</span>
-        </li>
-      </ul>
-
-      <h5 class="list-item">
-        AIR COND / PNEUMATIC<span class="right-side">SET</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          CKPT Knob<span class="right-side">AS REQ</span>
-        </li>
-        <li class="item-to-check">IN<span class="right-side">IN</span></li>
-        <li class="item-to-check">
-          PAX CABIN Knob<span class="right-side">AS REQ</span>
-        </li>
-        <li class="item-to-check">PACK 1<span class="right-side">IN</span></li>
-        <li class="item-to-check">PACK 2<span class="right-side">IN</span></li>
-        <li class="item-to-check">XBLEED<span class="right-side">IN</span></li>
-        <li class="item-to-check">BLEED 1<span class="right-side">IN</span></li>
-        <li class="item-to-check">
-          APU BLEED<span class="right-side">IN</span>
-        </li>
-        <li class="item-to-check">BLEED 2<span class="right-side">IN</span></li>
-      </ul>
-
-      <h5 class="list-item">
-        PASSENGER OXYGEN<span class="right-side">SET</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          MASK DEPLOY Selector<span class="right-side">AUTO</span>
-        </li>
-        <li class="item-to-check">
-          MASK DEPLOYED<span class="right-side">NO LIGHT</span>
-        </li>
-      </ul>
-    </article>
+      <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+        <article class="tile is-child box">
+          <p class="title">Before Start Flow</p>
+          <hr />
+          <h5 class="list-item">
+            PARKING BRAKE ON<span class="right-side">ON</span>
+          </h5>
+          <p class="small-note">Verify parking brake light is illuminated</p>
+          <h5 class="list-item">
+            CREW O2<span class="right-side">CHECK</span>
+          </h5>
+          <ul class="item-list">
+            <p class="small-note">
+              Check mask flow before each flight. Check O2 qty. on MFD status.
+            </p>
+            <li class="item-to-check">Green for three crewmembers</li>
+            <li class="item-to-check">Cyan for two crewmembers</li>
+            <li class="item-to-check">Amber requires service</li>
+          </ul>
+          <h5 class="list-item">PFD<span class="right-side">CHECK</span></h5>
+          <ul class="item-list">
+            <li class="item-to-check">FMA: Clear</li>
+            <li class="item-to-check">Airspeed Tape: No speed indicated</li>
+            <li class="item-to-check">EADI: Level and no flags</li>
+            <li class="item-to-check">ALT SEL: Confirm initial altitude</li>
+            <li class="item-to-check">VSI: Near 0</li>
+            <li class="item-to-check">Heading Bug: Set to heading of runway</li>
+            <li class="item-to-check">HSI: Dep course and NAV source</li>
+          </ul>
+          <h5 class="list-item">MFD<span class="right-side">CHECK</span></h5>
+          <ul class="item-list">
+            Check green:
+            <li class="item-to-check">Engine Oil Level</li>
+            <li class="item-to-check">Emer Brake Accumulator Level</li>
+            <p class="small-note">
+              Set/Verify MFD options: Radar, TCAS, Navaids, Terrain, Waypoints,
+              etc.
+            </p>
+          </ul>
+          <h5 class="list-item">EICAS<span class="right-side">CHECK</span></h5>
+          <ul class="item-list">
+            <p class="small-note">
+              Compare release fuel to fuel on board and verify within balance.
+            </p>
+          </ul>
+          <h5 class="list-item">
+            FSTN BELTS Sign<span class="right-side">ON</span>
+          </h5>
+        </article>
+      </div>
+      <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+        <article class="tile is-child box">
+          <p class="title">Engine Start Flow</p>
+          <hr />
+          <h5 class="list-item">
+            SEATBELTS/HARNESSES<span class="right-side">ON</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              Ensure seatbelts and shoulder harnesses are secured, rudder pedals
+              and seat are properly adjusted. If the jumpseat is occupied,
+              ensure the ACMs seat belt and shoulder harness are secured.
+            </li>
+          </ul>
+          <h5 class="list-item">
+            AUTOBRAKE<span class="right-side">RTO</span>
+          </h5>
+          <h5 class="list-item">
+            STERILE SIGN<span class="right-side">ON</span>
+          </h5>
+          <h5 class="list-item">
+            DOORS/WINDOWS<span class="right-side">CLOSED&LOCKED</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              Verify the window is closed and locked, the flight deck door is
+              closed and locked, the cockpit door control unlocked light is out
+              and all doors show green on the status page.
+            </li>
+          </ul>
+          <h5 class="list-item">
+            PARKING BRAKE<span class="right-side">As Req</span>
+          </h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              DO NOT release parking brake without verification from the ground
+              crew.
+            </li>
+          </ul>
+          <h5 class="list-item">STEERING<span class="right-side">OFF</span></h5>
+          <ul class="item-list">
+            <li class="item-to-check">
+              Verify the STEER OFF message is shown on the EICAS
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
   </div>
-  <div
-    class="tile is-parent is-vertical is-12-mobile is-12-tablet is-4-desktop"
-  >
-    <article class="tile is-child box">
-      <p class="title">Before Start Flow</p>
-      <hr />
-      <h5 class="list-item">
-        PARKING BRAKE ON<span class="right-side">ON</span>
-      </h5>
-      <p class="small-note">Verify parking brake light is illuminated</p>
-      <h5 class="list-item">CREW O2<span class="right-side">CHECK</span></h5>
-      <ul class="item-list">
-        <p class="small-note">
-          Check mask flow before each flight. Check O2 qty. on MFD status.
-        </p>
-        <li class="item-to-check">Green for three crewmembers</li>
-        <li class="item-to-check">Cyan for two crewmembers</li>
-        <li class="item-to-check">Amber requires service</li>
-      </ul>
-      <h5 class="list-item">PFD<span class="right-side">CHECK</span></h5>
-      <ul class="item-list">
-        <li class="item-to-check">FMA: Clear</li>
-        <li class="item-to-check">Airspeed Tape: No speed indicated</li>
-        <li class="item-to-check">EADI: Level and no flags</li>
-        <li class="item-to-check">ALT SEL: Confirm initial altitude</li>
-        <li class="item-to-check">VSI: Near 0</li>
-        <li class="item-to-check">Heading Bug: Set to heading of runway</li>
-        <li class="item-to-check">HSI: Dep course and NAV source</li>
-      </ul>
-      <h5 class="list-item">MFD<span class="right-side">CHECK</span></h5>
-      <ul class="item-list">
-        Check green:
-        <li class="item-to-check">Engine Oil Level</li>
-        <li class="item-to-check">Emer Brake Accumulator Level</li>
-        <p class="small-note">
-          Set/Verify MFD options: Radar, TCAS, Navaids, Terrain, Waypoints, etc.
-        </p>
-      </ul>
-      <h5 class="list-item">EICAS<span class="right-side">CHECK</span></h5>
-      <ul class="item-list">
-        <p class="small-note">
-          Compare release fuel to fuel on board and verify within balance.
-        </p>
-      </ul>
-      <h5 class="list-item">
-        FSTN BELTS Sign<span class="right-side">ON</span>
-      </h5>
-    </article>
-  </div>
-
-  <div
-    class="tile is-parent is-vertical is-12-mobile is-12-tablet is-4-desktop"
-  >
-    <article class="tile is-child box">
-      <p class="title">Engine Start Flow</p>
-      <hr />
-      <h5 class="list-item">
-        SEATBELTS/HARNESSES<span class="right-side">ON</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          Ensure seatbelts and shoulder harnesses are secured, rudder pedals and
-          seat are properly adjusted. If the jumpseat is occupied, ensure the
-          ACMs seat belt and shoulder harness are secured.
-        </li>
-      </ul>
-      <h5 class="list-item">AUTOBRAKE<span class="right-side">RTO</span></h5>
-      <h5 class="list-item">STERILE SIGN<span class="right-side">ON</span></h5>
-      <h5 class="list-item">
-        DOORS/WINDOWS<span class="right-side">CLOSED&LOCKED</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          Verify the window is closed and locked, the flight deck door is closed
-          and locked, the cockpit door control unlocked light is out and all
-          doors show green on the status page.
-        </li>
-      </ul>
-      <h5 class="list-item">
-        PARKING BRAKE<span class="right-side">As Req</span>
-      </h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          DO NOT release parking brake without verification from the ground
-          crew.
-        </li>
-      </ul>
-      <h5 class="list-item">STEERING<span class="right-side">OFF</span></h5>
-      <ul class="item-list">
-        <li class="item-to-check">
-          Verify the STEER OFF message is shown on the EICAS
-        </li>
-      </ul>
-    </article>
-  </div>
-</div>
+</section>
