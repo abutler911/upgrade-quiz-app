@@ -1,14 +1,16 @@
-.container {
-    border: 1px solid red;
-    height: 200px;
+body {
+    background-color: rgba(100, 149, 237, 0.5);
 }
 
 .tile {
-    margin: 20px;
+    margin: 10px;
+
 }
 
+
+
 hr {
-    background-color: #000;
+    background-color: #000 !important;
 }
 
 .box {
@@ -17,16 +19,16 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-h5 {
-    font-size: 0.8rem;
-    font-weight: 900;
+.list-item {
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
-ul {
+.item-list {
     list-style-type: square;
 }
 
-li {
+.item-to-check {
     margin-left: 20px;
     font-size: 0.8rem;
 }
@@ -50,9 +52,24 @@ li {
     max-width: 100%;
 }
 
-@media screen and (min-width: 1124px) {
-    .tile.is-vertical.is-parent {
-        width: 33.33%;
-        display: block;
+/* Mobile */
+.tile.is-12-mobile {
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+    .tile.is-12-tablet {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+    .tile.is-4-desktop {
+        flex-basis: 33.3333%;
+        max-width: 33.3333%;
     }
 }
