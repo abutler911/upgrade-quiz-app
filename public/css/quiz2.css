@@ -47,7 +47,7 @@ html, body {
 
 #answer {
     font-weight: 700;
-    color: #000;
+    color: #fff;
 }
 
 #category {
@@ -145,7 +145,8 @@ html, body {
 }
 
 #question {
-    color: #000;
+    color: #fff;
+    font-weight: 700;
 }
 
 .hidden-checkbox {
@@ -183,8 +184,8 @@ html, body {
     content: "";
     position: absolute;
     display: none;
-    left: 9px;
-    top: 5px;
+    left: 7px;
+    top: 3px;
     width: 5px;
     height: 10px;
     border: solid white;
@@ -208,7 +209,7 @@ html, body {
 .card,
 .box {
     background-color: rgba(243, 243, 243, 0.8) !important;
-    border: 1px solid #000;
+    border: 1px solid #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
 }
