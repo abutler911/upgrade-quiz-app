@@ -13,11 +13,17 @@ function setupEventListeners() {
 
 let questions = [];
 let currentQuestionIndex = 0;
+//NEW CODE
+function sortQuestionsByRating(questions) {
+  return questions.sort((a, b) => a.rating - b.rating);
+}
 
 async function fetchQuestions() {
   try {
     const response = await fetch("/api/questions");
     questions = await response.json();
+
+    questions = sortQuestionsByRating(questions); // NEW CODE
     displayQuestion(currentQuestionIndex);
   } catch (error) {
     console.error("Error fetching questions:", error);
@@ -30,9 +36,10 @@ function displayQuestion() {
   const categoryElement = document.getElementById("category");
 
   if (questions.length > 0 && currentQuestionIndex < questions.length) {
-    questionElement.innerText = questions[currentQuestionIndex].question;
-    answerElement.innerText = questions[currentQuestionIndex].answer;
-    categoryElement.innerText = `Categories(s): ${questions[currentQuestionIndex].category}`;
+    const currentQuestion = questions[currentQuestionIndex];
+    questionElement.innerText = currentQuestion.question;
+    answerElement.innerText = currentQuestion.answer;
+    categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
   } else {
     questionElement.innerText = "No questions to display";
     answerElement.innerText = "No answers to display";
@@ -114,6 +121,7 @@ function toggleAnswersWithCheckbox(showAnswersCheckbox) {
 
 function navigateToNextQuestion() {
   if (currentQuestionIndex < questions.length - 1) {
+    updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
     currentQuestionIndex++;
     displayQuestion(currentQuestionIndex);
     hideAnswer();
@@ -122,6 +130,7 @@ function navigateToNextQuestion() {
 
 function navigateToPreviousQuestion() {
   if (currentQuestionIndex > 0) {
+    updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
     hideAnswer();
@@ -195,3 +204,40 @@ ratings.forEach((rating) => {
     e.target.classList.add("selected");
   });
 });
+
+const ratingElements = document.querySelectorAll(".rating span");
+
+ratingElements.forEach((ratingElement) => {
+  ratingElement.addEventListener("click", (event) => {
+    const ratingValue = event.target.dataset.value;
+    setRating(ratingValue);
+  });
+});
+
+let currentRating = 0;
+
+function setRating(ratingValue) {
+  currentRating = parseInt(ratingValue, 10);
+  ratingElements.forEach((ratingElement, index) => {
+    ratingElement.classList.toggle("selected", index < currentRating);
+  });
+}
+
+async function updateQuestionRating(questionId, rating) {
+  try {
+    const response = await fetch(`/question/${questionId}/rating`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ questionId, rating }),
+    });
+    if (response.ok) {
+      console.log("Question rating updated successfully");
+    } else {
+      console.error("Error updating question rating:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error updating question rating:", error);
+  }
+}

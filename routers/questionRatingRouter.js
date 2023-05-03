@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const Question = require("../models/Question");
+const QuestionRating = require("../models/QuestionRating");
 
 router.post("/question/:questionId/rating", async (req, res) => {
   const { questionId } = req.params;

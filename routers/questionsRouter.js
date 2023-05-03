@@ -54,7 +54,7 @@ router.get("/view-questions", isLoggedIn, async (req, res) => {
   }
 });
 
-//API route
+// API route
 router.get("/api/questions", async (req, res) => {
   try {
     const questions = await Question.find();
@@ -63,6 +63,37 @@ router.get("/api/questions", async (req, res) => {
     res.status(500).json({ message: "Error fetching questions" });
   }
 });
+
+// router.get("/api/questions", async (req, res) => {
+//   const { userId } = req.query;
+
+//   try {
+//     const allQuestions = await Question.find();
+
+//     if (userId) {
+//       const user = await User.findById(userId).populate("questionRatings");
+
+//       // Implement your spaced repetition algorithm here
+//       // Example: sort questions based on user's ratings
+//       const sortedQuestions = allQuestions.sort((a, b) => {
+//         const ratingA =
+//           user.questionRatings.find((qr) => qr.questionId.toString() === a.id)
+//             ?.rating || 0;
+//         const ratingB =
+//           user.questionRatings.find((qr) => qr.questionId.toString() === b.id)
+//             ?.rating || 0;
+//         return ratingA - ratingB;
+//       });
+
+//       res.status(200).json({ questions: sortedQuestions });
+//     } else {
+//       res.status(200).json({ questions: allQuestions });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Error fetching questions" });
+//   }
+// });
 
 // Edit and delete routes
 router.get("/modify-questions", isLoggedIn, async (req, res) => {
