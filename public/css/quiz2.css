@@ -257,3 +257,15 @@ html, body {
 .rating span.selected {
     color: #2812f3;
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .main-wrapper {
+        height: auto;
+        min-height: 100vh;
+    }
+}
