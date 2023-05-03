@@ -26,6 +26,7 @@ const authRoutes = require("./routers/auth");
 const adminRoutes = require("./routers/admin");
 const logoutRoutes = require("./routers/logout");
 const flowsRoutes = require("./routers/flows");
+const questionRatingRouter = require("./routers/questionRatingRouter");
 
 // Express app setup
 const app = express();
@@ -84,6 +85,7 @@ app.use(registerRouters);
 app.use(authRoutes);
 app.use(logoutRoutes);
 app.use(flowsRoutes);
+app.use(questionRatingRouter);
 
 // Start server
 app.listen(port, () => {

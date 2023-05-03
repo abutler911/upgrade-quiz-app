@@ -17,6 +17,12 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  questionRatings: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "QuestionRating",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose);

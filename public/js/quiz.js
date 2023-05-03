@@ -186,3 +186,12 @@ function updateQuestionCount() {
   const questionCount = document.getElementById("question-count");
   questionCount.innerHTML = `Question: ${completedQuestions} of ${totalQuestions}`;
 }
+
+const ratings = document.querySelectorAll(".rating span");
+
+ratings.forEach((rating) => {
+  rating.addEventListener("click", (e) => {
+    ratings.forEach((r) => r.classList.remove("selected"));
+    e.target.classList.add("selected");
+  });
+});
