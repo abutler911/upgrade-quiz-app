@@ -12,7 +12,7 @@ router.get("/quiz", isLoggedIn, async (req, res) => {
     const currentQuestion = 0;
     res.render("quiz", {
       title: "QuizTime!",
-      customCSS: "quiz2.css",
+      customCSS: "quiz.css",
       questions,
       currentQuestion,
       categories,
