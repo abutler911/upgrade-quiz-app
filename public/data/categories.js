@@ -82,7 +82,7 @@ const categories = [
   {
     id: 17,
     name: "Flight Crew Requirements",
-    value: "Flight Crew Requirements",
+    value: "flight-crew-requirements",
   },
   {
     id: 18,
@@ -178,6 +178,11 @@ const categories = [
     id: 35,
     name: "Warning Systems",
     value: "warning-systems",
+  },
+  {
+    id: 36,
+    name: "Hazardous Materials",
+    value: "hazardous-materials",
   },
 ];
 
