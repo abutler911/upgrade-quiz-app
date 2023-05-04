@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
         ref: "Question",
       },
       rating: Number,
+      lastSeen: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
 });

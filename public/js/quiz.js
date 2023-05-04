@@ -34,6 +34,7 @@ async function fetchQuestions() {
   try {
     const response = await fetch("/api/questions");
     questions = await response.json();
+    console.log("Questions:", questions);
     const questionIds = questions.map((question) => question._id);
     const ratings = await fetchRatings(questionIds);
 
@@ -75,6 +76,7 @@ function displayQuestion() {
     // setRating(currentQuestion.rating || 0);
     // document.getElementById("difficulty").value = currentQuestion.difficulty;
     setDifficultyStars(currentQuestion.difficulty);
+    updateLastSeen(currentQuestion._id);
   } else {
     questionElement.innerText = "No questions to display";
     answerElement.innerText = "No answers to display";
@@ -330,5 +332,24 @@ async function updateQuestionRating(questionId, rating) {
     }
   } catch (error) {
     console.error("Error updating question rating:", error);
+  }
+}
+
+async function updateLastSeen(questionId) {
+  try {
+    const response = await fetch(`/api/question/${questionId}/seen`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      console.log("Question lastSeen updated successfully");
+    } else {
+      console.error("Error updating question lastSeen:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error updating question lastSeen:", error);
   }
 }

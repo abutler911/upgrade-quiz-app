@@ -88,23 +88,68 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
 
     // Create a Map for user-specific question ratings
     const userQuestionRatingsMap = new Map();
-    user.questionRatings.forEach(({ question, rating }) => {
-      userQuestionRatingsMap.set(question._id.toString(), rating);
+    user.questionRatings.forEach(({ question, rating, lastSeen }) => {
+      userQuestionRatingsMap.set(question._id.toString(), { rating, lastSeen });
     });
 
     const questions = await Question.find({}).lean();
 
     // Update questions with user-specific ratings
     questions.forEach((question) => {
-      const userRating = userQuestionRatingsMap.get(question._id.toString());
-      if (userRating) {
-        question.difficulty = userRating;
+      const userQuestionData = userQuestionRatingsMap.get(
+        question._id.toString()
+      );
+      if (userQuestionData) {
+        question.difficulty = userQuestionData.rating;
+        question.lastSeen = userQuestionData.lastSeen;
       }
     });
 
+    questions.sort((a, b) => {
+      const now = new Date();
+      const aLastSeenDays = (now - a.lastSeen) / (1000 * 60 * 60 * 24);
+      const bLastSeenDays = (now - b.lastSeen) / (1000 * 60 * 60 * 24);
+      const aPriority = aLastSeenDays * a.difficulty;
+      const bPriority = bLastSeenDays * b.difficulty;
+
+      return bPriority - aPriority;
+    });
     res.json(questions);
   } catch (error) {
+    console.error("Error fetching questions:", error);
     res.status(500).json({ message: "Error fetching questions" });
+  }
+});
+
+router.post("/api/question/:id/seen", isLoggedIn, async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user._id;
+
+  try {
+    const user = await User.findById(userId);
+
+    // Find the existing question rating
+    const existingQuestionRating = user.questionRatings.find(
+      (qr) => qr.question.toString() === id
+    );
+
+    if (existingQuestionRating) {
+      // Update the lastSeen date for the question
+      existingQuestionRating.lastSeen = new Date();
+    } else {
+      // Add a new entry to the user's questionRatings with the current date as lastSeen
+      user.questionRatings.push({
+        question: id,
+        rating: 1, // Set a default rating if the user hasn't rated the question yet
+        lastSeen: new Date(),
+      });
+    }
+
+    await user.save();
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Error updating lastSeen for question:", error);
+    res.status(500).send("Error updating lastSeen for question");
   }
 });
 
