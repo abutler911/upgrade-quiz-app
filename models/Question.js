@@ -16,6 +16,12 @@ const QuestionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  difficulty: {
+    type: Number,
+    default: 3,
+    min: 1,
+    max: 5,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

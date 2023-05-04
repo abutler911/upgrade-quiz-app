@@ -72,7 +72,9 @@ function displayQuestion() {
     questionElement.innerText = currentQuestion.question;
     answerElement.innerText = currentQuestion.answer;
     categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
-    setRating(currentQuestion.rating || 0);
+    // setRating(currentQuestion.rating || 0);
+    // document.getElementById("difficulty").value = currentQuestion.difficulty;
+    setDifficultyStars(currentQuestion.difficulty);
   } else {
     questionElement.innerText = "No questions to display";
     answerElement.innerText = "No answers to display";
@@ -81,6 +83,18 @@ function displayQuestion() {
 
   updateProgressBar();
   updateQuestionCount();
+}
+
+function setDifficultyStars(difficulty) {
+  const starElements = document.querySelectorAll(".rating span");
+
+  starElements.forEach((starElement, index) => {
+    if (index < difficulty) {
+      starElement.classList.add("selected");
+    } else {
+      starElement.classList.remove("selected");
+    }
+  });
 }
 
 function setupShowAnswerButton() {
@@ -171,9 +185,32 @@ function navigateToPreviousQuestion() {
 }
 
 function setupSubmitRatingButton() {
-  document.getElementById("submit-rating").addEventListener("click", () => {
-    submitRating();
+  const submitRatingButton = document.getElementById("submit-rating");
+  submitRatingButton.addEventListener("click", () => {
+    submitDifficulty();
   });
+}
+async function submitDifficulty() {
+  const questionId = questions[currentQuestionIndex]._id;
+  const difficulty = document.querySelectorAll(".rating span.selected").length;
+
+  try {
+    const response = await fetch(`/api/question/${questionId}/difficulty`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ difficulty }),
+    });
+
+    if (response.ok) {
+      console.log("Question difficulty updated successfully");
+    } else {
+      console.error("Error updating question difficulty:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error updating question difficulty:", error);
+  }
 }
 
 function hideAnswer() {
@@ -241,6 +278,7 @@ ratings.forEach((rating) => {
   rating.addEventListener("click", (e) => {
     ratings.forEach((r) => r.classList.remove("selected"));
     e.target.classList.add("selected");
+    setDifficultyStars(e.target.dataset.value);
   });
 });
 

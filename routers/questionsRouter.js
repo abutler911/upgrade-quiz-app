@@ -94,6 +94,18 @@ router.get("/api/questions", async (req, res) => {
 //     res.status(500).json({ message: "Error fetching questions" });
 //   }
 // });
+router.post("/api/question/:id/difficulty", isLoggedIn, async (req, res) => {
+  const { id } = req.params;
+  const { difficulty } = req.body;
+
+  try {
+    await Question.findByIdAndUpdate(id, { difficulty });
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Error updating question difficulty:", error);
+    res.status(500).send("Error updating question difficulty");
+  }
+});
 
 // Edit and delete routes
 router.get("/modify-questions", isLoggedIn, async (req, res) => {

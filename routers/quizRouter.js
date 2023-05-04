@@ -16,6 +16,7 @@ router.get("/quiz", isLoggedIn, async (req, res) => {
       questions,
       currentQuestion,
       categories,
+      difficulty: questions.map((q) => q.difficulty),
     });
   } catch (error) {
     console.log(error);
