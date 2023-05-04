@@ -205,12 +205,21 @@ async function submitDifficulty() {
 
     if (response.ok) {
       console.log("Question difficulty updated successfully");
+      updateQuestionRating(questionId, difficulty);
     } else {
       console.error("Error updating question difficulty:", response.statusText);
     }
   } catch (error) {
     console.error("Error updating question difficulty:", error);
   }
+}
+function updateQuestionRating(questionId, rating) {
+  // Update the user's rating for the question in the frontend
+  const question = questions.find((q) => q._id === questionId);
+  if (!question.userRating) {
+    question.userRating = {};
+  }
+  question.userRating.rating = rating;
 }
 
 function hideAnswer() {

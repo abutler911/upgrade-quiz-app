@@ -19,8 +19,11 @@ const UserSchema = new mongoose.Schema({
   },
   questionRatings: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "QuestionRating",
+      question: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Question",
+      },
+      rating: Number,
     },
   ],
 });

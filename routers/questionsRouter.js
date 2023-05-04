@@ -4,6 +4,7 @@ const categories = require("../public/data/categories");
 const Question = require("../models/Question");
 const { capitalizeAndPunctuate } = require("../public/data/capitalizetext");
 const { isLoggedIn } = require("../middleware/middlewares");
+const User = require("../models/User");
 
 router.get("/questions/create", (req, res) => {
   res.render("questions/createQuestions", {
@@ -55,21 +56,108 @@ router.get("/view-questions", isLoggedIn, async (req, res) => {
 });
 
 // API route
-router.get("/api/questions", async (req, res) => {
+// router.get("/api/questions", async (req, res) => {
+//   try {
+//     const questions = await Question.find();
+//     res.json(questions);
+//   } catch (error) {
+//     res.status(500).json({ message: "Error fetching questions" });
+//   }
+// });
+// router.get("/api/questions", isLoggedIn, async (req, res) => {
+//   try {
+//     const userId = req.user._id;
+//     const user = await User.findById(userId);
+//     const userQuestionRatings = user.questionRatings || {};
+
+//     const questions = await Question.find({}).lean();
+
+//     // Update questions with user-specific ratings
+//     questions.forEach((question) => {
+//       const userRating = userQuestionRatings[question._id];
+//       if (userRating) {
+//         question.difficulty = userRating;
+//       }
+//     });
+router.get("/api/questions", isLoggedIn, async (req, res) => {
   try {
-    const questions = await Question.find();
+    const userId = req.user._id;
+    const user = await User.findById(userId).populate(
+      "questionRatings.question"
+    );
+
+    // Create a Map for user-specific question ratings
+    const userQuestionRatingsMap = new Map();
+    user.questionRatings.forEach(({ question, rating }) => {
+      userQuestionRatingsMap.set(question._id.toString(), rating);
+    });
+
+    const questions = await Question.find({}).lean();
+
+    // Update questions with user-specific ratings
+    questions.forEach((question) => {
+      const userRating = userQuestionRatingsMap.get(question._id.toString());
+      if (userRating) {
+        question.difficulty = userRating;
+      }
+    });
+
     res.json(questions);
   } catch (error) {
     res.status(500).json({ message: "Error fetching questions" });
   }
 });
 
+//     res.json(questions);
+//   } catch (error) {
+//     res.status(500).json({ message: "Error fetching questions" });
+//   }
+// });
+
+// router.post("/api/question/:id/difficulty", isLoggedIn, async (req, res) => {
+//   const { id } = req.params;
+//   const { difficulty } = req.body;
+//   const userId = req.user._id;
+
+//   try {
+// await Question.findByIdAndUpdate(id, { difficulty });
+// res.sendStatus(200);
+//     await User.findByIdAndUpdate(userId, {
+//       $push: {
+//         questionRatings: {
+//           question: id,
+//           rating: difficulty,
+//         },
+//       },
+//     });
+//     res.sendStatus(200);
+//   } catch (error) {
+//     console.error("Error updating question difficulty:", error);
+//     res.status(500).send("Error updating question difficulty");
+//   }
+// });
 router.post("/api/question/:id/difficulty", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   const { difficulty } = req.body;
+  const userId = req.user._id;
 
   try {
-    await Question.findByIdAndUpdate(id, { difficulty });
+    const user = await User.findById(userId);
+
+    // Find the existing question rating
+    const existingQuestionRating = user.questionRatings.find(
+      (qr) => qr.question.toString() === id
+    );
+
+    if (existingQuestionRating) {
+      // Update the existing question rating
+      existingQuestionRating.rating = difficulty;
+    } else {
+      // Add a new question rating
+      user.questionRatings.push({ question: id, rating: difficulty });
+    }
+
+    await user.save();
     res.sendStatus(200);
   } catch (error) {
     console.error("Error updating question difficulty:", error);
