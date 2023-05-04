@@ -1,17 +1,17 @@
 <section class="section">
   <div class="container">
-    <h1 class="title">Users Awaiting Approval</h1>
+    <h1 class="title" id="title">Users Awaiting Approval</h1>
     <table class="table is-striped is-hoverable is-fullwidth">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Employee #</th>
+          <th class="headers">Name</th>
+          <th class="headers">Email</th>
+          <th class="headers">Employee #</th>
         </tr>
       </thead>
       <tbody>
         <% users.forEach((user) => { %>
-        <tr>
+        <tr class="user-data">
           <td>
             <%= user.firstname %> <%= user.lastname %>
             <span class="btn-container">
@@ -20,7 +20,11 @@
                 method="POST"
                 style="display: inline"
               >
-                <button class="button approve-btn action-btn" type="submit">
+                <button
+                  class="button approve-btn action-btn"
+                  id="approve-btn"
+                  type="submit"
+                >
                   Approve
                 </button>
               </form>
@@ -29,7 +33,11 @@
                 method="POST"
                 style="display: inline"
               >
-                <button class="button delete-btn action-btn" type="submit">
+                <button
+                  class="button delete-btn action-btn"
+                  id="delete-btn"
+                  type="submit"
+                >
                   Delete
                 </button>
               </form>

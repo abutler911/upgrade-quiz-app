@@ -4,7 +4,7 @@ const sgMail = require("@sendgrid/mail");
 const User = require("../models/User");
 
 router.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register", { title: "Register", customCSS: "register.css" });
 });
 
 router.post("/register", (req, res) => {

@@ -6,8 +6,22 @@ html, body {
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    background-color: #98c1d9;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#title {
+    color: #fff;
+}
+
+.headers {
+    font-size: 1.2rem;
+}
+
+.user-data {
+    font-size: 1.1rem;
 }
 
 .btn-container {
@@ -25,7 +39,7 @@ html, body {
     text-align: center;
 }
 
-.approve-btn {
+#approve-btn {
     background-color: rgba(238, 108, 77, 0.2);
     border: 1px solid #ee6c4d;
     color: #000;
@@ -35,7 +49,7 @@ html, body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.delete-btn {
+#delete-btn {
     border: 1px solid red;
     background-color: rgba(255, 0, 0, 0.2);
     color: #000;
