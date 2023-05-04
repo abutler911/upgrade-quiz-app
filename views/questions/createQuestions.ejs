@@ -1,77 +1,75 @@
-<main>
-  <div class="notification-container"></div>
+<div class="notification-container"></div>
 
-  <div class="container">
-    <div class="box">
-      <h1 class="title is-2">Add Questions</h1>
-      <form
-        id="create-question-form"
-        method="post"
-        enctype="multipart/form-data"
-        action="/questions/create"
-      >
-        <div class="field">
-          <label class="label" for="question">Question</label>
-          <div class="control">
-            <input
-              type="text"
-              id="question"
-              name="question"
-              class="input"
-              autocomplete="off"
-              placeholder="Question"
-              required
-            />
-          </div>
+<div class="container">
+  <div class="box">
+    <h1 class="title is-2">Add Questions</h1>
+    <form
+      id="create-question-form"
+      method="post"
+      enctype="multipart/form-data"
+      action="/questions/create"
+    >
+      <div class="field">
+        <label class="label" for="question">Question</label>
+        <div class="control">
+          <input
+            type="text"
+            id="question"
+            name="question"
+            class="input"
+            autocomplete="off"
+            placeholder="Question"
+            required
+          />
         </div>
+      </div>
 
-        <div class="field">
-          <label class="label" for="category">Category</label>
-          <div class="control">
-            <div
-              class="select is-fullwidth is-multiple mobile-fullwidth custom-select"
+      <div class="field">
+        <label class="label" for="category">Category</label>
+        <div class="control">
+          <div
+            class="select is-fullwidth is-multiple mobile-fullwidth custom-select"
+          >
+            <select
+              class="category-select"
+              id="category"
+              name="category"
+              multiple
             >
-              <select
-                class="category-select"
-                id="category"
-                name="category"
-                multiple
-              >
-                <% categories.forEach(function(category, index) { %>
-                <option value="<%= category.value %>">
-                  <%= category.name %>
-                </option>
-                <% }); %>
-              </select>
-            </div>
+              <% categories.forEach(function(category, index) { %>
+              <option value="<%= category.value %>">
+                <%= category.name %>
+              </option>
+              <% }); %>
+            </select>
           </div>
         </div>
+      </div>
 
-        <div class="field">
-          <label class="label" for="answer">Answer</label>
-          <div class="control">
-            <input
-              type="text"
-              id="answer"
-              name="answer"
-              class="input"
-              autocomplete="off"
-              placeholder="Answer"
-              required
-            />
-          </div>
+      <div class="field">
+        <label class="label" for="answer">Answer</label>
+        <div class="control">
+          <input
+            type="text"
+            id="answer"
+            name="answer"
+            class="input"
+            autocomplete="off"
+            placeholder="Answer"
+            required
+          />
         </div>
+      </div>
 
-        <div class="field">
-          <div class="control">
-            <button type="submit" id="create-question-btn" class="button">
-              Create Question
-            </button>
-          </div>
+      <div class="field">
+        <div class="control">
+          <button type="submit" id="create-question-btn" class="button">
+            Create Question
+          </button>
         </div>
-      </form>
-      <script src="../js/create.js"></script>
-    </div>
+      </div>
+    </form>
+    <script src="../js/create.js"></script>
   </div>
-</main>
+</div>
 <script src="../js/navbar.js"></script>
