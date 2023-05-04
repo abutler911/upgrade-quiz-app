@@ -27,4 +27,19 @@ router.post("/question/:questionId/rating", async (req, res) => {
   }
 });
 
+router.post("/api/ratings", async (req, res) => {
+  const { questionIds } = req.body;
+  try {
+    const ratings = await QuestionRating.find({
+      questionId: { $in: questionIds },
+      // userId: "dummyUserId", // Uncomment and replace this with the actual user ID if you want to fetch ratings per user
+    }).select("questionId rating -_id");
+
+    res.json(ratings);
+  } catch (error) {
+    console.error("Error fetching ratings:", error);
+    res.status(500).json({ message: "Error fetching ratings" });
+  }
+});
+
 module.exports = router;

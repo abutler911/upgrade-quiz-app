@@ -9,6 +9,7 @@ function setupEventListeners() {
   setupNavigationButtons();
   setupCategoryFilter();
   setupRandomizeCheckbox();
+  setupSubmitRatingButton();
 }
 
 let questions = [];
@@ -18,15 +19,46 @@ function sortQuestionsByRating(questions) {
   return questions.sort((a, b) => a.rating - b.rating);
 }
 
+// async function fetchQuestions() {
+//   try {
+//     const response = await fetch("/api/questions");
+//     questions = await response.json();
+
+//     questions = sortQuestionsByRating(questions); // NEW CODE
+//     displayQuestion(currentQuestionIndex);
+//   } catch (error) {
+//     console.error("Error fetching questions:", error);
+//   }
+// }
 async function fetchQuestions() {
   try {
     const response = await fetch("/api/questions");
     questions = await response.json();
+    const questionIds = questions.map((question) => question._id);
+    const ratings = await fetchRatings(questionIds);
 
-    questions = sortQuestionsByRating(questions); // NEW CODE
+    questions = questions.map((question) => {
+      const rating = ratings.find((r) => r.questionId === question._id);
+      return { ...question, rating: rating ? rating.rating : 0 };
+    });
+
+    questions = sortQuestionsByRating(questions);
     displayQuestion(currentQuestionIndex);
   } catch (error) {
     console.error("Error fetching questions:", error);
+  }
+}
+
+async function fetchRatings(questionIds) {
+  try {
+    const response = await fetch("api/ratings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ questionIds }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching ratings.", error);
   }
 }
 
@@ -40,6 +72,7 @@ function displayQuestion() {
     questionElement.innerText = currentQuestion.question;
     answerElement.innerText = currentQuestion.answer;
     categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
+    setRating(currentQuestion.rating || 0);
   } else {
     questionElement.innerText = "No questions to display";
     answerElement.innerText = "No answers to display";
@@ -121,7 +154,7 @@ function toggleAnswersWithCheckbox(showAnswersCheckbox) {
 
 function navigateToNextQuestion() {
   if (currentQuestionIndex < questions.length - 1) {
-    updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
+    // updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
     currentQuestionIndex++;
     displayQuestion(currentQuestionIndex);
     hideAnswer();
@@ -130,11 +163,17 @@ function navigateToNextQuestion() {
 
 function navigateToPreviousQuestion() {
   if (currentQuestionIndex > 0) {
-    updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
+    // updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
     hideAnswer();
   }
+}
+
+function setupSubmitRatingButton() {
+  document.getElementById("submit-rating").addEventListener("click", () => {
+    submitRating();
+  });
 }
 
 function hideAnswer() {
@@ -221,6 +260,11 @@ function setRating(ratingValue) {
   ratingElements.forEach((ratingElement, index) => {
     ratingElement.classList.toggle("selected", index < currentRating);
   });
+}
+async function submitRating() {
+  const questionId = questions[currentQuestionIndex]._id;
+  await updateQuestionRating(questionId, currentRating);
+  // navigateToNextQuestion();
 }
 
 async function updateQuestionRating(questionId, rating) {
