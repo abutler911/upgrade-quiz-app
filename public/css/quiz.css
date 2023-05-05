@@ -287,6 +287,33 @@ html, body {
     color: rgba(37, 104, 251, 1);
 }
 
+.notification {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+
+    position: relative;
+    /* margin-top: 0.5rem; */
+    color: #4a4a4a;
+}
+
+.notification.success {
+    background-color: rgba(35, 209, 96, 0.6);
+    color: #000;
+    font-weight: 700;
+    margin-top: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 30%;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.is-hidden {
+    display: none;
+}
+
+
 @media screen and (max-width: 768px) {
     .container {
         height: auto;

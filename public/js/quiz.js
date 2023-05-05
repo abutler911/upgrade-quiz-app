@@ -66,19 +66,18 @@ async function fetchRatings(questionIds) {
     console.error("Error fetching ratings.", error);
   }
 }
-const lastSeenElement = document.getElementById("last-seen");
-lastSeenElement.innerText = `Last seen: ${currentQuestion.lastSeen}`;
 
 function displayQuestion() {
   const questionElement = document.getElementById("question");
   const answerElement = document.getElementById("answer");
   const categoryElement = document.getElementById("category");
+  const lastSeenElement = document.getElementById("last-seen");
 
   if (questions.length > 0 && currentQuestionIndex < questions.length) {
     const currentQuestion = questions[currentQuestionIndex];
     questionElement.innerText = currentQuestion.question;
     answerElement.innerText = currentQuestion.answer;
-    categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
+    // categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
     // setRating(currentQuestion.rating || 0);
     // document.getElementById("difficulty").value = currentQuestion.difficulty;
     categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
@@ -218,6 +217,7 @@ async function submitDifficulty() {
     if (response.ok) {
       console.log("Question difficulty updated successfully");
       updateQuestionRating(questionId, difficulty);
+      showSuccessMessage();
     } else {
       console.error("Error updating question difficulty:", response.statusText);
     }
@@ -225,6 +225,16 @@ async function submitDifficulty() {
     console.error("Error updating question difficulty:", error);
   }
 }
+
+function showSuccessMessage() {
+  const successMessage = document.getElementById("rating-success");
+  successMessage.classList.remove("is-hidden");
+
+  setTimeout(() => {
+    successMessage.classList.add("is-hidden");
+  }, 1500); // Adjust the duration (in milliseconds) as desired
+}
+
 function updateQuestionRating(questionId, rating) {
   // Update the user's rating for the question in the frontend
   const question = questions.find((q) => q._id === questionId);
