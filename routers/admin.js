@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Question = require("../models/Question");
 const { isLoggedIn, isAdmin } = require("../middleware/middlewares");
 
 router.get("/awaiting-approval", (req, res) => {
@@ -55,6 +56,25 @@ router.post(
     } catch (err) {
       console.log(err);
       res.status(500).send("Error deleting user");
+    }
+  }
+);
+
+router.get(
+  "/admin/flagged-questions",
+  isLoggedIn,
+  isAdmin,
+  async (req, res) => {
+    try {
+      const questions = await Question.find({ flaggedForReview: true });
+      res.render("admin/flagged-questions", {
+        title: "Flagged Questions",
+        customCSS: "admin.css",
+        questions,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Error fetching flagged questions");
     }
   }
 );
