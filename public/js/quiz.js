@@ -11,6 +11,10 @@ function setupEventListeners() {
   setupRandomizeCheckbox();
   setupSubmitRatingButton();
 }
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleString();
+}
 
 let questions = [];
 let currentQuestionIndex = 0;
@@ -62,6 +66,8 @@ async function fetchRatings(questionIds) {
     console.error("Error fetching ratings.", error);
   }
 }
+const lastSeenElement = document.getElementById("last-seen");
+lastSeenElement.innerText = `Last seen: ${currentQuestion.lastSeen}`;
 
 function displayQuestion() {
   const questionElement = document.getElementById("question");
@@ -75,6 +81,10 @@ function displayQuestion() {
     categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
     // setRating(currentQuestion.rating || 0);
     // document.getElementById("difficulty").value = currentQuestion.difficulty;
+    categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
+    lastSeenElement.innerText = `Last seen: ${formatDate(
+      currentQuestion.lastSeen
+    )}`;
     setDifficultyStars(currentQuestion.difficulty);
     updateLastSeen(currentQuestion._id);
   } else {

@@ -55,6 +55,12 @@ html, body {
     color: #fff;
 }
 
+#last-seen {
+    font-size: 0.5rem;
+    color: rgba(37, 104, 251, 1);
+    margin-left: 10px;
+}
+
 .card {
 
     border-radius: 10px;
