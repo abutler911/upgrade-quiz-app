@@ -128,10 +128,12 @@ function setupShowAnswersCheckbox() {
 function setupNavigationButtons() {
   document.getElementById("next-question").addEventListener("click", () => {
     navigateToNextQuestion();
+    hideSuccessMessage();
   });
 
   document.getElementById("prev-question").addEventListener("click", () => {
     navigateToPreviousQuestion();
+    hideSuccessMessage();
   });
 }
 
@@ -229,10 +231,6 @@ async function submitDifficulty() {
 function showSuccessMessage() {
   const successMessage = document.getElementById("rating-success");
   successMessage.classList.remove("is-hidden");
-
-  setTimeout(() => {
-    successMessage.classList.add("is-hidden");
-  }, 1500); // Adjust the duration (in milliseconds) as desired
 }
 
 function updateQuestionRating(questionId, rating) {
@@ -371,5 +369,37 @@ async function updateLastSeen(questionId) {
     }
   } catch (error) {
     console.error("Error updating question lastSeen:", error);
+  }
+}
+
+function hideSuccessMessage() {
+  const successMessage = document.getElementById("rating-success");
+  successMessage.classList.add("is-hidden");
+}
+
+document
+  .getElementById("flag-for-review")
+  .addEventListener("click", flagForReview);
+
+async function flagForReview() {
+  const questionId = questions[currentQuestionIndex]._id;
+
+  try {
+    const response = await fetch(`/api/question/${questionId}/flagForReview`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ questionId }),
+    });
+
+    if (response.ok) {
+      alert("Question flagged for review successfully!");
+    } else {
+      alert("Failed to flag question for review. Please try again.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Failed to flag question for review. Please try again.");
   }
 }

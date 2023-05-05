@@ -325,3 +325,53 @@ html, body {
         min-height: 100vh;
     }
 }
+
+
+
+.flag-for-review-container {
+    position: relative;
+    margin-top: 15px;
+}
+
+#flag-for-review {
+    background-color: transparent;
+    border: 2px solid #ff3860;
+    color: #ff3860;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+#flag-for-review:hover {
+    background-color: #ff3860;
+    color: #ffffff;
+}
+
+.flag-for-review-container::before,
+.flag-for-review-container::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff3860;
+    transition: all 0.3s;
+}
+
+.flag-for-review-container::before {
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.flag-for-review-container::after {
+    bottom: 0;
+    right: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+#flag-for-review:hover~.flag-for-review-container::before,
+#flag-for-review:hover~.flag-for-review-container::after {
+    transform: scaleX(1);
+}

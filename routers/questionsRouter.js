@@ -287,4 +287,16 @@ router.post("/modify-questions/:id/delete", isLoggedIn, async (req, res) => {
   }
 });
 
+router.post("/api/question/:id/flagForReview", isLoggedIn, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Question.findByIdAndUpdate(id, { flaggedForReview: true });
+    res.status(200).send("Question flagged for review successfully");
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("Failed to flag question for review");
+  }
+});
+
 module.exports = router;
