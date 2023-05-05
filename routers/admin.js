@@ -4,6 +4,13 @@ const User = require("../models/User");
 const Question = require("../models/Question");
 const { isLoggedIn, isAdmin } = require("../middleware/middlewares");
 
+router.get("/admin/dashboard", isLoggedIn, isAdmin, (req, res) => {
+  res.render("admin/dashboard", {
+    title: "Admin Dashboard",
+    customCSS: "admin.css",
+  });
+});
+
 router.get("/awaiting-approval", (req, res) => {
   res.render("./awaiting-approval", {
     title: "Users To Approve",
