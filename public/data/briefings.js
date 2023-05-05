@@ -2,12 +2,14 @@ export const cardContents = [
   {
     id: "ice-briefing",
     title: "ICE Briefing",
-    content: "FILL IN CONTENT HERE",
+    content:
+      "I: Introduction - crewmember verification, required documents, fit for duty, etc. C: Communication - cabin/flight deck notification and communication, e.g. distress signal, evacuation signal, breach of security or suspicious activity, sterile flight deck, etc. In the event of suspicious activity or a breach of security, the FA uses plain English without codes or phrases and uses their full name when notifying the flight deck. E: Entry protocol - The PIC and FAs establish flight deck entry protocol and any other items necessary for the security of the flight",
   },
   {
     id: "all-flights-briefing",
     title: "All Flights Briefing",
-    content: "FILL IN CONTENT HERE",
+    content:
+      "Should include: MX items, FAMs, LEOs, etc, Expected taxi, wait, flight time, ground delays, etc. Weather, diversion, EOW operations, unfamiliar airports, anouncements, other info, threats.",
   },
   {
     id: "want-briefing",
