@@ -23,17 +23,21 @@
           </div>
         </div>
         <div class="box">
-          <div class="has-text-centered">
-            <label class="custom-checkbox" for="showAnswersCheckbox">
-              <input
-                type="checkbox"
-                id="showAnswersCheckbox"
-                class="hidden-checkbox"
-              />
-              <span class="styled-checkbox"></span>
-              Show Answers
-            </label>
-            <label class="custom-checkbox" for="randomizeCheckbox">
+          <div class="columns">
+            <div class="column">
+              <div class="has-text-centered">
+                <label class="custom-checkbox" for="showAnswersCheckbox">
+                  <input
+                    type="checkbox"
+                    id="showAnswersCheckbox"
+                    class="hidden-checkbox"
+                  />
+                  <span class="styled-checkbox"></span>
+                  Show Answers
+                </label>
+              </div>
+              <div class="column">
+                <!-- <label class="custom-checkbox" for="randomizeCheckbox">
               <input
                 type="checkbox"
                 id="randomizeCheckbox"
@@ -41,15 +45,19 @@
               />
               <span class="styled-checkbox"></span>
               Randomize
-            </label>
-            <br />
-            <hr />
+            </label> -->
 
-            <div class="progress-container" id="progress-container">
+                <div class="content">
+                  <p id="category" class="subtitle is-6"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="progress-container" id="progress-container">
               <span class="progress-percentage progress-start">0%</span>
               <div id="progress-bar" class="progress-bar"></div>
               <span class="progress-percentage progress-end">100%</span>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -60,6 +68,7 @@
               class="has-text-weight-bold has-text-centered"
               style="font-size: 1rem; color: #000; padding: 10px"
             ></span>
+
             <p id="question" class="card-header-title"></p>
           </div>
 
@@ -73,60 +82,69 @@
           <div class="difficulty-rating">
             <p style="color: #000">Select Difficulty (1-Easy, 5-Hard)</p>
             <div class="rating">
-              <span data-value="1">☆</span>
-              <span data-value="2">☆</span>
-              <span data-value="3">☆</span>
-              <span data-value="4">☆</span>
-              <span data-value="5">☆</span>
+              <span class="fas fa-star" data-value="1"></span>
+              <span class="fas fa-star" data-value="2"></span>
+              <span class="fas fa-star" data-value="3"></span>
+              <span class="fas fa-star" data-value="4"></span>
+              <span class="fas fa-star" data-value="5"></span>
             </div>
           </div>
+          <!-- <span class="fas fa-star" data-value="1">☆</span> -->
 
-          <div class="rating-button-container">
-            <button id="submit-rating" class="button is-rounded is-fullwidth">
-              Submit Rating
-            </button>
-          </div>
+          <div class="button-container">
+            <div class="columns">
+              <div class="column is-half is-half-mobile">
+                
+                  <button id="submit-rating" class="button is-rounded">
+                    Submit Rating
+                  </button>
+                </div>
+                <div class="column is-half is-half-mobile">
+                  <button id="flag-for-review" class="button is-rounded">
+                    Flag
+                  </button>
+                </div>
+              </div>
+            </div>
 
-          <div class="flag-for-review-container">
+            <!-- <div class="flag-for-review-container">
             <button id="flag-for-review" class="button is-rounded is-fullwidth">
               FLAG FOR REVIEW
             </button>
+          </div> -->
+
+            <div id="rating-success" class="notification success is-hidden">
+              Rating submitted successfully!
+            </div>
+          </div>
+          <div class="last-seen-content">
+            <p id="last-seen" class="subtitle is-6"></p>
           </div>
 
-          <div id="rating-success" class="notification success is-hidden">
-            Rating submitted successfully!
+          <div class="btn-box">
+            <button
+              id="prev-question"
+              class="nav-btn button is-rounded is-fullwidth"
+            >
+              <i class="fa-sharp fa-solid fa-arrow-left"></i>
+            </button>
+            <button
+              id="show-answer"
+              class="answer-btn button is-rounded is-fullwidth"
+            >
+              Show Answer
+            </button>
+            <button
+              id="next-question"
+              class="nav-btn button is-rounded is-fullwidth"
+            >
+              <i class="fa-sharp fa-solid fa-arrow-right"></i>
+            </button>
           </div>
-        </div>
-        <div class="last-seen-content">
-          <p id="last-seen" class="subtitle is-6"></p>
-        </div>
-        <div class="content">
-          <br />
-          <p id="category" class="subtitle is-6"></p>
-        </div>
-        <div class="btn-box">
-          <button
-            id="prev-question"
-            class="nav-btn button is-rounded is-fullwidth"
-          >
-            <<<
-          </button>
-          <button
-            id="show-answer"
-            class="answer-btn button is-rounded is-fullwidth"
-          >
-            Show Answer
-          </button>
-          <button
-            id="next-question"
-            class="nav-btn button is-rounded is-fullwidth"
-          >
-            >>>
-          </button>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<script src="js/quiz.js"></script>
+  <script src="js/quiz.js"></script>
+</div>

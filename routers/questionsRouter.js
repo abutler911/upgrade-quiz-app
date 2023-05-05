@@ -96,12 +96,16 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
 
     // Update questions with user-specific ratings
     questions.forEach((question) => {
-      const userQuestionData = userQuestionRatingsMap.get(
-        question._id.toString()
-      );
-      if (userQuestionData) {
-        question.difficulty = userQuestionData.rating;
-        question.lastSeen = userQuestionData.lastSeen;
+      if (question && question._id) {
+        const userQuestionData = userQuestionRatingsMap.get(
+          question._id.toString()
+        );
+        if (userQuestionData) {
+          question.difficulty = userQuestionData.rating;
+          question.lastSeen = userQuestionData.lastSeen;
+        }
+      } else {
+        console.warn("Encountered a null or invalid quesiton: ", question);
       }
     });
 
@@ -109,10 +113,10 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
       const now = new Date();
       const aLastSeenDays = (now - a.lastSeen) / (1000 * 60 * 60 * 24);
       const bLastSeenDays = (now - b.lastSeen) / (1000 * 60 * 60 * 24);
-      const aPriority = aLastSeenDays * a.difficulty;
-      const bPriority = bLastSeenDays * b.difficulty;
+      const aDue = aLastSeenDays - a.interval;
+      const bDue = bLastSeenDays - b.interval;
 
-      return bPriority - aPriority;
+      return bDue - aDue;
     });
     res.json(questions);
   } catch (error) {
@@ -183,7 +187,7 @@ router.post("/api/question/:id/seen", isLoggedIn, async (req, res) => {
 // });
 router.post("/api/question/:id/difficulty", isLoggedIn, async (req, res) => {
   const { id } = req.params;
-  const { difficulty } = req.body;
+  const { difficulty, interval } = req.body;
   const userId = req.user._id;
 
   try {
@@ -197,6 +201,7 @@ router.post("/api/question/:id/difficulty", isLoggedIn, async (req, res) => {
     if (existingQuestionRating) {
       // Update the existing question rating
       existingQuestionRating.rating = difficulty;
+      existingQuestionRating.interval = interval;
     } else {
       // Add a new question rating
       user.questionRatings.push({ question: id, rating: difficulty });

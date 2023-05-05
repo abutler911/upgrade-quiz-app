@@ -8,7 +8,7 @@ function setupEventListeners() {
   setupShowAnswersCheckbox();
   setupNavigationButtons();
   setupCategoryFilter();
-  setupRandomizeCheckbox();
+  // setupRandomizeCheckbox();
   setupSubmitRatingButton();
 }
 function formatDate(dateString) {
@@ -44,13 +44,28 @@ async function fetchQuestions() {
 
     questions = questions.map((question) => {
       const rating = ratings.find((r) => r.questionId === question._id);
-      return { ...question, rating: rating ? rating.rating : 0 };
+      return {
+        ...question,
+        rating: rating ? rating.rating : 0,
+        interval: rating ? rating.interval : 1,
+      };
     });
 
     questions = sortQuestionsByRating(questions);
     displayQuestion(currentQuestionIndex);
   } catch (error) {
     console.error("Error fetching questions:", error);
+  }
+}
+function updateInterval(interval, rating) {
+  if (rating < 3) {
+    return 1;
+  } else {
+    if (interval === 1) {
+      return 3;
+    } else {
+      return Math.ceil(interval * rating);
+    }
   }
 }
 
@@ -92,7 +107,7 @@ function displayQuestion() {
     categoryElement.innerText = "No categories to display";
   }
 
-  updateProgressBar();
+  // updateProgressBar();
   updateQuestionCount();
 }
 
@@ -148,12 +163,12 @@ function setupCategoryFilter() {
   });
 }
 
-function setupRandomizeCheckbox() {
-  const randomizeCheckbox = document.getElementById("randomizeCheckbox");
-  randomizeCheckbox.addEventListener("change", () => {
-    loadQuestionsByCategory();
-  });
-}
+// function setupRandomizeCheckbox() {
+//   const randomizeCheckbox = document.getElementById("randomizeCheckbox");
+//   randomizeCheckbox.addEventListener("change", () => {
+//     loadQuestionsByCategory();
+//   });
+// }
 
 function toggleAnswerVisibility(answerElement, showAnswerButton) {
   answerElement.classList.toggle("hide");
@@ -204,8 +219,13 @@ function setupSubmitRatingButton() {
   });
 }
 async function submitDifficulty() {
-  const questionId = questions[currentQuestionIndex]._id;
+  const question = questions[currentQuestionIndex];
+  const questionId = question._id;
   const difficulty = document.querySelectorAll(".rating span.selected").length;
+
+  // Get the current interval and calculate the updated interval
+  const currentInterval = question.interval;
+  const updatedInterval = updateInterval(currentInterval, difficulty);
 
   try {
     const response = await fetch(`/api/question/${questionId}/difficulty`, {
@@ -213,13 +233,13 @@ async function submitDifficulty() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ difficulty }),
+      body: JSON.stringify({ difficulty, interval: updatedInterval }),
     });
 
     if (response.ok) {
       console.log("Question difficulty updated successfully");
       updateQuestionRating(questionId, difficulty);
-      showSuccessMessage();
+      alert("Rating updated successfully!");
     } else {
       console.error("Error updating question difficulty:", response.statusText);
     }
@@ -272,7 +292,7 @@ async function filterAndLoadQuestions(selectedCategory) {
 
     currentQuestionIndex = 0;
     displayQuestion();
-    updateProgressBar();
+    // updateProgressBar();
   } catch (err) {
     console.error("Error fetching questions:", err);
   }
@@ -285,14 +305,14 @@ function shuffleQuestions(array) {
   }
 }
 
-function updateProgressBar() {
-  const totalQuestions = questions.length;
-  const completedQuestions = currentQuestionIndex + 1;
-  const percentage = (completedQuestions / totalQuestions) * 100;
+// function updateProgressBar() {
+//   const totalQuestions = questions.length;
+//   const completedQuestions = currentQuestionIndex + 1;
+//   const percentage = (completedQuestions / totalQuestions) * 100;
 
-  const progressBar = document.getElementById("progress-bar");
-  progressBar.style.width = percentage + "%";
-}
+//   const progressBar = document.getElementById("progress-bar");
+//   progressBar.style.width = percentage + "%";
+// }
 
 function updateQuestionCount() {
   const totalQuestions = questions.length;
