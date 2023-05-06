@@ -60,11 +60,11 @@ input[type=password] {
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
-    background-color: #ee6c4d;
+    background-color: #009EE2;
 }
 
 .button.is-fullwidth:hover {
-    background-color: #fa3b0b;
+    background-color: #008fcc;
     color: #000;
 
 }

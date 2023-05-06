@@ -103,9 +103,10 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
         if (userQuestionData) {
           question.difficulty = userQuestionData.rating;
           question.lastSeen = userQuestionData.lastSeen;
+          question.interval = calculateNewInterval(userQuestionData.rating);
         }
       } else {
-        console.warn("Encountered a null or invalid quesiton: ", question);
+        console.warn("Encountered a null or invalid question: ", question);
       }
     });
 
@@ -116,7 +117,7 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
       const aDue = aLastSeenDays - a.interval;
       const bDue = bLastSeenDays - b.interval;
 
-      return bDue - aDue;
+      return aDue - bDue;
     });
     res.json(questions);
   } catch (error) {
@@ -124,6 +125,13 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
     res.status(500).json({ message: "Error fetching questions" });
   }
 });
+
+function calculateNewInterval(rating) {
+  const baseInterval = 1;
+  const scalingFactor = 2;
+  const interval = baseInterval * Math.pow(scalingFactor, 5 - rating);
+  return interval;
+}
 
 router.post("/api/question/:id/seen", isLoggedIn, async (req, res) => {
   const { id } = req.params;
