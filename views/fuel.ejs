@@ -1,7 +1,50 @@
-<p>
-  You are flying along and have <%= miles %> miles to go. Your groundspeed is
-  <%= groundSpeed %> knots and your fuel flow per hour is <%= fuelFlow %>
-  lbs/hour. You are asked to do a present position hold. Your alternate fuel is
-  <%= alternateFuel %> lbs, and your reserve fuel is standard <%= reserveFuel %>
-  lbs. How much holding fuel and time do you have?
-</p>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Fuel Planning</h1>
+
+    <p>
+      You are flying along and have
+      <span id="miles" class="highlight"></span> miles to go.
+    </p>
+    <p>
+      Your groundspeed is
+      <span id="groundSpeed" class="highlight"></span> knots.
+    </p>
+    <p>
+      Your fuel flow per hour is
+      <span id="fuelFlow" class="highlight"></span> lbs/hour.
+    </p>
+    <p>You are asked to do a present position hold.</p>
+    <p>
+      Your alternate fuel is
+      <span id="alternateFuel" class="highlight"></span> lbs.
+    </p>
+    <p>
+      Your reserve fuel is <span id="reserveFuel" class="highlight"></span> lbs.
+    </p>
+    <p>
+      Your fuel on board is
+      <span id="fuelOnBoard" class="highlight"></span> lbs.
+    </p>
+    <p>How much holding fuel and time do you have?</p>
+
+    <button class="button is-primary" id="revealBtn">Reveal Answers</button>
+
+    <div class="scenario-data is-hidden">
+      <h2 class="subtitle">Scenario Data:</h2>
+      <p>
+        Time to destination:
+        <span id="timeToDestination" class="highlight"></span> hours. <br />
+        Fuel to destination:
+        <span id="fuelToDestination" class="highlight"></span> pounds. <br />
+        Total Fuel: <span id="totalFuel" class="highlight"></span> pounds.
+        <br />
+        Holding Fuel: <span id="holdingFuel" class="highlight"></span> lbs
+        <br />
+        Holding Time: <span id="holdingTime" class="highlight"></span> hours
+      </p>
+    </div>
+  </div>
+</section>
+
+<script src="/js/fuel.js"></script>
