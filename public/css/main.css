@@ -80,3 +80,16 @@ html, body {
     font-size: 0.7rem;
     font-weight: 400;
 }
+
+#flashcard-btn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    background-color: #009EE2;
+    margin-left: 10px;
+    height: 35px;
+}

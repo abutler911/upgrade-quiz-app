@@ -3,7 +3,8 @@ const router = new express.Router();
 const categories = require("../public/data/categories");
 const Question = require("../models/Question");
 const { capitalizeAndPunctuate } = require("../public/data/capitalizetext");
-const { isLoggedIn } = require("../middleware/middlewares");
+const { isLoggedIn, isAdmin } = require("../middleware/middlewares");
+
 const User = require("../models/User");
 
 router.get("/questions/create", (req, res) => {
@@ -89,7 +90,12 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
     // Create a Map for user-specific question ratings
     const userQuestionRatingsMap = new Map();
     user.questionRatings.forEach(({ question, rating, lastSeen }) => {
-      userQuestionRatingsMap.set(question._id.toString(), { rating, lastSeen });
+      if (question) {
+        userQuestionRatingsMap.set(question._id.toString(), {
+          rating,
+          lastSeen,
+        });
+      }
     });
 
     const questions = await Question.find({}).lean();
@@ -112,8 +118,8 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
 
     questions.sort((a, b) => {
       const now = new Date();
-      const aLastSeenDays = (now - a.lastSeen) / (1000 * 60 * 60 * 24);
-      const bLastSeenDays = (now - b.lastSeen) / (1000 * 60 * 60 * 24);
+      const aLastSeenDays = (now - a.lastSeen) / (1000 * 60 * 60);
+      const bLastSeenDays = (now - b.lastSeen) / (1000 * 60 * 60);
       const aDue = aLastSeenDays - a.interval;
       const bDue = bLastSeenDays - b.interval;
 
@@ -127,9 +133,10 @@ router.get("/api/questions", isLoggedIn, async (req, res) => {
 });
 
 function calculateNewInterval(rating) {
-  const baseInterval = 1;
-  const scalingFactor = 2;
+  const baseInterval = 6;
+  const scalingFactor = 1.5;
   const interval = baseInterval * Math.pow(scalingFactor, 5 - rating);
+  console.log(interval);
   return interval;
 }
 
@@ -224,7 +231,7 @@ router.post("/api/question/:id/difficulty", isLoggedIn, async (req, res) => {
 });
 
 // Edit and delete routes
-router.get("/modify-questions", isLoggedIn, async (req, res) => {
+router.get("/modify-questions", isAdmin, isLoggedIn, async (req, res) => {
   try {
     const questions = await Question.find();
     questions.sort((a, b) => a.category[0].localeCompare(b.category[0]));
@@ -239,25 +246,30 @@ router.get("/modify-questions", isLoggedIn, async (req, res) => {
   }
 });
 
-router.get("/modify-questions/:id/edit", isLoggedIn, async (req, res) => {
-  try {
-    const question = await Question.findById(req.params.id);
-    if (!question) {
-      res.status(404).send("Question not found");
-    } else {
-      res.render("questions/update", {
-        title: "Edit Question",
-        customCSS: "editquestions.css",
-        question,
-        categories,
-        questionCategories: question.category,
-      });
+router.get(
+  "/modify-questions/:id/edit",
+  isAdmin,
+  isLoggedIn,
+  async (req, res) => {
+    try {
+      const question = await Question.findById(req.params.id);
+      if (!question) {
+        res.status(404).send("Question not found");
+      } else {
+        res.render("questions/update", {
+          title: "Edit Question",
+          customCSS: "editquestions.css",
+          question,
+          categories,
+          questionCategories: question.category,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Server error");
     }
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Server error");
   }
-});
+);
 
 router.post("/modify-questions/:id/edit", async (req, res) => {
   const { question, category, answer } = req.body;
@@ -291,25 +303,35 @@ router.post("/modify-questions/:id/edit", async (req, res) => {
   }
 });
 
-router.post("/modify-questions/:id/delete", isLoggedIn, async (req, res) => {
-  try {
-    await Question.findByIdAndDelete(req.params.id);
-    res.redirect("/modify-questions");
-  } catch (err) {
-    console.log(err);
+router.post(
+  "/modify-questions/:id/delete",
+  isAdmin,
+  isLoggedIn,
+  async (req, res) => {
+    try {
+      await Question.findByIdAndDelete(req.params.id);
+      res.redirect("/modify-questions");
+    } catch (err) {
+      console.log(err);
+    }
   }
-});
+);
 
-router.post("/api/question/:id/flagForReview", isLoggedIn, async (req, res) => {
-  const { id } = req.params;
+router.post(
+  "/api/question/:id/flagForReview",
+  isAdmin,
+  isLoggedIn,
+  async (req, res) => {
+    const { id } = req.params;
 
-  try {
-    await Question.findByIdAndUpdate(id, { flaggedForReview: true });
-    res.status(200).send("Question flagged for review successfully");
-  } catch (error) {
-    console.error("Error:", error);
-    res.status(500).send("Failed to flag question for review");
+    try {
+      await Question.findByIdAndUpdate(id, { flaggedForReview: true });
+      res.status(200).send("Question flagged for review successfully");
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).send("Failed to flag question for review");
+    }
   }
-});
+);
 
 module.exports = router;
