@@ -1,10 +1,17 @@
-body {
-    background-color: rgba(0, 0, 0, 1);
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-hr {
-    background-color: #000 !important;
-}
 
 .box {
     border: 1px solid black;

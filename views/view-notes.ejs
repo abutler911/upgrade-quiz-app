@@ -1,53 +1,48 @@
-<div class="container">
-  <h1 class="title has-text-centered">All Notes</h1>
-  <% if (notes.length === 0) { %>
-  <p class="subtitle has-text-centered">No notes found</p>
-  <% } else { %>
-  <div class="columns is-multiline">
-    <% notes.forEach(note => { %>
-    <div class="column is-one-third">
-      <div class="card" style="position: relative">
-        <form
-          action="/notes/delete/<%= note._id %>"
-          method="POST"
-          style="position: absolute; bottom: 0.5rem; right: 0.5rem"
+<!-- <div class="container"> -->
+<h1 class="title has-text-centered">All Notes</h1>
+<% if (notes.length === 0) { %>
+<p class="subtitle has-text-centered">No notes found</p>
+<% } else { %>
+<div class="columns is-multiline">
+  <% notes.forEach(note => { %>
+  <div class="column is-one-quarter-desktop is-one-half-tablet is-full-mobile">
+    <div class="card">
+      <form
+        action="/notes/delete/<%= note._id %>"
+        method="POST"
+        style="position: absolute; bottom: 0.5rem; right: 0.5rem"
+      >
+        <button
+          class="delete-button"
+          type="submit"
+          onclick="return confirmDeletion()"
         >
-          <button
-            class="delete-button"
-            type="submit"
-            onclick="return confirmDeletion()"
-          >
-            <i class="fa-regular fa-trash-can"></i>
-          </button>
-        </form>
-        <header class="card-header">
-          <div
-            class="card-header-title"
-            style="
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
-            "
-          >
-            <p><%= note.title %></p>
-            <small style="font-size: 0.7rem">
-              Created on: <%= new Date(note.createdAt).toLocaleString(undefined,
-              { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit',
-              minute: '2-digit', timeZoneName: 'short' }) %>
-            </small>
-          </div>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            <p><%- note.content %></p>
-          </div>
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </form>
+      <header class="card-header">
+        <div
+          class="card-header-title"
+          style="display: flex; flex-direction: column; align-items: flex-start"
+        >
+          <p><%= note.title %></p>
+          <small style="font-size: 0.4rem">
+            Created on: <%= new Date(note.createdAt).toLocaleString(undefined, {
+            year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit',
+            minute: '2-digit', timeZoneName: 'short' }) %>
+          </small>
+        </div>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <p><%- note.content %></p>
         </div>
       </div>
     </div>
-    <% }) %>
   </div>
-  <% } %>
+  <% }) %>
 </div>
+<% } %>
 
 <script>
   function confirmDeletion() {
