@@ -1,11 +1,31 @@
-<div class="container">
-  <h1 class="title" id="title">Control Panel</h1>
-  <div class="button-container">
-    <a href="/admin/users-awaiting-approval" class="dashboard-btn"
-      ><p>Approve Users</p></a
-    >
-    <a href="/admin/flagged-questions" class="dashboard-btn"
-      ><p>Review Flags</p></a
-    >
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">Administrator <br />Control Panel</h1>
+    <div class="columns is-multiline">
+      <div class="column is-4">
+        <div class="box">
+          <p class="control-title">Approve Users</p>
+          <a href="/admin/users-awaiting-approval"
+            ><button class="control-button">Access</button></a
+          >
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="box">
+          <p class="control-title">Review Flagged Questions</p>
+          <a href="/admin/flagged-questions"
+            ><button class="control-button">Access</button></a
+          >
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="box">
+          <p class="control-title">Edit/Delete Questions</p>
+          <a href="/modify-questions"
+            ><button class="control-button">Access</button></a
+          >
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

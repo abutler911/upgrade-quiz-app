@@ -24,9 +24,15 @@ h1 {
     color: #333;
 }
 
-#title {
+.title {
     color: #fff;
     text-align: center;
+}
+
+.control-title {
+    color: #000;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 
 .headers,
@@ -172,6 +178,44 @@ tr:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+}
+
+.box {
+    background-color: #009EE2;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.box:hover {
+    box-shadow: 0 8px 10px rgba(10, 10, 10, 0.2), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+}
+
+.control-button {
+    width: 50%;
+    height: 40px;
+    background-color: rgb(255, 255, 139);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
 }
 
 @media (max-width: 767px) {
