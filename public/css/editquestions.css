@@ -7,22 +7,27 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #98c1d9;
-
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.buttons-container .button {
-    width: 100%;
+body {
+    overflow-y: auto;
 }
 
 .container {
     max-width: 1000px;
-    margin: 30px auto;
+    margin: 20px auto;
     background-color: #fff;
     padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 4px;
+    box-sizing: border-box;
 }
+
 
 .is-responsive {
     overflow-x: auto;
@@ -32,36 +37,22 @@ h1 {
     font-size: 1.5rem;
 }
 
-.table.is-mobile-custom {
-    table-layout: fixed;
-    word-wrap: break-word;
-}
-
 thead tr {
-    background-color: #75b3d6;
+    background-color: #009EE2;
     font-weight: 700;
     font-size: 1.3rem;
 }
 
-@media only screen and (max-width: 768px) {
+.title {
+    text-align: center;
+}
 
-    .table.is-narrow td,
-    .table.is-narrow th {
-        padding: 0.25rem;
-        font-size: 0.1rem;
+@media screen and (max-width: 768px) {
+    .small-screen-column-width {
+        width: 20vw !important;
     }
 
-    #questions-category {
-        font-size: 0.5rem;
-        text-align: center;
-        color: #000;
-    }
-
-    th {
-        font-size: 0.7rem;
-    }
-
-    td {
+    th, td {
         font-size: 0.6rem;
     }
 
@@ -76,5 +67,9 @@ thead tr {
 
     .buttons-container>* {
         margin-bottom: 5px;
+    }
+
+    .buttons-container .button {
+        width: 100%;
     }
 }
