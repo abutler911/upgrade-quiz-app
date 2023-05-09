@@ -1,48 +1,69 @@
 <section class="section">
   <div class="container">
     <h1 class="title">Fuel Planning</h1>
-
-    <p>
-      You are flying along and have
-      <span id="miles" class="highlight"></span> miles to go.
-    </p>
-    <p>
-      Your groundspeed is
-      <span id="groundSpeed" class="highlight"></span> knots.
-    </p>
-    <p>
-      Your fuel flow per hour is
-      <span id="fuelFlow" class="highlight"></span> lbs/hour.
-    </p>
+    <table class="table is-bordered is-striped is-hoverable">
+      <tbody>
+        <tr>
+          <td>You are flying along and have</td>
+          <td><span id="miles" class="highlight"></span> miles to go.</td>
+        </tr>
+        <tr>
+          <td>Your groundspeed is</td>
+          <td><span id="groundSpeed" class="highlight"></span> knots.</td>
+        </tr>
+        <tr>
+          <td>Your fuel flow per hour is</td>
+          <td><span id="fuelFlow" class="highlight"></span> lbs/hour.</td>
+        </tr>
+        <tr>
+          <td>Your alternate fuel is</td>
+          <td><span id="alternateFuel" class="highlight"></span> lbs.</td>
+        </tr>
+        <tr>
+          <td>Your reserve fuel is</td>
+          <td><span id="reserveFuel" class="highlight"></span> lbs.</td>
+        </tr>
+        <tr>
+          <td>Your fuel on board is</td>
+          <td><span id="fuelOnBoard" class="highlight"></span> lbs.</td>
+        </tr>
+      </tbody>
+    </table>
     <p>You are asked to do a present position hold.</p>
-    <p>
-      Your alternate fuel is
-      <span id="alternateFuel" class="highlight"></span> lbs.
-    </p>
-    <p>
-      Your reserve fuel is <span id="reserveFuel" class="highlight"></span> lbs.
-    </p>
-    <p>
-      Your fuel on board is
-      <span id="fuelOnBoard" class="highlight"></span> lbs.
-    </p>
     <p>How much holding fuel and time do you have?</p>
 
     <button class="button is-primary" id="revealBtn">Reveal Answers</button>
 
     <div class="scenario-data is-hidden">
       <h2 class="subtitle">Scenario Data:</h2>
-      <p>
-        Time to destination:
-        <span id="timeToDestination" class="highlight"></span> hours. <br />
-        Fuel to destination:
-        <span id="fuelToDestination" class="highlight"></span> pounds. <br />
-        Total Fuel: <span id="totalFuel" class="highlight"></span> pounds.
-        <br />
-        Holding Fuel: <span id="holdingFuel" class="highlight"></span> lbs
-        <br />
-        Holding Time: <span id="holdingTime" class="highlight"></span> hours
-      </p>
+      <table class="table is-bordered is-striped is-hoverable">
+        <tbody>
+          <tr>
+            <td>Time to destination:</td>
+            <td>
+              <span id="timeToDestination" class="highlight"></span> hours.
+            </td>
+          </tr>
+          <tr>
+            <td>Fuel to destination:</td>
+            <td>
+              <span id="fuelToDestination" class="highlight"></span> pounds.
+            </td>
+          </tr>
+          <tr>
+            <td>Total Fuel:</td>
+            <td><span id="totalFuel" class="highlight"></span> pounds.</td>
+          </tr>
+          <tr>
+            <td>Holding Fuel:</td>
+            <td><span id="holdingFuel" class="highlight"></span> lbs</td>
+          </tr>
+          <tr>
+            <td>Holding Time:</td>
+            <td><span id="holdingTime" class="highlight"></span> hours</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>

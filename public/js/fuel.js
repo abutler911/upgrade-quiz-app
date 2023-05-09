@@ -1,7 +1,15 @@
 console.log("connected to fuel.js");
 document.addEventListener("DOMContentLoaded", () => {
-  const flightData = generateFlightScenarioData();
-  const holdingData = calculateHoldingFuelAndTime(flightData);
+  let holdingData;
+  let flightData;
+  do {
+    flightData = generateFlightScenarioData();
+    holdingData = calculateHoldingFuelAndTime(flightData);
+  } while (
+    holdingData.holdingFuel <= 0 ||
+    holdingData.holdingTime < 5 / 60 ||
+    holdingData.holdingTime > 45 / 60
+  );
 
   document.getElementById("miles").innerText = flightData.miles;
   document.getElementById("groundSpeed").innerText = flightData.groundSpeed;
@@ -11,7 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("fuelOnBoard").innerText = flightData.fuelOnBoard;
 
   document.getElementById("timeToDestination").innerText =
-    holdingData.timeToDestination.toFixed(2);
+    holdingData.timeToDestination.toFixed(2) +
+    "  (" +
+    formatHoursAndMinutes(holdingData.timeToDestination) +
+    ")";
   document.getElementById("fuelToDestination").innerText =
     holdingData.fuelToDestination.toFixed(2);
   document.getElementById("totalFuel").innerText =
@@ -19,11 +30,29 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("holdingFuel").innerText =
     holdingData.holdingFuel.toFixed(2);
   document.getElementById("holdingTime").innerText =
-    holdingData.holdingTime.toFixed(2);
+    holdingData.holdingTime.toFixed(2) +
+    "  (" +
+    formatHoursAndMinutes(holdingData.holdingTime) +
+    ")";
   document.getElementById("revealBtn").addEventListener("click", () => {
     document.querySelector(".scenario-data").classList.toggle("is-hidden");
   });
 });
+
+function formatHoursAndMinutes(hours) {
+  const totalMinutes = Math.round(hours * 60);
+  const minutes = totalMinutes % 60;
+  const wholeHours = (totalMinutes - minutes) / 60;
+  return (
+    wholeHours +
+    " hour" +
+    (wholeHours === 1 ? "" : "s") +
+    " " +
+    minutes +
+    " minute" +
+    (minutes === 1 ? "" : "s")
+  );
+}
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -37,10 +66,20 @@ function generateFlightScenarioData() {
   let reserveFuel = randomNumber(2450, 3000);
 
   let totalFuel = alternateFuel + reserveFuel;
+  const fuelBufferPercentage = 1.3; // 30% buffer
 
-  const fuelBufferPercentage = 1.3; // 10% buffer
-  const minFuelOnBoard = Math.ceil(totalFuel * fuelBufferPercentage);
-  const fuelOnBoard = randomNumber(minFuelOnBoard, 10500);
+  const minHoldingTime = 5 / 60; // 5 minutes in hours
+  const maxHoldingTime = 45 / 60; // 45 minutes in hours
+  const minHoldingFuel = minHoldingTime * fuelFlow;
+  const maxHoldingFuel = maxHoldingTime * fuelFlow;
+
+  const minFuelOnBoard = Math.ceil(
+    (totalFuel + minHoldingFuel) * fuelBufferPercentage
+  );
+  const fuelOnBoard = randomNumber(
+    minFuelOnBoard,
+    minFuelOnBoard + maxHoldingFuel
+  );
 
   return {
     miles,
