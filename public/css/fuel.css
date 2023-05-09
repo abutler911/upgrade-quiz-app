@@ -6,3 +6,20 @@
     font-weight: bold;
     font-size: 1.2em;
 }
+
+#revealBtn {
+    background-color: #009EE2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.7rem;
+}
+
+.container p {
+    font-size: 1.3rem;
+}
