@@ -13,6 +13,8 @@ const UserSchema = new mongoose.Schema({
     enum: ["approved", "pending", "rejected"],
     default: "pending",
   },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
   isAdmin: {
     type: Boolean,
     default: false,

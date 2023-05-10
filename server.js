@@ -61,9 +61,17 @@ app.use(passport.session());
 
 // Passport configuration
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser((user, done) => {
+  console.log("Serializing user:", user);
+  User.serializeUser()(user, done);
+});
 
+passport.deserializeUser((id, done) => {
+  console.log("Deserializing user ID:", id);
+  User.deserializeUser()(id, done);
+});
 // Make user accessible in views
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;

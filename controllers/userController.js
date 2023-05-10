@@ -50,11 +50,12 @@ If you did not request this, please ignore this email and your password will rem
 };
 
 exports.resetPassword = async (req, res) => {
+  console.log("resetPassword function called with token:", req.params.token);
   const user = await User.findOne({
     resetPasswordToken: req.params.token,
     resetPasswordExpires: { $gt: Date.now() },
   });
-
+  console.log("User:", user); // Log the user
   if (!user) {
     return res.redirect("/forgot-password");
   }
@@ -66,30 +67,80 @@ exports.resetPassword = async (req, res) => {
   });
 };
 
-exports.handleResetPassword = async (req, res) => {
-  const user = await User.findOne({
+// exports.handleResetPassword = async (req, res) => {
+//   console.log(
+//     "handleResetPassword function called with token:",
+//     req.params.token
+//   );
+//   const user = await User.findOne({
+//     resetPasswordToken: req.params.token,
+//     resetPasswordExpires: { $gt: Date.now() },
+//   });
+
+//   if (!user) {
+//     return res.redirect("/forgot-password");
+//   }
+
+//   user.setPassword(req.body.password, async (err) => {
+//     if (err) {
+//       return res.redirect("/reset-password/" + req.params.token);
+//     }
+
+//     user.resetPasswordToken = undefined;
+//     user.resetPasswordExpires = undefined;
+//     await user.save();
+
+//     req.login(user, (err) => {
+//       if (err) {
+//         console.error(err);
+//       }
+//       res.redirect("/");
+//     });
+//   });
+// };
+
+exports.handleResetPassword = (req, res) => {
+  User.findOne({
     resetPasswordToken: req.params.token,
     resetPasswordExpires: { $gt: Date.now() },
-  });
-
-  if (!user) {
-    return res.redirect("/forgot-password");
-  }
-
-  user.setPassword(req.body.password, async (err) => {
-    if (err) {
-      return res.redirect("/reset-password/" + req.params.token);
-    }
-
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpires = undefined;
-    await user.save();
-
-    req.login(user, (err) => {
-      if (err) {
-        console.error(err);
+  })
+    .then((user) => {
+      if (!user) {
+        return res.redirect("/forgot-password");
       }
-      res.redirect("/");
+
+      return new Promise((resolve, reject) => {
+        user.setPassword(req.body.password, function (err, user) {
+          if (err) {
+            console.log("setPassword err:", err);
+            reject(err);
+          } else {
+            resolve(user);
+          }
+        });
+      });
+    })
+    .then((user) => {
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpires = undefined;
+
+      return user.save();
+    })
+    .then((updatedUser) => {
+      console.log(updatedUser);
+      return updatedUser; // Return updatedUser to be used in next .then block
+    })
+    .then((user) => {
+      req.login(user, function (err) {
+        if (err) {
+          console.log("login err:", err);
+          return res.redirect("/login");
+        }
+        return res.redirect("/"); // or wherever you want to redirect after password reset
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/forgot-password");
     });
-  });
 };
