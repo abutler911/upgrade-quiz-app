@@ -26,13 +26,16 @@ exports.handleForgotPassword = async (req, res) => {
   user.resetPasswordExpires = expires;
   await user.save();
 
+  const isProduction = process.env.NODE_ENV === "production";
+  const protocol = isProduction ? "https" : "http";
+
   const msg = {
     to: user.email,
     from: "abutler911@gmail.com",
     subject: "Password Reset",
     text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.
 Please click on the following link, or paste this into your browser to complete the process:
-https://${req.headers.host}/reset-password/${token}
+${protocol}://${req.headers.host}/reset-password/${token}
 
 If you did not request this, please ignore this email and your password will remain unchanged.`,
   };
