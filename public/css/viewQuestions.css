@@ -1,13 +1,14 @@
 html, body {
     margin: 0;
-    height: 100%;
+    min-height: 100vh;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    background-color: #000;
-
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    background-position: center;
+    color: #fff;
 }
 
 .container {
@@ -82,10 +83,6 @@ footer a {
     h1 {
         font-size: 1.8rem;
     }
-
-    /* .mobile-fullwidth {
-        width: 100% !important;
-    } */
 
     .table.is-mobile-custom td {
         word-break: break-word;

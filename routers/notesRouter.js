@@ -57,4 +57,42 @@ router.post("/notes/delete/:id", isLoggedIn, async (req, res) => {
   }
 });
 
+// Display the note edit page
+router.get("/notes/edit/:id", isLoggedIn, async (req, res) => {
+  try {
+    const noteId = req.params.id;
+    const note = await Note.findById(noteId);
+    if (!note) {
+      return res.status(404).send("Note not found");
+    }
+    res.render("editNote", {
+      title: "Edit Note",
+      customCSS: "edit-note.css",
+      note,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error retrieving note");
+  }
+});
+
+// Handle the note edit form submission
+router.post("/notes/edit/:id", isLoggedIn, async (req, res) => {
+  try {
+    const noteId = req.params.id;
+    const { title, content } = req.body;
+    const capitalizedTitle = capitalizeWords(title);
+
+    await Note.findByIdAndUpdate(noteId, {
+      title: capitalizedTitle,
+      content,
+    });
+
+    res.redirect("/notes/view-notes");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error editing note");
+  }
+});
+
 module.exports = router;

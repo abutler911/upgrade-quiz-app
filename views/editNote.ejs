@@ -1,11 +1,18 @@
 <div class="columns is-centered">
   <div class="column">
-    <h1 class="title">Create Note</h1>
-    <form action="/notes/create" method="POST">
+    <h1 class="title">Edit Note</h1>
+    <form action="/notes/edit/<%= note._id %>" method="POST">
       <div class="field">
         <label class="label" for="title">Title:</label>
         <div class="control">
-          <input class="input" type="text" id="title" name="title" required />
+          <input
+            class="input"
+            type="text"
+            id="title"
+            name="title"
+            value="<%= note.title %>"
+            required
+          />
         </div>
       </div>
 
@@ -32,6 +39,10 @@
   const quill = new Quill("#quill-editor", {
     theme: "snow",
   });
+
+  // Load the note's content in HTML format
+  const noteHTMLContent = "<%- note.content %>";
+  quill.clipboard.dangerouslyPasteHTML(noteHTMLContent);
 
   const form = document.querySelector("form");
   const contentInput = document.querySelector("#content");

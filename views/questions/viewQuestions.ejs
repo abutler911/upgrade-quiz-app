@@ -1,30 +1,30 @@
-<div class="background-container">
-  <div class="container">
-    <div class="table-container">
-      <h1 class="title">Question Bank</h1>
+<!-- <div class="background-container"> -->
+<div class="container">
+  <div class="table-container">
+    <h1 class="title">Question Bank</h1>
 
-      <table
-        class="table is-bordered is-striped is-hoverable is-fullwidth is-mobile-custom"
-      >
-        <thead>
-          <tr>
-            <th class="has-text-centered">Question</th>
-            <th class="has-text-centered">Category</th>
-            <th class="has-text-centered">Answer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% questions.forEach(function(question, index) { %>
-          <tr>
-            <td id="questions-question">
-              #<%= index +1 %> -- <%= question.question %>
-            </td>
-            <td id="questions-category"><%= question.category.join(', ') %></td>
-            <td id="questions-answer"><%= question.answer %></td>
-          </tr>
-          <% }); %>
-        </tbody>
-      </table>
-    </div>
+    <table
+      class="table is-bordered is-striped is-hoverable is-fullwidth is-mobile-custom"
+    >
+      <thead>
+        <tr>
+          <th class="has-text-centered">Question</th>
+          <th class="has-text-centered">Category</th>
+          <th class="has-text-centered">Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% questions.forEach(function(question, index) { %>
+        <tr>
+          <td id="questions-question">
+            #<%= index +1 %> -- <%= question.question %>
+          </td>
+          <td id="questions-category"><%= question.category.join(', ') %></td>
+          <td id="questions-answer"><%= question.answer %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
   </div>
 </div>
+<!-- </div> -->

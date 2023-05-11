@@ -30,18 +30,22 @@ html, body {
 }
 
 .content-container {
-    text-align: justify;
-    background: none;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    border-radius: 7px;
+    /*Display stuff*/
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 180px;
+    justify-content: center;
+    /*Box model stuff*/
     width: 100%;
-    border: 1px solid gray;
+    height: 180px;
     margin-bottom: 10px;
+    border: 1px solid gray;
+    border-radius: 7px;
+    background: none;
+    /*Typography stuff*/
+    text-align: justify;
+    /*Miscellaneous*/
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     box-sizing: border-box;
 }
 
@@ -56,9 +60,11 @@ html, body {
 }
 
 #last-seen {
+    /*Box model stuff*/
+    margin-left: 10px;
+    /*Typography stuff*/
     font-size: 0.5rem;
     color: rgba(37, 104, 251, 1);
-    margin-left: 10px;
 }
 
 .card {

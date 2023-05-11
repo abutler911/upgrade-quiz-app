@@ -81,11 +81,12 @@ h1 {
     font-size: 1.2rem;
     font-weight: bold;
     border-radius: 7px;
-    background-color: #ee6c4d;
+    background-color: #009EE2;
+
 }
 
 #create-question-btn:hover {
-    background-color: #fa3b0b;
+    background-color: #007cb1;
     color: #000;
 }
 
