@@ -30,39 +30,36 @@ html, body {
 }
 
 .content-container {
-    /*Display stuff*/
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*Box model stuff*/
     width: 100%;
-    height: 180px;
+    height: 140px;
     margin-bottom: 10px;
     border: 1px solid gray;
     border-radius: 7px;
     background: none;
-    /*Typography stuff*/
     text-align: justify;
-    /*Miscellaneous*/
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     box-sizing: border-box;
 }
 
 #answer {
     font-weight: 700;
     color: #000;
+    font-size: 1rem;
 }
 
 #category {
-    font-size: 0.8rem;
+    margin-top: 7px;
+    font-size: 0.9rem;
     color: #fff;
 }
 
 #last-seen {
-    /*Box model stuff*/
     margin-left: 10px;
-    /*Typography stuff*/
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 0.5rem;
     color: rgba(37, 104, 251, 1);
 }
@@ -166,6 +163,7 @@ html, body {
 #question {
     color: #000;
     font-weight: 700;
+    font-size: 1rem;
 }
 
 .hidden-checkbox {
@@ -246,7 +244,7 @@ html, body {
 
 .answer-container {
     padding: 7px;
-    min-height: 180px;
+    min-height: 200px;
 }
 
 /* Buttons */
@@ -256,7 +254,7 @@ html, body {
 }
 
 #submit-rating {
-    background-color: transparent;
+    background-color: rgba(37, 104, 251, 0.3);
     color: #ffffff;
     border: 2px solid #2568fb;
     font-weight: 700;
@@ -265,19 +263,33 @@ html, body {
     text-transform: uppercase;
     height: 1.9rem;
     transition: all 0.3s;
+    width: 100%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
 }
 
 #flag-for-review {
-    background-color: transparent;
+    background-color: rgba(255, 56, 96, 0.3);
     color: #fff;
     border: 2px solid #ff3860;
     font-weight: 700;
-
+    font-size: 0.8rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-transform: uppercase;
     height: 1.9rem;
     transition: all 0.3s;
+    width: 100%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+
 }
+
+
+
 
 
 

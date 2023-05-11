@@ -8,7 +8,7 @@ function setupEventListeners() {
   setupShowAnswersCheckbox();
   setupNavigationButtons();
   setupCategoryFilter();
-  // setupRandomizeCheckbox();
+  setupRandomizeCheckbox();
   setupSubmitRatingButton();
 }
 function formatDate(dateString) {
@@ -18,45 +18,88 @@ function formatDate(dateString) {
 
 let questions = [];
 let currentQuestionIndex = 0;
-//NEW CODE
+
 function sortQuestionsByRating(questions) {
-  return questions.sort((a, b) => a.rating - b.rating);
+  console.log("Before sorting:", questions);
+  const sortedQuestions = questions.sort((a, b) => b.rating - a.rating);
+  console.log("After sorting:", sortedQuestions);
+  return sortedQuestions;
 }
 
-// async function fetchQuestions() {
-//   try {
-//     const response = await fetch("/api/questions");
-//     questions = await response.json();
-
-//     questions = sortQuestionsByRating(questions); // NEW CODE
-//     displayQuestion(currentQuestionIndex);
-//   } catch (error) {
-//     console.error("Error fetching questions:", error);
-//   }
-// }
 async function fetchQuestions() {
   try {
     const response = await fetch("/api/questions");
     questions = await response.json();
-    console.log("Questions:", questions);
-    const questionIds = questions.map((question) => question._id);
-    const ratings = await fetchRatings(questionIds);
 
-    questions = questions.map((question) => {
-      const rating = ratings.find((r) => r.questionId === question._id);
-      return {
-        ...question,
-        rating: rating ? rating.rating : 0,
-        interval: rating ? rating.interval : 1,
-      };
-    });
-
-    questions = sortQuestionsByRating(questions);
+    questions = sortQuestionsByRating(questions); // NEW CODE
     displayQuestion(currentQuestionIndex);
   } catch (error) {
     console.error("Error fetching questions:", error);
   }
 }
+// async function fetchQuestions() {
+//   try {
+//     const response = await fetch("/api/questions");
+//     questions = await response.json();
+
+//     console.log("Questions:", questions);
+//     const questionIds = questions.map((question) => question._id);
+//     const ratings = await fetchRatings(questionIds);
+
+//     questions = questions.map((question) => {
+//       const rating = ratings.find((r) => r.questionId === question._id);
+//       return {
+//         ...question,
+//         rating: rating ? rating.rating : 0,
+//         interval: rating ? rating.interval : 1,
+//       };
+//     });
+
+//     questions = sortQuestionsByRating(questions);
+//     displayQuestion(currentQuestionIndex);
+//   } catch (error) {
+//     console.error("Error fetching questions:", error);
+//   }
+// }
+// async function fetchQuestions() {
+//   try {
+//     const response = await fetch("/api/questions");
+//     questions = await response.json();
+
+//     const currentTime = Date.now();
+//     questions.forEach((question) => {
+//       const lastSeen = new Date(question.lastSeen).getTime();
+//       const hoursSinceLastSeen = Math.floor(
+//         (currentTime - lastSeen) / 1000 / 60 / 60
+//       );
+
+//       const adjustedRating = 6 - question.rating;
+//       const spacedRepScore = adjustedRating * hoursSinceLastSeen;
+
+//       question.spacedRepScore = spacedRepScore;
+//     });
+
+//     questions.sort((a, b) => b.spacedRepScore - a.spacedRepScore);
+
+//     console.log("Questions:", questions);
+//     const questionIds = questions.map((question) => question._id);
+//     const ratings = await fetchRatings(questionIds);
+
+//     questions = questions.map((question) => {
+//       const rating = ratings.find((r) => r.questionId === question._id);
+//       return {
+//         ...question,
+//         rating: rating ? rating.rating : 0,
+//         interval: rating ? rating.interval : 1,
+//       };
+//     });
+
+//     displayQuestion(currentQuestionIndex);
+//   } catch (error) {
+//     console.error("Error fetching questions:", error);
+//   }
+// }
+
 function updateInterval(interval, rating) {
   if (rating < 3) {
     return 1;
@@ -107,7 +150,6 @@ function displayQuestion() {
     categoryElement.innerText = "No categories to display";
   }
 
-  // updateProgressBar();
   updateQuestionCount();
 }
 
@@ -163,12 +205,12 @@ function setupCategoryFilter() {
   });
 }
 
-// function setupRandomizeCheckbox() {
-//   const randomizeCheckbox = document.getElementById("randomizeCheckbox");
-//   randomizeCheckbox.addEventListener("change", () => {
-//     loadQuestionsByCategory();
-//   });
-// }
+function setupRandomizeCheckbox() {
+  const randomizeCheckbox = document.getElementById("randomizeCheckbox");
+  randomizeCheckbox.addEventListener("change", () => {
+    loadQuestionsByCategory();
+  });
+}
 
 function toggleAnswerVisibility(answerElement, showAnswerButton) {
   answerElement.classList.toggle("hide");
@@ -196,7 +238,6 @@ function toggleAnswersWithCheckbox(showAnswersCheckbox) {
 
 function navigateToNextQuestion() {
   if (currentQuestionIndex < questions.length - 1) {
-    // updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
     currentQuestionIndex++;
     displayQuestion(currentQuestionIndex);
     hideAnswer();
@@ -205,7 +246,6 @@ function navigateToNextQuestion() {
 
 function navigateToPreviousQuestion() {
   if (currentQuestionIndex > 0) {
-    // updateQuestionRating(questions[currentQuestionIndex]._id, currentRating);
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
     hideAnswer();
@@ -222,8 +262,6 @@ async function submitDifficulty() {
   const question = questions[currentQuestionIndex];
   const questionId = question._id;
   const difficulty = document.querySelectorAll(".rating span.selected").length;
-
-  // Get the current interval and calculate the updated interval
   const currentInterval = question.interval;
   const updatedInterval = updateInterval(currentInterval, difficulty);
 
@@ -254,7 +292,6 @@ function showSuccessMessage() {
 }
 
 function updateQuestionRating(questionId, rating) {
-  // Update the user's rating for the question in the frontend
   const question = questions.find((q) => q._id === questionId);
   if (!question.userRating) {
     question.userRating = {};
