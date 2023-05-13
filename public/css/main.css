@@ -13,47 +13,7 @@ html, body {
     color: #fff;
 }
 
-.navbar-link {
-    font-size: 1rem;
-    font-weight: 400;
-    padding-left: 10px;
-}
 
-#flashcard-btn {
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    background-color: #009EE2;
-    border-radius: 15px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    height: 35px;
-    margin-left: 10px;
-}
-
-.navbar-start a {
-    font-size: 0.7rem;
-    font-weight: 400;
-    padding-left: 10px;
-}
-
-.navbar-item {
-    font-size: 1rem;
-    font-weight: bold;
-
-}
-
-.navbar-item ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.navbar-item li a {
-    font-size: 1rem;
-    font-weight: 400;
-    padding-left: 10px;
-}
 
 .divider {
     background-color: #009EE2;

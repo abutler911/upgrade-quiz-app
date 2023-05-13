@@ -1,0 +1,54 @@
+.navbar-item {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navbar-item h3 {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.navbar-item ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.navbar-item li {
+    padding-left: 10px;
+}
+
+.navbar-item li a {
+    font-size: 1rem;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.navbar-link {
+    font-size: 3rem;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.navbar-start a {
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+#flashcard-btn {
+    background-color: #009EE2;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    height: 3.3rem;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#flashcard-btn:hover {
+    background-color: #007cb1;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    color: #fff;
+
+}

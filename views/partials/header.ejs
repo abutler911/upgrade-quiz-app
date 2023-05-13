@@ -21,7 +21,6 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">Options</a>
             <div class="navbar-dropdown">
-              <a href="/quiz"><button class="button is-rounded" id="flashcard-btn">Flashcards</button></a>
               <h3 class="navbar-item">Misc Items</h3>
                 <ul>
                 <li><a class="navbar-item" href="/weather">Weather Planning</a></h3></li>
@@ -50,9 +49,14 @@
                 
                 <li><a class="navbar-item" href="/view-questions">View All Questions</a></li>
               </ul>
+              
+              
+              
               <hr class="navbar-divider">
                             
             </div>
+
+            <a href="/quiz" class="navbar-item"><button class="button is-rounded" id="flashcard-btn">Flashcards</button></a>
           </div>
           
         </div>
@@ -68,13 +72,13 @@
                   <strong>Login</strong>
                 </a>
               <% } else { %>
-                <span style="padding-right: 20px; font-size: 1.5rem; color: #009EE2; padding-bottom: 5px;">Hi, <%= currentUser.firstname %>!</span>
+                <span style="padding-right: 20px; font-size: 1rem; color: #009EE2; padding-bottom: 5px;">Hi, <%= currentUser.firstname %>!</span>
                 <% if (currentUser.isAdmin) { %>
                   <a class="button is-rounded" href="/admin/dashboard">
                     <strong>Admin Console</strong>
                   </a>
                 <% } %>
-                <a class="button is-light is-rounded" href="/logout">
+                <a class="button is-rounded" href="/logout">
                   <strong>Logout</strong>
                 </a>
               <% } %>
