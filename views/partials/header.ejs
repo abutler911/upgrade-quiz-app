@@ -56,8 +56,8 @@
                             
             </div>
 
-            <a href="/quiz" class="navbar-item"><button class="button is-rounded" id="flashcard-btn">Flashcards</button></a>
           </div>
+          <a href="/quiz" class="navbar-item"><button class="button is-rounded" id="flashcard-btn">Flashcards</button></a>
           
         </div>
     
@@ -65,10 +65,10 @@
           <div class="navbar-item">
             <div class="buttons">
               <% if (!currentUser) { %>
-                <a class="button is-rounded" style="background-color: #009EE2;" href="/register">
+                <a class="button" id="register-btn" href="/register">
                   <strong>Sign up</strong>
                 </a>
-                <a class="button is-light is-rounded" href="/login">
+                <a class="button" id="login-btn" href="/login">
                   <strong>Login</strong>
                 </a>
               <% } else { %>

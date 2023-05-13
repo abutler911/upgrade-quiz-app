@@ -1,3 +1,9 @@
+.navbar {
+    background-color: #f8f8f8;
+
+
+}
+
 .navbar-item {
     font-size: 1rem;
     font-weight: bold;
@@ -30,25 +36,61 @@
 }
 
 .navbar-start a {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
     padding-left: 10px;
 }
 
 #flashcard-btn {
     background-color: #009EE2;
-    border-radius: 15px;
+    border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
     height: 3.3rem;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid #d1d1d1;
+
 }
 
 #flashcard-btn:hover {
-    background-color: #007cb1;
-    border-radius: 20px;
-    font-size: 1.3rem;
+    color: #009EE2;
+    background-color: transparent;
+    transition: 0.2s ease-in-out;
+
+}
+
+#register-btn {
+    background-color: #009EE2;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     color: #fff;
+    border: 1px solid #d1d1d1;
+
+}
+
+#login-btn {
+    color: #009EE2;
+    background-color: transparent;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid #d1d1d1;
+}
+
+#register-btn:hover {
+    color: #009EE2;
+    background-color: transparent;
+    transition: 0.2s ease-in-out;
+
+}
+
+#login-btn:hover {
+    color: #fff;
+    background-color: #009EE2;
+    transition: 0.2s ease-in-out;
 
 }
