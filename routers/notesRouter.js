@@ -20,11 +20,11 @@ router.get("/notes/view-notes", isLoggedIn, async (req, res) => {
   }
 });
 
-router.get("/notes/create", async (req, res) => {
+router.get("/notes/create", isLoggedIn, async (req, res) => {
   res.render("newNote", { title: "Create Note", customCSS: "new-note.css" });
 });
 
-router.post("/notes/create", async (req, res) => {
+router.post("/notes/create", isLoggedIn, async (req, res) => {
   try {
     const { title, content } = req.body;
     const capitalizedTitle = capitalizeWords(title);

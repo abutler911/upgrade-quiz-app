@@ -98,6 +98,15 @@ app.use(flowsRoutes);
 app.use(questionRatingRouter);
 app.use(fuelRoutes);
 app.use(passwordResetRoutes);
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log error stack for debugging
+  res.status(500); // Set the HTTP status code to 500
+  res.render("error", {
+    title: "Error",
+    customCSS: "error.css",
+    error: err,
+  }); // Render the 'error' view and pass the error to it
+});
 
 // Start server
 app.listen(port, () => {

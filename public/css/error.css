@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.error-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px);
+
+    /* Assuming navbar height is 60px */
+}
+
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1), 0px 0px 0px 1px rgba(10, 10, 10, 0.1);
+    background-color: #f1f1f1;
+    width: 90%;
+}
+
+.error-container h1 {
+    color: #ff3860;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+p {
+    color: #000;
+    font-size: 2rem;
+}
+
+#homepage-btn {
+    background-color: #009EE2;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    height: 3.3rem;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid #d1d1d1;
+    padding: 10px;
+    margin-top: 20px;
+    color: #000;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .error-container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    #homepage-btn {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

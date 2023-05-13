@@ -2,17 +2,20 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.status(403).send("You must be logged in.");
+    return next(new Error("You must be logged in."));
   }
 }
 
 function isAdmin(req, res, next) {
-  if (req.isAuthenticated() && req.user.isAdmin) {
-    return next();
+  if (req.isAuthenticated()) {
+    if (req.user.isAdmin) {
+      return next();
+    } else {
+      return next(new Error("You do not have permission to access this page."));
+    }
+  } else {
+    return next(new Error("You must be logged in."));
   }
-  // res.status(403).send("You do not have permission to access this page.");
-
-  res.redirect("/login");
 }
 
 module.exports = {
