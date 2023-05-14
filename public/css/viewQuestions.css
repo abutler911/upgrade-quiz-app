@@ -1,37 +1,41 @@
 html, body {
     margin: 0;
-    min-height: 100vh;
     padding: 0;
+    height: 100%;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
-    background-position: center;
     color: #fff;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-position: 30% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+td {
+    font-weight: 700;
+    color: #000;
 }
 
 .container {
-    min-width: 800px;
+    width: 95%;
     margin: 30px auto;
     padding: 5px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 4px;
 }
 
 .title {
     font-size: 3rem;
-    color: white;
     text-align: center;
+    color: white;
     margin-bottom: 1.5rem;
 }
 
-.total-questions {
-    color: #000;
-}
-
 .table {
-    background-color: rgb(208, 238, 238);
+    background-color: rgba(208, 238, 238, 0.3);
 }
 
 .table.is-mobile-custom {
@@ -40,40 +44,29 @@ html, body {
 }
 
 thead tr {
-    background-color: #bdcbd3;
-    font-weight: 700;
     font-size: 1.3rem;
+    font-weight: 700;
+    background-color: #bdcbd3;
 }
 
-.brand {
-    color: #fff;
-    font-weight: 900;
-}
-
-.footer {
-    background-color: transparent;
-    padding: 1rem;
-}
-
-footer a {
-    color: inherit;
-}
-
-.footer p {
-    font-size: 0.5rem;
-    color: #fff;
+.total-questions {
+    color: #000;
 }
 
 @media only screen and (max-width: 768px) {
+    .container {
+        margin: 10px auto;
+        padding: 2px;
+    }
 
     .table.is-narrow td,
     .table.is-narrow th {
         padding: 0.25rem;
-        font-size: 0.2rem;
+        font-size: 0.6rem;
     }
 
     th {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     td {

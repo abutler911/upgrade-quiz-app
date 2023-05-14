@@ -1,250 +1,94 @@
 html, body {
     margin: 0;
-    height: 100%;
     padding: 0;
+    height: 100%;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506695939086-156c2eff767b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
-    background-position: center;
+    color: #fff;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-position: 30% center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+}
+
+td {
+    font-weight: 700;
+    color: #000;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-
-h1 {
-    color: #333;
+    width: 95%;
+    margin: 30px auto;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .title {
-    color: #fff;
+    font-size: 3rem;
     text-align: center;
-}
-
-.control-title {
-    color: #000;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-}
-
-.headers,
-.user-data {
-    font-size: 1.2rem;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-}
-
-th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-tr:hover {
-    background-color: #f5f5f5;
-}
-
-.btn-container {
-    display: flex;
-    align-items: center;
-}
-
-.btn-container form {
-    margin-top: 10px;
-    margin-right: 5px;
-}
-
-.action-btn {
-    padding: 6px 12px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.action-btn.approve {
-    background-color: #4caf50;
     color: white;
+    margin-bottom: 1.5rem;
 }
 
-.action-btn.approve:hover {
-    background-color: #45a049;
+.table {
+    background-color: rgba(208, 238, 238, 0.5);
 }
 
-.action-btn.delete {
-    background-color: #f44336;
-    color: white;
+.table.is-mobile-custom {
+    table-layout: fixed;
+    word-wrap: break-word;
 }
 
-.action-btn.delete:hover {
-    background-color: #da190b;
-}
-
-.flagged-questions-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.flagged-questions-table th,
-.flagged-questions-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-}
-
-.flagged-questions-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.flagged-questions-table tr:hover {
-    background-color: #f5f5f5;
+thead tr {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background-color: #bdcbd3;
 }
 
 .edit-btn {
-    display: inline-block;
-    padding: 6px 12px;
-    background-color: #4caf50;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-.edit-btn:hover {
-    background-color: #45a049;
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.dashboard-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    width: 150px;
-    height: 150px;
-    background-color: #4caf50;
-    color: #000;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 50%;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    margin-bottom: 20px;
-}
-
-.dashboard-btn:hover {
-    background-color: #45a049;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-}
-
-.dashboard-btn p {
-    margin: 0;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.box {
+    /* width: 100%; */
     background-color: #009EE2;
-    border-radius: 15px;
-    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-    padding: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
+    font-size: 1rem;
+    padding: 5px;
+    color: #000;
+    margin-top: 10px;
+
 }
 
-.box:hover {
-    box-shadow: 0 8px 10px rgba(10, 10, 10, 0.2), 0 0 0 1px rgba(10, 10, 10, 0.1);
-    transform: translateY(-5px);
-    -webkit-transform: translateY(-5px);
-    -moz-transform: translateY(-5px);
-    -ms-transform: translateY(-5px);
-    -o-transform: translateY(-5px);
+.total-questions {
+    color: #000;
 }
 
-.control-button {
-    width: 50%;
-    height: 40px;
-    background-color: rgb(255, 255, 139);
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    cursor: pointer;
-}
-
-@media (max-width: 767px) {
+@media only screen and (max-width: 768px) {
     .container {
-        padding: 20px 10px;
+        margin: 10px auto;
+        padding: 2px;
     }
 
-    .table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .table td, .table th {
-        white-space: nowrap;
-    }
-
-    .headers,
-    .user-data,
-    thead,
-    tbody {
+    .table.is-narrow td,
+    .table.is-narrow th {
+        padding: 0.25rem;
         font-size: 0.6rem;
     }
 
-    .dashboard-btn {
-        width: 100px;
-        height: 100px;
-        font-size: 12px;
-        margin-bottom: 10px;
+    th {
+        font-size: 0.7rem;
     }
 
+    td {
+        font-size: 0.7rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .table.is-mobile-custom td {
+        word-break: break-word;
+        white-space: normal;
+    }
 }

@@ -1,5 +1,16 @@
-console.log("connected to fuel.js");
 document.addEventListener("DOMContentLoaded", () => {
+  generateScenarioAndFillData();
+
+  document.getElementById("regenerateBtn").addEventListener("click", () => {
+    generateScenarioAndFillData();
+  });
+
+  document.getElementById("revealBtn").addEventListener("click", () => {
+    document.querySelector(".scenario-data").classList.toggle("is-hidden");
+  });
+});
+
+function generateScenarioAndFillData() {
   let holdingData;
   let flightData;
   do {
@@ -34,10 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "  (" +
     formatHoursAndMinutes(holdingData.holdingTime) +
     ")";
-  document.getElementById("revealBtn").addEventListener("click", () => {
-    document.querySelector(".scenario-data").classList.toggle("is-hidden");
-  });
-});
+  document.querySelector(".scenario-data").classList.add("is-hidden");
+}
 
 function formatHoursAndMinutes(hours) {
   const totalMinutes = Math.round(hours * 60);

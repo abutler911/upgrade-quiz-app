@@ -1,4 +1,3 @@
-<!-- <div class="background-container"> -->
 <div class="container">
   <div class="table-container">
     <h1 class="title">Question Bank</h1>
@@ -11,6 +10,7 @@
           <th class="has-text-centered">Question</th>
           <th class="has-text-centered">Category</th>
           <th class="has-text-centered">Answer</th>
+          <th class="has-text-centered">User Rating</th>
         </tr>
       </thead>
       <tbody>
@@ -21,10 +21,15 @@
           </td>
           <td id="questions-category"><%= question.category.join(', ') %></td>
           <td id="questions-answer"><%= question.answer %></td>
+          <td id="questions-rating">
+            <% let questionRating = currentUser.questionRatings.find(qr =>
+            qr.question.toString() === question._id.toString());
+            if(questionRating) { %> <%= questionRating.rating %> <% } else { %>
+            Not rated <% } %>
+          </td>
         </tr>
         <% }); %>
       </tbody>
     </table>
   </div>
 </div>
-<!-- </div> -->

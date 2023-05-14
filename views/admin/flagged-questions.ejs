@@ -1,20 +1,23 @@
 <div class="container">
-  <h1>Flagged Questions</h1>
-  <table class="flagged-questions-table">
+  <h1 class="title">Flagged Questions</h1>
+  <table
+    class="table is-bordered is-striped is-hoverable is-fullwidth is-mobile-custom"
+  >
     <thead>
       <tr>
-        <th>Question</th>
-        <th>Answer</th>
-        <th>Action</th>
+        <th class="has-text-centered">Question</th>
+        <th class="has-text-centered">Answer</th>
+        <th class="has-text-centered">Action</th>
       </tr>
     </thead>
     <tbody>
-      <% questions.forEach(question => { %>
+      <% questions.forEach(function(question, index) { %>
       <tr>
-        <td><%= question.question %></td>
-        <td><%= question.answer %></td>
-
-        <td>
+        <td id="questions-question">
+          #<%= index +1 %> -- <%= question.question %>
+        </td>
+        <td id="questions-answer"><%= question.answer %></td>
+        <td id="questions-action">
           <a href="/modify-questions/<%= question._id %>/edit" class="edit-btn"
             >Edit</a
           >
