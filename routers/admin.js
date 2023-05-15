@@ -86,4 +86,21 @@ router.get(
   }
 );
 
+router.post(
+  "/admin/unflag-question/:questionId",
+  isLoggedIn,
+  isAdmin,
+  async (req, res) => {
+    try {
+      await Question.findByIdAndUpdate(req.params.questionId, {
+        flaggedForReview: false,
+      });
+      res.redirect("/admin/flagged-questions");
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Error updating question status");
+    }
+  }
+);
+
 module.exports = router;

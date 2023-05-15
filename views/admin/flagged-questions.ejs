@@ -18,9 +18,20 @@
         </td>
         <td id="questions-answer"><%= question.answer %></td>
         <td id="questions-action">
-          <a href="/modify-questions/<%= question._id %>/edit" class="edit-btn"
-            >Edit</a
-          >
+          <div class="action-btn-group">
+            <a
+              href="/modify-questions/<%= question._id %>/edit"
+              class="control-button"
+              >Edit</a
+            >
+
+            <form
+              action="/admin/unflag-question/<%= question._id %>"
+              method="POST"
+            >
+              <button class="control-button">Unflag</button>
+            </form>
+          </div>
         </td>
       </tr>
       <% }); %>
