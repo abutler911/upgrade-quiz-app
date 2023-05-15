@@ -7,24 +7,23 @@
           <th class="headers">Name</th>
           <th class="headers">Email</th>
           <th class="headers">Employee #</th>
+          <th class="headers">Actions</th>
         </tr>
       </thead>
       <tbody>
         <% users.forEach((user) => { %>
         <tr class="user-data">
+          <td><%= user.firstname %> <%= user.lastname %></td>
+          <td><%= user.email %></td>
+          <td><%= user.employeeNumber %></td>
           <td>
-            <%= user.firstname %> <%= user.lastname %>
             <span class="btn-container">
               <form
                 action="/admin/approve-user/<%= user._id %>"
                 method="POST"
                 style="display: inline"
               >
-                <button
-                  class="button approve-btn action-btn"
-                  id="approve-btn"
-                  type="submit"
-                >
+                <button class="control-button" id="approve-btn" type="submit">
                   Approve
                 </button>
               </form>
@@ -33,19 +32,12 @@
                 method="POST"
                 style="display: inline"
               >
-                <button
-                  class="button delete-btn action-btn"
-                  id="delete-btn"
-                  type="submit"
-                >
+                <button class="control-button" id="delete-btn" type="submit">
                   Delete
                 </button>
               </form>
             </span>
           </td>
-          <td><%= user.email %></td>
-          <td><%= user.employeeNumber %></td>
-          <td></td>
         </tr>
         <% }) %>
       </tbody>
