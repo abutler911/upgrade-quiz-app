@@ -29,6 +29,7 @@ const flowsRoutes = require("./routers/flows");
 const fuelRoutes = require("./routers/fuelRouter");
 const questionRatingRouter = require("./routers/questionRatingRouter");
 const passwordResetRoutes = require("./routers/passwordReset");
+const weatherRouter = require("./routers/weatherRouter");
 
 // Express app setup
 const app = express();
@@ -98,14 +99,15 @@ app.use(flowsRoutes);
 app.use(questionRatingRouter);
 app.use(fuelRoutes);
 app.use(passwordResetRoutes);
+app.use(weatherRouter);
 app.use((err, req, res, next) => {
-  console.error(err.stack); // Log error stack for debugging
-  res.status(500); // Set the HTTP status code to 500
+  console.error(err.stack);
+  res.status(500);
   res.render("error", {
     title: "Error",
     customCSS: "error.css",
     error: err,
-  }); // Render the 'error' view and pass the error to it
+  });
 });
 
 // Start server

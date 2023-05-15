@@ -55,22 +55,24 @@ td {
 
 .control-button {
     background-color: #809bce;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 4px 2px;
     min-width: max-content;
     padding: 10px 20px;
     text-align: center;
-    white-space: nowrap;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border: none;
-    color: #fff;
     text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
+    white-space: nowrap;
+    width: 100%;
 }
+
 
 .control-title {
     text-align: center;
@@ -154,7 +156,8 @@ thead tr {
 
     .control-button {
         padding: 5px 10px;
-        font-size: 1rem;
+        font-size: 0.6rem;
         border-radius: 5px;
+        width: 100%;
     }
 }
