@@ -1,4 +1,63 @@
 <div class="container">
   <h1 class="title">Welcome to the weather page.</h1>
-  <h2>Page is under construction - COMING SOON!</h2>
+  <h2>PAGE IS UNDER CONSTRUCTION!!! DO NOT USE FOR TRAINING!!</h2>
+  <h2>Exemption 17347 - Destination Weather</h2>
+  <p>Assume ILS minimums of 200' and 1/2sm at KLAX</p>
+  <p>
+    The following TAF is attached to the release for your flight from KSAN to
+    KLAX.
+  </p>
+  <h3>KLAX Forecast Weather</h3>
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered is-striped">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+          <th>Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TAF</td>
+          <td id="taf"></td>
+          <td></td>
+        </tr>
+        <tr class="is-vcentered">
+          <td>Legal to depart?</td>
+          <td></td>
+          <td>
+            <div class="buttons is-centered">
+              <button
+                class="button is-primary is-small answer-button answer-yes"
+              >
+                Yes
+              </button>
+              <button class="button is-danger is-small answer-button answer-no">
+                No
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr class="is-vcentered">
+          <td>Is a 2nd alternate required?</td>
+          <td></td>
+          <td>
+            <div class="buttons is-centered">
+              <button
+                class="button is-primary is-small answer-button answer-yes"
+              >
+                Yes
+              </button>
+              <button class="button is-danger is-small answer-button answer-no">
+                No
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<script src="js/weather.js"></script>

@@ -189,6 +189,16 @@ const categories = [
     name: "ACARS",
     value: "acars",
   },
+  {
+    id: 38,
+    name: "Upset Recovery",
+    value: "upset-recovery",
+  },
+  {
+    id: 39,
+    name: "Aerodynamics",
+    value: "aerodynamics",
+  },
 ];
 
 module.exports = categories;

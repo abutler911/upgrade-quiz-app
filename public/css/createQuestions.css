@@ -42,6 +42,7 @@ html, body {
 .input,
 .select select {
     font-size: 20px;
+
 }
 
 .custom-select select {
