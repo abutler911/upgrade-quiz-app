@@ -15,7 +15,13 @@ html, body {
 
 }
 
+.title {
+    font-size: 4rem;
+}
 
+.category-select option {
+    color: black;
+}
 
 .container {
     flex: 1;

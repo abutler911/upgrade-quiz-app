@@ -12,9 +12,11 @@ html, body {
     background-size: cover;
     color: #fff;
     background-attachment: fixed;
-
 }
 
+#select2-category-results li {
+    color: black;
+}
 
 .container {
     margin-top: 100px;
@@ -29,13 +31,16 @@ html, body {
 }
 
 .box {
-    width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
-    margin-top: 100px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.input, .select select {
+.input,
+.select select {
     font-size: 20px;
 }
 
@@ -44,13 +49,16 @@ html, body {
     box-sizing: border-box;
 }
 
+.title {
+    margin-bottom: 20px;
+}
+
 .label {
-    font-size: 18px;
     font-weight: bold;
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 4rem;
 }
 
 #create-question-btn {
@@ -59,7 +67,6 @@ h1 {
     font-weight: bold;
     border-radius: 7px;
     background-color: #009EE2;
-
 }
 
 #create-question-btn:hover {
@@ -67,29 +74,8 @@ h1 {
     color: #000;
 }
 
-.footer {
-    background-color: transparent;
-    padding: 1rem;
-    margin-top: auto;
-}
-
-footer a {
-    color: inherit;
-}
-
-.footer p {
-    font-size: 0.5rem;
-    color: #fff;
-}
-
-.brand {
-    color: #fff;
-    font-weight: 900;
-}
-
 .select select {
-    width: 100%;
-    box-sizing: border-box;
+    color: #000;
 }
 
 @media screen and (max-width: 768px) {
