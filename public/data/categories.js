@@ -184,6 +184,11 @@ const categories = [
     name: "Hazardous Materials",
     value: "hazardous-materials",
   },
+  {
+    id: 37,
+    name: "ACARS",
+    value: "acars",
+  },
 ];
 
 module.exports = categories;

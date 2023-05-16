@@ -82,6 +82,7 @@ h1 {
     .box {
         padding-left: 1rem;
         padding-right: 1rem;
+        width: 100%;
     }
 
     .select.is-multiple.mobile-fullwidth {
