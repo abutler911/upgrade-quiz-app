@@ -1,3 +1,6 @@
+let questions = [];
+let currentQuestionIndex = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
   setupEventListeners();
   fetchQuestions();
@@ -16,87 +19,53 @@ function formatDate(dateString) {
   return date.toLocaleString();
 }
 
-let questions = [];
-let currentQuestionIndex = 0;
-
-function sortQuestionsByRating(questions) {
-  console.log("Before sorting:", questions);
-  const sortedQuestions = questions.sort((a, b) => b.rating - a.rating);
-  console.log("After sorting:", sortedQuestions);
-  return sortedQuestions;
-}
-
 async function fetchQuestions() {
   try {
     const response = await fetch("/api/questions");
     questions = await response.json();
 
-    questions = sortQuestionsByRating(questions); // NEW CODE
+    const questionIds = questions.map((question) => question._id);
+    const ratings = await fetchRatings(questionIds);
+
+    questions = questions.map((question) => {
+      const rating = ratings.find((r) => r.questionId === question._id);
+      const interval = rating ? rating.interval : 1;
+      const adjustedInterval = adjustIntervalBasedOnRating(
+        interval,
+        question.rating
+      );
+      return {
+        ...question,
+        rating: rating ? rating.rating : 0,
+        interval: adjustedInterval,
+      };
+    });
+
+    questions.sort((a, b) => b.rating - a.rating);
+
     displayQuestion(currentQuestionIndex);
   } catch (error) {
     console.error("Error fetching questions:", error);
   }
 }
-// async function fetchQuestions() {
-//   try {
-//     const response = await fetch("/api/questions");
-//     questions = await response.json();
 
-//     console.log("Questions:", questions);
-//     const questionIds = questions.map((question) => question._id);
-//     const ratings = await fetchRatings(questionIds);
+function adjustIntervalBasedOnRating(interval, rating) {
+  if (rating === 5) {
+    return interval / 2;
+  } else if (rating === 1) {
+    return interval * 2;
+  } else {
+    return interval;
+  }
+}
 
-//     questions = questions.map((question) => {
-//       const rating = ratings.find((r) => r.questionId === question._id);
-//       return {
-//         ...question,
-//         rating: rating ? rating.rating : 0,
-//         interval: rating ? rating.interval : 1,
-//       };
-//     });
-
-//     questions = sortQuestionsByRating(questions);
-//     displayQuestion(currentQuestionIndex);
-//   } catch (error) {
-//     console.error("Error fetching questions:", error);
-//   }
-// }
-// async function fetchQuestions() {
-//   try {
-//     const response = await fetch("/api/questions");
-//     questions = await response.json();
-
-//     const currentTime = Date.now();
-//     questions.forEach((question) => {
-//       const lastSeen = new Date(question.lastSeen).getTime();
-//       const hoursSinceLastSeen = Math.floor(
-//         (currentTime - lastSeen) / 1000 / 60 / 60
-//       );
-
-//       const adjustedRating = 6 - question.rating;
-//       const spacedRepScore = adjustedRating * hoursSinceLastSeen;
-
-//       question.spacedRepScore = spacedRepScore;
-//     });
-
-//     questions.sort((a, b) => b.spacedRepScore - a.spacedRepScore);
-
-//     console.log("Questions:", questions);
-//     const questionIds = questions.map((question) => question._id);
-//     const ratings = await fetchRatings(questionIds);
-
-//     questions = questions.map((question) => {
-//       const rating = ratings.find((r) => r.questionId === question._id);
-//       return {
-//         ...question,
-//         rating: rating ? rating.rating : 0,
-//         interval: rating ? rating.interval : 1,
-//       };
-//     });
-
-//     displayQuestion(currentQuestionIndex);
-//   } catch (error) {
-//     console.error("Error fetching questions:", error);
+// function adjustIntervalBasedOnRating(interval, rating) {
+//   if (rating === 5) {
+//     return interval / 2; // Halve the i
+//   } else if (rating === 1) {
+//     return interval * 2; // Double the interval for rating 1
+//   } else {
+//     return interval; // Use the same interval for other ratings
 //   }
 // }
 
@@ -135,9 +104,6 @@ function displayQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
     questionElement.innerText = currentQuestion.question;
     answerElement.innerText = currentQuestion.answer;
-    // categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
-    // setRating(currentQuestion.rating || 0);
-    // document.getElementById("difficulty").value = currentQuestion.difficulty;
     categoryElement.innerText = `Categories(s): ${currentQuestion.category}`;
     lastSeenElement.innerText = `Last seen: ${formatDate(
       currentQuestion.lastSeen
@@ -275,7 +241,6 @@ async function submitDifficulty() {
     });
 
     if (response.ok) {
-      console.log("Question difficulty updated successfully");
       updateQuestionRating(questionId, difficulty);
       alert("Rating updated successfully!");
     } else {
@@ -342,15 +307,6 @@ function shuffleQuestions(array) {
   }
 }
 
-// function updateProgressBar() {
-//   const totalQuestions = questions.length;
-//   const completedQuestions = currentQuestionIndex + 1;
-//   const percentage = (completedQuestions / totalQuestions) * 100;
-
-//   const progressBar = document.getElementById("progress-bar");
-//   progressBar.style.width = percentage + "%";
-// }
-
 function updateQuestionCount() {
   const totalQuestions = questions.length;
   const completedQuestions = currentQuestionIndex + 1;
@@ -388,7 +344,6 @@ function setRating(ratingValue) {
 async function submitRating() {
   const questionId = questions[currentQuestionIndex]._id;
   await updateQuestionRating(questionId, currentRating);
-  // navigateToNextQuestion();
 }
 
 async function updateQuestionRating(questionId, rating) {
@@ -401,7 +356,6 @@ async function updateQuestionRating(questionId, rating) {
       body: JSON.stringify({ questionId, rating }),
     });
     if (response.ok) {
-      console.log("Question rating updated successfully");
     } else {
       console.error("Error updating question rating:", response.statusText);
     }
@@ -420,7 +374,6 @@ async function updateLastSeen(questionId) {
     });
 
     if (response.ok) {
-      console.log("Question lastSeen updated successfully");
     } else {
       console.error("Error updating question lastSeen:", response.statusText);
     }
