@@ -1,0 +1,70 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.section-title {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.create-thread-form {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+}
+
+.button {
+    background-color: #3498db;
+    color: white;
+}
+
+.discussion-list {
+    margin-top: 1rem;
+}
+
+.discussion {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.discussion-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    border-bottom: 1px solid black;
+}
+
+.discussion-creator {
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+    font-size: 0.7rem;
+    float: right;
+    font-style: italic;
+    margin-top: 0.6rem;
+}
+
+.comment-count {
+    color: #4a4a4a;
+    font-size: 0.7rem;
+    margin-right: 20px;
+}
+
+.view-discussion-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3498db;
+}

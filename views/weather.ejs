@@ -8,56 +8,21 @@
     KLAX.
   </p>
   <h3>KLAX Forecast Weather</h3>
-  <div class="table-container">
-    <table class="table is-fullwidth is-bordered is-striped">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Value</th>
-          <th>Answer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>TAF</td>
-          <td id="taf"></td>
-          <td></td>
-        </tr>
-        <tr class="is-vcentered">
-          <td>Legal to depart?</td>
-          <td></td>
-          <td>
-            <div class="buttons is-centered">
-              <button
-                class="button is-primary is-small answer-button answer-yes"
-              >
-                Yes
-              </button>
-              <button class="button is-danger is-small answer-button answer-no">
-                No
-              </button>
-            </div>
-          </td>
-        </tr>
-        <tr class="is-vcentered">
-          <td>Is a 2nd alternate required?</td>
-          <td></td>
-          <td>
-            <div class="buttons is-centered">
-              <button
-                class="button is-primary is-small answer-button answer-yes"
-              >
-                Yes
-              </button>
-              <button class="button is-danger is-small answer-button answer-no">
-                No
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <% weatherData.forEach((data) => { %>
+  <div class="weather-info">
+    <h4>TAF</h4>
+    <p><%= data.taf %></p>
+    <button class="button is-small answer-button">Show Answer</button>
+    <div class="question">
+      <p>Legal to depart?</p>
+      <span class="answer-text"></span>
+    </div>
+    <div class="question">
+      <p>Is a 2nd alternate required?</p>
+      <span class="answer-text"></span>
+    </div>
   </div>
+  <% }); %>
 </div>
 
 <script src="js/weather.js"></script>

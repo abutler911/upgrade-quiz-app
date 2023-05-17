@@ -1,0 +1,48 @@
+<div class="container">
+  <h1 class="title"><%= discussion.title %></h1>
+  <p>
+    Created by <%= discussion.user.username %> on <%=
+    discussion.createdAt.toLocaleString() %>
+  </p>
+  <div class="content"><%= discussion.content %></div>
+
+  <% if (user && user._id.toString() === discussion.user._id.toString()) { %>
+  <form action="/discussions/<%= discussion._id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE" />
+    <button type="submit" class="button is-danger">Delete Thread</button>
+  </form>
+  <% } %>
+
+  <div class="comments">
+    <h2 class="section-title">Comments</h2>
+    <% discussion.comments.forEach(function(comment) { %>
+    <div class="comment box">
+      <p><%= comment.content %></p>
+      <p>
+        Posted by <%= comment.user.username %> on <%=
+        comment.createdAt.toLocaleString() %>
+      </p>
+    </div>
+    <% }); %>
+  </div>
+
+  <% if (user) { %>
+  <div class="add-comment-form">
+    <h2 class="section-title">Add Comment</h2>
+    <form action="/discussions/<%= discussion._id %>/comments" method="POST">
+      <div class="field">
+        <label for="content" class="label">Comment</label>
+        <div class="control">
+          <textarea
+            id="content"
+            name="content"
+            class="textarea"
+            required
+          ></textarea>
+        </div>
+      </div>
+      <button type="submit" class="button is-link">Post Comment</button>
+    </form>
+  </div>
+  <% } %>
+</div>

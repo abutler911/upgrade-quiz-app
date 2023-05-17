@@ -1,0 +1,77 @@
+<div class="container">
+  <h1 class="title">Discussion Board</h1>
+
+  <div class="columns">
+    <div class="column">
+      <div class="create-thread-form">
+        <h2 class="section-title">Create New Thread</h2>
+        <form action="/discussions" method="POST">
+          <div class="field">
+            <label for="title" class="label">Thread Title</label>
+            <div class="control">
+              <input
+                type="text"
+                id="title"
+                name="title"
+                class="input"
+                required
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label for="content" class="label">Thread Content</label>
+            <div class="control">
+              <textarea
+                id="content"
+                name="content"
+                class="textarea"
+                required
+              ></textarea>
+            </div>
+          </div>
+          <button type="submit" class="button is-link">Create Thread</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="discussion-list">
+        <h2 class="section-title">Recent Discussions</h2>
+        <% discussions.forEach(function(discussion) { %>
+        <div class="discussion box">
+          <h3 class="discussion-title title is-4">
+            <%= discussion.title %><span
+              class="discussion-creator has-text-weight-semibold"
+            >
+              Created by <%= discussion.user.username %> on <%=
+              discussion.createdAt.toLocaleString() %>
+            </span>
+            <span class="comment-count"
+              ><%= discussion.comments.length %> comment(s)</span
+            >
+          </h3>
+          <p class="discussion-content"><%= discussion.content %></p>
+
+          <!-- Add this line to display the comment count -->
+
+          <a
+            href="/discussions/<%= discussion._id %>"
+            class="view-discussion-link button is-info"
+            >View Discussion</a
+          >
+
+          <% if (user && user._id.toString() === discussion.user._id.toString())
+          { %>
+          <form action="/discussions/<%= discussion._id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit" class="button is-danger">
+              Delete Thread
+            </button>
+          </form>
+          <% } %>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>
