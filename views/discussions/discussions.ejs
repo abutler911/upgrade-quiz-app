@@ -4,7 +4,7 @@
   <div class="columns">
     <div class="column">
       <div class="box has-background-light">
-        <h2 class="subtitle has-text-link">Create New Thread</h2>
+        <h2 class="subtitle">Create New Thread</h2>
         <form action="/discussions" method="POST">
           <div class="field">
             <label for="title" class="label">Thread Title</label>
@@ -34,9 +34,7 @@
           </div>
         </form>
         <hr class="divider" />
-        <h2 class="subtitle has-text-link has-text-weight-bold mt-4">
-          Recent Threads
-        </h2>
+        <h2 class="subtitle mt-4">Recent Threads</h2>
         <% recentDiscussions.forEach(function(discussion) { %>
         <div class="box has-background-white-ter">
           <h4 class="title is-5 has-text-link-dark" style="margin-bottom: 5px">
@@ -59,7 +57,7 @@
 
     <div class="column">
       <div class="box has-background-light">
-        <h2 class="subtitle has-text-link">Recent Discussions</h2>
+        <h2 class="subtitle">Recent Discussions</h2>
         <% discussions.forEach(function(discussion) { %>
         <div class="card mb-4">
           <div class="card-content">
@@ -85,15 +83,16 @@
             <% if (user && user._id.toString() ===
             discussion.user._id.toString()) { %>
             <form
-              action="/discussions/<%= discussion._id %>"
+              action="/discussions/<%= discussion._id %>/delete"
               method="POST"
-              class="card-footer-item has-text-danger"
+              class="card-footer-item"
+              id="delete-form"
             >
-              <input type="hidden" name="_method" value="DELETE" />
-              <button type="submit" class="button is-text">
+              <button type="submit" class="button is-text" id="delete-btn">
                 Delete Thread
               </button>
             </form>
+
             <% } %>
           </footer>
         </div>

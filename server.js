@@ -38,7 +38,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(methodOverride("_method"));
 
 app.use((req, res, next) => {
   if (
@@ -63,6 +62,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride("_method"));
 
 // Passport configuration
 passport.use(new LocalStrategy(User.authenticate()));
@@ -90,7 +90,9 @@ app.use(expressLayouts);
 
 app.get("/discussions", isLoggedIn, async (req, res) => {
   try {
-    const discussions = await Discussion.find().populate("user");
+    const discussions = await Discussion.find()
+      .sort("-createdAt")
+      .populate("user");
 
     const recentDiscussions = await Discussion.find()
       .sort("-createdAt")
@@ -130,7 +132,22 @@ app.post("/discussions", isLoggedIn, async (req, res) => {
   }
 });
 
-app.delete("/discussions/:id", isLoggedIn, async (req, res) => {
+// app.delete("/discussions/:id", isLoggedIn, async (req, res) => {
+//   try {
+//     const discussion = await Discussion.findById(req.params.id);
+
+//     if (discussion.user._id.toString() !== req.user._id.toString()) {
+//       return res.status(401).send("Unauthorized");
+//     }
+
+//     await Discussion.findByIdAndDelete(req.params.id);
+//     res.redirect("/discussions");
+//   } catch (error) {
+//     console.error("Error deleting discussion:", error);
+//     res.status(500).send("Error deleting discussion");
+//   }
+// });
+app.post("/discussions/:id/delete", isLoggedIn, async (req, res) => {
   try {
     const discussion = await Discussion.findById(req.params.id);
 

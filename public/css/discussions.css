@@ -3,8 +3,6 @@ body {
     padding: 20px;
     box-sizing: border-box;
     background-color: #cae4ff;
-
-
 }
 
 .divider {
@@ -24,8 +22,33 @@ body {
     justify-content: space-between;
 }
 
+.card-footer-item {
+    background-color: rgb(192, 255, 192);
+    font-size: 1.3rem;
+    color: #000;
+
+}
+
+#delete-form {
+    background-color: rgb(255, 132, 132);
+    font-size: 1.3rem;
+}
+
+#delete-btn {
+    font-size: 1.3rem;
+    color: #000;
+    text-decoration: none;
+
+
+}
+
 .title {
     margin-bottom: 0;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #000;
 }
 
 .tag {
@@ -101,4 +124,28 @@ body {
     font-weight: bold;
     text-decoration: none;
     color: #3498db;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1em;
+        margin: auto;
+    }
+
+    .card {
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .card-content {
+        font-size: 14px;
+    }
+
+    .comments .box {
+        margin-bottom: 10px;
+    }
+
+    .add-comment-form {
+        padding: 10px;
+    }
 }
