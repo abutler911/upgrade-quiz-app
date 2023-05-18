@@ -32,6 +32,7 @@ const discussionSchema = new mongoose.Schema(
         },
       },
     ],
+    tags: [String],
   },
   { timestamps: true }
 );

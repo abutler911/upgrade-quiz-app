@@ -11,6 +11,7 @@ const { isLoggedIn, isAdmin } = require("./middleware/middlewares");
 const sgMail = require("@sendgrid/mail");
 require("dotenv").config();
 const Discussion = require("./models/Discussion");
+const methodOverride = require("method-override");
 
 // Configure SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -37,6 +38,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
+app.use(methodOverride("_method"));
+
 app.use((req, res, next) => {
   if (
     req.header("x-forwarded-proto") !== "https" &&
@@ -88,10 +91,17 @@ app.use(expressLayouts);
 app.get("/discussions", isLoggedIn, async (req, res) => {
   try {
     const discussions = await Discussion.find().populate("user");
+
+    const recentDiscussions = await Discussion.find()
+      .sort("-createdAt")
+      .limit(5)
+      .populate("user");
+
     res.render("discussions/discussions", {
       title: "Discussions",
       customCSS: "discussions.css",
       discussions,
+      recentDiscussions,
       user: req.user,
     });
   } catch (error) {

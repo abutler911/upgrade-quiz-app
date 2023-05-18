@@ -2,6 +2,13 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
+    background-color: #cae4ff;
+
+
+}
+
+.divider {
+    background-color: rgb(189, 189, 189);
 }
 
 .box {
@@ -19,6 +26,10 @@ body {
 
 .title {
     margin-bottom: 0;
+}
+
+.tag {
+    float: right;
 }
 
 .container {
