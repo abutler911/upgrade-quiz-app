@@ -1,146 +1,103 @@
-<div class="main-wrapper">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-half-tablet is-one-third-desktop">
-        <h1 class="title is-2 has-text-centered">Flashcards</h1>
-        <div class="field">
-          <label class="label" for="categoryFilter">Filter by Category:</label>
-          <div class="control">
-            <div class="select is-multiple full-width-select">
-              <select
-                id="categoryFilter"
-                name="categoryFilter"
-                class="select2"
-                multiple
-              >
-                <% categories.forEach(function(category, index) { %>
-                <option value="<%= category.value %>">
-                  <%= category.name %>
-                </option>
-                <% }); %>
-              </select>
-            </div>
-          </div>
-        </div>
+<div class="columns">
+  <!-- Left column (options and filters) -->
+  <div class="column is-4">
+    <h1 class="title is-2 has-text-centered">Flashcards</h1>
 
-        <div class="box">
-          <div class="columns">
-            <div class="column is-half">
-              <!-- <div class="has-text-centered"> -->
-              <label class="custom-checkbox" for="showAnswersCheckbox">
-                <input
-                  type="checkbox"
-                  id="showAnswersCheckbox"
-                  class="hidden-checkbox"
-                />
-                <span class="styled-checkbox"></span>
-                Show Answers
-              </label>
-            </div>
-            <div class="column is-half">
-              <label class="custom-checkbox" for="randomizeCheckbox">
-                <input
-                  type="checkbox"
-                  id="randomizeCheckbox"
-                  class="hidden-checkbox"
-                />
-                <span class="styled-checkbox"></span>
-                Randomize
-              </label>
-
-              <div class="content">
-                <p id="category" class="subtitle is-6"></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="progress-container" id="progress-container">
-              <span class="progress-percentage progress-start">0%</span>
-              <div id="progress-bar" class="progress-bar"></div>
-              <span class="progress-percentage progress-end">100%</span>
-            </div> -->
-        </div>
-
-        <div class="card">
-          <div class="question-container content-container">
-            <span
-              id="question-count"
-              class="has-text-weight-bold has-text-centered"
-              style="font-size: 1rem; color: #000; padding: 10px"
-            ></span>
-
-            <p id="question" class="card-header-title"></p>
-          </div>
-
-          <div class="answer-container content-container">
-            <div class="answer-content">
-              <p id="answer" class="card-text answer hide"></p>
-            </div>
-          </div>
-          <input type="hidden" id="difficulty" value="1" />
-
-          <div class="difficulty-rating">
-            <p style="color: #000">Select Difficulty (1-Easy, 5-Hard)</p>
-            <div class="rating">
-              <span class="fas fa-star" data-value="1"></span>
-              <span class="fas fa-star" data-value="2"></span>
-              <span class="fas fa-star" data-value="3"></span>
-              <span class="fas fa-star" data-value="4"></span>
-              <span class="fas fa-star" data-value="5"></span>
-            </div>
-          </div>
-          <!-- <span class="fas fa-star" data-value="1">☆</span> -->
-
-          <div class="button-container">
-            <div class="columns">
-              <div class="column is-half">
-                <button id="submit-rating" class="button is-rounded">
-                  Rate
-                </button>
-              </div>
-              <div class="column is-half">
-                <button id="flag-for-review" class="button is-rounded">
-                  Flag
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="flag-for-review-container">
-            <button id="flag-for-review" class="button is-rounded is-fullwidth">
-              FLAG FOR REVIEW
-            </button>
-          </div> -->
-
-          <div id="rating-success" class="notification success is-hidden">
-            Rating submitted successfully!
-          </div>
-        </div>
-        <div class="last-seen-content">
-          <p id="last-seen" class="subtitle is-6"></p>
-        </div>
-
-        <div class="btn-box">
-          <button
-            id="prev-question"
-            class="nav-btn button is-rounded is-fullwidth"
+    <div class="field">
+      <label class="label" for="categoryFilter">Filter by Category:</label>
+      <div class="control">
+        <div class="select is-multiple full-width-select">
+          <select
+            id="categoryFilter"
+            name="categoryFilter"
+            class="select2"
+            multiple
           >
-            <i class="fa-sharp fa-solid fa-arrow-left"></i>
-          </button>
-          <button
-            id="show-answer"
-            class="answer-btn button is-rounded is-fullwidth"
-          >
-            Show Answer
-          </button>
-          <button
-            id="next-question"
-            class="nav-btn button is-rounded is-fullwidth"
-          >
-            <i class="fa-sharp fa-solid fa-arrow-right"></i>
-          </button>
+            <% categories.forEach(function(category, index) { %>
+            <option value="<%= category.value %>"><%= category.name %></option>
+            <% }); %>
+          </select>
         </div>
       </div>
+    </div>
+
+    <div class="box">
+      <label class="custom-checkbox" for="showAnswersCheckbox">
+        <input
+          type="checkbox"
+          id="showAnswersCheckbox"
+          class="hidden-checkbox"
+        />
+        <span class="styled-checkbox"></span>
+        Show Answers
+      </label>
+
+      <label class="custom-checkbox" for="randomizeCheckbox">
+        <input type="checkbox" id="randomizeCheckbox" class="hidden-checkbox" />
+        <span class="styled-checkbox"></span>
+        Randomize
+      </label>
+
+      <div class="content">
+        <p id="category" class="subtitle is-6"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column (flashcards) -->
+  <div class="column is-8">
+    <div class="card">
+      <div class="question-container content-container">
+        <span
+          id="question-count"
+          class="has-text-weight-bold has-text-centered"
+          style="font-size: 1rem; color: #000; padding: 10px"
+        ></span>
+
+        <p id="question" class="card-header-title"></p>
+      </div>
+
+      <div class="answer-container content-container">
+        <div class="answer-content">
+          <p id="answer" class="card-text answer hide"></p>
+        </div>
+      </div>
+      <input type="hidden" id="difficulty" value="1" />
+
+      <div class="difficulty-rating">
+        <p style="color: #000">Select Difficulty (1-Easy, 5-Hard)</p>
+        <div class="rating">
+          <span class="fas fa-star" data-value="1"></span>
+          <span class="fas fa-star" data-value="2"></span>
+          <span class="fas fa-star" data-value="3"></span>
+          <span class="fas fa-star" data-value="4"></span>
+          <span class="fas fa-star" data-value="5"></span>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button id="submit-rating" class="button is-rounded">Rate</button>
+        <button id="flag-for-review" class="button is-rounded">Flag</button>
+      </div>
+    </div>
+
+    <div class="last-seen-content">
+      <p id="last-seen" class="subtitle is-6"></p>
+    </div>
+
+    <div class="btn-box">
+      <button id="prev-question" class="nav-btn button is-rounded is-fullwidth">
+        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+      </button>
+      <button
+        id="show-answer"
+        class="answer-btn button is-rounded is-fullwidth"
+      >
+        Show Answer
+      </button>
+      <button id="next-question" class="nav-btn button is-rounded is-fullwidth">
+        <i class="fa-sharp fa-solid fa-arrow-right"></i>
+      </button>
     </div>
   </div>
 </div>
