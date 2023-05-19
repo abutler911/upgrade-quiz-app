@@ -71,6 +71,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: process.env.SECRET_KEY,
