@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    padding: 20px;
     box-sizing: border-box;
     background-color: rgb(51, 51, 51);
 
@@ -24,23 +23,41 @@ body {
 }
 
 .card-footer-item {
-    background-color: rgb(192, 255, 192);
-    font-size: 1.3rem;
-    color: #000;
+    background-color: #007BFF;
+    font-size: 1.1rem;
+    /* smaller font size */
+    color: #fff;
+    padding: 5px 10px;
+    /* reduced padding */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
+.card-footer-item:hover {
+    background-color: #0056b3;
+    /* darken the button color on hover */
 }
 
 #delete-form {
-    background-color: rgb(255, 132, 132);
-    font-size: 1.3rem;
+    background-color: #dc3545;
+    font-size: 1.1rem;
+    /* smaller font size */
+    padding: 5px 10px;
+    /* reduced padding */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#delete-form:hover {
+    background-color: #bd2130;
+    /* darken the button color on hover */
 }
 
 #delete-btn {
-    font-size: 1.3rem;
-    color: #000;
+    font-size: 1.1rem;
+    /* smaller font size */
+    color: #fff;
     text-decoration: none;
-
-
 }
 
 .title {
@@ -148,5 +165,24 @@ body {
 
     .add-comment-form {
         padding: 10px;
+    }
+
+    .card-footer-item {
+        font-size: 1rem;
+        /* even smaller font size for mobile */
+        padding: 3px 6px;
+        /* reduced padding for mobile */
+    }
+
+    #delete-form {
+        font-size: 1rem;
+        /* even smaller font size for mobile */
+        padding: 3px 6px;
+        /* reduced padding for mobile */
+    }
+
+    #delete-btn {
+        font-size: 1rem;
+        /* even smaller font size for mobile */
     }
 }
