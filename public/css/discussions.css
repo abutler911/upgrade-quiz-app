@@ -25,37 +25,37 @@ body {
 .card-footer-item {
     background-color: #007BFF;
     font-size: 1.1rem;
-    /* smaller font size */
+
     color: #fff;
     padding: 5px 10px;
-    /* reduced padding */
+
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .card-footer-item:hover {
     background-color: #0056b3;
-    /* darken the button color on hover */
+
 }
 
 #delete-form {
     background-color: #dc3545;
     font-size: 1.1rem;
-    /* smaller font size */
+
     padding: 5px 10px;
-    /* reduced padding */
+
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 #delete-form:hover {
     background-color: #bd2130;
-    /* darken the button color on hover */
+
 }
 
 #delete-btn {
     font-size: 1.1rem;
-    /* smaller font size */
+
     color: #fff;
     text-decoration: none;
 }

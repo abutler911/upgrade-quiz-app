@@ -12,6 +12,7 @@ const sgMail = require("@sendgrid/mail");
 require("dotenv").config();
 const Discussion = require("./models/Discussion");
 const methodOverride = require("method-override");
+const winston = require("winston");
 
 // Configure SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -38,6 +39,23 @@ const rvrRouter = require("./routers/rvrRouter");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.File({ filename: "error.log", level: "error" }),
+    new winston.transports.File({ filename: "combined.log" }),
+  ],
+});
+
+if (process.env.NODE_ENV !== "production") {
+  logger.add(
+    new winston.transports.Console({
+      format: winston.format.simple(),
+    })
+  );
+}
+
 // Middleware
 
 app.use((req, res, next) => {
@@ -58,7 +76,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: { secure: true, httpOnly: true, maxAge: 60000 },
   })
 );
 app.use(passport.initialize());
@@ -70,12 +88,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 passport.serializeUser((user, done) => {
-  console.log("Serializing user:", user);
+  // console.log("Serializing user:", user);
   User.serializeUser()(user, done);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log("Deserializing user ID:", id);
+  // console.log("Deserializing user ID:", id);
   User.deserializeUser()(id, done);
 });
 // Make user accessible in views
@@ -108,7 +126,7 @@ app.get("/discussions", isLoggedIn, async (req, res) => {
       user: req.user,
     });
   } catch (error) {
-    console.error("Error fetching discussions:", error);
+    logger.error("Error fetching discussions:", error);
     res.status(500).send("Error fetching discussions");
   }
 });
@@ -128,26 +146,11 @@ app.post("/discussions", isLoggedIn, async (req, res) => {
 
     res.redirect("/discussions");
   } catch (error) {
-    console.error("Error creating discussion:", error);
+    logger.error("Error creating discussion:", error);
     res.status(500).json({ message: "Error creating discussion" });
   }
 });
 
-// app.delete("/discussions/:id", isLoggedIn, async (req, res) => {
-//   try {
-//     const discussion = await Discussion.findById(req.params.id);
-
-//     if (discussion.user._id.toString() !== req.user._id.toString()) {
-//       return res.status(401).send("Unauthorized");
-//     }
-
-//     await Discussion.findByIdAndDelete(req.params.id);
-//     res.redirect("/discussions");
-//   } catch (error) {
-//     console.error("Error deleting discussion:", error);
-//     res.status(500).send("Error deleting discussion");
-//   }
-// });
 app.post("/discussions/:id/delete", isLoggedIn, async (req, res) => {
   try {
     const discussion = await Discussion.findById(req.params.id);
@@ -159,7 +162,7 @@ app.post("/discussions/:id/delete", isLoggedIn, async (req, res) => {
     await Discussion.findByIdAndDelete(req.params.id);
     res.redirect("/discussions");
   } catch (error) {
-    console.error("Error deleting discussion:", error);
+    logger.error("Error deleting discussion:", error);
     res.status(500).send("Error deleting discussion");
   }
 });
@@ -176,33 +179,29 @@ app.get("/discussions/:id", isLoggedIn, async (req, res) => {
       user: req.user,
     });
   } catch (error) {
-    console.error("Error fetching discussion:", error);
+    logger.error("Error fetching discussion:", error);
     res.status(500).send("Error fetching discussion");
   }
 });
 
 app.post("/discussions/:id/comments", isLoggedIn, async (req, res) => {
   try {
-    // Get the discussion
     const discussion = await Discussion.findById(req.params.id);
     if (!discussion) {
       return res.status(404).send("Discussion not found");
     }
 
-    // Add the comment to the discussion
     const comment = {
       user: req.user._id,
       content: req.body.content,
     };
     discussion.comments.push(comment);
 
-    // Save the discussion
     await discussion.save();
 
-    // Redirect back to the discussion page
     res.redirect(`/discussions/${req.params.id}`);
   } catch (error) {
-    console.error("Error adding comment:", error);
+    logger.error("Error adding comment:", error);
     res.status(500).send("Error adding comment");
   }
 });
@@ -225,7 +224,7 @@ app.use(passwordResetRoutes);
 app.use(rvrRouter);
 app.use(weatherRouter);
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  logger.error(err.stack);
   res.status(500);
   res.render("error", {
     title: "Error",

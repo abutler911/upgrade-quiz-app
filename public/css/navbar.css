@@ -1,6 +1,5 @@
 .navbar {
     background-color: rgba(145, 145, 145, 0.7);
-
     top: 0;
     left: 0;
     width: 100%;
@@ -11,7 +10,7 @@
 .navbar-item,
 .navbar-link,
 .navbar-start a {
-    color: #fff !important;
+    color: #000 !important;
 }
 
 .navbar-item h3 {
