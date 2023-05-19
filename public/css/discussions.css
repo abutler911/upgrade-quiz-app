@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #cae4ff;
+    background-color: rgb(51, 51, 51);
+
 }
 
 .divider {

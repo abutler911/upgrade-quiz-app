@@ -5,6 +5,10 @@
     color: #fff;
 }
 
+.navbar-menu {
+    background-color: #000;
+}
+
 .navbar-item,
 .navbar-link,
 .navbar-start a {
@@ -12,14 +16,14 @@
 }
 
 .navbar-item h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #fff !important;
 }
 
 .navbar-item ul,
 .navbar-item li a {
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 .navbar-item ul li {
@@ -27,14 +31,14 @@
 }
 
 .navbar-dropdown {
-    background-color: #000;
+    background-color: #000000;
 }
 
 .navbar-item.has-dropdown.is-hoverable:hover .navbar-link,
 .navbar-item.has-dropdown.is-hoverable:focus .navbar-link,
 .navbar-item.has-dropdown.is-hoverable:hover .navbar-dropdown,
 .navbar-item.has-dropdown.is-hoverable:focus .navbar-dropdown {
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(0, 0, 0);
 }
 
 .navbar-link:hover,
@@ -52,7 +56,7 @@
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     color: #fff;
     border: 1px solid #d1d1d1;
 
@@ -64,7 +68,7 @@
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     border: 1px solid #d1d1d1;
 }
 
