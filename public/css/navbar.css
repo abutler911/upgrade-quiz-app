@@ -1,63 +1,50 @@
 .navbar {
-    background-color: #f8f8f8;
-
-
+    background-color: transparent;
+    width: 100%;
+    z-index: 1000;
+    color: #fff;
 }
 
-.navbar-item {
-    font-size: 1rem;
-    font-weight: bold;
+.navbar-item,
+.navbar-link,
+.navbar-start a {
+    color: #fff !important;
 }
 
 .navbar-item h3 {
-    font-size: larger;
+    font-size: 1.5em;
     font-weight: bold;
+    color: #fff !important;
 }
 
-.navbar-item ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-.navbar-item li {
-    padding-left: 10px;
-}
-
+.navbar-item ul,
 .navbar-item li a {
-    font-size: 1rem;
-    font-weight: 400;
-    padding-left: 10px;
+    color: #fff !important;
 }
 
-.navbar-link {
-    font-size: 3rem;
-    font-weight: 400;
-    padding-left: 10px;
+.navbar-item ul li {
+    padding-left: 1em;
 }
 
-.navbar-start a {
-    font-size: 1.2rem;
-    font-weight: 400;
-    padding-left: 10px;
+.navbar-dropdown {
+    background-color: #000;
 }
 
-#flashcard-btn {
-    background-color: #009EE2;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    height: 3.3rem;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border: 1px solid #d1d1d1;
-
+.navbar-item.has-dropdown.is-hoverable:hover .navbar-link,
+.navbar-item.has-dropdown.is-hoverable:focus .navbar-link,
+.navbar-item.has-dropdown.is-hoverable:hover .navbar-dropdown,
+.navbar-item.has-dropdown.is-hoverable:focus .navbar-dropdown {
+    background-color: rgb(80, 80, 80);
 }
 
-#flashcard-btn:hover {
-    color: #009EE2;
-    background-color: transparent;
-    transition: 0.2s ease-in-out;
-
+.navbar-link:hover,
+.navbar-link:focus,
+.navbar-item:hover,
+.navbar-item:focus,
+.navbar-item a:hover,
+.navbar-item a:focus {
+    background-color: transparent !important;
+    color: #fff !important;
 }
 
 #register-btn {

@@ -6,7 +6,7 @@ html, body {
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    background-color: rgb(183, 208, 255);
+    background-color: rgb(151, 185, 255);
     color: #fff;
     background-attachment: fixed;
 
@@ -78,7 +78,7 @@ html, body {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     color: #fff;
-    background: #008000;
+    background: #5dbea3;
     border: none;
     border-radius: 5px;
     transition: all 0.3s;
@@ -219,11 +219,24 @@ html, body {
 }
 
 #prev-question, #next-question {
-    background-color: rgba(0, 128, 0, 0.8);
+    background-color: #5dbea3;
     color: #ffffff;
-    border: 1px solid white;
     font-weight: 700;
     font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin: 5px;
+}
+
+#show-answer {
+    background-color: #4681f4;
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 .answer-container {
@@ -283,13 +296,7 @@ html, body {
     transform: scale(1.05);
 }
 
-#show-answer {
-    background-color: #2568fb;
-    color: #ffffff;
-    border: none;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
+
 
 .select2 {
     width: 100%;

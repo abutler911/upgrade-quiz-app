@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #f3f3f3;
+    font-family: Arial, sans-serif;
+}
+
+#runway {
+    border: 1px solid;
+    width: 80%;
+    height: 50px;
+    background: black;
+    position: relative;
+}
+
+#runway::before, #runway::after {
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background: white;
+}
+
+#runway::before {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#runway::after {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    background: repeating-linear-gradient(90deg, white, white 20%, transparent 20%, transparent 40%);
+    z-index: 1;
+}

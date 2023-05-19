@@ -32,6 +32,7 @@ const fuelRoutes = require("./routers/fuelRouter");
 const questionRatingRouter = require("./routers/questionRatingRouter");
 const passwordResetRoutes = require("./routers/passwordReset");
 const weatherRouter = require("./routers/weatherRouter");
+const rvrRouter = require("./routers/rvrRouter");
 
 // Express app setup
 const app = express();
@@ -221,6 +222,7 @@ app.use(flowsRoutes);
 app.use(questionRatingRouter);
 app.use(fuelRoutes);
 app.use(passwordResetRoutes);
+app.use(rvrRouter);
 app.use(weatherRouter);
 app.use((err, req, res, next) => {
   console.error(err.stack);
