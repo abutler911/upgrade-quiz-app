@@ -136,7 +136,7 @@ function calculateNewInterval(rating) {
   const baseInterval = 6;
   const scalingFactor = 1.5;
   const interval = baseInterval * Math.pow(scalingFactor, 5 - rating);
-  console.log(interval);
+  // console.log(interval);
   return interval;
 }
 
