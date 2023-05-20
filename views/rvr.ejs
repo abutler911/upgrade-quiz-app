@@ -1,5 +1,37 @@
-<h1><%= title %></h1>
+<div class="main-content">
+  <h1>Lower Than Standard Takeoff Minimum Exercise</h1>
+  <button id="generate-button">Generate new values</button>
 
-<div id="runway">
-  <div class="center-line"></div>
+  <div class="data-container">
+    <h2>RVR Values</h2>
+    <div class="data-row">
+      <p>TDZ:</p>
+      <p><span id="tdz-value"></span></p>
+    </div>
+    <div class="data-row">
+      <p>Mid:</p>
+      <p><span id="mid-value"></span></p>
+    </div>
+    <div class="data-row">
+      <p>Roll Out:</p>
+      <p><span id="roll-out-value"></span></p>
+    </div>
+    <div class="data-row">
+      <p>Far End:</p>
+      <p><span id="far-end-value"></span></p>
+    </div>
+  </div>
+  <div class="data-container">
+    <h2>Lighting</h2>
+    <hr />
+    <h4>LEGEND:</h4>
+    <p>HIRL = High Intensity Runway Lights</p>
+    <p>RCLL = Runway Centerline Lights</p>
+    <p>RCLM = Runway Centerline Markings</p>
+    <hr />
+    <h4>RUNWAY LIGHTING AVAILABLE</h4>
+    <p id="lighting-value"></p>
+  </div>
+  <p id="result"></p>
 </div>
+<script src="./js/rvr.js"></script>

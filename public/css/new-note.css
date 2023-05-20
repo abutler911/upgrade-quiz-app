@@ -16,7 +16,7 @@ html, body {
     align-items: center;
     justify-content: center;
     height: calc(100vh - 60px);
-    /* subtract the height of the navbar if it's fixed */
+
 }
 
 .columns {
@@ -39,8 +39,10 @@ html, body {
 }
 
 #quill-editor {
-    background-color: #fff;
+    background-color: #d6d6d6;
     min-height: 300px;
+    color: #000;
+    font-size: 1.3rem;
 }
 
 .ql-toolbar {

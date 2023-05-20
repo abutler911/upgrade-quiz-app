@@ -1,48 +1,48 @@
-body {
+.main-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    justify-content: center;
+    height: calc(100vh - 60px);
+    /* Assuming navbar height is 60px */
     margin: 0;
-    background: #f3f3f3;
-    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    font-family: 'Courier New', monospace;
 }
 
-#runway {
-    border: 1px solid;
-    width: 80%;
-    height: 50px;
-    background: black;
-    position: relative;
+h1 {
+    color: #333;
+    font-size: 1.7rem;
 }
 
-#runway::before, #runway::after {
-    content: '';
-    position: absolute;
-    height: 10px;
-    width: 10px;
-    background: white;
+h2 {
+    font-weight: 700;
+    font-size: 1.3rem;
 }
 
-#runway::before {
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+h4 {
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
-#runway::after {
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+.data-container {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.center-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: white;
-    background: repeating-linear-gradient(90deg, white, white 20%, transparent 20%, transparent 40%);
-    z-index: 1;
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+p {
+    margin: 0;
+}
+
+p+p {
+    margin-top: 10px;
 }
