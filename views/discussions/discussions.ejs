@@ -37,14 +37,15 @@
     <div class="box has-background-white-ter">
       <h4 class="title is-5 has-text-link-dark" style="margin-bottom: 5px">
         <%= discussion.title %>
-        <span class="is-size-7 has-text-grey comment-count"
-          ><%= discussion.comments.length %> comment(s)</span
-        >
       </h4>
+      <p class="has-text-grey" id="comment-count"></p>
+        <%= discussion.comments.length %> comment(s)
+      </p>
       <p class="created-by has-text-grey">
         Created by <%= discussion.user.username %> on <%=
         discussion.createdAt.toLocaleString() %>
       </p>
+
       <p class="discussion-content"><%= discussion.content %></p>
       <hr />
       <footer>

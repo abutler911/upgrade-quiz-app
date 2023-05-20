@@ -1,7 +1,6 @@
 body {
     background-color: #15202b;
-    height: 100vh;
-
+    min-height: 100vh;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -10,11 +9,13 @@ body {
 
 .created-by {
     font-size: 0.6rem;
+    border-bottom: 1px solid gray;
 }
 
-.comment-count {
-    float: right;
-    font-size: 0.6rem;
+
+
+.discussion-content {
+    word-wrap: break-word;
 }
 
 .container {
@@ -29,6 +30,10 @@ body {
 
 .subtitle {
     color: #657786;
+}
+
+#comment-count {
+    font-size: 5rem;
 }
 
 .box {
