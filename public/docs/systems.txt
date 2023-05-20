@@ -1,0 +1,1093 @@
+DVDR panel
+• DVDR panel (digital voice and data recorder)
+• part of CA's originating flow
+• push test button – look at EICAS – make sure no messages
+electrical panel
+• we have both DC and AC sources of power
+? DC sources of power – 2 BATT and a DC power card
+? AC sources of power – 2 IDGs (integrated drive generators), APU, AC ground power, RAT
+• convert AC power to DC power – TRU (transformer rectifier units)
+? we have 3 TRUs – TRU 1, TRU 2, TRU ESS
+? TRU ESS important for electrical emergency
+? converts AC power from primary AC sources of power to keep the DC system going
+• convert DC power to AC power – inverter
+? we have 1 for the AC STDBY BUS
+? AC STDBY BUS
+? has igniters – that's why the inverter is important – runs from DC system up to AC STDBY BUS and gives us igniters
+• leave knobs in AUTO, unless QRH directs otherwise
+? purpose of AUTO – airplane turns on/off sources of power, automatically opening/closing bus times to make sure much of
+the airplane is powered in accordance with the power priority – onside, inside, outside, cross-side
+? 2 AC BUSES say – do I have onside power? – that sides IDG. if yes, then it takes it. if not, then it looks for inside power –
+APU. if it doesn't have that, then it looks for outside power, AC GPU. if not, then if finally looks across on the other side to
+see if it has another IDG
+? knobs in AUTO – BUS TIES open/close automatically to make sure the airplane is powered as much as possible based on
+what sources are available
+? this is what AUTO means
+• BATT 1 – OFF and ON, BATT 2 – OFF and AUTO – what's the difference?
+? why does BATT 2 have an AUTO position? – it has to do with APU start
+? I need to power the APU FADEC and APU START BUS
+? during an APU start
+? BATT 1 in charge of APU FADEC
+? BATT 2 energizes the APU START BUS
+? which one can I replace? – I can replace BATT 2 going to the APU START BUS, but BATT 1 is required
+? in other words – AUTO means BATT 2 can give control of the APU START BUS to a DC power card
+? if I plug in a DC power card, BATT 1 runs the FADEC and BATT 2 doesn't do anything and the DC power card runs
+the APU START BUS until the APU is running
+? this explains the difference between OFF/ON and OFF/AUTO for BATT 1 and BATT 2
+• running Safety and Powerup Checklist
+? turn BATT 1 to ON; BATT 2 to AUTO – airplane starts powering up
+? now I'm looking for 3 things
+? screens 2 (MFD) and 3 (EICAS) showing me a status page (MFD) and an EICAS
+? looking at battery voltage – I need to see at least 22.5V on both batteries
+• if its between 21.0 and 22.5 – open up SOPM and run the battery recharging procedure
+? SOPM asks for battery temperature
+? can I see battery temperature on DC only? no – battery temperature is on the electrical synoptic page
+? on DC power only, only synoptic page I have access to is status
+? only way to get battery temperature is from AC power
+? I finish my Safety and Powerup checklist – then I have AC power
+• if below 21.0 on either battery – call MX (don't have enough power to do what I need to do)
+• why 22.5V? – 22.5V guarantees me my 10 minutes of battery life and 2 APU starts (if I go down to DC only in
+flight – if I have an electrical emergency in flight)
+? IESS – should be ON and aligning (90 seconds to align)
+• I don't want the airplane to be moved while aligning
+? GPU (ground power unit)
+? APU GEN stays dark – as APU starts, it will automatically provide power in accordance with that power priority
+? IDG (integrated drive generators)
+? 3 switch positions – AUTO, OFF, DISCONNECT
+• AUTO – as engine starts and IDGs start to provide power, they will provide power in accordance with power
+priority
+• OFF – turning off IDG
+• DISCONNECT – mechanically severing the IDG from the engine and I can't get it back
+? usually do this when amber light displays means 1 of 2 things:
+? high oil temperature or low oil pressure – HOTLOP
+? during PT, QRH will direct you to disconnect an IDG
+? high oil temperature – concerned about having a fire
+? low oil pressure – concerned about IDG causing damage to engine
+? point is – I'd rather disconnect a bad IDG, than have engine damage (rather lose an AC power source
+than lose an engine)
+? 3 things happen when I get AC power connected to the airplane
+? windshield heat runs its 2 minute / 120 second test and then both power off – stay off until I have 2 sources of power
+on the ground
+? IRSs begin aligning
+• can take up to 17 minutes for IRSs to align
+• can be re-aligned in flight, but have to feed them a new initial position from one of the GPS receivers
+? E P-BIT (electrical powerup built in test)
+• FLT CTRL TEST IN PROG – airplane testing flight control components of flight control system (FCMs and ACEs)
+• checking for outer tolerance conditions – surfaces aren't moving, but airplane is sending a bunch of electronic
+signals through the computer portion of the FBW system
+• test runs for 3 minutes
+• 3 ways to interrupt it
+? interruption of AC power
+? pressing a flight control mode switch – pressing a flight control mode switch (normal to direct mode) takes
+FCM out of the loop
+? if any hydraulic system is pressurized
+? let's talk about H P-BIT (hydraulic powerup built-in test) since we're on the topic
+• H P-BIT runs once I've started an engine and all 3 hydraulic systems are pressurized OR
+• if I pressurize the system myself in the order of 3,1,2
+• this tests the hydraulic components of the flight control systems – the actuators
+• there isn't any flight control movement
+• test with really tight tolerances
+• test if for 1 minute
+• FLT CTRL TEST IN PROG – shown on EICAS
+• how to interrupt the test? – move a flight control surface
+• electrical emergency
+? loss of normal AC power to AC BUSES 1 and 2
+? each AC BUS asks – onside, inside, outside, cross-side – independently of each other
+? example
+? 35,000', lightning strike kills both IDGs
+? engines are still running
+? if APU is on, are we in an electrical emergency? no – I still have a normal AC power source
+? but if APU isn't running, I don't have AC power (both IDGs aren't working + APU OFF)
+? I lose both IDGs – I go into electrical emergency
+? now I have the same thing I had when doing the Safety and Powerup checklist
+• dome lights, light in standby compass, screens 2 and 3 (but get PFD and EICAS – not status and EICAS), IESS,
+clock, com panels (with interphone), DC fuel pump, main injector pumps running to (still have engine running),
+AC STDBY BUS makes sure I have igniters....
+• on batteries only...left side – com 1, nav 1, IRS 1, CCD 1 (left side flying and talking)
+• on batteries only...right side – GPS 2, FMS 2, MCDU 2 (right side building – Embraer thinks of it this way)
+? I can be in this configuration for 10 minutes – that's the purpose 22.5V
+? emergency lights in back of airplane on (because we leave those in ARMED)
+? first 8 seconds of going into electrical emergency – RAT should automatically deploy
+• how do I know its deployed? 2 EICAS messages (electrical emergency and battery discharging)
+• BATT DISCHAGE means RAT has not deployed or not started supplying power
+• when BATT DISCHARGE goes away – RAT is out and charging
+• RAT stops the battery from discharging
+• RAT comes out and latches on to the AC ESS BUS (remember AC STDBY BUS comes from inverter; AC ESS
+BUS powered by the RAT)
+• 4 things I get back on that AC ESS BUS (3-2-2-1)
+? HYD PUMP 3A
+? why HYD PUMP 3A? – 1 actuator for each primary flight control surface
+? ACFP 2
+? why 2 instead of 1? – ACFP 2 can help me with ENG 2 if I needed that and APU start
+? slat channel 2
+? help me slow down, configure, and land
+? flap channel 1
+? help me slow down, configure, and land
+? RAT – 150 kts to spin it up; 130 kts minimum operating speed
+? if I get my APU running or one of my IDGs back – I'm no longer in electrical emergency
+? why? I have a normal source of AC power back to AC BUS 1 and 2 (remember any single AC source can power the
+entire airplane)
+• HOT BATT BUS
+? no power at all (batteries OFF) – I still get my pressure refueling panel (airplane can be refueled with no power) and
+engine fire fighting
+? example
+? airplane is cold and dark (batteries OFF) – cold day outside, MX has heater on blowing hot air into the engine, starts
+a fire in the engine. I'm in the flight deck (cold and dark), batteries OFF, nothing is lit up (overhead panel) because I
+don't have detection, but I do have protection, so I pull the fire handle (HOT BATT BUS)
+• shuts off bleed fuel hydraulic
+• arm the fire bottle
+• then I twist the fire handle to discharge 1 or both fire bottles into that engine even without any power
+• display reversion
+? 3 rules that tell you how the airplane reverts displays if something fails
+? airplane doesn't care about the MFD (screens 2 and 4 go dark) – airplane doesn't care
+? airplane wants me to have a PFD and EICAS – why? because of control and performance instruments
+? PFD generally defaults to the left side for the CP
+cockpit lights panel
+? MAIN PANEL, OVHD PNL, PEDESTAL, DOME, ANNUNCIATOR TEST
+? annunciator test – pushed by CP on Originating Flow – looking for any burned out bulbs
+fire protection panel
+• where do I have fire protection on the airplane?
+? engines, CRG (FWD/AFT), APU, and lavatories
+• engine fire protection
+? each engine has 2 fire detection loops – these generate the light in the fire handle and give me the engine fire indication
+? if the fire light goes out, its not a guarantee the fire went out (fire could be really bad and burned through my detectors
+loops and my sensing system)
+? when I pull the fire engine handle, 4 big things close:
+? close fuel SOV
+? close hydraulic SOV
+? close engine bleed valve
+? close crossbleed valve
+• yes – I can open those valves again by putting the fire handle back
+? by pulling the fire handle, the fire bottles are ARMED
+? 2 engine fire bottles – they are the same
+? I can discharge 1 or both into a single engine OR 1 into the left engine and 1 into the right engine
+• APU fire protection
+? 2 fire detection loops
+? has its own dedicated fire bottle
+? airplane will never fire a fire bottle without us first taking action from the flight deck with the exception of the lavatory
+? we can't control that one from the flight deck – know that it exists – that's it
+? APU has FADEC just like the engines
+? APU FADEC monitoring / running APU start and shutdown
+? APU FADEC can make emergency shutdowns of the APU if certain conditions are met
+? if I do an emergency shutdown of the APU, either by pressing the APU EMER STOP shutdown button (guarded) or if the
+APU FADEC does it automatically, it does so by closing the APU fuel valve – starves APU of fuel – that's how an
+emergency shutdown of this APU is done
+• when will the APU FADEC command an emergency shutdown of the APU?
+? in flight (3)
+? UFO – underspeed, FADEC critical fault, overspeed
+• under or overspeed, I'm worried about structural damage to the APU
+• FADEC critical fault – will command an emergency shutdown
+? on the ground (8)
+? UFO SHELF
+• underspeed, FADEC critical fault, overspeed, sensor failure, high oil temperature, EGT over-temperature, low oil
+pressure, fire
+• only time APU will shut down for a fire is when? on the ground, not in flight
+• if I get an APU fire on the ground, FADEC will detect it
+? after 10 seconds of detecting the APU fire, it will shut down the APU
+? can I make this happen on my own? yes I can
+? I can press and hold the fire test button for 10 seconds – APU will emergency shut down
+? airplane doesn't know the difference between the test button and a real fire – APU running and I press and
+hold the fire test button, it will shut down the APU (don't do that by the way)
+• if it shuts down, I will see a red stripe light in the EMER STOP guarded button
+• if directed by the QRH to push the switch, the white stripe light will come on
+? if there's an APU fire – the APU EMER STOP guarded button will show a red stripe light
+? if there's an APU fire for more than 60 seconds – white stripe light will show
+? 10 seconds is the shutdown of the APU because of a fire...after 60 seconds, the white stripe light will automatically
+turn on
+• CRG (FWD and AFT)
+? 2 fire bottles – they are not the same
+? I have a hi-rate and low-rate bottle
+? purpose of hi-rate is to discharge first to put out / suppress the fire
+? purpose of the low-rate bottle is to discharge afterwards at a lower rate for 75 minutes
+• why 75 minutes? allows me 60 minutes of in-flight time to divert and 15 minutes on the ground
+? both bottles can be armed either to the forward or aft
+? 2 cargo compartments are also not the same
+? both are pressurized, but 1 is ventilated and 1 is not ventilated
+? FWD CRG is ventilated (air circulation system)
+• live animals goes here (conditioned normal air circulating for them)
+• dry ice goes here (circulating the CO2 out)
+? can't have live animals and dry ice together at the same time
+? AFT CRG is not ventilated
+? 3 rules that will describe every situation to you
+? at a minimum, I need to press the fire CRG button once to discharge a fire bottle
+? add a press for non-annunciated – if it is a non-annunciated fire, I need to add a press (press again)
+• what is a non-annunciated fire?
+? annunciated means the smoke detectors and the cargo compartments detected something and I get a CRG
+FWD or CRG AFT smoke message on EICAS – airplane detects that – once detected, it will arm the cargo
+bottles to the appropriate cargo compartment – if it's the aft, it will just arm the hi and low-rate bottles to go
+to the aft. if it's the FWD, it arms the hi / low rate to go to the forward and isolates the smoke from the rest
+of the air system – in other words – ventilation outflow valve closes and air circulation fan turns off –
+completely isolated. this is all done automatically if the airplane detects smoke/fire itself
+? non-annunciated – no indication from EICAS or the overhead panel
+? I press the FWD or AFT button – this ARMS the system
+? first press arms the system; second press discharges the bottle
+? add a press for the low-rate bottle on the ground
+• why? – if I'm in flight, and I discharge the hi-rate bottle. after 60 seconds, the low-rate bottle discharges. why?
+because I'm in flight. I want it to continue suppressing that fire and give me time to get on the ground
+• but if I'm already on the ground, and I potentially have access to emergency equipment and I'll probably be
+evacuating the airplane, I don't want to start 75 minutes of Halon discharging
+• if I want the low-rate bottle on the ground, I have to press the button again
+• fire test
+? safety and powerup checklist
+? when am I required to do this?
+? any time it is my FFOD in that particular airplane – anytime I have not flown that particular airplane
+? if I switch to another airplane that I haven't flown that day, I have to do the fire test
+? 6-5-2-2-2
+? 6 lights on overhead panel
+• fire handle 1, fire handle 2, FWD CRG smoke, AFT CRG smoke, APU smoke, APU EMER STOP
+? 5 EICAS messages
+• ENG fire 1, ENG fire 2, FWD CRG smoke, AFT CRG smoke, APU fire
+? 2 fire indications on ITT (EICAS)
+? 2 master warnings flashing – one of left; one on right
+? 2 aural alerts
+• triple chime associated with the master warning
+• fire bell associated with the fire
+fuel
+• 2 fuel tanks on airplane
+? each fuel tank divided into 3 sections – collector tank, main tank, surge tank
+? main tank – holds the fuel
+? collector tank – keeping the main ejector and ACFP submerged – these two pumps run fuel to an engine
+? this tank actually feeds the engine
+? surge tank – empty void space out on the wingtip edge of the wing – fuel has a place to go during expansion, over
+pressure, or high altitude maneuvering
+? its a spill-over area in the full tank that will then go back into the main fuel tank
+• primary pump that feeds fuel from the collector to the engine
+? main ejector pump
+? venturi pump – a motive flow pump – no moving parts – its suction driven – self-sustaining pump w/ no moving parts
+• pressure comes from a return line on the engine driven fuel pump
+? if the main ejector pump fails, there is a backup – AC fuel pump
+? transporting fuel from the main fuel tank to the collector – majority of this process is handled by gravity
+• in addition to gravity – there are 3 scavenge ejectors (also motive flow pumps) – makes sure fuel gets from main
+fuel tank into the collector tank (to keep that collector tank full)
+? how many fuel pumps on the left wing? 5
+? 3 scavenge ejectors, AC pump, main ejector
+? how many fuel pumps on the right wing? 6
+? 3 scavenge ejectors, AC pump, main ejector, DC fuel pump
+• DC fuel pump is in the right collector tank
+• DC fuel pump is a backup starter pump
+• DC fuel pump in AUTO
+? provides an initial source of fuel for ENG 2 start if AC power is unavailable
+? provides an initial source of fuel for APU start if AC power is unavailable
+• can't provide sufficient fuel to keep an engine running – can't keep up demand for a running engine too
+? it can provide a source of fuel for ENG 2 start
+? anytime AC power is available, the airplane will prefer AC fuel pump over the DC fuel pump because AC fuel pump is
+a bigger stronger pump
+? AC fuel pump
+? OFF, ON, AUTO
+? 3 times AC fuel pumps will turn on with a 4th condition for only ACFP 2
+• if main ejector fails, then AC fuel pump in AUTO will automatically turn on to keep the engine supplied with fuel
+• during engine start (assuming AC power is available), fuel pumps will turn on
+? ACFP 1 will turn on during ENG1 start as an initial source of fuel until the EDP (engine driven pump) runs
+fast enough to make the main ejector becomes self-sustaining
+? ACFP 2 will turn on during ENG2 start – same things as ACFP 1
+• cross-feed (XFEED)
+? way to balance fuel
+? can't takeoff or land with XFEED open
+? I'm burning fuel in order to balance it
+? if I select low 1 – XFEED valve opens, which connects the 2 sides of the fuel system
+? feeding both engines off of the same tank of fuel
+? when I choose low 1 or low 2, I'm telling the airplane which tank has less fuel – so I command the XFEED
+valve to open, and I turn ON (not AUTO) ACFP 2 (higher pressure on right side) – this will push the fuel
+over to the left side – I will be feeding both engines off of the high side
+? there is no AUTO mode for XFEED – if I had a fuel leak on the left wing, I don't want fuel being pumped to
+that tank in AUTO mode
+? limitation for fuel imbalance – 794 lbs
+? fuel and imbalance message will turn on at 800 lbs
+? can I takeoff with a fuel imbalance message? yes, as long as the difference is lower than 794 lbs
+? what makes the fuel imbalance message go away? when there is less than a 100 lbs difference
+between the two tanks
+? is it possible to get a FUEL LO LEVEL EICAS message even though the EICAS gives green fuel
+indication? yes – tells me a possibility one of my scavenger pumps has failed
+• in other words, I've lost the ability to keep the collector full from the main fuel tank
+• 4th condition only for ACFP 2 – APU start
+? if AC power is available and I'm starting the APU, ACFP 2 will also turn on during APU start
+• minimum fuel
+? 2250 lbs
+? 45 minutes
+? 1500' clean configuration, green dot
+• emergency fuel
+? 1500 lbs
+? 30 minutes
+? 1500' clean configuration, green dot
+• when does an individual tank turn amber? – 1320 lbs
+• when does the total indication turn amber? – 2640 lbs
+passenger signs
+• emergency lights – ARMED – normal position – 12 o'clock position
+• CP's Originating flow
+• ATTND CALL – push this prior to lowering the landing gear
+• STERILE – turned on by the CP
+? turned ON until 10,000' then turned OFF
+? turned ON descending through 18,000'
+• FSTN BELTS
+? turned OFF after 10,000' and smooth air
+• NO ELEC DEVICES
+APU
+• how to turn it on? go from OFF to ON – wait for dashes to turn into numbers – then START and back to ON
+• turning APU OFF
+? goes into 1 minute cooldown period
+? closes APU bleed valve but continues providing APU power
+? if I want to turn it back on during that 1 minute cooldown period, I can turn it back on like nothing ever happened – it never
+spooled down
+? if it does spool down, I have to wait for it to completely shut down and turn it OFF before I restart it
+? at the end of the day, powering down the APU – I need to see the words APU OFF on EICAS and wait an additional 80
+seconds OR I need to see the APU fuel valve close message on EICAS
+? the issue is – if FADEC is depowered prior to the APU fuel valve being closed, then the next time I turn the airplane
+on, FADEC gets confused and doesn't remember the APU fuel valve being open now its closed – disagree – APU
+failure
+• APU can be used as a source of electrical power and bleed air
+? bleed air – pressurization up to 15,000', engine start up to 21,000'
+? APU starting altitude is 30,000'
+? maximum altitude for APU operation is 33,000'
+? can never use APU bleed air for anti-ice
+windshield wipers
+• 4 settings – OFF, LOW, HI, TIMER
+• timer – 8 second delay
+• speed limitation – 250 kts (SW)
+• torque limiting system – turn wipers on with a dry windshield (can get stuck)
+external lights
+• FO mostly handles the external lights per checklists
+• climbing through 10,000' FO will turn off everything but the top row (NAV, STROBE, RED BCN)
+? you can leave these lights on through 18,000' in areas of high traffic – provision in SOPM
+• lights turn back on descending through 18,000'
+• NAV LIGHT
+? indication to people outside the airplane we have AC power onboard the airplane
+• RED BCN
+? turned on prior to engine start – indicates we are about to start an engine or already have an engine running
+• INSP
+? see ice accretion on the wings
+hydraulics
+• ENG PUMP SHUTOFF (guarded)
+? deceptively named switch
+? they don't shut off the engine driven hydraulic pumps – they close the hydraulic SOV (isolates hydraulic pump from the
+rest of the system)
+• 3 hydraulic systems
+? 2 larger ones are 1 and 2 (they are run driven by their engine driven hydraulic pumps)
+? 3 is the smallest – 1 actuator for each primary flight controls system
+? HDY SYS 3A (smallest one) – hydraulic electric pump A
+? no AUTO knob – why? because off of the RAT, I don't want any automation standing between the pump getting power
+and the pump turning ON
+? what do I do to stop the electric pump 3A from overloading the RAT? – 2 additional features on 3A that aren't on the
+other pumps
+• pump unloader valve
+? decreases the output of 3A when starting off of the RAT so it doesn't overload when its re-pressurizing
+system 3
+• flow limiter
+? reduces the overall output of system 3 on the RAT so that I can't overload the RAT by making demands on
+the hydraulic system
+? (SYS 3) electric hydraulic pump 3B – backup pump to 3A
+? does have AUTO – if 3A fails in flight, 3B will automatically turn on (on the ground it will not)
+• when I land, 3B will actually turn OFF – why? because it is the backup pump
+• do I need primary flight controls while I'm on the ground? no I don't
+? (SYS 1 and 2) hydraulic electric pumps 1 and 2
+? primary pump is the EDP (engine driven pump)
+? backups are the ACMPs (AC motor pumps)
+? ACMPs we typically leave in AUTO – turn ON in 3 conditions (4th condition that applies only to SYS 2):
+• EDP failure
+• takeoff – critical phase of flight
+? if I lose an engine I want the backup pump already running so there's no interruption to hydraulic pressure
+? (thrust reverers, brakes, spoiler panels, nosewheel steering) – I don't want to lose these in critical phases of
+flight
+? how does the airplane know it's taking off?
+? flaps > 0
+? 50 kts wheel speed OR
+? thrust levers in TO/GA
+• landing – critical phase of flight
+? how does the airplane know it's landing?
+? flaps > 0 (that's it – don't get it confused with something else)
+• 4th condition only applies to ACMP 2
+? anytime I have released the parking brake and started ENG 1, ACMP 2 will automatically turn on – it will
+stay running until I have set the parking brake and sat for 6 minutes with parking brake on
+? why? – airplane knows nosewheel steering is on SYS 2. if I release the parking brake and start ENG 1 –
+automatically turns on ACMP 2 to make sure I have nosewheel steering
+• PTU (power transfer unit)
+? purpose – assist with landing gear extension or retraction if I lose engine driven pump 2 (EDP 2)
+? why do I need a PTU?
+? comes down to the flow rates between the EDP and the AC pumps
+? EDP provides 4 times the rate of flow compared to the AC pump
+? they both can provide about the same kind of pressure ~ 3000 PSI
+? difference is not the pressure but the amount of fluid being pushed through the system at that pressure
+• EDP gives about 20 gallons/minute of flow
+• AC pump gives about 4 gallons/minute of flow
+? its a boost pump
+• like a hydraulically-driven hydraulic pump using the higher rate of flow from EDP 1 to help boost system 2
+• flow from one place to increase power somewhere else
+• airplane is using EDP1 and transferring that power through the PTU to SYS 2 to increase the rate of flow in SYS
+2 to make the landing gear come up and down faster
+? what does the PTU need to operate?
+? only matters if ENG 2 fails or EDP 2 fails, then I need the PTU to help raise/lower the landing gear
+? if EDP 2 is running, it doesn't matter – I have all the pressure and flow I need
+? only matters if EDP 2 fails
+? I still need EDP 1 – higher rate of flow in SYS 1 if I'm going to use it to boost SYS 2
+? what are the 3 things the PTU always needs?
+? EDP 2 fail, EDP 1 not failed, and 12% fluid in SYS 2
+? PTU lives in AUTO – while in AUTO, when will the PTU turn ON? (assuming the other 3 conditions are met)
+? 2 conditions
+• on the ground – not at all
+• in flight – if I need to raise/lower the landing gear (assuming the other 3 conditions are met)
+? flaps > 0, PTU will turn on OR
+? landing gear not up and locked
+pressurization panel
+• 2 cabin pressurization controllers – in both AUTO and LFE control
+• they build a pressurization schedule based on 3 primary pieces of information that come from the MCDU
+? departure field elevation
+? cruise altitude (from PERF INIT page 2)
+? landing field elevation (LFE)
+? it uses these 3 altitudes to figure out how and when to pressurize the airplane
+? goal is to keep the ? P within limits, cabin altitude comfortable (no greater than 8,000'), rate of change in cabin
+altitude comfortable
+? AUTO and LFE controls both manipulate the rate at which air goes out of the system with the outflow valve
+? PACKs push air into the system
+? outflow valve modulates the amount of air out
+• if airplane can't get a LFE out of the database (maybe unplanned divert to a non-standard airfield or failure in the database),
+then I can manually set the landing field elevation by using the LFE control mode
+• but if I lose both cabin pressure controllers, now I'm stuck with going to manual
+? manual means I'm taking control of the outflow valve
+• positive and negative pressure relief valve
+? positive pressure relief valve (sometimes called the safety valve)
+? protects us from the high end of ? P limits
+? actuates at 8.6 PSI in order to protect me against the ? 8.8 PSI
+? negative pressure relief valve
+? protects us from the negative end of ? P limits
+? protects us from the -0.5 PSI
+• up to 37,000' – 7.8 PSI (? P limitations)
+• above 37,000' – 8.4 PSI (? P limitations)
+• DUMP (guarded) button
+? associated with a memory item – smoke evacuation
+? do memory item first, then QRC, then QRH
+? if I press the DUMP button in AUTO or LFE control (in other words, when the airplane controls the outflow valve), 3 things
+happen:
+? PACKs turn off
+? recirculation fans turn off
+? outflow valve opens commanding a 2,000 fpm rise in cabin altitude up to 12,400'
+? if I am in manual mode – only 2 of these 3 things will happen
+? PACKs turn off
+? recirculation fans turn off
+? I am in charge of the outflow valve in letting the air out (outflow valve is not automatic)
+ice protection
+• electrical and bleed air driven ice protection
+? electrical – windshield heat and ADS probes
+? windshield heat
+• when AC power is connected to the airplane, both windshields run 120 second tests and then both turn off
+• they stay off until I have 2 sources of AC power on the ground
+• when in flight, if I go down to a single source of AC power – then the left windshield is heated
+• if the left windshield fails, then the right side is heated
+? ADS probes
+• FO side (instrument panel)
+• anytime at least 1 engine is running – all ADS probe heat is on (I can't disable it)
+• protection against non-heated probes – protect against unreliable airspeed or altimeter
+• switch on the FO side allows me to turn an ADS probe heat on before I start an engine – 3 times I will do this
+? 0°C and visible moisture (conditions conducive to icing)
+? contaminated probes
+? any PFD indications or faults related to those systems
+? bleed air driven anti-ice
+? goes to engine cowls and leading edge of wings
+? system stays on until 2 minutes after the ice detectors have no longer detected ice
+? if I lose my ice detectors, have I lost the ability to anti-ice the airplane? – turn mode switch from AUTO to ON
+? takeoff – if I require A/I on takeoff, I will leave the switch in AUTO and set it via my takeoff data
+• am I going to encounter visible moisture prior to 2 minutes after takeoff or 1700' AFE?
+• if its 5°C to 10°C – then I select ENG (takeoff dataset menu – MCDU)
+? when I start an engine, that particular engine's anti-ice valve will open (with engine running, it will be
+providing bleed air A/I)
+• if below 5°C – then I select ALL (takeoff dataset menu – MCDU)
+? if I select ALL, then the wing A/I valves will open at 40 kts on the takeoff roll
+• why 2 minutes or 1700'?
+? if I encounter those icing conditions prior to 2 minutes or 1700', after that, that's when the AUTO mode
+takes over – ice detectors detect ice, they turn on and stay on
+? on the ground – taxi or takeoff on contaminated conditions – I will turn on A/I to the takeoff temperature setting in my
+takeoff dataset menu
+• flip mode switch back to ON
+• back at the gate – flip it back to AUTO
+? test – ENG, WING, OFF
+? 10 minutes after departure or 10,000' (whichever happens first) – A/I wing valve will open
+? this is a normal test of the A/I system
+? it will run until it can increase the temperature of the wings by 10°F (not Celsius) – only Fahrenheit number on the
+entire airplane or for 60 seconds
+? how do I remember this? 10 – 10 – 10 – 1
+• 10 minutes after departure or 10,000', for either 10°F or 1 minute
+air conditioning / pneumatic panel
+• 2 PACKs on airplane
+• PACKs are automatically turned off during engine start
+• when I command that start/stop selector to start, PACKs automatically turn off
+• once engine(s) start – PACKs automatically turn back on (assuming the PACK buttons are dark)
+• if I press anything on this panel – I'm either commanding the valve closed or the system off
+? in other words:
+? press that RECIRC button – they are commanded OFF rather than operating automatically
+? push the PACKs buttons, I turn the PACKs off
+? XBLEED – press it, I close the crossbleed valve
+• air inside vs air outside bleed valve system
+• bleed air provided by either APU or engine bleed valves
+• I use it for 4 different things:
+? environmental control – both temperature and pressurization
+? water pressurization
+? engine start
+? anti-ice (APU cannot be used as a source for anti-ice)
+• 2 places on the engine where I can tap bleed air off from
+? 6th stage – LP bleed
+? 10th stage – HP bleed
+? during a XBLEED engine start – looking for 40~45 PSI
+? I want to make sure I'm on the HP bleed – 10th stage, rather than the 6th
+? for engine start, I want to make sure I've got the higher pressure
+• single PACK altitude limitation – 31,000'
+• ECS ON vs OFF
+? what does that mean in my takeoff data?
+? what's pressurizing the airplane?
+? if I select I've got ECS ON – that means I've got sufficient thrust available to allow the engine bleeds to pressurize the
+airplane on takeoff (airplane pressurizes off of the engine bleeds)
+? if I select ECS OFF – this means APU ON – I'm using the APU as my source of bleed air for the pressurization system
+? when I do this, the APU will run everything until 500', airplane will automatically close the APU bleed valve (assuming the
+airplane panels are dark), open up the engine bleed valves, and switch things over
+? what if I needed ECS OFF but my APU was deferred? – I would still select ECS OFF and I would takeoff. technically, I
+would be unpressurized for the first 500' but then again at 500' those engine bleeds are going to open and pressurize the
+airplane – all automatic
+passenger oxygen
+• AUTO – will make sure the masks drop automatically
+• when will they drop automatically? between 14,000' and 14,750' of cabin altitude
+• OVRD – I can manually drop the oxygen masks if the cabin altitude ever reaches between 14,000' and 14,750'
+• once masks drop, there are 3 masks per side (6 per row) – leaves enough for an extra lap child
+• once the PAX actually pulls the masks down, that's when it starts the chemical reaction to generate oxygen – this will provide
+about 12 minutes of oxygen (12 minutes to give us enough time to get to a lower altitude)
+• seatbelts and no smoking signs will automatically turn on
+• OFF – no masks
+• OVRD – masks right now – MASK DEPLOYED light will turn on (this means masks have dropped in the back)
+• crew oxygen
+? green – sufficient for 3 flight crewmembers
+? cyan – sufficient for 2 flight crewmembers
+? amber – numbers or dashes means the system needs to be serviced
+? what does sufficient oxygen for either 2 or 3 crewmembers mean?
+? 22 minutes on 100% oxygen – enough to allow me to make a descent from 41,000' down to 10,000' with the
+anticipation I can switch to normal and spend a further 98 minutes before I run out of oxygen (basically 2 hours of O2)
+nosewheel steering
+• SYS 2
+• activate it by pushing down on the tiller – feet are commanding the rudder and the nosewheel
+• pushback
+? does the crew downstairs see a green light on the nosewheel?
+? in order to have a green light – 3 things need to happen:
+? brakes OFF (emergency and toe brakes)
+? steering OFF (EICAS) – lets us know we've disengaged nosewheel steering
+? ground steering disengage switch needs to be in the disengage position
+• ground steering disengage switch (little red guarded switch near the AC power door)
+TIME – 0 to 2:01:58 (finished with overhead panel)
+glareshield panel
+• lights
+• PTT (also on the yoke) – on the panel is the primary one we use
+• display reversion – reversionary panel
+? what is the most common failure for you to use that switch?
+? failure of EICAS – airplane wants you to have access to the PFD and EICAS (doesn't care about MFD)
+? decide who is PF – then select MFD
+• ADS and IRS sensor switches
+? typically dark
+? automatically revert ADS and IRS systems
+? ADS 1 – left side
+? ADS 2 – right side
+? ADS 3 – dedicated backup
+? ADS combination of probes on the front of the airplane
+? ADS 4 – IESS
+? ADS 5 – sometimes not really called an Air Data System – its a pipeline relaying that air data from the probes to FCMs so
+our FBW computers get that information
+? switches allow me (if the airplane did not automatically revert to the proper ADS during a failure) – I run the QRH
+procedure for it and tells me to push that sensor/switch to revert – can push it multiple times cycling through ADS
+? IRS
+? only have 2
+• master and caution warnings
+? can one of these switches be deferred? yes but only one so long as the other side (CP or FO side) is working
+? WARNING – immediate pilot action required
+? CAUTION – immediate pilot attention and action is likely required
+? ADVISORY – crew attention; action may be required in the future
+? STATUS – information about the airplane
+• can automatically inhibit nuisance messages
+• can scroll through EICAS messages, but not warning messages
+guidance panel
+• DCU – display control unit
+? BARO SET is my altimeter – can toggle between inches and hectopascals (hecto – not required)
+? pushing the altimeter puts it into standard mode – it is different from 29.92
+? airplane considers 29.92 to be a local setting and standard to be a cruise standard setting
+? converts your altimeter to flight levels rather than 1000s of feet
+? HSI
+? PFD
+• top part of PFD is called EADI – electronic attitude director indicator
+• bottom part of PFD is called EHSI – electronic horizontal situation indicator
+? toggles the mode of the HSI
+? toggles between the full compass, arc mode, or arc mode with moving map
+? typically we leave it on the full compass mode because our map page already gives us an arc page
+with a moving map
+? BRG
+? can pull up additional bearing pointers as necessary
+? WX – don't really use this – we toggle our weather radar from the PFD
+? PREV (preview)
+? brings up preview needles manually
+? these will automatically populate 150 miles from destination
+? will autotune the proper frequency and the course
+? FPR (flight path reference)
+? if you want to see what your current flight path was, rather than just reading it off of your flight path angle indicator –
+pressing this button will display the airplane's current flight path angle at the time you press the button
+? FMS (flight management system)
+? switches your navigation source to FMS (switches from one side to the other)
+? 3 colors of needles on PFD
+• magenta – indicating FMS
+• green – NAV radio
+• amber – we are both looking at the same source
+? V/L (don't really press this anymore)
+? green needle button
+? if you needed to switch from magenta to green, the V/L button will do that for you
+? if you needed to manually switch from green back to magenta, press the FMS button
+? MINIMUMS (knob)
+? only approach we use radar minimums for is CAT II
+? everything else is a BARO MINIMUM
+? every approach flown with vertical guidance is flown to DA
+? if its a published DA like on an ILS, RNAV approach to LNAV/VNAV minimums, or an RNP approach – all have
+published DAs
+? can set the decision altitude with this knob
+? if I'm flying the approach to a published MDA, look for a ballnote on the approach plate
+• example – authorized operators may use VNAV DA in lieu of MDA
+• if I see this note, just erase the M – that MDA is now a DA
+• if I don't have that ball note, then I have to add 50' (used to be called a DMDA (derived MDA)
+• FD (flight director)
+? clears the flight director if currently presented
+• CRS knob
+? rarely use
+? typically the course will autotune 150 NM from destination (flying an approach that requires preview needles)
+• NAV
+? tells the airplane to capture the current source of navigation guidance
+? if navigation source is FMS and I push NAV, I will get LNAV
+• HDG
+? puts airplane in heading mode
+? airplane will fly to where the heading bug is
+• ROLL
+? default mode – keep doing what you were doing
+? all assuming the AP is on
+? 6° or less bank – plane will level the wings
+? 6° - 35° bank – plane will maintain angle of bank
+? > 35° bank – will maintain 35° until I select a different mode
+• BANK
+? turn on/off bank limiting mode
+? limits bank to 15°
+? only matters in heading mode
+? anytime in LNAV, airplane won't use more than 35° of bank
+? on PFD – green dot
+? what is green dot?
+• 1.3G above shaker and 40° of bank protection
+• why 1.3? what's my load factor in a 40° bank? 1.3G
+• single engine drift down speed
+• use green dot as a speed for flap extension to return to the field and I don't have time to program or do anything
+– I'm looking for a safe and efficient speed to extend flaps – I can fly green dot on approach
+• for flap retraction, if my F-bug goes away, then I use green dot + 10
+• why +10 for retraction,when I can extend at green dot?
+? as I remove lift, and I speed up, I expect green dot to go up with me
+? I want to always be above green dot
+• APP
+? 2 mode switch – commands both a lateral and vertical mode
+? lateral
+? either LNAV or LOC depending on type of approach loaded
+? what is special about this button? what is special about GS (glideslope) and GP (glidepath)?
+? only vertical modes that don't obey your altitude selector
+? every other mode will stop at whatever is in your altitude selector – only modes that don't – GS and GP – these are
+approach modes – you have permission to go all the way down to the ground
+? FPA will absolutely respect your altitude selector – only 2 modes that don't – GS and GP
+• AP (autopilot)
+? lowest altitude engagement – 400'
+? minimum altitude 50' for ILS
+• YD (yaw damper)
+? don't really touch this – YD is an automatic function provided by our FCMs
+• SRC
+? switches airplane source from left to right and vice versa
+• AT (autothrottle)
+? arms / disarms the autothrottles
+• SPEED – FMS and MAN
+? normally we are in FMS speeds (we can be in FMS speeds for the entire flight essentially)
+? if it doesn't know what to do, it will default to whatever you set in PERF INIT page 3 – climb, cruise, descent
+? reason to not fly it? – 250 kts below 10,000' (also departure limit speed – 200 kts up to 2500')
+? FMS speeds make sure you will obey these speeds along the way
+? manual speeds
+? allow me to manually bug an airspeed
+? anytime I have a manual speed selected, the airplane will follow whatever you tell it to do
+• VNAV button
+? coolest new button on the airplane but also kinda confuses people the most
+? most important thing to know about this button – it's an ON / OFF switch (green to magenta button)
+? how do I know that VNAV is on?
+? anytime I have a magenta/vertical mode, VNAV is ON
+? what does VNAV mean?
+• airplane will follow restrictions in the FMS on the way to the altitude selector
+• in other words – if I'm in vertical speed, or FPA, or green FLCH, airplane will stay in that mode all the way up to
+my altitude selector, where it will capture the altitude and level off
+• FLCH (flight level change)
+? maximum performance climb or descent maintaining whatever airspeed you have selected
+? SPDt (speed on thrust)
+? assuming AP/AT is on, will manipulate the thrust anywhere from IDLE to TO/GA in order to make sure I obey the
+commanded speed
+? SPDe
+? airplane will change its pitch in order to maintain its speed
+? only 3 modes that are SPDe
+• FLCH (green)
+• FLCH (magenta)
+• OVSP
+? everything else is speed on thrust
+? why do I prefer to climb on SPDe?
+• I can't command the airplane into a climb or a descent, but it has insufficient thrust or drag to maintain
+• in other words – I can command the airplane to climb at 5° up or 4000 fpm – thrust levers will go up to TO/GA,
+but at some point, thrust will become deficient in order to maintain airspeed (limit will start flashing)
+? what about hand flying in FLCH?
+? I decide I won't follow the FD
+? airplane will stay in climb power, but I won't be able to maintain my airspeed (i'll either get fast or slow not following
+the FD, b/c the FD is telling me what pitch I need to be at to maintain that speed
+• ALT (altitude)
+? immediate altitude capture – “oh crap button”
+? capture whatever I'm at right now and stay there
+• FPA (flight path angle)
+? commands the actual flight path of the airplane regardless of whatever pitch or vertical speed it will take to do that
+? PFD
+? little green airplane symbol is my current FPA
+? FPA means what is the airplane doing with relation to the horizon?
+? also the default vertical mode
+? its the most accurate representation to the airplane that I will keep doing whatever I was doing
+? 0 FPA = level flight
+• VS wheel
+? safety blanket
+• know what an RA looks like
+? can I use the TCS (touch control steering) button to respond to an RA? no
+? RAs must be hand flown
+? click off AP/AT and do it myself
+• GPWS (ground proximity warning system) – pronounced “Gip Wiz”
+? alert – both visual and audible indication – “TERRAIN TERRAIN” “PULL UP”
+? flag – amber or red on PFD (GDN PROX)
+? proper course of action – max thrust , 20° nose up, until clear of terrain
+? what happens if I get an RA? night time and I'm in the weather. it tells me “descend, descend”
+? I follow the RA descending, but now I get a “TERRAIN TERRAIN” – what do I do? – follow the GWPS over the RA – I
+would definitely hit the ground, but I might not hit another airplane – GPWS always takes priority to that
+PFD
+• trend tapes – 10 seconds for airspeed and 6 seconds for altitude
+? white lines indicating on the PFD – it tells me I will reach whatever speed or altitude that is in the 10s/6s time
+• next to FPA
+? speed air tape and acceleration pointer (carrot and line)
+• WS
+? 2 kinds of WS alerts I can get on the PFD
+? warning or caution
+• warning – decrease in performance shear
+• caution – increase in performance shear
+• required to go-around and follow WS guidance escape maneuver (on a warning)
+? I can make the decision on a caution alert
+? anytime I have a warning, WS guidance will automatically be activated
+? procedure the same – push thrust to MAX, follow FD guidance, no configuration changes until clear of
+WS and clear of terrain
+? if it's a caution alert and I want to activate the WS guidance escape maneuver
+? press the TO/GA button
+? procedure the same – push thrust to MAX, follow FD guidance, no configuration changes until clear of
+WS and clear of terrain
+• ATTCS (automatic takeoff thrust control system)
+? gives me RSV thrust automatically anytime I have an engine failure, thrust lost, and WS
+? am I already getting RSV thrust if I'm in TO/GA and I run into WS? absolutely
+? I can also manually activate RSV thrust by pushing to MAX
+? what is RSV thrust? the extra 1,200 lbs of thrust over and above whatever setting you're already in
+? TO-1 and go-around = highest thrust setting we have (extra 1,200 lbs of thrust above whatever we already had)
+• FLEX thrust
+? only 3 times when I can't use FLEX
+? WS
+? contaminated RWY
+? if prohibited by the procedure
+• what does prohibited mean? either I have a complex special the specifies NO FLEX or I have a procedure or
+note that says reduced thrust takeoffs not allowed
+• FMAs on takeoff
+? lined up on runway and ready for takeoff – I will see:
+? ROLL and TO in my lateral and vertical modes
+? LNAV and VNAV displayed in my armed lateral and vertical modes
+? RWY heading checked – CP arms the AT – I'll see a white TO
+? advance thrust for takeoff – stabilize at 40% – advance more – AT take the rest
+? 50° TLA – AT grab
+? then set TO thrust
+• PF “check thrust”
+• PM looks at EICAS for 3 things:
+? ATTCS must turn green (indicating its able to provide RSV thrust)
+? needle must be in the carrot (chevron) for N1
+? rest of engine instruments in the green
+• PM – “thrust checked”
+? white TO turns into a green TO
+? 60 kts on takeoff roll – 2 things happen
+• TO turns to HOLD
+? what does HOLD mean?
+? AT servos have disconnected – means the only thing that can move those thrust levers is you even
+though the AT are still on (to reject a TO)
+• TAS, TAT, SAT – all become valid
+? 80 kts – “checked”
+• 2 things – check airspeed and check for pilot incapacitation
+? 100 kts
+• ROLL turns to TRACK
+? TRACK – only lateral mode
+? VNAV jumps up and replaces the active mode – turns into magenta FLCH
+• holding speeds
+? 6000' or below – 200 kts
+? above 6000' – 210 kts
+? never less than green dot
+• only time you'll see less than green dot is immediately after takeoff and sometimes on approach
+• make sure you can calculate a VAP approach (if given VREF and winds)
+? on the test – you'll have all the pieces – headwind, gust, and VREF
+? VREF NEW – set VREF equal to something – we've had a failure (VREF + flaps + 10 – example) – its our new VREF
+• speeds
+? VREF
+? reference landing speed – I intend to cross the threshold 50' above (landing data is predicated upon)
+? VAP
+? what I'm actually going to fly
+? it is VREF corrected for winds
+? VAC
+? approach climb
+? its like a V2 but for go-arounds
+? speed I'm going to fly on a go-around if I lose and engine
+? VFS
+? final segment climb speed
+? minimum speed I'll accelerate to in the climb once the gear has cleaned up / slats/flaps up
+• primary source of navigation
+? FMS
+? why FMS and not GPS?
+? I'm using a combination of GPS data, IRS data, and VOR/DME
+• NAV radios
+? normally set to autotune
+? how do I know that?
+? magenta is autotuning in active frequency
+? if green, it's not autotuning
+• PTH (path mode)
+? way we normally descend – profile
+? like a magenta version of FPA
+? airplane says I have a defined point in space here and another defined point in space here and it will draw a line in
+between the two of those
+? automatically entered into the airplane assuming 3 conditions are met
+• LNVA, VNAV, lower altitude
+? David really goes into depth here – I'm lost
+? practical application of all of this will happen in PT
+MFD
+• can I refuel this airplane with PAX onboard? – yes
+• can I refuel this airplane with the MCD closed? – yes
+? exits can't be obstructed
+• can I refuel this airplane with the jetbridge connected and MCD open? – yes
+• can I refuel with an engine running? – yes
+? but no PAX onboard (crew only)
+• single engine turns – ?
+• cockpit poster – can bring to class on test day
+? systems – status
+? systems – fuel
+? systems – hydraulics
+? systems – ECS
+? systems – flight controls
+? systems – electrics
+• flight control check – do we need to see a green box? – we need to see all the surfaces moving and deflecting in the correct
+direction (looking for white dashed lines)
+EICAS
+• what happens if I have a message with a carrot/chevron next to it?
+? root message – solving that message will solve the majority of other problems listed – going to solve other messages for
+me (its a big flag that says do this first)
+• what happens if I have a bunch of root failures or a lot of messages?
+? do warnings first
+? then look for any root messages
+? then prioritize the electrical buses
+? MAU (modular avionics unit)
+• different thrust modes
+? acceptable range for N1 on takeoff data?
+? -0.1 / + 0.5
+? TO-1
+? TO-2
+? CON (closest thing to MCT setting – maximum thrust airplane can continue to do)
+? typically only use this in our single engine profile
+? CLB 1 (non derated climb thrust)
+? CLB 2 (derated climb thrust)
+? CRZ thrust
+? what triggers it to go from CLB to CRZ thrust? – I've leveled off at the altitude selected and I've maintained my
+bugged airspeed for 90 seconds
+? GA (go-around)
+? what triggers the airplane to change into GA?
+? people get confused with the hydraulic system
+• hydraulics are flaps only
+• GA is landing gear and flaps
+• autobrakes
+? 4 settings – RTO, OFF, LO, MED, HI
+? RTO (rejected takeoff)
+• is there a difference between maximum manual braking and RTO? – no (they are the same)
+• can only be set on the ground (not for flight)
+? in flight – you can select LO, MED, HI (these are rates of deceleration)
+• is HI autobrakes the same as maximum m annual braking? no
+• MED is roughly twice the stopping performance of LO
+• HI is roughly twice the stopping performance of MED
+• no thrust reverse and autobrakes MED / thrust reverse and and autobrakes MED – have I decreased my landing
+distance at all? – no because the airplane is still going to decelerate at the same rate – only difference is that if I
+use thrust reversers, then I'm using less braking to achieve that same rate of deceleration
+• if on a contaminated runway – use MED and thrust reversers
+• fastest way to stop the airplane – maximum manual braking + thrust reverse (stand on those brake pedals)
+• 4 braking protection features
+? automatic wheel braking
+? during main gear retraction
+• applies the brakes to make the wheels stop in the wheel well
+• nose gear – wheels stopped by a mechanical device in the well
+? touchdown protection
+? stops the brakes from being applied on touchdown until after 3 seconds WOW or until wheels themselves have
+accelerated up to 50 kts – that's wheel speed, not airspeed (won't allow the brakes to be engaged) – protection
+against blowing a tire or directional control issue
+? locked wheel protection
+? compares wheel speeds across the left and right side
+? anytime there's a greater than 33% difference between wheel speeds, then it will cut out braking to the slow side
+allowing it to accelerate back up and then apply the brakes again
+? why 33%? – to allow a difference for differential braking to steer
+? cuts out at 30 kts – why 30 kts? – at slower speed, I still want to be able to steer with 33% differential braking
+? anti-skid protection
+? modulates brake pressure to maintain the best traction
+? stops wheels from skidding
+? dramatically decreases our stopping distance + improves braking performance
+? disengages below 10 kts – can intentionally lock a wheel and pivot on it to make a tight turn
+? do I get any of these braking features when I actuate the parking brake? – no
+? icy runway, Jackson Hole in December – feet on the brakes, anti-skids starts working – if you pull the parking brake,
+you lose the anti-skid protection
+IESS (integrated electronic standby system)
+• ADS 4 drives the IESS
+• set by the CP (altimeter)
+• takes 90 seconds to align (airplane can't be moved)
+• can fly an ILS on here (raw data and won't be fun, but we can do it)
+• can't fly BC approaches – OpSpec pulled for this and not a single tear was shed
+instrument panel – ground proximity terrain inhibit
+• inhibit for the GPWS that would turn off the terrain indications
+• typically only do this if directed by the company pages
+instrument panel – emergency parking brake
+• if it is ON and parking brake set – you have sufficient pressure to brake or hold the airplane in place
+know engine start and APU limitations
+landing gear
+• downlock release button
+? there is a lock in the gear handle itself – if airplane has a WOW indication – it won't allow you to put that gear handle up
+? if we have a faulty WOW indication after takeoff and you can't put the gear up
+? normally – leave the gear down, come back around and land
+? but – what if we had terrain ahead of us? need to get rid of drag – need climbing performance – press the downlock
+release button – it commands the gear up
+• 3 ways to actuate the landing gear
+? gear handle (instrument panel)
+? actuate the gear handle – electric signal to PSEM (proximity sensor electronic module) – talks to the landing gear and
+then begins the actuation process
+? releases the uplocks and brings the gear down
+? pulls gear up – primary means of keeping it up – uplocks
+? electrical override switch
+? red switch – FO side floor
+• move to gear down – bypasses the PSEM
+? alternate gear extension handle
+? freefall extension of the landing gear
+? I manually release the uplocks and any residual hydraulic pressure in those lines
+? nothing else holding it up
+ELT
+• lives in ARM
+GND PROX G/S INHIB
+• inhibits glideslope related warnings of GWPS (under the direction of the QRH)
+water dump button – FO side
+• press during descent of LFOD
+• commands the potable water tank to drain via the 2 heated drain masks on the bottom of the airplane
+• 4 things make the light in that switch go out
+? if tank is empty
+? if I push it again – I've started the process; I've stopped the process
+? lower the landing gear (don't want water splashing onto the landing gear – even though heated, it could freeze)
+? if there is a drain mask heater fault
+? only indication of this – AFT FA control panel
+? make a note of it – talk to FA about it
+MCDU
+• RADIO page
+? what does ACARS use to communicate? COM 3 (my data radio)
+? if I don't have COM 3, then ACARS would be deferred
+? COM 1 and 2 for talking – COM 3 for data
+? how do I access ACARS? – DLK (datalink) button
+Flight Control Mode switches (center pedestal)
+• elevators, rudders, spoilers
+• puts into direct mode – cuts FCM out of the loop
+• be familiar with higher level functions and give a basic description
+stall warning – shaker 1 / shaker 2 cutout
+• disables the stick shaker channel
+• AP disengages when shaker goes off
+• AT will not (have to manually disengage the AT)
+engines
+• be familiar with engine start limitations and engine start duty cycles
+• 3 types of abnormal engine starts (FADEC will automatically abort for)
+? hot start
+? hung start
+? no light off
+? these are reasons I would also manually abort the engine / ignition start
+? regardless if FADEC or I do it – I still have to do the memory item – why? because, if FADEC aborts the start, FADEC
+will get rid of the fuel, but I have to close the starter control valve
+• starter control valve – bleed air valve allowing N2 to turn
+• dry motoring – be familiar with these limitations
+? one of those times you will take the ignition switch out of AUTO under the direction of the QRH for a dry motor
+? AUTO to OFF – I'm commanding 2 things:
+? turn ignition OFF
+? telling FADEC not to introduce fuel as I dry motor
+• you won't get a message for an abnormal start on the EICAS
+? its a non-annunciated procedure
+• only time you will get a message related to engine start – exceedance (you have exceeded a limit)
+? call MX
+CCD (control cursor device)
+• it is a way to tune the radios
+T/O CONFIG
+• checks for 4 things – flaps, spoilers, brakes, trim
+• does the flap lever setting match what we put into the MCDU? otherwise? no takeoff flaps
+• are any spoilers deployed? otherwise no takeoff spoilers
+• is the parking brake set? no takeoff brakes
+• is the pitch trim in the green range? if not, no takeoff trim
+EICAS FULL
+• show me the FULL EICAS
+• un-declutter for EICAS
+• 30 seconds after landing gear up and flaps up and APU off, EICAS will automatically declutter the expanded engine information
+– gear, flap indications, and APU
+speedbrake lever
+• commands actuation of the multi-function spoiler panels – 3 OB panels on each wing
+• these will function as our speedbrakes
+• 3 conditions when the speedbrakes will automatically retract
+? flaps > 1
+? < 180 kts airspeed
+? 70° TLA
+? where is 70°? – just shy of TO/GA
+thrust levers
+• A/T disengage – big button where TO/GA used to be – button on the side
+• what else disengages the A/T? – pushing to MAX or splitting the thrust lever heads by 8° (8° = half of a knob ?)
+• 2 minutes warmup before advancing thrust levers for takeoff
+• 2 minute cooldown before shutting down an engine
+• 40~45 PSI for XBLEED start
+thrust reversers
+• start reducing towards MIN REV at 80 kts
+• be there by 60 kts
+• be in forward by 30 kts
+• can use thrust reverse the whole time until the airplane comes to a complete stop (in shortest distance possible)
+RAT
+• manual deploy
+• trigger the QRH will direct us to pull this:
+? electrical emergency
+? BATT discharging
+CAB, RAMP, EMER (audio panel)
+ID (filters out the voice) – all I want to do is listen the NAVAID
+ground proximity flap override
+• inhibits flap warnings of GWPS under the direction of the QRH if landing with a non-standard flap setting
+trim panel
+• all 3 have a 3 second automatic cutaway – to help prevent runaway
+• only one that will yell at you – pitch trim
+• trim priority – backup switch, CP yoke, FO yoke, FCM (not AP)
+door lock
+• unlock and lock door
+• if somebody knows where the button is outside to try to get it – they press it – I have 30 seconds to decide to press the inhibit
+button if I don't want to let them in – will inhibit for 500 seconds (less than 7.5 minutes) – if they try again, we just inhibit them
+again
+slat / flap lever
+• takeoff settings
+1,2, and 4
+• landing settings
+? 5 and FULL
+• go-around setting for flaps 5
+? flaps 2
+• go-around setting for flaps FULL
+? flaps 4
+• can I ever fly a FULL flap CAT II?
+? no – flaps 5 only
+PA (public address button)
+• talk directly to the passengers
+• as soon as you let go, your radios go back to normal
+cockpit printer
+aileron / elevator disconnect
+• disconnect the 2 control columns
+• then I command the airplane with the unjammed side and unjammed control surface
+? I pull the aileron disconnect
+? I determine that the right side is jammed and the left side is OK
+? I will be flying the airplane from the left side
+? I will be commanding roll by using the left aileron, not the right
+yoke
+• PTT
+• center – interphone (OFF button – interphone cutout)
+• TCS – touch control steering
+? AP pause button – while holding this button, the FPA is synced up
+• steering disengage – trigger on the backside of the yoke
+CB
+• physical (thermal) CB in flight deck
+• electric – access on MCDU

@@ -1,0 +1,19 @@
+.document-link {
+    color: #3273dc;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.document-link:hover {
+    color: #363636;
+    text-decoration: underline;
+}
+
+.title {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.content {
+    margin-bottom: 1.5rem;
+}

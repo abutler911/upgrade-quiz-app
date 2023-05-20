@@ -13,6 +13,7 @@ require("dotenv").config();
 const Discussion = require("./models/Discussion");
 const methodOverride = require("method-override");
 const winston = require("winston");
+const multer = require("multer");
 
 // Configure SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -90,6 +91,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
+const upload = multer({ dest: "public/docs" });
 
 // Passport configuration
 passport.use(new LocalStrategy(User.authenticate()));
@@ -114,6 +116,22 @@ app.use((req, res, next) => {
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.use(expressLayouts);
+
+app.get("/documents", isLoggedIn, (req, res) => {
+  const documents = [{ name: "Systems Review", filename: "SystemsReview.pdf" }];
+  res.render("documents", {
+    documents,
+    title: "Systems Review",
+    customCSS: "documents.css",
+  });
+});
+
+app.post("/upload", upload.single("document"), (req, res) => {
+  const { name, document } = req.body;
+  // Process the uploaded file (e.g., save it to a database, perform validation, etc.)
+
+  res.redirect("/documents");
+});
 
 // Routers
 app.use(mainRoutes);
