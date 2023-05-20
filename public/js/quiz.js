@@ -1,19 +1,6 @@
 let questions = [];
 let currentQuestionIndex = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-  setupEventListeners();
-  fetchQuestions();
-});
-
-function setupEventListeners() {
-  setupShowAnswerButton();
-  setupShowAnswersCheckbox();
-  setupNavigationButtons();
-  setupCategoryFilter();
-  setupRandomizeCheckbox();
-  setupSubmitRatingButton();
-}
 function formatDate(dateString) {
   const date = new Date(dateString);
   return date.toLocaleString();
@@ -58,16 +45,6 @@ function adjustIntervalBasedOnRating(interval, rating) {
     return interval;
   }
 }
-
-// function adjustIntervalBasedOnRating(interval, rating) {
-//   if (rating === 5) {
-//     return interval / 2; // Halve the i
-//   } else if (rating === 1) {
-//     return interval * 2; // Double the interval for rating 1
-//   } else {
-//     return interval; // Use the same interval for other ratings
-//   }
-// }
 
 function updateInterval(interval, rating) {
   if (rating < 3) {
@@ -115,8 +92,14 @@ function displayQuestion() {
     answerElement.innerText = "No answers to display";
     categoryElement.innerText = "No categories to display";
   }
-
   updateQuestionCount();
+}
+
+function updateQuestionCount() {
+  const totalQuestions = questions.length;
+  const completedQuestions = currentQuestionIndex + 1;
+  const questionCount = document.getElementById("question-count");
+  questionCount.innerHTML = `Question: ${completedQuestions} of ${totalQuestions}`;
 }
 
 function setDifficultyStars(difficulty) {
@@ -129,6 +112,146 @@ function setDifficultyStars(difficulty) {
       starElement.classList.remove("selected");
     }
   });
+}
+
+function navigateToNextQuestion() {
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+    displayQuestion(currentQuestionIndex);
+    hideAnswer();
+  }
+}
+
+function navigateToPreviousQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    displayQuestion(currentQuestionIndex);
+    hideAnswer();
+  }
+}
+
+async function submitDifficulty() {
+  const question = questions[currentQuestionIndex];
+  const questionId = question._id;
+  const difficulty = document.querySelectorAll(".rating span.selected").length;
+  const currentInterval = question.interval;
+  const updatedInterval = updateInterval(currentInterval, difficulty);
+
+  try {
+    const response = await fetch(`/api/question/${questionId}/difficulty`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ difficulty, interval: updatedInterval }),
+    });
+
+    if (response.ok) {
+      updateQuestionRating(questionId, difficulty);
+      alert("Rating updated successfully!");
+    } else {
+      console.error("Error updating question difficulty:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error updating question difficulty:", error);
+  }
+}
+
+function updateQuestionRating(questionId, rating) {
+  const question = questions.find((q) => q._id === questionId);
+  if (!question.userRating) {
+    question.userRating = {};
+  }
+  question.userRating.rating = rating;
+}
+
+async function updateLastSeen(questionId) {
+  try {
+    const response = await fetch(`/api/question/${questionId}/seen`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+    } else {
+      console.error("Error updating question lastSeen:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error updating question lastSeen:", error);
+  }
+}
+
+async function flagForReview() {
+  const questionId = questions[currentQuestionIndex]._id;
+
+  try {
+    const response = await fetch(`/api/question/${questionId}/flagForReview`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ questionId }),
+    });
+
+    if (response.ok) {
+      alert("Question flagged for review successfully!");
+    } else {
+      alert("Failed to flag question for review. Please try again.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Failed to flag question for review. Please try again.");
+  }
+}
+
+function loadQuestionsByCategory() {
+  const selectedCategory = $("#categoryFilter").val() || [];
+  filterAndLoadQuestions(selectedCategory);
+}
+
+async function filterAndLoadQuestions(selectedCategory) {
+  try {
+    const response = await fetch("/api/questions");
+    const data = await response.json();
+    questions = data.filter(
+      (question) =>
+        selectedCategory.length === 0 ||
+        selectedCategory.some((cat) => question.category.includes(cat))
+    );
+    const randomizeCheckbox = document.getElementById("randomizeCheckbox");
+    if (randomizeCheckbox.checked) {
+      shuffleQuestions(questions);
+    }
+
+    currentQuestionIndex = 0;
+    displayQuestion();
+    // updateProgressBar();
+  } catch (err) {
+    console.error("Error fetching questions:", err);
+  }
+}
+
+function shuffleQuestions(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function hideAnswer() {
+  const answerElement = document.querySelector(".card-text.answer");
+  const showAnswerButton = document.querySelector("#show-answer");
+
+  answerElement.classList.remove("show");
+  answerElement.classList.add("hide");
+  showAnswerButton.textContent = "Show Answer";
+}
+
+function hideSuccessMessage() {
+  const successMessage = document.getElementById("rating-success");
+  successMessage.classList.add("is-hidden");
 }
 
 function setupShowAnswerButton() {
@@ -178,6 +301,27 @@ function setupRandomizeCheckbox() {
   });
 }
 
+function setupSubmitRatingButton() {
+  const submitRatingButton = document.getElementById("submit-rating");
+  submitRatingButton.addEventListener("click", () => {
+    submitDifficulty();
+  });
+}
+
+function setupEventListeners() {
+  setupShowAnswerButton();
+  setupShowAnswersCheckbox();
+  setupNavigationButtons();
+  setupCategoryFilter();
+  setupRandomizeCheckbox();
+  setupSubmitRatingButton();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupEventListeners();
+  fetchQuestions();
+});
+
 function toggleAnswerVisibility(answerElement, showAnswerButton) {
   answerElement.classList.toggle("hide");
   answerElement.classList.toggle("show");
@@ -202,116 +346,9 @@ function toggleAnswersWithCheckbox(showAnswersCheckbox) {
   }
 }
 
-function navigateToNextQuestion() {
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    displayQuestion(currentQuestionIndex);
-    hideAnswer();
-  }
-}
-
-function navigateToPreviousQuestion() {
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    displayQuestion(currentQuestionIndex);
-    hideAnswer();
-  }
-}
-
-function setupSubmitRatingButton() {
-  const submitRatingButton = document.getElementById("submit-rating");
-  submitRatingButton.addEventListener("click", () => {
-    submitDifficulty();
-  });
-}
-async function submitDifficulty() {
-  const question = questions[currentQuestionIndex];
-  const questionId = question._id;
-  const difficulty = document.querySelectorAll(".rating span.selected").length;
-  const currentInterval = question.interval;
-  const updatedInterval = updateInterval(currentInterval, difficulty);
-
-  try {
-    const response = await fetch(`/api/question/${questionId}/difficulty`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ difficulty, interval: updatedInterval }),
-    });
-
-    if (response.ok) {
-      updateQuestionRating(questionId, difficulty);
-      alert("Rating updated successfully!");
-    } else {
-      console.error("Error updating question difficulty:", response.statusText);
-    }
-  } catch (error) {
-    console.error("Error updating question difficulty:", error);
-  }
-}
-
 function showSuccessMessage() {
   const successMessage = document.getElementById("rating-success");
   successMessage.classList.remove("is-hidden");
-}
-
-function updateQuestionRating(questionId, rating) {
-  const question = questions.find((q) => q._id === questionId);
-  if (!question.userRating) {
-    question.userRating = {};
-  }
-  question.userRating.rating = rating;
-}
-
-function hideAnswer() {
-  const answerElement = document.querySelector(".card-text.answer");
-  const showAnswerButton = document.querySelector("#show-answer");
-
-  answerElement.classList.remove("show");
-  answerElement.classList.add("hide");
-  showAnswerButton.textContent = "Show Answer";
-}
-
-function loadQuestionsByCategory() {
-  const selectedCategory = $("#categoryFilter").val() || [];
-  filterAndLoadQuestions(selectedCategory);
-}
-
-async function filterAndLoadQuestions(selectedCategory) {
-  try {
-    const response = await fetch("/api/questions");
-    const data = await response.json();
-    questions = data.filter(
-      (question) =>
-        selectedCategory.length === 0 ||
-        selectedCategory.some((cat) => question.category.includes(cat))
-    );
-    const randomizeCheckbox = document.getElementById("randomizeCheckbox");
-    if (randomizeCheckbox.checked) {
-      shuffleQuestions(questions);
-    }
-
-    currentQuestionIndex = 0;
-    displayQuestion();
-    // updateProgressBar();
-  } catch (err) {
-    console.error("Error fetching questions:", err);
-  }
-}
-
-function shuffleQuestions(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-function updateQuestionCount() {
-  const totalQuestions = questions.length;
-  const completedQuestions = currentQuestionIndex + 1;
-  const questionCount = document.getElementById("question-count");
-  questionCount.innerHTML = `Question: ${completedQuestions} of ${totalQuestions}`;
 }
 
 const ratings = document.querySelectorAll(".rating span");
@@ -364,52 +401,6 @@ async function updateQuestionRating(questionId, rating) {
   }
 }
 
-async function updateLastSeen(questionId) {
-  try {
-    const response = await fetch(`/api/question/${questionId}/seen`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-    } else {
-      console.error("Error updating question lastSeen:", response.statusText);
-    }
-  } catch (error) {
-    console.error("Error updating question lastSeen:", error);
-  }
-}
-
-function hideSuccessMessage() {
-  const successMessage = document.getElementById("rating-success");
-  successMessage.classList.add("is-hidden");
-}
-
 document
   .getElementById("flag-for-review")
   .addEventListener("click", flagForReview);
-
-async function flagForReview() {
-  const questionId = questions[currentQuestionIndex]._id;
-
-  try {
-    const response = await fetch(`/api/question/${questionId}/flagForReview`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ questionId }),
-    });
-
-    if (response.ok) {
-      alert("Question flagged for review successfully!");
-    } else {
-      alert("Failed to flag question for review. Please try again.");
-    }
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Failed to flag question for review. Please try again.");
-  }
-}

@@ -1,41 +1,55 @@
-<div class="container mt-4">
-  <div class="card">
-    <div class="card-content">
-      <h1 class="title"><%= discussion.title %></h1>
-      <p class="subtitle is-6">
-        Created by <%= discussion.user.username %> on <%=
-        discussion.createdAt.toLocaleString() %>
-      </p>
-      <div class="content"><%= discussion.content %></div>
-      <% if (user && user._id.toString() === discussion.user._id.toString()) {
-      %>
-      <form action="/discussions/<%= discussion._id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE" />
-        <button type="submit" class="button is-danger">Delete Thread</button>
-      </form>
-      <% } %>
+<div class="card">
+  <header class="card-header">
+    <div class="media">
+      <figure class="media-left">
+        <span class="icon is-large">
+          <i class="fas fa-user fa-2x"></i>
+        </span>
+      </figure>
+      <div class="media-content">
+        <p class="card-header-title has-text-weight-bold">
+          <%= discussion.title %>
+        </p>
+        <p class="subtitle">
+          @<%= discussion.user.username %> · <%=
+          discussion.createdAt.toLocaleString() %>
+        </p>
+      </div>
     </div>
-  </div>
-
-  <div class="comments mt-4">
-    <h2 class="subtitle">Comments</h2>
-    <% discussion.comments.forEach(function(comment) { %>
-    <div class="box">
-      <p><%= comment.content %></p>
-      <p class="is-size-7 has-text-grey">
-        Posted by <%= comment.user.username %> on <%=
-        comment.createdAt.toLocaleString() %>
-      </p>
+  </header>
+  <div class="card-content">
+    <div class="content"><%= discussion.content %></div>
+    <% if (user && user._id.toString() === discussion.user._id.toString()) { %>
+    <form action="/discussions/<%= discussion._id %>/delete" method="POST">
+      <button type="submit" class="button is-danger">Delete</button>
+    </form>
+    <% } %>
+    <div class="comments mt-4">
+      <% discussion.comments.forEach(function(comment) { %>
+      <div class="media">
+        <figure class="media-left">
+          <span class="icon">
+            <i class="fas fa-user"></i>
+          </span>
+        </figure>
+        <div class="media-content">
+          <p class="subtitle">
+            @<%= comment.user.username %> · <%=
+            comment.createdAt.toLocaleString() %>
+          </p>
+          <p><%= comment.content %></p>
+        </div>
+      </div>
+      <% }); %>
     </div>
-    <% }); %>
-  </div>
-
-  <% if (user) { %>
-  <div class="add-comment-form box mt-4">
-    <h2 class="subtitle">Add Comment</h2>
-    <form action="/discussions/<%= discussion._id %>/comments" method="POST">
+    <% if (user) { %>
+    <form
+      action="/discussions/<%= discussion._id %>/comments"
+      method="POST"
+      class="mt-4"
+    >
       <div class="field">
-        <label for="content" class="label">Comment</label>
+        <label for="content" class="label">Add a Comment</label>
         <div class="control">
           <textarea
             id="content"
@@ -49,6 +63,6 @@
         <button type="submit" class="button is-link">Post Comment</button>
       </div>
     </form>
+    <% } %>
   </div>
-  <% } %>
 </div>

@@ -1,103 +1,69 @@
 <div class="container mt-4">
   <h1 class="title has-text-centered">Discussion Board</h1>
 
-  <div class="columns">
-    <div class="column">
-      <div class="box has-background-light">
-        <h2 class="subtitle">Create New Thread</h2>
-        <form action="/discussions" method="POST">
-          <div class="field">
-            <label for="title" class="label">Thread Title</label>
-            <div class="control">
-              <input
-                type="text"
-                id="title"
-                name="title"
-                class="input"
-                required
-              />
-            </div>
-          </div>
-          <div class="field">
-            <label for="content" class="label">Thread Content</label>
-            <div class="control">
-              <textarea
-                id="content"
-                name="content"
-                class="textarea"
-                required
-              ></textarea>
-            </div>
-          </div>
-          <div class="control">
-            <button type="submit" class="button is-link">Create Thread</button>
-          </div>
+  <div class="box has-background-light">
+    <h2 class="subtitle">What's happening?</h2>
+    <form action="/discussions" method="POST">
+      <div class="field">
+        <div class="control">
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="input"
+            placeholder="Thread Title"
+            required
+          />
+        </div>
+        <div class="control mt-2">
+          <textarea
+            id="content"
+            name="content"
+            class="textarea"
+            placeholder="What's on your mind?"
+            required
+          ></textarea>
+        </div>
+      </div>
+      <div class="control">
+        <button type="submit" class="button is-link">Create Thread</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="mt-4">
+    <h2 class="subtitle">Recent Threads</h2>
+    <% discussions.forEach(function(discussion) { %>
+    <div class="box has-background-white-ter">
+      <h4 class="title is-5 has-text-link-dark" style="margin-bottom: 5px">
+        <%= discussion.title %>
+        <span class="is-size-7 has-text-grey comment-count"
+          ><%= discussion.comments.length %> comment(s)</span
+        >
+      </h4>
+      <p class="created-by has-text-grey">
+        Created by <%= discussion.user.username %> on <%=
+        discussion.createdAt.toLocaleString() %>
+      </p>
+      <p class="discussion-content"><%= discussion.content %></p>
+      <hr />
+      <footer>
+        <a href="/discussions/<%= discussion._id %>">View Discussion</a>
+
+        <% if (user && user._id.toString() === discussion.user._id.toString()) {
+        %>
+        <form
+          action="/discussions/<%= discussion._id %>/delete"
+          method="POST"
+          id="delete-form"
+        >
+          <button type="submit" class="button is-text" id="delete-btn">
+            Delete Thread
+          </button>
         </form>
-        <hr class="divider" />
-        <h2 class="subtitle mt-4">Recent Threads</h2>
-        <% recentDiscussions.forEach(function(discussion) { %>
-        <div class="box has-background-white-ter">
-          <h4 class="title is-5 has-text-link-dark" style="margin-bottom: 5px">
-            <%= discussion.title %>
-          </h4>
-          <p class="is-size-7 has-text-grey">
-            Created by
-            <span class="has-text-weight-semibold"
-              ><%= discussion.user.username %></span
-            >
-            on
-            <span class="has-text-weight-semibold"
-              ><%= discussion.createdAt.toLocaleString() %></span
-            >
-          </p>
-        </div>
-        <% }); %>
-      </div>
+        <% } %>
+      </footer>
     </div>
-
-    <div class="column">
-      <div class="box has-background-light">
-        <h2 class="subtitle">Recent Discussions</h2>
-        <% discussions.forEach(function(discussion) { %>
-        <div class="card mb-4">
-          <div class="card-content">
-            <h3 class="title is-4">
-              <%= discussion.title %>
-              <span class="tag is-info is-light ml-2"
-                ><%= discussion.comments.length %> comment(s)</span
-              >
-              <p class="is-size-7 has-text-grey">
-                Created by <%= discussion.user.username %> on <%=
-                discussion.createdAt.toLocaleString() %>
-              </p>
-            </h3>
-            <hr />
-            <p class="discussion-content"><%= discussion.content %></p>
-          </div>
-          <footer class="card-footer">
-            <a
-              href="/discussions/<%= discussion._id %>"
-              class="card-footer-item"
-              >View Discussion</a
-            >
-            <% if (user && user._id.toString() ===
-            discussion.user._id.toString()) { %>
-            <form
-              action="/discussions/<%= discussion._id %>/delete"
-              method="POST"
-              class="card-footer-item"
-              id="delete-form"
-            >
-              <button type="submit" class="button is-text" id="delete-btn">
-                Delete Thread
-              </button>
-            </form>
-
-            <% } %>
-          </footer>
-        </div>
-        <% }); %>
-      </div>
-    </div>
+    <% }); %>
   </div>
 </div>
