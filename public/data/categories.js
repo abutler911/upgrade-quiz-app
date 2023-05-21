@@ -206,4 +206,8 @@ const categories = [
   },
 ];
 
+categories.sort((a, b) => a.name.localeCompare(b.name));
+categories.forEach((category, index) => {
+  category.id = index + 1;
+});
 module.exports = categories;
