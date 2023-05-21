@@ -303,6 +303,19 @@ html, body {
 
 .select2 {
     width: 100%;
+    color: #000;
+}
+
+.select2-results__option {
+    color: black;
+}
+
+.select2-selection__choice {
+    color: black;
+}
+
+.select2-selection__rendered {
+    color: black;
 }
 
 .difficulty-rating {

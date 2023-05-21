@@ -199,6 +199,11 @@ const categories = [
     name: "Aerodynamics",
     value: "aerodynamics",
   },
+  {
+    id: 40,
+    name: "Pressurization",
+    value: "pressurization",
+  },
 ];
 
 module.exports = categories;
