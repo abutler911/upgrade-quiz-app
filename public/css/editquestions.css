@@ -6,16 +6,9 @@ html, body {
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-    background-position: 30% center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: rgb(51, 51, 51);
     color: #fff;
-    background-attachment: fixed;
-
 }
-
-
 
 body {
     overflow-y: auto;
@@ -25,15 +18,38 @@ body {
     max-width: 1000px;
     margin: 20px auto;
     background-color: #fff;
-    padding: 5px;
+    padding: 20px;
+    /* Increased padding */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: rgb(190, 190, 190);
+    border: 2px solid #4558ff;
 }
 
 
+
+#question {
+    font-size: 1.2rem;
+}
+
+#answer {
+    font-size: 1.2rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
 .is-responsive {
     overflow-x: auto;
+}
+
+.field {
+    margin-bottom: 20px;
+    /* Added bottom margin */
 }
 
 h1 {
@@ -48,6 +64,19 @@ thead tr {
 
 .title {
     text-align: center;
+}
+
+.checkbox {
+    color: #000;
+    font-size: 0.8rem;
+    /* Category label color set to black */
+}
+
+.field .control {
+    display: flex;
+    flex-flow: row wrap;
+    /* Categories will be wrapped */
+    justify-content: start;
 }
 
 @media screen and (max-width: 768px) {
@@ -74,5 +103,15 @@ thead tr {
 
     .buttons-container .button {
         width: 100%;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .field .control {
+        flex-flow: column wrap;
+        /* Categories will stack on smaller screens */
     }
 }

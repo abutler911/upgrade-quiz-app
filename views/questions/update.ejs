@@ -1,50 +1,70 @@
 <section class="section">
   <div class="container">
-    <h1 class="title">Edit Question</h1>
-    <form action="/modify-questions/<%= question._id %>/edit" method="post">
-      <div class="field">
-        <label class="label" for="question">Question:</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            id="question"
-            name="question"
-            value="<%= question.question %>"
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Category:</label>
-        <% categories.forEach(function(category) { %>
-        <div class="control">
-          <label class="checkbox" for="<%= category.value %>">
-            <input type="checkbox" id="<%= category.value %>" name="category"
-            value="<%= category.value %>" <%= question.category.find(cat => cat
-            === category.value) ? 'checked' : '' %>> <%= category.name %>
-          </label>
-        </div>
-        <% }); %>
-      </div>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title has-text-centered">Edit Question</h1>
+        <form action="/modify-questions/<%= question._id %>/edit" method="post">
+          <div class="field">
+            <label class="label" for="question">Question:</label>
+            <div class="control has-icons-left">
+              <input
+                class="input"
+                type="text"
+                id="question"
+                name="question"
+                value="<%= question.question %>"
+              />
+              <span class="icon is-small is-left">
+                <i class="fas fa-question"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Category:</label>
+            <div class="control category-grid">
+              <!-- Add class here -->
+              <% categories.forEach(function(category) { %>
+              <div>
+                <!-- Add div wrapper here -->
+                <label class="checkbox" for="<%= category.value %>">
+                  <input type="checkbox" id="<%= category.value %>"
+                  name="category" value="<%= category.value %>" <%=
+                  question.category.find(cat => cat === category.value) ?
+                  'checked' : '' %>> <%= category.name %>
+                </label>
+              </div>
+              <!-- Add div wrapper here -->
+              <% }); %>
+            </div>
+          </div>
 
-      <div class="field">
-        <label class="label" for="answer">Answer:</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            id="answer"
-            name="answer"
-            value="<%= question.answer %>"
-          />
-        </div>
+          <div class="field">
+            <label class="label" for="answer">Answer:</label>
+            <div class="control has-icons-left">
+              <input
+                class="input"
+                type="text"
+                id="answer"
+                name="answer"
+                value="<%= question.answer %>"
+              />
+              <span class="icon is-small is-left">
+                <i class="fas fa-lightbulb"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <button class="button is-primary" type="submit">
+                Save Changes
+              </button>
+            </div>
+            <div class="control">
+              <a class="button is-light" href="/">Back</a>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="field">
-        <div class="control">
-          <button class="button is-primary" type="submit">Save Changes</button>
-          <a class="button is-light" href="/">Back</a>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </section>
