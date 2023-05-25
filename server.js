@@ -14,6 +14,9 @@ const Discussion = require("./models/Discussion");
 const methodOverride = require("method-override");
 const winston = require("winston");
 const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
+const Document = require("./models/Document");
 
 // Configure SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -91,7 +94,34 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
-const upload = multer({ dest: "public/docs" });
+const upload = multer({
+  dest: "public/docs",
+  limits: { fileSize: 5000000 }, // size limit 5MB
+  fileFilter: (req, file, cb) => {
+    const allowedMimes = [
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/pdf",
+      "image/jpeg",
+      "image/pjpeg",
+      "image/png",
+      "image/gif",
+    ];
+
+    if (
+      allowedMimes.includes(file.mimetype) ||
+      file.mimetype.startsWith("audio/")
+    ) {
+      cb(null, true);
+    } else {
+      cb(
+        new Error(
+          "Invalid file type. Only .doc, .docx, .pdf, image, and audio files are allowed."
+        )
+      );
+    }
+  },
+});
 
 // Passport configuration
 passport.use(new LocalStrategy(User.authenticate()));
@@ -117,20 +147,88 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.use(expressLayouts);
 
-app.get("/documents", isLoggedIn, (req, res) => {
-  const documents = [{ name: "Systems Review", filename: "SystemsReview.pdf" }];
-  res.render("documents", {
-    documents,
-    title: "Systems Review",
-    customCSS: "documents.css",
-  });
+app.get("/documents", isLoggedIn, async (req, res) => {
+  try {
+    const documents = await Document.find({});
+    res.render("documents", {
+      documents,
+      title: "Document Repository",
+      customCSS: "documents.css",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("An error occurred while fetching the documents.");
+  }
+});
+app.get("/docs/:filename", isLoggedIn, function (req, res) {
+  const filePath = path.join(__dirname, "public/docs", req.params.filename);
+  res.set("Content-Disposition", "inline");
+  res.sendFile(filePath);
 });
 
-app.post("/upload", upload.single("document"), (req, res) => {
-  const { name, document } = req.body;
-  // Process the uploaded file (e.g., save it to a database, perform validation, etc.)
+app.post("/upload", upload.single("document"), async (req, res) => {
+  const documentName = req.body.name;
 
-  res.redirect("/documents");
+  // req.file is the `document` file
+  const { originalname, mimetype, filename, path } = req.file;
+
+  // Create a new Document and save it to the database
+  const newDocument = new Document({
+    name: documentName,
+    filename: filename,
+    mimetype: mimetype,
+    path: path,
+  });
+
+  try {
+    await newDocument.save();
+    res.redirect("/documents");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("An error occurred while uploading the file.");
+  }
+});
+app.post("/delete-document/:id", isAdmin, async (req, res) => {
+  try {
+    const document = await Document.findById(req.params.id);
+    fs.unlinkSync(path.join(__dirname, "public/docs", document.filename));
+    await Document.findByIdAndDelete(req.params.id);
+    res.redirect("/documents");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("An error occurred while deleting the document.");
+  }
+});
+
+app.post("/admin/add-category", (req, res) => {
+  const categoriesFilePath = path.join(__dirname, "public/data/categories.js");
+  delete require.cache[require.resolve(categoriesFilePath)];
+  let categories = require(categoriesFilePath);
+
+  // Add the new category
+  const newCategory = {
+    id: categories.length + 1, // This will be renumbered later
+    name: req.body.categoryName,
+    value: req.body.categoryValue,
+  };
+  categories.push(newCategory);
+
+  // Sort and renumber the categories
+  categories.sort((a, b) => a.name.localeCompare(b.name));
+  categories.forEach((category, index) => {
+    category.id = index + 1;
+  });
+
+  // Overwrite the original file
+  const newFileContent = `const categories = ${JSON.stringify(
+    categories,
+    null,
+    2
+  )};\n\nmodule.exports = categories;`;
+  fs.writeFileSync(categoriesFilePath, newFileContent, "utf8");
+
+  // Redirect back to the admin page, or handle the result of the operation in another way
+  res.redirect("/admin/dashboard");
 });
 
 // Routers

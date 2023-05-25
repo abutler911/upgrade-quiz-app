@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
-const categorySchema = new mongoose.Schema({
-  id: Number,
-  name: String,
-  value: String,
-});
+const categorySchema = new mongoose.Schema(
+  {
+    name: String,
+    value: String,
+  },
+  { timestamps: true }
+);
 
 const Category = mongoose.model("Category", categorySchema);
 

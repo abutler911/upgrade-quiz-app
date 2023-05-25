@@ -1,38 +1,34 @@
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <h1 class="is-size-4 has-text-weight-bold" style="color: #000;">Upgrade Me</h1>
-        </a>
-    
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-    
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/">
-            Home
-          </a>
-          <a class="navbar-item" href="/quiz">
-            Flashcards
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">Options</a>
-            <div class="navbar-dropdown">
-              <h3 class="navbar-item">Misc Items</h3>
-                <ul>
-                  <li><a href="/documents" class="navbar-item">Document Repository</a></li>
-                  <li><a href="/discussions" class="navbar-item">Discussion Board</a></li>
-                  <li><a href="/rvr" class="navbar-item">RVR Exercise</a></li>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <h1 class="is-size-4 has-text-weight-bold" style="color: #000;">Upgrade Me</h1>
+    </a>
 
-                <li><a class="navbar-item" href="/weather">Weather Planning</a></li>
-                
-                <li><a class="navbar-item" href="/fuel">Fuel Planning</a></li>
-                </ul>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        Home
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">Options</a>
+        <div class="navbar-dropdown">
+          <h3 class="navbar-item">Misc Items</h3>
+            <ul>
+              <li><a href="/documents" class="navbar-item">Document Repository</a></li>
+              <li><a href="/discussions" class="navbar-item">Discussion Board</a></li>
+              <li><a href="/rvr" class="navbar-item">RVR Exercise</a></li>
+              <li><a class="navbar-item" href="/weather">Weather Planning</a></li>
+              <li><a class="navbar-item" href="/fuel">Fuel Planning</a></li>
+            </ul>
               <h3 class="navbar-item">Briefings</h3>
               <ul>
               <li><a class="navbar-item" href="/briefings">Briefing Examples</a></li>
@@ -69,7 +65,9 @@
     
         <div class="navbar-end">
           <div class="navbar-item">
-           
+            <a class="navbar-item" id='flashcards-link' href="/quiz">
+              Flashcards
+            </a>
             <div class="buttons">
               <% if (!currentUser) { %>
                 <a class="button" id="register-btn" href="/register">

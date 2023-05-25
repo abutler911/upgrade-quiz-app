@@ -26,6 +26,31 @@
           >
         </div>
       </div>
+      <div class="column is-4">
+        <div class="box">
+          <p class="control-title">Add Category</p>
+          <form action="/admin/add-category" method="POST">
+            <div class="field">
+              <label class="label">Category Name:</label>
+              <div class="control">
+                <input class="input" type="text" name="categoryName" required />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Category Value:</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="categoryValue"
+                  required
+                />
+              </div>
+            </div>
+            <button type="submit" class="control-button">Add</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </section>
