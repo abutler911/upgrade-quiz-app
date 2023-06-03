@@ -25,6 +25,7 @@ html, body {
     justify-content: space-between;
     width: auto;
     margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 #darkModeLabel {
