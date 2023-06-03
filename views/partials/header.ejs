@@ -48,10 +48,11 @@
               <h3 class="navbar-item">Questions</h3>
               <ul>
                 <li><a class="navbar-item" href="/questions/create">Add Questions</a></li>
-                
                 <li><a class="navbar-item" href="/view-questions">View All Questions</a></li>
               </ul>
-              
+              <ul>
+                <li><a class="navbar-item" href="/quiz">FLASHCARDS</a></li>
+              </ul>
               
               
               <hr class="navbar-divider">
@@ -63,30 +64,28 @@
           
         </div>
     
-        <div class="navbar-end">
+        <div class="navbar-end is-flex is-flex-direction-column is-align-items-flex-end">
           <div class="navbar-item">
-            <a class="navbar-item" id='flashcards-link' href="/quiz">
-              Flashcards
-            </a>
-            <div class="buttons">
-              <% if (!currentUser) { %>
-                <a class="button" id="register-btn" href="/register">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button" id="login-btn" href="/login">
-                  <strong>Login</strong>
-                </a>
-              <% } else { %>
-                <span style="padding-right: 20px; font-size: 1rem; color: #009EE2; padding-bottom: 5px;">Hi, <%= currentUser.firstname %>!</span>
+            <% if (!currentUser) { %>
+              <a class="button is-primary" id="register-btn" href="/register">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-primary" id="login-btn" href="/login">
+                <strong>Login</strong>
+              </a>
+            <% } else { %>
+              <div class="is-flex is-align-items-center">
+                <span style="padding-right: 10px; font-size: 1rem; color: #009EE2;">Hi, <%= currentUser.firstname %>!</span>
                 <% if (currentUser.isAdmin) { %>
-                  <a class="button is-rounded" href="/admin/dashboard">
+                  <a class="button is-rounded is-primary" href="/admin/dashboard">
                     <strong>Admin Console</strong>
                   </a>
                 <% } %>
-                <a class="button is-rounded" href="/logout">
+                <a class="button is-rounded is-primary" href="/logout">
                   <strong>Logout</strong>
                 </a>
-              <% } %>
+              </div>
+            <% } %>
             </div>
           </div>
         </div>
