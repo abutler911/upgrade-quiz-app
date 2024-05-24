@@ -210,6 +210,11 @@ const categories = [
     name: "2023 CQ Study Questions",
     value: "2023-cq-questions",
   },
+  {
+    id: 45,
+    name: "2024 CQ Study Questions",
+    value: "2024-cq-questions",
+  },
 ];
 
 module.exports = categories;
